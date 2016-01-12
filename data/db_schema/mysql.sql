@@ -48,6 +48,22 @@ CREATE TABLE logical_disk (
   )
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- User table
+CREATE TABLE user (
+  user_id Integer NOT NULL AUTO_INCREMENT,
+  username          NVarChar(128),
+  email             NVarChar(256),
+  sam_account_name  NVarChar(128),
+  userPrincipalName NVarChar(128),
+  telephoneNumber   NVarChar(32),
+  extensionNumber   NVarChar(32),
+  displayName       NVarChar(64),
+  description       NVarChar(128),
+  office            NVarChar(64),
+  photoFilename     NVarChar(64),
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Project table
 CREATE TABLE project (
   id                   Integer NOT NULL AUTO_INCREMENT,
