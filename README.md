@@ -8,10 +8,12 @@ Installation
 
 Note this application requires that you have the ldap php extension installed.
 
+```
 mkdir cobalt
 cd cobalt
 git clone https://github.com/srayner/platinum.git .
 php composer.phar install
+```
 
 Post install tasks
 ------------------
