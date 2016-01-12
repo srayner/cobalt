@@ -83,12 +83,34 @@ CREATE TABLE project (
   actual_hours         Decimal(18, 2),
   estimated_cost       Decimal(18, 2),
   actual_cost          Decimal(18, 2),
-  created_by_id        Integer NOT NULL,
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (
       id
   )
 ) ENGINE=InnoDB;
+
+-- Project status table
+CREATE TABLE project_status (
+  id                     Integer NOT NULL AUTO_INCREMENT,
+  status_name            NVarChar(32),
+  status_description     NVarChar(128),
+  PRIMARY KEY (id)
+) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+insert into project_status (status_name, status_description) values ('Open', 'Project is currently active and in progress.');
+insert into project_status (status_name, status_description) values ('On hold', 'Project is currently on hold.');
+insert into project_status (status_name, status_description) values ('Cancelled', 'Project has been cancelled.');
+insert into project_status (status_name, status_description) values ('Completed', 'Project has been completed.');
+
+-- Project priority table
+CREATE TABLE project_priority (
+  id                     Integer NOT NULL AUTO_INCREMENT,
+  priority_name          NVarChar(32),
+  priority_description   NVarChar(128),
+  PRIMARY KEY (id)
+) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+insert into project_priority (priority_name, priority_description) values ('High', 'Project is a high priority.');
+insert into project_priority (priority_name, priority_description) values ('Medium', 'Project is a medium priority.');
+insert into project_priority (priority_name, priority_description) values ('Low', 'Project is low low priority.');
 
 -- Milestone table
 CREATE TABLE milestone (
