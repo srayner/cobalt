@@ -1,0 +1,45 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/project/project/index.js');
+?>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Projects</li>
+    </ul>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="title">Projects</h1>
+            <a class="btn btn-action pull-right" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'add'));?>">New Project</a>
+            <hr>
+
+            <table id="projects" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Scheduled Start</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->projects as $project): ?>
+                    <tr>
+                        <td><?php echo $project->getName(); ?></td>
+                        <td><?php echo $project->getStatus()->getName(); ?></td>
+                        <td><?php echo $project->getPriority()->getName(); ?></td>
+                        <td><?php echo $project->getScheduledStart(); ?></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $project->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $project->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>

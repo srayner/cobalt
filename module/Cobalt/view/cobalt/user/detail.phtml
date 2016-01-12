@@ -1,0 +1,36 @@
+
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="<?php echo $this->url('cobalt/default', array('controller' => 'enduser'));?>"><i class="fa fa-angle-right"></i> Users</a></li>
+        <li><i class="fa fa-angle-right"></i> <?php echo $user->getSamAccountName();?></li>
+    </ul>
+
+    <div class="row">
+        <div class="col-12">
+            
+        <h1>User Details</h1>
+        <br>
+        <h3><?php echo strtoupper($user->getSamAccountName());?></h1>
+        <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        
+        <div class="col col-6">    
+            <dl class="dl-horizontal">
+                <dt>Account Name</dt><dd><?php echo $user->getSamAccountName();?></dd>
+                <dt>Display Name</dt><dd><?php echo $user->getDisplayName();?></dd>
+                <dt>Description</dt><dd><?php echo $user->getDescription();?></dd>
+                <dt>User Principal Name</dt><dd><?php echo $user->getUserPrincipalName();?></dd>
+                <dt>Email Address</dt><dd><?php echo $user->getEmail();?></dd>
+                <dt>Telephone Number</dt><dd><?php echo $user->getTelephoneNumber();?></dd>
+                <dt>Extension Number</dt><dd><?php echo $user->getExtensionNumber();?></dd>
+            </dl>
+        </div>
+        <div class="col col-6">
+            <img width="25%" src="/cobalt/image/<?php echo $user->getPhotoFilename();?>">
+        </div>
+    </div>

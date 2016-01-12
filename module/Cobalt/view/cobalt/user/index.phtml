@@ -1,0 +1,47 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/cobalt/user/index.js');
+?>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Users</li>
+    </ul>
+    
+    <div class="row">
+        <div class="col-12">
+            
+            <h1 class="title">Users</h1>
+            <a class="btn btn-action pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'add'));?>">New User</a>
+            <hr>
+            <table id="users" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Display Name</th>
+                        <th>Office</th>
+                        <th>Telephone No</th>
+                        <th>Extension</th>
+                        <th>Actions</th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <?php foreach ($this->users as $user): ?>
+                    <tr>
+                        <td><?php echo $user->getUsername(); ?></td>
+                        <td><?php echo $user->getDisplayName(); ?></td>
+                        <td><?php echo $user->getOffice(); ?></td>
+                        <td><?php echo $user->getTelephoneNumber(); ?></td>
+                        <td><?php echo $user->getExtensionNumber(); ?></td>
+                        <td>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'detail', 'id' => $user->getUserId()));?>">View Detail</a>
+                        </td>
+                    </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+

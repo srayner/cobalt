@@ -1,0 +1,74 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Cobalt')?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,700')
+                        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+                        ->appendStylesheet('/css/monel.css')
+                        ->appendStylesheet('/css/form.css');?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile('/js/monel.js')
+                                      ->prependFile('/js/jquery-1.11.3.min.js') ?>
+
+    </head>
+    <body>
+        <div class="page-wrap">
+            
+            <!-- Top navigation -->
+            <div class="nav-top">
+                <span class="title">Cobalt</span>
+                <ul class="pull-right">
+                    <li class="nav-item"><i class="fa fa-warning"></i><span class="badge badge-action">8<span></li>
+                    <li class="nav-item"><i class="fa fa-envelope"></i><span class="badge">9<span></li>
+                    <li class="nav-item"><i class="fa fa-wrench"></i><span class="badge badge-warning">4<span></li>
+                    <li class="nav-item dropdown-toggle"><i class="fa fa-user"></i> Steve Rayner <i class="fa fa-caret-down"></i>
+                        <ul class="dropdown-menu hidden">
+                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-smile-o"></i> Preferences</a></li>
+                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown-toggle"><img src="/img/gravatar.jpg"> Steve Rayner <i class="fa fa-caret-down"></i>
+                        <ul class="dropdown-menu hidden">
+                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-smile-o"></i> Preferences</a></li>
+                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>          
+            </div>
+            
+            <!-- Side navigation -->
+            <?php echo $this->navigation('navigation')->menu()
+                                                      ->setMinDepth(0)
+                                                      ->setMaxDepth(0)
+                                                      ->setUlClass('nav-side')
+                                                      ->escapeLabels(false);
+            ?>
+           
+            
+            <div class="content">
+                <?php echo $this->content; ?>
+            </div>
+        
+        </div>
+        
+        <!-- footer -->
+        <div class="footer">
+            <span class="pull-right">by S Rayner</span>
+        </div>
+        
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

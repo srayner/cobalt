@@ -1,0 +1,27 @@
+<?php
+function formatBytes($bytes, $precision = 2) { 
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+    $bytes = max($bytes, 0); 
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+    $pow = min($pow, count($units) - 1); 
+    $bytes /= pow(1024, $pow);
+    return round($bytes, $precision) . ' ' . $units[$pow];
+} 
+
+?>
+
+    
+
+<dl class="dl-horizontal">
+    <dt>Hostname</dt><dd><?php echo $computer->DNSHostName;?></dd>
+    <dt>Domain</dt><dd><?php echo $computer->Domain;?></dd>
+    <dt>Manufacturer</dt><dd><?php echo $computer->Manufacturer;?></dd>
+    <dt>Model</dt><dd><?php echo $computer->Model;?></dd>
+    <dt>Name</dt><dd><?php echo $computer->Name;?></dd>
+    
+    <dt>NumberOfProcessors</dt><dd><?php echo $computer->NumberOfProcessors;?></dd>
+    
+    <dt>SystemType</dt><dd><?php echo $computer->SystemType;?></dd>
+    <dt>Caption</dt><dd><?php echo $computer->Caption;?></dd>
+</dl>
+

@@ -1,0 +1,25 @@
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Caption</th>
+            <th>DHCP</th>
+            <th>DHCP Server</th>
+            <th>IP Address</th>
+            <th>DNSHostname</th>
+            
+        </tr>
+        <?php foreach($this->adapter as $adapter): ?> 
+        <tr>
+            <td><?php echo $adapter->Caption;?></td>
+            <td><?php echo $adapter->DHCPEnabled;?></td>
+             <td><?php echo $adapter->DHCPServer;?></td>
+             <td>
+                 <?php $ip = $adapter->IPAddress; ?>
+                 <?php foreach ($ip as $key => $value):;?>
+                 <?php echo $value; ?>
+                 <?php endforeach; ?></td>
+             <td><?php echo $adapter->DNSHostName;?></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

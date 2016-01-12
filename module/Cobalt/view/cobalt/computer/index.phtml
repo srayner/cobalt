@@ -1,0 +1,45 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/cobalt/computer/index.js');
+?>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Computers</li>
+    </ul>
+        
+    <div class="row">
+        <div class="col col-12">
+            
+            <h1>Computers</h1>
+            <table id="computers" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Hostname</th>
+                        <th>Domain</th>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->computers as $computer): ?> 
+                    <tr>
+                        <td><?php echo $computer->getHostname();?></td>
+                        <td><?php echo $computer->getDomain();?></td>
+                        <td><?php echo $computer->getManufacturer();?></td>
+                        <td><?php echo $computer->getModel();?></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
+                            <a class="btn btn-danger btn-sm" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
+                            <a class="btn btn-default btn-sm" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getComputerId()));?>">View Detail</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>

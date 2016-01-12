@@ -1,0 +1,96 @@
+<?php
+/**
+ * Local Configuration Override
+ *
+ * This configuration override file is for overriding environment-specific and
+ * security-sensitive configuration information. Copy this file without the
+ * .dist extension at the end and populate values as needed.
+ *
+ * @NOTE: This file is ignored from Git by default with the .gitignore file.
+ * This is a good practice, as it prevents sensitive credentials from
+ * accidentally being committed into version control.
+ */
+
+// ******************* Change these to suit your local setup *******************
+$dbParams = array(
+    'database'  => 'cobalt',
+    'username'  => 'username',
+    'password'  => 'password',
+    'hostname'  => 'localhost',
+);
+
+$activeDirectory = array(
+    'domain_name'       => '',
+    'domain_name_short' => '',
+    'domain_controller' => '',
+    'ldap_port'         => '389',
+    'user'              => '',
+    'password'          => '',
+    'useStartTls'       => false,   
+    'baseDn'            => '', // eg 'DC=domain,DC=local' 
+);
+
+$localSettings = array(
+    'activity_log_path' => 'path',
+    'test_log'          => 'filename',
+    'test_hostname'     => 'hostname',
+    
+);
+
+// ****************** DO NOT MAKE CHANGES BELOW THIS LINE **********************
+
+return array(
+ 
+    // Cobalt local settings.
+    'cobalt' => array (
+        'account'           => $activeDirectory['domain'] . '\\' . $activeDirectory['user'],
+        'password'          =>  $activeDirectory['password'],
+        'activity_log_path' => $localSettings['activity_log_path'],
+        'test_hostname'     => $localSettings['activity_log_path'],
+        'web_proxy'         => $localSettings['proxy_address'] . ':' . $localSettings['proxy_port'],
+        'dell_api_key'      => $localSettings['dell_api_key'],
+        'ldap' => array(
+            'host'                   => $activeDirectory['domain_controller'] . '.' . $activeDirectory['domain_name'],
+            'port'                   => $activeDirectory['ldap_port'],
+            'useStartTls'            => $activeDirectory['use_start_tls'],
+            'username'               => $activeDirectory['user'] . '@' . $activeDirectory['domain_name'],
+            'password'               => $activeDirectory['password'],
+            'accountDomainName'      => $activeDirectory['domain_name'],
+            'accountDomainNameShort' => $activeDirectory['domain_name_short'],
+            'baseDn'                 => $activeDirectory['baseDn'],
+        ),
+    ),   
+    
+    // Doctrine database connection.
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => $dbParams['hostname'],
+                    'port'     => '3306',
+                    'user'     => $dbParams['username'],
+                    'password' => $dbParams['password'],
+                    'dbname'   => $dbParams['database'],
+                )
+            )
+        )
+    ),
+    
+    // ZendDb database connection.
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+                return new Zend\Db\Adapter\Adapter(array(
+                    'driver'    => 'pdo',
+                    'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
+                    'database'  => $dbParams['database'],
+                    'username'  => $dbParams['username'],
+                    'password'  => $dbParams['password'],
+                    'hostname'  => $dbParams['hostname'],
+                ));
+            },
+        ),
+    ),
+                    
+);

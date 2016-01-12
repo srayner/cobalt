@@ -1,0 +1,32 @@
+<?php
+function formatBytes($bytes, $precision = 2) { 
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+    $bytes = max($bytes, 0); 
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+    $pow = min($pow, count($units) - 1); 
+    $bytes /= pow(1024, $pow);
+    return round($bytes, $precision) . ' ' . $units[$pow];
+} 
+
+?>
+<h1>Logical Disks</h1>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Device Id</th>
+            <th>Description</th>
+            <th>File System</th>
+            <th>Size</th>
+            <th>Free Space</th> 
+        </tr>
+        <?php foreach($this->drives as $drive): ?> 
+        <tr>
+            <td><?php echo $drive->DeviceId;?></td>
+            <td><?php echo $drive->Description;?></td>
+            <td><?php echo $drive->FileSystem;?></td>
+            <td><?php echo formatBytes($drive->Size);?></td>
+            <td><?php echo formatBytes($drive->FreeSpace);?></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

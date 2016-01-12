@@ -1,0 +1,42 @@
+<h1>Add New Computer</h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('assets/default', array(
+        'controller' => 'computer',
+        'action' => 'add')))
+         ->prepare();
+?>
+    
+<?php echo $this->form()->openTag($form); ?>
+<div class="form-group">
+    <label for="hostname" class="col-sm-2 control-label">Hostname</label>
+    <div class="col-sm-6">
+        <?php echo $this->formInput($form->get('hostname')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <label for="domainname" class="col-sm-2 control-label">Domain</label>
+    <div class="col-sm-6">
+        <?php echo $this->formInput($form->get('domain')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <label for="manufacturer" class="col-sm-2 control-label">Manufacturer</label>
+    <div class="col-sm-6">
+        <?php echo $this->formInput($form->get('manufacturer')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <label for="Model" class="col-sm-2 control-label">Model</label>
+    <div class="col-sm-6">
+        <?php echo $this->formInput($form->get('model')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+        <?php echo $this->formInput($form->get('submit')) ?>
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag($form); ?>

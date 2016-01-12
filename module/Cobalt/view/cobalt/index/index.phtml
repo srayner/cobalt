@@ -1,0 +1,79 @@
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><i class="fa fa-home"></i> Home</li>
+        
+    </ul>
+        
+    <div class="row">
+        <div class="col col-12">
+            
+            <h1>Dashboard</h1>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col col-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-desktop fa-5x pull-left"></i>
+                    <div class="">
+                        <div class="huge align-right"><?php echo $this->computerCount;?></div>
+                        <div class="align-right">Computers</div> 
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer'));?>">View details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-3">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <i class="fa fa-user fa-5x pull-left"></i>
+                    <div class="">
+                        <div class="huge align-right"><?php echo $this->userCount;?></div>
+                        <div class="align-right">Users</div> 
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user'));?>">View details</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col col-3">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <i class="fa fa-phone fa-5x pull-left"></i>
+                    <div class="">
+                        <div class="huge align-right">0</div>
+                        <div class="align-right">Open Calls</div> 
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer'));?>">View details</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col col-3">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <i class="fa fa-warning fa-5x pull-left"></i>
+                    <div class="">
+                        <div class="huge align-right">0</div>
+                        <div class="align-right">Problems</div> 
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer'));?>">View details</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    

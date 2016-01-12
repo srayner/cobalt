@@ -1,0 +1,26 @@
+
+.zend-form fieldset {
+    border: none;
+    padding: 0;
+}
+
+.zend-form label {
+    float: left;
+    clear: both;
+}
+
+.zend-form label>span {
+    float: left;
+    width: 180px;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.zend-form input[type=submit] {
+    float: left;
+    clear: left;
+    margin-left: 190px;
+}
+
+
