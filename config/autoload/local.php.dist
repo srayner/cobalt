@@ -26,7 +26,7 @@ $activeDirectory = array(
     'ldap_port'         => '389',
     'user'              => '',
     'password'          => '',
-    'useStartTls'       => false,   
+    'use_start_tls'     => false,   
     'baseDn'            => '', // eg 'DC=domain,DC=local' 
 );
 
@@ -34,7 +34,9 @@ $localSettings = array(
     'activity_log_path' => 'path',
     'test_log'          => 'filename',
     'test_hostname'     => 'hostname',
-    
+    'web_proxy_address' => '',
+    'web_proxy_port'    => '',
+    'dell_api_key'      => '',
 );
 
 // ****************** DO NOT MAKE CHANGES BELOW THIS LINE **********************
@@ -43,11 +45,11 @@ return array(
  
     // Cobalt local settings.
     'cobalt' => array (
-        'account'           => $activeDirectory['domain'] . '\\' . $activeDirectory['user'],
+        'account'           => $activeDirectory['domain_name'] . '\\' . $activeDirectory['user'],
         'password'          =>  $activeDirectory['password'],
         'activity_log_path' => $localSettings['activity_log_path'],
         'test_hostname'     => $localSettings['activity_log_path'],
-        'web_proxy'         => $localSettings['proxy_address'] . ':' . $localSettings['proxy_port'],
+        'web_proxy'         => $localSettings['web_proxy_address'] . ':' . $localSettings['web_proxy_port'],
         'dell_api_key'      => $localSettings['dell_api_key'],
         'ldap' => array(
             'host'                   => $activeDirectory['domain_controller'] . '.' . $activeDirectory['domain_name'],
