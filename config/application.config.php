@@ -11,7 +11,8 @@ return array(
      //   'ZfcUser',
         'TwbBundle',
         'Cobalt',
-        'Project'
+        'Project',
+     //   'CivAuth',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
