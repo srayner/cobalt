@@ -78,7 +78,7 @@ function formatBytes($bytes, $precision = 2) {
                         <th colspan="2">Free Space</th>
 
                     </tr>
-                    <?php foreach($this->disks as $disk): ?> 
+                    <?php foreach($computer->getLogicalDisks() as $disk): ?> 
                     <tr>
                         <td><?php echo $disk->getDeviceId();?></td>
                         <td><?php echo $disk->getDescription();?></td>
@@ -88,8 +88,8 @@ function formatBytes($bytes, $precision = 2) {
                         <td width="200px">
                             <?php if ($disk->getCapacity() > 0): ?>
                             <div class="progress" width="200px" style="margin-bottom: 0;">
-                                <div class="progress-bar <?php echo $disk->getFreeSpaceClass();?>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="min-width: 12%; width: <?php echo $disk->getFreeSpacePercent(); ?>%;">
-                                    <?php echo $disk->getFreeSpaceText(); ?>%
+                                <div class="progress-bar <?php echo $disk->freeSpaceClass();?>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="min-width: 12%; width: <?php echo $disk->freeSpacePercent(); ?>%;">
+                                    <?php echo $disk->freeSpaceText(); ?>%
                                 </div>
                             </div>
                             <?php endif; ?>

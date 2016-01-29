@@ -23,10 +23,8 @@ class ComputerController extends AbstractController
         }
         
         $computer = $this->getEntityManager()->find('Cobalt\Entity\Computer', $id);
-    //    $logicalDisks = $this->getComputerService()->getLogicalDisks($computerId);
         return array(
             'computer' => $computer,
-      //      'disks' => $logicalDisks
         );
     }
     

@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="computer")
@@ -58,6 +59,16 @@ class Computer
     /** @ORM\Column(type="datetime", name="modified") */
     protected $modified;
 
+    /**
+     * @ORM\OneToMany(targetEntity="LogicalDisk", mappedBy="computer")
+     */
+    protected $logicalDisks;
+    
+    public function __construct()
+    {
+        $this->logicalDisks = new ArrayCollection();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -221,5 +232,10 @@ class Computer
     {
         $this->modified = $modified;
         return $this;
+    }
+    
+    public function getLogicalDisks()
+    {
+        return $this->logicalDisks;
     }
 }
