@@ -66,28 +66,12 @@ class Module
                     $mapper->setHydrator(new Model\Activity\ActivityHydrator());
                     return $mapper;
                 },
-                'cobalt_computer_service' => function($sm) {
-                    $service = new Service\Computer;
-                    $service->setComputerMapper($sm->get('cobalt_computer_mapper'));
-                    $service->setLogicalDiskMapper($sm->get('cobalt_logical_disk_mapper'));
-                    return $service;
-                },
-                'cobalt_computer_mapper' => function($sm) {
-                    $mapper = new Model\Computer\ComputerMapper;
-                    $computerModelClass = Module::getOption('computer_model_class');
-                    $mapper->setEntityPrototype(new $computerModelClass);
-                    $mapper->setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
-                    return $mapper;
-                },
                 'cobalt_logical_disk_mapper' => function($sm) {
                     $mapper = new Model\LogicalDisk\LogicalDiskMapper;
                     $prototypeClass = Module::getOption('logical_disk_model_class');
                     $mapper->setEntityPrototype(new $prototypeClass);
                     $mapper->setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
                     return $mapper;
-                },
-                'cobalt_computer' => function($sm) {
-                    return new Model\Computer\Computer;
                 },
                 'civwmi_logical_disk' => function($sm) {
                     return new Model\LogicalDisk\LogicalDisk;

@@ -35,7 +35,7 @@
                             <a class="btn btn-primary btn-sm" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
                             <a class="btn btn-danger btn-sm" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
                             <a class="btn btn-default btn-sm" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
-                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getComputerId()));?>">View Detail</a>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getId()));?>">View Detail</a>
                         </td>
                     </tr>
                     <?php endforeach ?>

@@ -2,23 +2,11 @@
 
 namespace Cobalt\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-
-class ComputerController extends AbstractActionController
+class ComputerController extends AbstractController
 {
-    protected $computerService;
-    
-    private function getComputerService()
-    {
-        if (null === $this->computerService){
-            $this->computerService = $this->getServiceLocator()->get('cobalt_computer_service');
-        }
-        return $this->computerService;
-    }
-    
     public function indexAction()
     {
-        $computers = $this->getComputerService()->getComputers();
+        $computers = $this->getEntityManager()->getRepository('Cobalt\Entity\Computer')->findAll();
         return array(
             'computers' => $computers
         );
@@ -26,12 +14,19 @@ class ComputerController extends AbstractActionController
     
     public function detailAction()
     {
-        $computerId = $this->params()->fromRoute('id');
-        $computer = $this->getComputerService()->getComputerById($computerId);
-        $logicalDisks = $this->getComputerService()->getLogicalDisks($computerId);
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'computer',
+             ));
+        }
+        
+        $computer = $this->getEntityManager()->find('Cobalt\Entity\Computer', $id);
+    //    $logicalDisks = $this->getComputerService()->getLogicalDisks($computerId);
         return array(
             'computer' => $computer,
-            'disks' => $logicalDisks
+      //      'disks' => $logicalDisks
         );
     }
     
@@ -48,14 +43,15 @@ class ComputerController extends AbstractActionController
             $data = (array) $request->getPost();
           
             // Create a new computer object.
-            $computer = $this->getServiceLocator()->get('cobalt_computer');
+            $computer = $this->getServiceLocator()->get('Cobalt\Computer');
             
             $form->bind($computer);
             $form->setData($data);
             if ($form->isValid())
             {
-          	// Persist message.
-            	$this->getComputerService()->persistComputer($computer);
+          	// Persist computer.
+            	$this->getEntityManager()->persist($computer);
+                $this->getEntityManager()->flush();
                 
             	// Redirect to list of computers
 		return $this->redirect()->toRoute('cobalt/default', array(
@@ -83,7 +79,7 @@ class ComputerController extends AbstractActionController
         }
         
         // Grab the computer with the specified id.
-        $computer = $this->getComputerService()->getComputerById($id);
+        $computer = $this->getEntityManager()->find('Cobalt\Entity\Computer', $id);
         
         $form = $this->getServiceLocator()->get('Cobalt\ComputerForm');
         $form->bind($computer);
@@ -95,13 +91,13 @@ class ComputerController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                // Persist hazard.
-            	$this->getComputerService()->persistComputer($computer);
+                // Persist computer.
+            	$this->getEntityManager()->persist($computer);
+                $this->getEntityManager()->flush();
                 
                 // Redirect to list of computers
                 return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'computer',
-                    'action' => 'index'
+                    'controller' => 'computer'
                 ));
             }     
         }
