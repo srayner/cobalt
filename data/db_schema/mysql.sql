@@ -21,6 +21,7 @@ CREATE TABLE computer (
   domain          NVarChar(128),
   manufacturer    NVarChar(128),
   model           NVarChar(128),
+  image           NVarChar(128),
   serial_number   NVarChar(64),
   bios_version    NVarChar(32),
   system_type     NVarChar(32),
