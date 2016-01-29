@@ -55,6 +55,17 @@ class ComputerForm extends Form
                         'class' => 'form-control input-sm'
                 ), 
         ));
+        
+        $this->add(array(
+                'name' => 'image',
+                'options' => array(
+                        'label' => 'Image',
+                ),
+                'attributes' => array(
+                        'type' => 'text',
+                        'class' => 'form-control input-sm'
+                ), 
+        ));
 
         // Submit button.
         $this->add(array(

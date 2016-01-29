@@ -79,11 +79,6 @@ class Module
                     $mapper->setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
                     return $mapper;
                 },
-                'cobalt_computer_form' => function ($sm) {
-                    $form = new Form\ComputerForm();
-                    $form->setInputFilter(new Form\ComputerFilter());
-                    return $form;
-                },
                 'cobalt_logical_disk_mapper' => function($sm) {
                     $mapper = new Model\LogicalDisk\LogicalDiskMapper;
                     $prototypeClass = Module::getOption('logical_disk_model_class');
@@ -97,9 +92,6 @@ class Module
                 'civwmi_logical_disk' => function($sm) {
                     return new Model\LogicalDisk\LogicalDisk;
                 },
-                'cobalt_computer_form' => function($sm) {
-                    return new Form\ComputerForm();
-                }
             ),
             'initializers' => array(
                 function($instance, $sm){

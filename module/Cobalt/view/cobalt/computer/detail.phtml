@@ -46,8 +46,8 @@ function formatBytes($bytes, $precision = 2) {
             <a class="btn btn-default" href="/assets/index/disk/<?php echo $computer->getHostname();?>">Scan Drives</a>
             <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
         </div>
-        <div class="col col-6">
-            <img width="100%" src="/cobalt/computer/<?php echo trim($computer->getModel());?>.jpg">
+        <div class="col col-4">
+            <img width="100%" src="/cobalt/computer/<?php echo trim($computer->getImage());?>">
         </div>
     </div>
     

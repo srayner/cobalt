@@ -50,7 +50,7 @@ class ComputerFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 128,
                     ),
                 ),
             ),
@@ -67,7 +67,24 @@ class ComputerFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 128,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
+        // Image
+        $this->add(array(
+            'name'       => 'image',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 128,
                     ),
                 ),
             ),

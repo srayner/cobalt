@@ -37,9 +37,8 @@ class ComputerController extends AbstractActionController
     
     public function addAction()
     {
-        // Create new form and hydrator instances.
-        $form = $this->getServiceLocator()->get('cobalt_computer_form');
-        $formHydrator = $this->getServiceLocator()->get('cobalt_form_hydrator');
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Cobalt\ComputerForm');
          
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -51,7 +50,6 @@ class ComputerController extends AbstractActionController
             // Create a new computer object.
             $computer = $this->getServiceLocator()->get('cobalt_computer');
             
-            $form->setHydrator($formHydrator);
             $form->bind($computer);
             $form->setData($data);
             if ($form->isValid())
@@ -60,8 +58,9 @@ class ComputerController extends AbstractActionController
             	$this->getComputerService()->persistComputer($computer);
                 
             	// Redirect to list of computers
-		return $this->redirect()->toRoute('assets/default', array(
-		            'action'     => 'index'
+		return $this->redirect()->toRoute('cobalt/default', array(
+		    'controller' => 'computer',
+                    'action'     => 'index'
 		));
             }
         } 
@@ -70,5 +69,46 @@ class ComputerController extends AbstractActionController
         return array(
             'form'   => $form,
         );
+    }
+    
+    public function editAction()
+    {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'computer',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the computer with the specified id.
+        $computer = $this->getComputerService()->getComputerById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\ComputerForm');
+        $form->bind($computer);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist hazard.
+            	$this->getComputerService()->persistComputer($computer);
+                
+                // Redirect to list of computers
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'computer',
+                    'action' => 'index'
+                ));
+            }     
+        }
+        
+        return array(
+             'id' => $id,
+             'form' => $form,
+        );   
     }
 }

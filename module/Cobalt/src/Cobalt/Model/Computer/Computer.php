@@ -11,6 +11,7 @@ class Computer implements ComputerInterface
     protected $domain;
     protected $manufacturer;
     protected $model;
+    protected $image;
     protected $serialNumber;
     protected $biosVersion;
     protected $systemType;
@@ -68,6 +69,17 @@ class Computer implements ComputerInterface
     public function getModel()
     {
         return $this->model;
+    }
+    
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+    
+    public function getImage()
+    {
+        return $this->image;
     }
     
     public function setModel($model)

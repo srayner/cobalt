@@ -1,10 +1,11 @@
-<h1>Add New Computer</h1>
+<h1>Edit Computer Details</h1>
 
 <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url('cobalt/default', array(
         'controller' => 'computer',
-        'action' => 'add')))
+        'action' => 'edit',
+        'id' =>$this->id)))
          ->prepare();
 ?>
     
@@ -31,6 +32,12 @@
     <label for="Model" class="col-sm-2 control-label">Model</label>
     <div class="col-sm-6">
         <?php echo $this->formInput($form->get('model')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <label for="Image" class="col-sm-2 control-label">Image</label>
+    <div class="col-sm-6">
+        <?php echo $this->formInput($form->get('image')) ?>
     </div>
 </div>
 <div class="form-group">

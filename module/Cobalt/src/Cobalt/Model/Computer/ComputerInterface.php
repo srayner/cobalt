@@ -19,6 +19,9 @@ interface ComputerInterface
     public function getModel();
     public function setModel($model);
     
+    public function getImage();
+    public function setImage($image);
+    
     public function getSerialNumber();
     public function setSerialNumber($serialNumber);
     

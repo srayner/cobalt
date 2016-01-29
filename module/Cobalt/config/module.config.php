@@ -88,7 +88,8 @@ return array(
             'Cobalt\User' => 'Cobalt\Model\User\User'
         ),
         'factories' => array(
-            'Cobalt\UserForm'   => 'Cobalt\Form\UserFormFactory'
+            'Cobalt\UserForm'     => 'Cobalt\Form\UserFormFactory',
+            'Cobalt\ComputerForm' => 'Cobalt\Form\ComputerFormFactory',
         ),    
     ),
     
