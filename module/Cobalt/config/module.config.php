@@ -2,6 +2,8 @@
 
 namespace Cobalt;
 
+use \Zend\Mvc\Controller\ControllerManager;
+
 return array(
 
     // Doctrine
@@ -58,8 +60,14 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Cobalt\Controller\Index'    => 'Cobalt\Controller\IndexController',
-            'Cobalt\Controller\Computer' => 'Cobalt\Controller\ComputerController',
             'Cobalt\Controller\Enduser'  => 'Cobalt\Controller\UserController'
+        ),
+        'factories' => array(
+            'Cobalt\Controller\Computer' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Cobalt\ComputerService');
+                return new Controller\ComputerController($service);
+            },
         ),
     ),
     
@@ -107,8 +115,9 @@ return array(
             'Cobalt\Computer' => 'Cobalt\Entity\Computer',
         ),
         'factories' => array(
-            'Cobalt\UserForm'     => 'Cobalt\Form\UserFormFactory',
-            'Cobalt\ComputerForm' => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\UserForm'        => 'Cobalt\Form\UserFormFactory',
+            'Cobalt\ComputerForm'    => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\ComputerService' => 'Cobalt\Service\ComputerServiceFactory',
         ),    
     ),
     

@@ -15,8 +15,9 @@ class ComputerService implements ComputerServiceInterface
 
     public function count()
     {
-        //todo
-        
+        return $this->entityManager
+                    ->createQuery('SELECT COUNT(c.id) FROM Cobalt\Entity\Computer c')
+                    ->getSingleScalarResult();
     }
 
     public function findAll()

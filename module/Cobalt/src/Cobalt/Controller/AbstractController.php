@@ -6,14 +6,10 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 abstract class AbstractController extends AbstractActionController
 {
-    protected $entityManager;
+    protected $service;
     
-    protected function getEntityManager()
+    public function __construct($service)
     {
-        if (null === $this->entityManager)
-        {
-            $this->entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-        return $this->entityManager;
+        $this->service = $service;
     }
 }

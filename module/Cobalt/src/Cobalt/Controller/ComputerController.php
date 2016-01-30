@@ -1,15 +1,15 @@
 <?php
 
 namespace Cobalt\Controller;
+use Zend\View\Model\ViewModel;
 
 class ComputerController extends AbstractController
 {
     public function indexAction()
     {
-        $computers = $this->getEntityManager()->getRepository('Cobalt\Entity\Computer')->findAll();
-        return array(
-            'computers' => $computers
-        );
+        return new ViewModel(array(
+            'computers' => $this->service->findAll()
+        ));
     }
     
     public function detailAction()
@@ -21,11 +21,10 @@ class ComputerController extends AbstractController
                  'controller' => 'computer',
              ));
         }
-        
-        $computer = $this->getEntityManager()->find('Cobalt\Entity\Computer', $id);
-        return array(
-            'computer' => $computer,
-        );
+
+        return new ViewModel(array(
+            'computer' => $this->service->findById($id)
+        ));
     }
     
     public function addAction()
@@ -48,8 +47,7 @@ class ComputerController extends AbstractController
             if ($form->isValid())
             {
           	// Persist computer.
-            	$this->getEntityManager()->persist($computer);
-                $this->getEntityManager()->flush();
+            	$this->service->persist($computer);
                 
             	// Redirect to list of computers
 		return $this->redirect()->toRoute('cobalt/default', array(
@@ -60,9 +58,9 @@ class ComputerController extends AbstractController
         } 
         
         // If not a POST request, or invalid data, then just render the form.
-        return array(
-            'form'   => $form,
-        );
+        return new ViewModel(array(
+            'form'   => $form
+        ));
     }
     
     public function editAction()
@@ -77,7 +75,7 @@ class ComputerController extends AbstractController
         }
         
         // Grab the computer with the specified id.
-        $computer = $this->getEntityManager()->find('Cobalt\Entity\Computer', $id);
+        $computer = $this->service->find($id);
         
         $form = $this->getServiceLocator()->get('Cobalt\ComputerForm');
         $form->bind($computer);
@@ -90,8 +88,7 @@ class ComputerController extends AbstractController
             if ($form->isValid()) {
                 
                 // Persist computer.
-            	$this->getEntityManager()->persist($computer);
-                $this->getEntityManager()->flush();
+            	$this->service->persist($computer);
                 
                 // Redirect to list of computers
                 return $this->redirect()->toRoute('cobalt/default', array(
@@ -100,9 +97,9 @@ class ComputerController extends AbstractController
             }     
         }
         
-        return array(
+        return new ViewModel(array(
              'id' => $id,
              'form' => $form,
-        );   
+        ));
     }
 }

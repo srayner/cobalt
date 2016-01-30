@@ -11,14 +11,14 @@ class IndexController extends AbstractActionController
     public function getComputerService()
     {
         if (null === $this->computerService) {
-            $this->computerService = $this->getServiceLocator()->get('cobalt_computer_service');
+            $this->computerService = $this->getServiceLocator()->get('Cobalt\ComputerService');
         }
         return $this->computerService;
     }
 
     public function indexAction()
     {
-        $computerService = $this->getServiceLocator()->get('cobalt_computer_service');
+        $computerService = $this->getServiceLocator()->get('Cobalt\ComputerService');
         $userService = $this->getServiceLocator()->get('cobalt_user_service');
         return array(
             'computerCount' => $computerService->count(),
