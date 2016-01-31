@@ -93,6 +93,7 @@ return array(
             'project_form'             => 'Project\Form\ProjectFormFactory',
             'Project\ProjectService'   => 'Project\Service\ProjectServiceFactory',
             'Project\MilestoneService' => 'Project\Service\MilestoneServiceFactory',
+            'Project\MilestoneForm'    => 'Project\Form\MilestoneFormFactory',
             'Project\TaskService'      => 'Project\Service\TaskServiceFactory', 
         ),
     ),

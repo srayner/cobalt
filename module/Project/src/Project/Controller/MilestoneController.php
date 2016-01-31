@@ -13,7 +13,23 @@ class MilestoneController extends AbstractController
     
     public function addAction()
     {
-        return new ViewModel();
+        // Check we have a project id, if not redirect back to list of projects.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('project/default', array('controller' => 'project'));
+	}
+        
+        $form = $this->getServiceLocator()->get('Project\MilestoneForm');
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            
+        }
+        
+        return new ViewModel(array(
+            'form' => $form
+        ));
     }
     
     public function editAction()
