@@ -67,12 +67,12 @@ return array(
             'Project\Controller\Milestone' => function(ControllerManager $cm) {
                 $sm = $cm->getServiceLocator();
                 $service = $sm->get('Project\MilestoneService');
-                return new Controller\ProjectController($service);
+                return new Controller\MilestoneController($service);
             },
             'Project\Controller\Task' => function(ControllerManager $cm) {
                 $sm = $cm->getServiceLocator();
                 $service = $sm->get('Project\TaskService');
-                return new Controller\ProjectController($service);
+                return new Controller\TaskController($service);
             },
         ),
     ),

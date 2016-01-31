@@ -1,3 +1,8 @@
 <h1>Project Details</h1>
 
 <h2>Project: <?php echo $this->project->getName(); ?></h2>
+
+<a href="<?php echo $this->url('project/default', array(
+    'controller' => 'milestone',
+    'action' => 'add'
+)) ?>">New Milestone</a>
