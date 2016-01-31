@@ -3,6 +3,7 @@
 namespace Project\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="project")
@@ -63,6 +64,16 @@ class Project
     
     /** @ORM\Column(type="decimal", name="actual_cost") */
     protected $actualCost;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Milestone", mappedBy="project")
+     */
+    protected $milestones;
+    
+    public function __construct()
+    {
+        $this->milestones = new ArrayCollection();
+    }
     
     public function getId()
     {

@@ -13,6 +13,11 @@ class MilestoneService
         $this->repository = $repository;
     }
 
+    public function getEntityManager()
+    {
+        return $this->entityManager;
+    }
+    
     public function count()
     {
         return $this->entityManager

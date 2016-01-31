@@ -4,5 +4,6 @@
 
 <a href="<?php echo $this->url('project/default', array(
     'controller' => 'milestone',
-    'action' => 'add'
+    'action' => 'add',
+    'id' => $this->project->getId()
 )) ?>">New Milestone</a>

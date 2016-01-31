@@ -87,7 +87,9 @@ return array(
     //Service manager config.
     'service_manager' => array (
         'invokables' => array(
-            'project' => 'Project\Entity\Project',
+            'project'   => 'Project\Entity\Project',
+            'milestone' => 'Project\Entity\Milestone',
+            'task'      => 'Project\Entity\Task',
         ),
         'factories' => array(
             'project_form'             => 'Project\Form\ProjectFormFactory',

@@ -20,15 +20,32 @@ class MilestoneController extends AbstractController
 	}
         
         $form = $this->getServiceLocator()->get('Project\MilestoneForm');
-        
         $request = $this->getRequest();
         if($request->isPost())
         {
+            $milestone = $this->getServiceLocator()->get('milestone');
+            $form->bind($milestone);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Persist.
+                $em = $this->service->getEntityManager();
+                $milestone->setProject($em->getReference('Project\Entity\Project', $id));
+                $this->service->persist($milestone);
+                
+                // Redirect.
+                return $this->redirect()->toRoute('project/default', array(
+                    'controller' => 'project',
+                    'action' => 'detail',
+                    'id' => $id
+		));
+            }
             
         }
         
         return new ViewModel(array(
-            'form' => $form
+            'form' => $form,
+            'projectId' => $id
         ));
     }
     

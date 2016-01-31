@@ -5,9 +5,9 @@ namespace Project\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity
-  * @ORM\Table(name="milestone")
+  * @ORM\Table(name="milestone_status")
   */
-class Milestone
+class MilestoneStatus
 {
     /**
      * @ORM\Id
@@ -16,17 +16,11 @@ class Milestone
      */
     protected $id;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="status_name") */
     protected $name;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="status_description") */
     protected $description;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Project", inversedBy="milestones")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
-     */
-    protected $project;
     
     public function getId()
     {
@@ -60,15 +54,4 @@ class Milestone
         $this->description = $description;
         return $this;
     }
-    
-    public function setProject($project)
-    {
-        $this->project = $project;
-    }
-    
-    public function getProject()
-    {
-        return $this->project;
-    }
 }
-

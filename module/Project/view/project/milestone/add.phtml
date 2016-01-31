@@ -6,7 +6,11 @@
     
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('project/default', array('controller' => 'milestone', 'action' => 'add')));
+                $form->setAttribute('action', $this->url('project/default', array(
+                    'controller' => 'milestone',
+                    'action' => 'add',
+                    'id' => $this->projectId
+                )));
                 $form->prepare();
 
                 echo $this->form($form);
