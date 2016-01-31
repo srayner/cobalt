@@ -2,10 +2,9 @@
 
 namespace Project\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class TaskController extends AbstractActionController
+class TaskController extends AbstractController
 {
     public function indexAction()
     {

@@ -2,18 +2,14 @@
 
 namespace Project\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class ProjectController extends AbstractActionController
+class ProjectController extends AbstractController
 {
     public function indexAction()
-    {
-        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $projects = $objectManager->getRepository('Project\Entity\Project')->findAll();
-        
+    {  
         return new ViewModel(array(
-            'projects' => $projects    
+            'projects' => $this->service->findAll()    
         ));
     }
     
@@ -30,14 +26,11 @@ class ProjectController extends AbstractActionController
             if ($form->isValid())
             {
                 // Persist.
-                $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-                $objectManager->persist($project);
-                $objectManager->flush();
+                $this->service->persist($project);
                 
                 // Redirect.
                 return $this->redirect()->toRoute('project/default', array(
-                    'controller' => 'project',
-		    'action'     => 'index'
+                    'controller' => 'project'
 		));
             }
             
@@ -55,8 +48,7 @@ class ProjectController extends AbstractActionController
         if (!$id) {
             return $this->redirect()->toRoute('project/default', array('controller' => 'project', 'action'=>'add'));
 	}
-        $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $project = $entityManager->find('Project\Entity\Project', $id);
+        $project = $this->service->findById($id);
         
         // Create a new form instance and bind the entity to it.
         $form = $this->getServiceLocator()->get('project_form');
@@ -71,8 +63,7 @@ class ProjectController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
-                $entityManager->persist($project);
-                $entityManager->flush();
+                $this->service->persist($project);
 
                 // Create information message.
                 $this->flashMessenger()->addMessage('Project ' . $project->getName() . ' successfully updated');
@@ -83,14 +74,30 @@ class ProjectController extends AbstractActionController
         }
 		
 	// Render (or re-render) the form.
-	return array(
+	return new ViewModel(array(
             'id' => $id,
             'form' => $form,
-        );
+        ));
     }
     
     public function deleteAction()
     {
         return new ViewModel();
+    }
+    
+    public function detailAction()
+    {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('project/default', array(
+                 'controller' => 'proect',
+             ));
+        }
+        
+        return new ViewModel(array(
+            'project' => $this->service->findById($id)
+        ));
+        
     }
 }

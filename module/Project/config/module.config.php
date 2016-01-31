@@ -2,6 +2,8 @@
 
 namespace Project;
 
+use Zend\Mvc\Controller\ControllerManager;
+
 return array(
     
     // Doctrine
@@ -56,10 +58,22 @@ return array(
     
     // Controllers
     'controllers' => array(
-        'invokables' => array(
-            'Project\Controller\Project'   => 'Project\Controller\ProjectController',
-            'Project\Controller\Milestone' => 'Project\Controller\MilestoneController',
-            'Project\Controller\Task'      => 'Project\Controller\TaskController'
+        'factories' => array(
+            'Project\Controller\Project' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Project\ProjectService');
+                return new Controller\ProjectController($service);
+            },
+            'Project\Controller\Milestone' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Project\MilestoneService');
+                return new Controller\ProjectController($service);
+            },
+            'Project\Controller\Task' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Project\TaskService');
+                return new Controller\ProjectController($service);
+            },
         ),
     ),
     
@@ -76,7 +90,10 @@ return array(
             'project' => 'Project\Entity\Project',
         ),
         'factories' => array(
-            'project_form' => 'Project\Form\ProjectFormFactory',
+            'project_form'             => 'Project\Form\ProjectFormFactory',
+            'Project\ProjectService'   => 'Project\Service\ProjectServiceFactory',
+            'Project\MilestoneService' => 'Project\Service\MilestoneServiceFactory',
+            'Project\TaskService'      => 'Project\Service\TaskServiceFactory', 
         ),
     ),
         
