@@ -26,6 +26,9 @@ class TaskController extends AbstractController
             if ($form->isValid())
             {
                 // Persist.
+                $em = $this->service->getEntityManager();
+                $task->setStatus($em->getReference('Project\Entity\TaskStatus', 1));
+                $task->setPriority($em->getReference('Project\Entity\TaskPriority', 1));
                 $this->service->persist($task);
                 
                 // Redirect.

@@ -5,9 +5,9 @@ namespace Project\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity
-  * @ORM\Table(name="task_status")
+  * @ORM\Table(name="task_priority")
   */
-class TaskStatus
+class TaskPriority
 {
     /**
      * @ORM\Id
@@ -16,10 +16,10 @@ class TaskStatus
      */
     protected $id;
     
-    /** @ORM\Column(type="string", name="status_name") */
+    /** @ORM\Column(type="string", name="priority_name") */
     protected $name;
     
-    /** @ORM\Column(type="string", name="status_description") */
+    /** @ORM\Column(type="string", name="priority_description") */
     protected $description;
     
     public function getId()

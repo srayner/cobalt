@@ -22,6 +22,18 @@ class task
     /** @ORM\Column(type="string") */
     protected $description;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="TaskStatus")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     */
+    protected $status;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="TaskPriority")
+     * @ORM\JoinColumn(name="priority_id", referencedColumnName="id")
+     */
+    protected $priority;
+    
     public function getId()
     {
         return $this->id;
@@ -37,6 +49,16 @@ class task
         return $this->description;
     }
 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -55,4 +77,15 @@ class task
         return $this;
     }
     
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+    
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+        return $this;
+    }
 }
