@@ -186,6 +186,18 @@ CREATE TABLE task (
   )
 ) ENGINE=InnoDB;
 
+-- Task status table
+CREATE TABLE task_status (
+  id                     Integer NOT NULL AUTO_INCREMENT,
+  status_name            NVarChar(32),
+  status_description     NVarChar(128),
+  PRIMARY KEY (id)
+) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+insert into task_status (status_name, status_description) values ('Open', 'Task is currently active and in progress.');
+insert into task_status (status_name, status_description) values ('On hold', 'Task is currently on hold.');
+insert into task_status (status_name, status_description) values ('Cancelled', 'Task has been cancelled.');
+insert into task_status (status_name, status_description) values ('Completed', 'Task has been completed.');
+
 CREATE TABLE project_task (
   project_id Integer NOT NULL,
   task_id    Integer NOT NULL, 
