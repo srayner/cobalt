@@ -1,1 +1,34 @@
-<h1>Tasks</h1>
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/project/task/index.js');
+?>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Tasks</li>
+    </ul>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1 class="title">Tasks</h1>
+            <a class="btn btn-action pull-right" href="<?php echo $this->url('project/default', array(
+                'controller' => 'task', 'action' => 'add')); ?>">Create New Task</a>
+            <hr>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>

@@ -8,12 +8,37 @@ class TaskController extends AbstractController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(array(
+            'tasks' => $this->service->findAll()    
+        ));
     }
     
     public function addAction()
     {
-        return new ViewModel();
+        $form = $this->getServiceLocator()->get('Project\TaskForm');
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $task = $this->getServiceLocator()->get('task');
+            $form->bind($task);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Persist.
+                $this->service->persist($task);
+                
+                // Redirect.
+                return $this->redirect()->toRoute('project/default', array(
+                    'controller' => 'task'
+		));
+            }
+            
+        }
+        
+        return new ViewModel(array(
+            'form' => $form
+        ));
     }
     
     public function editAction()

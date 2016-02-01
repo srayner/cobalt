@@ -96,7 +96,8 @@ return array(
             'Project\ProjectService'   => 'Project\Service\ProjectServiceFactory',
             'Project\MilestoneService' => 'Project\Service\MilestoneServiceFactory',
             'Project\MilestoneForm'    => 'Project\Form\MilestoneFormFactory',
-            'Project\TaskService'      => 'Project\Service\TaskServiceFactory', 
+            'Project\TaskService'      => 'Project\Service\TaskServiceFactory',
+            'Project\TaskForm'         => 'Project\Form\TaskFormFactory',
         ),
     ),
         
