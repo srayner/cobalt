@@ -198,6 +198,17 @@ insert into task_status (status_name, status_description) values ('On hold', 'Ta
 insert into task_status (status_name, status_description) values ('Cancelled', 'Task has been cancelled.');
 insert into task_status (status_name, status_description) values ('Completed', 'Task has been completed.');
 
+-- Task priority table
+CREATE TABLE task_priority (
+  id                     Integer NOT NULL AUTO_INCREMENT,
+  priority_name          NVarChar(32),
+  priority_description   NVarChar(128),
+  PRIMARY KEY (id)
+) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
+insert into task_priority (priority_name, priority_description) values ('High', 'Task is a high priority.');
+insert into task_priority (priority_name, priority_description) values ('Medium', 'Task is a medium priority.');
+insert into task_priority (priority_name, priority_description) values ('Low', 'Task is low low priority.');
+
 CREATE TABLE project_task (
   project_id Integer NOT NULL,
   task_id    Integer NOT NULL, 
