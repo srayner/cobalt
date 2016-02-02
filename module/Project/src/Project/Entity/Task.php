@@ -34,6 +34,12 @@ class task
      */
     protected $priority;
     
+    /** @ORM\Column(name="estimated_hours", type="decimal") */
+    protected $estimatedHours;
+    
+    /** @ORM\Column(name="actual_hours", type="decimal") */
+    protected $actualHours;
+    
     public function getId()
     {
         return $this->id;
@@ -53,12 +59,22 @@ class task
     {
         return $this->status;
     }
-    
+
     public function getPriority()
     {
         return $this->priority;
     }
-    
+
+    public function getEstimatedHours()
+    {
+        return $this->estimatedHours;
+    }
+
+    public function getActualHours()
+    {
+        return $this->actualHours;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -76,16 +92,28 @@ class task
         $this->description = $description;
         return $this;
     }
-    
+
     public function setStatus($status)
     {
         $this->status = $status;
         return $this;
     }
-    
+
     public function setPriority($priority)
     {
         $this->priority = $priority;
+        return $this;
+    }
+
+    public function setEstimatedHours($estimatedHours)
+    {
+        $this->estimatedHours = $estimatedHours;
+        return $this;
+    }
+
+    public function setActualHours($actualHours)
+    {
+        $this->actualHours = $actualHours;
         return $this;
     }
 }
