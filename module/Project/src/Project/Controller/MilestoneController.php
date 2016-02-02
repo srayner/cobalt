@@ -33,6 +33,8 @@ class MilestoneController extends AbstractController
                 // Persist.
                 $em = $this->service->getEntityManager();
                 $milestone->setProject($em->getReference('Project\Entity\Project', $id));
+                $milestone->setStatus($em->getReference('Project\Entity\MilestoneStatus', 1));
+                $milestone->setPriority($em->getReference('Project\Entity\MilestonePriority', 1));
                 $this->service->persist($milestone);
                 
                 // Redirect.

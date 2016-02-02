@@ -3,8 +3,19 @@
         <h1 class="title">Project Details</h1>
         <hr>
         
-        <b>Project: </b><span><?php echo $this->project->getName(); ?></span><br>
-
+        <br>
+        <b>Project: </b><span><?php echo $this->project->getName(); ?></span>
+        <br>
+        
+        <br>
+        <b>Milestones</b><br>
+        <table>
+            <?php foreach ($this->project->getMilestones() as $milestone): ?>
+            <tr>
+                <td><?php echo $milestone->getName(); ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
         <a class="btn btn-action" href="<?php echo $this->url('project/default', array(
             'controller' => 'milestone',
             'action' => 'add',
