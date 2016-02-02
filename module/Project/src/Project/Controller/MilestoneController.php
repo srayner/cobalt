@@ -8,7 +8,9 @@ class MilestoneController extends AbstractController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(array(
+            'milestones' => $this->service->findAll()    
+        ));
     }
     
     public function addAction()

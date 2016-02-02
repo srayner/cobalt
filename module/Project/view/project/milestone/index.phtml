@@ -1,11 +1,21 @@
-    
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/project/milestone/index.js');
+?>
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Milestones</li>
+    </ul>
+
     <div class="row">
         <div class="col-12">
             <h1 class="title">Milestones</h1>
             <a class="btn btn-action pull-right" href="<?php echo $this->url('project/default', array('controller' => 'milestone', 'action' => 'add'));?>">New Milestone</a>
             <hr>
 
-            <table id="tasks" class="display" cellspacing="0" width="100%">
+            <table id="milestones" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -14,6 +24,22 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <?php foreach($this->milestones as $milestone): ?>
+                    <tr>
+                        <td><a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'detail', 'id'         => $milestone->getId())); ?>">
+                            <?php echo $milestone->getName(); ?>
+                        </a></td>
+                        <td><?php echo $milestone->getStatus()->getName(); ?></td>
+                        <td><?php echo $milestone->getPriority()->getName(); ?></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $milestone->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $milestone->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
             </table>
         </div>
     </div>
