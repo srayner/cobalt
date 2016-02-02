@@ -131,7 +131,6 @@ CREATE TABLE milestone (
   actual_hours         Decimal(18, 2),
   estimated_cost       Decimal(18, 2),
   actual_cost          Decimal(18, 2),
-  created_by_id        Integer NOT NULL,
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (
       id
@@ -179,7 +178,6 @@ CREATE TABLE task (
   actual_hours         Decimal(18, 2),
   estimated_cost       Decimal(18, 2),
   actual_cost          Decimal(18, 2),
-  created_by_id        Integer NOT NULL,
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (
       id
