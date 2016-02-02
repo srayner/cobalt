@@ -28,6 +28,18 @@ class Milestone
      */
     protected $project;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="MilestoneStatus")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     */
+    protected $status;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MilestonePriority")
+     * @ORM\JoinColumn(name="priority_id", referencedColumnName="id")
+     */
+    protected $priority;
+    
     public function getId()
     {
         return $this->id;
@@ -47,6 +59,16 @@ class Milestone
     {
         $this->id = $id;
         return $this;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function getPriority()
+    {
+        return $this->priority;
     }
 
     public function setName($name)
@@ -69,6 +91,18 @@ class Milestone
     public function getProject()
     {
         return $this->project;
+    }
+    
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+        return $this;
     }
 }
 

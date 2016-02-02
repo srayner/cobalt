@@ -150,6 +150,11 @@ class Project
         return $this->actualCost;
     }
 
+    public function getMilestones()
+    {
+        return $this->milestones;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -238,5 +243,11 @@ class Project
     {
         $this->ActualCost = $ActualCost;
         return $this;
-    }    
+    }
+    
+    public function setMilestones($milestones)
+    {
+        $this->milestones = $milestones;
+        return $this;
+    }
 }

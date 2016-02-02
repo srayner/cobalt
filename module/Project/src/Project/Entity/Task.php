@@ -5,7 +5,7 @@ namespace Project\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity
-  * @ORM\Table(name="project")
+  * @ORM\Table(name="task")
   */
 class task
 {
