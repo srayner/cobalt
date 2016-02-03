@@ -23,7 +23,8 @@ class ProjectForm extends HorizontalForm
              ->addText('code', 'Code', false)
              ->addText('name', 'Name', false)
              ->addText('description', 'Description', false)
-             ->addText('estimatedHours', 'Estimated Hours', false);
+             ->addText('estimatedHours', 'Estimated Hours', false)
+             ->addText('actualHours', 'Actual Hours', false);
         
         
         // Status

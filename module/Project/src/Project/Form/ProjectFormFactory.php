@@ -5,6 +5,7 @@ namespace Project\Form;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Project\Hydrator\Strategy\NullStrategy;
 
 class ProjectFormFactory implements FactoryInterface
 {
@@ -13,7 +14,11 @@ class ProjectFormFactory implements FactoryInterface
         $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
         $form = new ProjectForm($em);
     //    $form->setInputFilter(new ProjectFilter());
-        $form->setHydrator(new DoctrineHydrator($em));
+        $hydrator = new DoctrineHydrator($em);
+        $nullStrategy = new NullStrategy();
+        $hydrator->addStrategy('estimatedHours', $nullStrategy);
+        $hydrator->addStrategy('actualHours', $nullStrategy);
+        $form->setHydrator($hydrator);
         return $form;
     }   
 }
