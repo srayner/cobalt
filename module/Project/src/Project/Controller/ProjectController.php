@@ -81,7 +81,30 @@ class ProjectController extends AbstractController
     
     public function deleteAction()
     {
-        return new ViewModel();
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('project/default', array('controller' => 'project'));
+        }
+        
+        $project = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($project);
+            }
+
+            // Redirect to list of staff
+            return $this->redirect()->toRoute('project/default', array('controller' => 'project'));
+         }
+         
+        return new ViewModel(array(
+            'project' => $project
+        ));
     }
     
     public function detailAction()

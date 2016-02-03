@@ -1,8 +1,18 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="title">Delete Project</h1>
+        <hr>
+        <p>Are you sure you want to delete the project <?php echo $this->project->getName(); ?>?</p>
+        
+        <form action="<?php echo $this->url('project/default', array(
+            'controller' => 'project',
+            'action' => 'delete',
+            'id' => $this->project->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>
