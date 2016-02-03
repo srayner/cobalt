@@ -38,8 +38,8 @@
                         <td><?php echo $task->getPriority()->getName(); ?></td>
                         <td><?php echo $task->getEstimatedHours(); ?></td>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $task->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $task->getId()));?>">Delete</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'edit', 'id' => $task->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'delete', 'id' => $task->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
