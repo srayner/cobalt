@@ -53,7 +53,6 @@ class ProjectController extends AbstractController
         // Create a new form instance and bind the entity to it.
         $form = $this->getServiceLocator()->get('project_form');
         $form->bind($project);
-        $form->get('submit')->setAttribute('label', 'Edit');
 
         // Check if this request is a POST.
         $request = $this->getRequest();
