@@ -239,9 +239,9 @@ class Project
         return $this;
     }
 
-    public function setActualCost($ActualCost)
+    public function setActualCost($actualCost)
     {
-        $this->ActualCost = $ActualCost;
+        $this->actualCost = $actualCost;
         return $this;
     }
     

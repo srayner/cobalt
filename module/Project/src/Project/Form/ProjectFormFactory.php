@@ -18,6 +18,8 @@ class ProjectFormFactory implements FactoryInterface
         $nullStrategy = new NullStrategy();
         $hydrator->addStrategy('estimatedHours', $nullStrategy);
         $hydrator->addStrategy('actualHours', $nullStrategy);
+        $hydrator->addStrategy('estimatedCost', $nullStrategy);
+        $hydrator->addStrategy('actualCost', $nullStrategy);
         $form->setHydrator($hydrator);
         return $form;
     }   
