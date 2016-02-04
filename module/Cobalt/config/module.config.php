@@ -60,7 +60,6 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Cobalt\Controller\Index'    => 'Cobalt\Controller\IndexController',
-            'Cobalt\Controller\Enduser'  => 'Cobalt\Controller\UserController'
         ),
         'factories' => array(
             'Cobalt\Controller\Computer' => function(ControllerManager $cm) {
@@ -68,6 +67,11 @@ return array(
                 $service = $sm->get('Cobalt\ComputerService');
                 return new Controller\ComputerController($service);
             },
+            'Cobalt\Controller\User' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Cobalt\UserService');
+                return new Controller\UserController($service);
+            },     
         ),
     ),
     
@@ -118,6 +122,7 @@ return array(
             'Cobalt\UserForm'        => 'Cobalt\Form\UserFormFactory',
             'Cobalt\ComputerForm'    => 'Cobalt\Form\ComputerFormFactory',
             'Cobalt\ComputerService' => 'Cobalt\Service\ComputerServiceFactory',
+            'Cobalt\UserService'     => 'Cobalt\Service\UserServiceFactory',
         ),    
     ),
     

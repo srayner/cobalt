@@ -42,11 +42,6 @@ class Module
                     $service->setOptions($options);
                     return $service;
                 },
-                'cobalt_user_service' => function($sm) {
-                    $service = new Service\User;
-                    $service->setUserMapper($sm->get('cobalt_user_mapper'));
-                    return $service;
-                },
                 'cobalt_user_mapper' => function($sm) {
                     $mapper = new Model\User\UserMapper;
                     $mapper->setEntityPrototype(new Model\User\User());

@@ -1,8 +1,8 @@
 <?php
 
-namespace Project\Service;
+namespace Cobalt\Service;
 
-class ProjectService
+class UserService
 {
     private $entityManager;
     private $repository;
@@ -12,14 +12,14 @@ class ProjectService
         $this->entityManager = $entityManager;
         $this->repository = $repository;
     }
-
+    
     public function count()
     {
         return $this->entityManager
-                    ->createQuery('SELECT COUNT(p.id) FROM Project\Entity\Project p')
+                    ->createQuery('SELECT COUNT(u.id) FROM Cobalt\Entity\User u')
                     ->getSingleScalarResult();
     }
-
+    
     public function findAll()
     {
         return $this->entityManager->getRepository($this->repository)->findAll();
@@ -30,17 +30,21 @@ class ProjectService
         return $this->entityManager->find($this->repository, $id);
     }
     
-    public function persist($project)
+    public function findBySamAccountName($samAccountName)
     {
-        $this->entityManager->persist($project);
+        return $this->entityManager->getRepository($this->repository)
+                ->findBy(array('samAccountName' => $samAccountName));
+    }
+    
+    public function persist($user)
+    {
+        $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
 
-    public function remove($project)
+    public function remove($user)
     {
-        $this->entityManager->remove($project);
+        $this->entityManager->remove($user);
         $this->entityManager->flush(); 
     }
-
 }
-

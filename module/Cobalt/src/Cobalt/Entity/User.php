@@ -25,7 +25,7 @@ class User
     /** @ORM\Column(type="string", name="sam_account_name") */
     protected $samAccountName;
     
-    /** @ORM\Column(type="string", name="user_principle_name") */
+    /** @ORM\Column(type="string", name="user_principal_name") */
     protected $userPrincipalName;
     
     /** @ORM\Column(type="string", name="telephone_number") */

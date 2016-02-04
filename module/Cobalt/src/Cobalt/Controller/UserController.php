@@ -2,39 +2,25 @@
 
 namespace Cobalt\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
-class UserController extends AbstractActionController
+class UserController extends AbstractController
 {   
-    protected $userService;
-    
-    private function getUserService()
-    {
-        if (null === $this->userService){
-            $this->userService = $this->getServiceLocator()->get('cobalt_user_service');
-        }
-        return $this->userService;
-    }
-    
     public function adupdateAction()
     {
         $dbMapper = $this->getServiceLocator()->get('cobalt_user_mapper');
         
         $adService = $this->getServiceLocator()->get('cobalt_active_directory_service');
         $adService->getUsers($dbMapper);
-        
-        
+    
         return array();
     }
     
     public function indexAction()
     {
-        $users = $this->getUserService()->getUsers();
-        
-        
-        return array(
-            'users' => $users
-        );
+        return new ViewModel(array(
+            'users' => $this->service->findAll()
+        ));
     }
     
     public function detailAction()
