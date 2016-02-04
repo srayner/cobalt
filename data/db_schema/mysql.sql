@@ -52,16 +52,16 @@ CREATE TABLE logical_disk (
 -- User table
 CREATE TABLE user (
   user_id Integer NOT NULL AUTO_INCREMENT,
-  username          NVarChar(128),
-  email             NVarChar(256),
-  sam_account_name  NVarChar(128),
-  userPrincipalName NVarChar(128),
-  telephoneNumber   NVarChar(32),
-  extensionNumber   NVarChar(32),
-  displayName       NVarChar(64),
-  description       NVarChar(128),
-  office            NVarChar(64),
-  photoFilename     NVarChar(64),
+  username            NVarChar(128),
+  email               NVarChar(256),
+  sam_account_name    NVarChar(128),
+  user_principal_name NVarChar(128),
+  telephone_number    NVarChar(32),
+  extension_number    NVarChar(32),
+  display_name        NVarChar(64),
+  description         NVarChar(128),
+  office              NVarChar(64),
+  photo_filename      NVarChar(64),
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
