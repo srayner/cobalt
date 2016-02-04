@@ -1,29 +1,47 @@
     
-    <!-- Breadcrumb -->
-    <ul class="breadcrumb">
-        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="<?php echo $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'index'));?>"><i class="fa fa-angle-right"></i> Users</a></li>
-        <li><i class="fa fa-angle-right"></i> Add new users</li>
-    </ul>
-
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-12 title">
             <h1>Add new user</h1>
             <hr>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
 
-        <?php
-            $form = $this->form;
-            $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'add', 'id' => $this->userId)));
-            $form->prepare();
+            <?php
+                $form = $this->form;
+                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'add', 'id' => $this->userId)));
+                $form->prepare();
 
-            echo $this->form()->openTag($form);
-            echo $this->formCollection($form);
-            echo $this->form()->closeTag();
-        ?>
-
+                echo $this->form()->openTag($form);
+            ?>
+            <div class="form-group">
+                <label for="hostname" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-6">
+                    <?php echo $this->formInput($form->get('username')) ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="domainname" class="col-sm-2 control-label">Office</label>
+                <div class="col-sm-6">
+                    <?php echo $this->formInput($form->get('office')) ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="manufacturer" class="col-sm-2 control-label">Telephone No</label>
+                <div class="col-sm-6">
+                    <?php echo $this->formInput($form->get('telephone_number')) ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Model" class="col-sm-2 control-label">Extension No</label>
+                <div class="col-sm-6">
+                    <?php echo $this->formInput($form->get('extension_number')) ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <?php echo $this->formInput($form->get('submit')) ?>
+                </div>
+            </div>
+            <?php echo $this->form()->closeTag();?>
         </div>
     </div>

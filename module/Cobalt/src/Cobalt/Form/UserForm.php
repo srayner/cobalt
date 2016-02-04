@@ -10,7 +10,7 @@ class UserForm extends Form
     {
         parent::__construct();
         
-        $this->setAttribute('class', 'zend-form');
+        $this->setAttribute('class', 'form');
         
         $this->add(array(
                 'name' => 'username',
