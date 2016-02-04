@@ -10,20 +10,13 @@ function formatBytes($bytes, $precision = 2) {
 
 ?>
 
-    <!-- Breadcrumb -->
-    <ul class="breadcrumb">
-        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer'));?>"><i class="fa fa-angle-right"></i> Computers</a></li>
-        <li><i class="fa fa-angle-right"></i> <?php echo $computer->getHostName();?></li>
-    </ul>
-
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-12 title">
             
-        <h1>Computer Details</h1>
-        <br>
-        <h3><?php echo strtoupper($computer->getHostName());?></h1>
-        <hr>
+            <h1>Computer Details</h1>
+            <br>
+            <h3><?php echo strtoupper($computer->getHostName());?></h1>
+            <hr>
         </div>
     </div>
     

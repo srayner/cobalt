@@ -3,17 +3,14 @@
     $this->headScript()->appendFile('/js/datatables.js')
                        ->appendFile('/js/cobalt/computer/index.js');
 ?>
-
-    <!-- Breadcrumb -->
-    <ul class="breadcrumb">
-        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Computers</li>
-    </ul>
         
     <div class="row">
-        <div class="col col-12">
+        <div class="col col-md-12 title">
             
             <h1>Computers</h1>
+            <hr>
+        </div>
+        <div class="col-md-12">
             <table id="computers" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
