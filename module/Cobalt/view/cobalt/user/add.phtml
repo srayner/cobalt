@@ -8,7 +8,7 @@
 
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'add', 'id' => $this->userId)));
+                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'user', 'action' => 'add', 'id' => $this->userId)));
                 $form->prepare();
 
                 echo $this->form()->openTag($form);

@@ -115,7 +115,7 @@ return array(
     // Service manger configuration.
     'service_manager' => array(
         'invokables' => array(
-            'Cobalt\User' => 'Cobalt\Model\User\User',
+            'Cobalt\User'     => 'Cobalt\Entity\User',
             'Cobalt\Computer' => 'Cobalt\Entity\Computer',
         ),
         'factories' => array(

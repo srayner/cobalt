@@ -74,7 +74,7 @@ return array(
              array(
                  'label' => '<i class="fa fa-user"></i> Users',
                  'route' => 'cobalt/default',
-                 'controller' => 'enduser',
+                 'controller' => 'user',
              ),
              array(
                  'label' => '<i class="fa fa-desktop"></i> Computers',

@@ -45,19 +45,18 @@ class UserController extends AbstractController
             $data = (array) $request->getPost();
           
             // Create a new user object.
-            $user = $this->getServiceLocator()->get('cobalt_user');
+            $user = $this->getServiceLocator()->get('Cobalt\User');
             
             $form->bind($user);
             $form->setData($data);
             if ($form->isValid())
             {
           	// Persist user.
-            	$this->getUserService()->persistUser($user);
+            	$this->service->persist($user);
                 
             	// Redirect to list of users
 		return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'enduser',
-		    'action' => 'index'
+                    'controller' =>'user'
 		));
             }
         } 
