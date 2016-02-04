@@ -4,18 +4,13 @@
                        ->appendFile('/js/project/project/index.js');
 ?>
 
-    <!-- Breadcrumb -->
-    <ul class="breadcrumb">
-        <li><a href="<?php echo $this->url('cobalt');?>"><i class="fa fa-home"></i> Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Projects</li>
-    </ul>
-
     <div class="row">
-        <div class="col-12">
-            <h1 class="title">Projects</h1>
-            <a class="btn btn-action pull-right" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'add'));?>">New Project</a>
+        <div class="col-md-12 title">
+            <h1 class=>Projects</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'add'));?>">New Project</a>
             <hr>
-
+        </div>
+        <div class="col-md-12 title">
             <table id="projects" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>

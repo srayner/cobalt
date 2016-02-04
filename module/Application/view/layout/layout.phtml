@@ -12,60 +12,57 @@
 
         <!-- Styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/style-v1.css'))
                         ->prependStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,700')
                         ->prependStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-                        ->appendStylesheet('/css/monel.css')
+                        ->appendStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
                         ->appendStylesheet('/css/form.css');?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()->prependFile('/js/monel.js')
+        <?php echo $this->headScript()->prependFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
                                       ->prependFile('/js/jquery-1.11.3.min.js') ?>
 
     </head>
     <body>
-        <div class="page-wrap">
+        
+        <div class="l-header l-row">
+            <img class="logo" src="/img/cobalt-logo.png">
+            <span class="title">Cobalt Application</span>
+            <span class="identity">Fred Bloggs</span>
+        </div>
             
-            <!-- Top navigation -->
-            <div class="nav-top">
-                <span class="title">Cobalt</span>
-                <ul class="pull-right">
-                    <li class="nav-item"><i class="fa fa-warning"></i><span class="badge badge-action">8<span></li>
-                    <li class="nav-item"><i class="fa fa-envelope"></i><span class="badge">9<span></li>
-                    <li class="nav-item"><i class="fa fa-wrench"></i><span class="badge badge-warning">4<span></li>
-                    <li class="nav-item dropdown-toggle"><i class="fa fa-user"></i> Steve Rayner <i class="fa fa-caret-down"></i>
-                        <ul class="dropdown-menu hidden">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-smile-o"></i> Preferences</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown-toggle"><img src="/img/gravatar.jpg"> Steve Rayner <i class="fa fa-caret-down"></i>
-                        <ul class="dropdown-menu hidden">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-smile-o"></i> Preferences</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>          
-            </div>
+        <div class="l-body l-row">
             
             <!-- Side navigation -->
-            <?php echo $this->navigation('navigation')->menu()
-                                                      ->setMinDepth(0)
-                                                      ->setMaxDepth(0)
-                                                      ->setUlClass('nav-side')
-                                                      ->escapeLabels(false);
-            ?>
-           
+            <div class="l-nav l-col l-scroll-y">
+                <?php echo $this->navigation('navigation')->menu()
+                                                          ->setMinDepth(0)
+                                                          ->setMaxDepth(0)
+                                                          ->setUlClass('side-nav')
+                                                          ->escapeLabels(false);
+                ?>  
+            </div>
             
-            <div class="content">
-                <?php echo $this->content; ?>
+            <!-- content -->
+            <div class="l-content l-col">
+                
+                <div class="l-row">
+                    <div class="breadcrumb">
+                        <ul><li>Home</li></ul>
+                    </div>
+                </div>
+                <div class="l-row l-pane l-scroll-y">
+                    <div class="container-fluid">
+                        <?php echo $this->content; ?>
+                    </div>
+                </div>
+                
             </div>
         
         </div>
         
         <!-- footer -->
-        <div class="footer">
+        <div class="l-footer l-row">
             <span class="pull-right">by S Rayner</span>
         </div>
         

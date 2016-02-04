@@ -1,0 +1,200 @@
+/* 
+    Created on : 22-Oct-2015, 21:59:14
+    Author     : Steve
+*/
+
+
+/* Reset */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Layout styles */
+.l-row, .l-col { overflow: hidden; position: absolute; }
+.l-row { left: 0; right: 0; }
+.l-col { top: 0; bottom: 0; }
+.l-scroll-x { overflow-x: auto; }
+.l-scroll-y { overflow-y: auto; }
+
+.l-header {
+    height: 60px;
+    top: 0;
+    background-color: black;
+    color: white;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+.l-body {
+    top: 60px;
+    bottom: 30px;
+}
+
+.l-nav {
+    width: 185px;
+    background-color: grey;
+}
+
+.l-content {
+    left: 185px;
+    right: 0px;
+}
+
+.l-footer {
+    height: 30px;
+    bottom: 0;
+    background-color: black;
+    color: #777;
+    font-size: 10px;
+    padding: 8px 10px;
+}
+
+.l-pane {
+    top:54px;
+    bottom: 0;
+}
+
+/* Header styles */
+.logo {    
+    padding: 10px;
+}
+
+.l-header .title {
+    vertical-align: top;
+    padding-left: 0px;
+    padding-top: 12px;
+    display: inline-block;
+}
+.l-header .identity {
+    float: right;
+    padding: 15px 10px;
+    font-size: 14px;
+}
+
+/* Navigation styles */
+.side-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #2980b9;
+    float: left;
+    height:100%;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}
+
+.side-nav a {
+    display: block;
+    padding:12px;
+    color: white;
+    text-decoration: none;
+}
+
+.side-nav li {
+    transition: background 0.2s;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.side-nav li:hover {
+    background-color: #3498db;
+}
+
+.side-nav li.active {
+    background-color: #95a5a6;
+    
+}
+
+.side-nav li>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: relative;
+    background-color: #1168a1;
+    top: 0px;
+    left: 0px;
+    width: 185px;
+}
+
+.side-nav li>ul li {
+    padding-left: 20px;
+}
+
+.side-nav li>ul li.active {
+    background-color: #076197;    
+}
+
+.side-nav li.active>ul {
+   display: block;
+}
+
+i.fa {
+    padding-right: 5px;
+}
+
+
+/* breadcrumb */
+.breadcrumb {
+    width: 100%;
+    float:left;
+    background-color: #eee;
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    color: #aaa;
+}
+
+.breadcrumb a {
+    padding: 12px 0;
+    color: #aaa;
+    background-color: #eee;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #777;
+}
+
+.breadcrumb i {
+    padding-left: 10px;
+    padding-right: 10px;
+   // color: #aaa;
+}
+
+
+
+.breadcrumb>li+li:before {
+    padding: 0;
+    color: #ccc;
+    content: none;
+}
+
+.title {
+    padding-top: 10px;
+}
+
+.title h1 {
+    font-size: 28px;
+    display: inline-block;
+    margin-top: 0px;
+}
+
+.title hr {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+h1.error i {
+    color: red;
+}
+
+.btn-fixed-width {
+    width: 84px;
+}
