@@ -75,7 +75,7 @@ class ComputerController extends AbstractController
         }
         
         // Grab the computer with the specified id.
-        $computer = $this->service->find($id);
+        $computer = $this->service->findById($id);
         
         $form = $this->getServiceLocator()->get('Cobalt\ComputerForm');
         $form->bind($computer);
