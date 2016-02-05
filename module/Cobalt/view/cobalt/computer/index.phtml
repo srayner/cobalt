@@ -30,6 +30,7 @@
                         <td><?php echo $computer->getManufacturer();?></td>
                         <td><?php echo $computer->getModel();?></td>
                         <td>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'edit', 'id' => $computer->getId()));?>">Edit</a>
                             <a class="btn btn-primary btn-sm" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
                             <a class="btn btn-danger btn-sm" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
                             <a class="btn btn-default btn-sm" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
