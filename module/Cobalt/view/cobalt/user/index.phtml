@@ -31,7 +31,9 @@
                         <td><?php echo $user->getTelephoneNumber(); ?></td>
                         <td><?php echo $user->getExtensionNumber(); ?></td>
                         <td>
-                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'enduser', 'action' => 'detail', 'id' => $user->getUserId()));?>">View Detail</a>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'detail', 'id' => $user->getId()));?>">View Detail</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'edit' => 'detail', 'id' => $user->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'delete' => 'detail', 'id' => $user->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach;?>
