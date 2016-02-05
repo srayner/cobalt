@@ -25,16 +25,17 @@
                 <tbody>
                     <?php foreach($this->computers as $computer): ?> 
                     <tr>
-                        <td><?php echo $computer->getHostname();?></td>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getId()));?>">
+                            <?php echo $computer->getHostname();?></a></td>
                         <td><?php echo $computer->getDomain();?></td>
                         <td><?php echo $computer->getManufacturer();?></td>
                         <td><?php echo $computer->getModel();?></td>
-                        <td>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'edit', 'id' => $computer->getId()));?>">Edit</a>
+                        <td style="width: 1%;" nowrap>
                             <a class="btn btn-primary btn-sm" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
                             <a class="btn btn-danger btn-sm" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
                             <a class="btn btn-default btn-sm" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
-                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getId()));?>">View Detail</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'edit', 'id' => $computer->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'delete', 'id' => $computer->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach ?>
