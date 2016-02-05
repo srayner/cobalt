@@ -25,11 +25,15 @@ class UserController extends AbstractController
     
     public function detailAction()
     {
-        $userId = $this->params()->fromRoute('id');
-        $user = $this->getUserService()->getUserById($userId);
-        return array(
-            'user' => $user,
-        );
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        return new ViewModel(array(
+            'user' => $this->service->findById($id)
+        ));
     }
     
     public function addAction()
@@ -62,9 +66,9 @@ class UserController extends AbstractController
         } 
         
         // If not a POST request, or invalid data, then just render the form.
-        return array(
+        return new ViewModel(array(
             'form'   => $form,
-        );
+        ));
     }
     
     public function editAction()
