@@ -44,7 +44,7 @@ class UserFilter extends InputFilter
         
         // Telephone
         $this->add(array(
-            'name'       => 'telephone_number',
+            'name'       => 'telephoneNumber',
             'required'   => true,
             'validators' => array(
                 array(
@@ -61,7 +61,7 @@ class UserFilter extends InputFilter
         
         // Extension
         $this->add(array(
-            'name'       => 'extension_number',
+            'name'       => 'extensionNumber',
             'required'   => true,
             'validators' => array(
                 array(

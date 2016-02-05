@@ -70,6 +70,38 @@ class UserController extends AbstractController
     public function editAction()
     {
         
+        // Check we have an id, otherwise redirect to add action.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user', 'action'=>'add'));
+	}
+        
+        // Create a new form instance and bind the entity to it.
+        $user = $this->service->findById($id);
+        $form = $this->getServiceLocator()->get('Cobalt\UserForm');
+        $form->bind($user);
+
+        // Check if this request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate the data.
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Persist to database.
+                $this->service->persist($user);
+
+                // Redirect to list of users
+                return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+            }
+        }
+		
+	// Render (or re-render) the form.
+	return new ViewModel(array(
+            'id' => $id,
+            'form' => $form,
+        ));
     }
     
     public function deleteAction()

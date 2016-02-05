@@ -35,7 +35,7 @@ class UserForm extends Form
         ));
         
         $this->add(array(
-                'name' => 'telephone_number',
+                'name' => 'telephoneNumber',
                 'options' => array(
                         'label' => 'Telephone No',
                 ),
@@ -46,7 +46,7 @@ class UserForm extends Form
         ));
         
         $this->add(array(
-                'name' => 'extension_number',
+                'name' => 'extensionNumber',
                 'options' => array(
                         'label' => 'Extension No',
                 ),
