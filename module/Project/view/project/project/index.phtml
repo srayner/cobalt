@@ -34,7 +34,7 @@
                         <td><?php echo $project->getStatus()->getName(); ?></td>
                         <td><?php echo $project->getPriority()->getName(); ?></td>
                         <td><?php echo $project->getScheduledStart(); ?></td>
-                        <td>
+                        <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $project->getId()));?>">Edit</a>
                             <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $project->getId()));?>">Delete</a>
                         </td>

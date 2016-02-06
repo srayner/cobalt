@@ -25,13 +25,14 @@
                 <tbody>
                     <?php foreach ($this->users as $user): ?>
                     <tr>
-                        <td><?php echo $user->getUsername(); ?></td>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'users', 'action' => 'detail', 'id' => $user->getId()));?>">
+                            <?php echo $user->getUsername(); ?>
+                        </a></td>
                         <td><?php echo $user->getDisplayName(); ?></td>
                         <td><?php echo $user->getOffice(); ?></td>
                         <td><?php echo $user->getTelephoneNumber(); ?></td>
                         <td><?php echo $user->getExtensionNumber(); ?></td>
-                        <td>
-                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'detail', 'id' => $user->getId()));?>">View Detail</a>
+                        <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'edit', 'id' => $user->getId()));?>">Edit</a>
                             <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'delete', 'id' => $user->getId()));?>">Delete</a>
                         </td>
