@@ -19,16 +19,20 @@
         
         <div>
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab">Detail</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="milestones" role="tab" data-toggle="tab">Milestones</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
-                <li role="presentation"><a href="#settings" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+                <li role="presentation"><a href="#milestones" aria-controls="milestones" role="tab" data-toggle="tab">Milestones</a></li>
+                <li role="presentation"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
+                <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="detail">...</div>
+                
+                <!-- Project details tab -->
+                <div role="tabpanel" class="tab-pane active" id="detail">
+                    <?php echo $this->project->getName(); ?>     
+                </div>
                 
                 <!-- Milestones tab -->
                 <div role="tabpanel" class="tab-pane" id="milestones">
@@ -46,8 +50,15 @@
                     )) ?>">New Milestone</a>
                 </div>
                 
-                <div role="tabpanel" class="tab-pane" id="tasks">...</div>
-                <div role="tabpanel" class="tab-pane" id="history">...</div>
+                <!-- Tasks tab -->
+                <div role="tabpanel" class="tab-pane" id="tasks">
+                    Tasks
+                </div>
+                
+                <!-- History tab -->
+                <div role="tabpanel" class="tab-pane" id="history">
+                    History
+                </div>
             </div>
 
         </div>
