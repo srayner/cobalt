@@ -1,3 +1,10 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/project/project/detail.js');
+?>
+
 <div class="row">
     <div class="col-md-12 title">
         <h1>Project Details</h1>
@@ -22,7 +29,23 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="detail">...</div>
-                <div role="tabpanel" class="tab-pane" id="milestones">...</div>
+                
+                <!-- Milestones tab -->
+                <div role="tabpanel" class="tab-pane" id="milestones">
+                    <table>
+                        <?php foreach ($this->project->getMilestones() as $milestone): ?>
+                        <tr>
+                            <td><?php echo $milestone->getName(); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <a class="btn btn-action" href="<?php echo $this->url('project/default', array(
+                        'controller' => 'milestone',
+                        'action' => 'add',
+                        'id' => $this->project->getId()
+                    )) ?>">New Milestone</a>
+                </div>
+                
                 <div role="tabpanel" class="tab-pane" id="tasks">...</div>
                 <div role="tabpanel" class="tab-pane" id="history">...</div>
             </div>
@@ -38,17 +61,6 @@
         
         <br>
         <b>Milestones</b><br>
-        <table>
-            <?php foreach ($this->project->getMilestones() as $milestone): ?>
-            <tr>
-                <td><?php echo $milestone->getName(); ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <a class="btn btn-action" href="<?php echo $this->url('project/default', array(
-            'controller' => 'milestone',
-            'action' => 'add',
-            'id' => $this->project->getId()
-        )) ?>">New Milestone</a>
+        
     </div>
 </div>
