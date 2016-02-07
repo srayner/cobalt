@@ -66,27 +66,61 @@ return array(
     
     // Navigation
     'navigation' => array(
-         'default' => array(
-             array(
-                 'label' => '<i class="fa fa-area-chart"></i> Dashboard',
-                 'route' => 'cobalt',
+        'default' => array(
+            array(
+                'label' => '<i class="fa fa-area-chart"></i> Dashboard',
+                'route' => 'cobalt',
              ),
-             array(
-                 'label' => '<i class="fa fa-user"></i> Users',
-                 'route' => 'cobalt/default',
-                 'controller' => 'user',
-             ),
-             array(
-                 'label' => '<i class="fa fa-desktop"></i> Computers',
-                 'route' => 'cobalt/default',
-                 'controller' => 'computer',
-             ),
-             array(
-                 'label' => '<i class="fa fa-desktop"></i> Projects',
-                 'route' => 'project/default',
-                 'controller' => 'project',
-             ),
-         ),
-     ),
+            array(
+                'label' => '<i class="fa fa-user"></i> Users',
+                'route' => 'cobalt/default',
+                'controller' => 'user',
+                'pages' => array(
+                    array(
+                        'label' => 'New User',
+                        'controller' => 'user',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'user',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'user',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => '<i class="fa fa-desktop"></i> Computers',
+                'route' => 'cobalt/default',
+                'controller' => 'computer',
+                'pages' => array(
+                    array(
+                        'label' => 'New Computer',
+                        'controller' => 'computer',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'computer',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'computer',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => '<i class="fa fa-cubes"></i> Projects',
+                'route' => 'project/default',
+                'controller' => 'project',
+            ),
+        ),
+    ),
     
 );

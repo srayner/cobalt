@@ -49,7 +49,9 @@
                 
                 <div class="l-row">
                     <div class="breadcrumb">
-                        <ul><li>Home</li></ul>
+                        <?php echo $this->navigation('navigation')->breadcrumbs()
+                                                                  ->setMinDepth(0)
+                                                                  ->setPartial('cobalt/partial/breadcrumbs')?>
                     </div>
                 </div>
                 <div class="l-row l-pane l-scroll-y">
