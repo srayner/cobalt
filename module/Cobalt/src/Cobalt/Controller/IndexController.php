@@ -26,17 +26,6 @@ class IndexController extends AbstractActionController
         );
     }
     
-    public function hostAction()
-    {
-        $computerId = $this->params()->fromRoute('id');
-        $computer = $this->getComputerService()->getComputerById($computerId);
-        $logicalDisks = $this->getComputerService()->getLogicalDisks($computerId);
-        return array(
-            'computer' => $computer,
-            'disks' => $logicalDisks
-        );
-    }
-    
     public function DiskAction()
     {
         // Get credentials from config.
