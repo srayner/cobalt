@@ -10,13 +10,6 @@
         <h1>Project Details</h1>
         <hr>
         
-        <br>
-        <b>Project: </b><span><?php echo $this->project->getName(); ?></span>
-        <br>
-        
-        
-        
-        
         <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
@@ -31,23 +24,83 @@
                 
                 <!-- Project details tab -->
                 <div role="tabpanel" class="tab-pane active" id="detail">
-                    <?php echo $this->project->getName(); ?>     
+                    <div class="row">
+                        
+                        <div class="col-lg-6">
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 35%;">Code</th>
+                                        <td><?php echo $this->project->getCode(); ?></td>
+                                    </tr>
+                                     <tr>
+                                        <th style="width: 35%;">Name</th>
+                                        <td><?php echo $this->project->getName(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td><?php echo $this->project->getDescription(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estimated Hours</th>
+                                        <td><?php echo $this->project->getEstimatedHours(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estimated Cost</th>
+                                        <td><?php echo $this->project->getEstimatedCost(); ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 35%;">Status</th>
+                                        <td><div class="status status-blue"><?php echo $this->project->getStatus()->getName(); ?></div></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Owner</th>
+                                        <td>Fred Bloggs</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Priority</th>
+                                        <td><div class="status status-red"><?php echo $this->project->getPriority()->getName(); ?></div></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Actual Hours</th>
+                                        <td><?php echo $this->project->getActualHours(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Actual Cost</th>
+                                        <td><?php echo $this->project->getActualCost(); ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
                 </div>
                 
                 <!-- Milestones tab -->
                 <div role="tabpanel" class="tab-pane" id="milestones">
-                    <table>
-                        <?php foreach ($this->project->getMilestones() as $milestone): ?>
-                        <tr>
-                            <td><?php echo $milestone->getName(); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                    <a class="btn btn-action" href="<?php echo $this->url('project/default', array(
-                        'controller' => 'milestone',
-                        'action' => 'add',
-                        'id' => $this->project->getId()
-                    )) ?>">New Milestone</a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table>
+                                <?php foreach ($this->project->getMilestones() as $milestone): ?>
+                                <tr>
+                                    <td><?php echo $milestone->getName(); ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <a class="btn btn-action" href="<?php echo $this->url('project/default', array(
+                                'controller' => 'milestone',
+                                'action' => 'add',
+                                'id' => $this->project->getId()
+                            )) ?>">New Milestone</a>
+                        </div>
+                    </div>                    
                 </div>
                 
                 <!-- Tasks tab -->

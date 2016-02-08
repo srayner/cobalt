@@ -48,3 +48,30 @@
 .panel-red a {
     color: #d9534f;
 }
+
+.tab-pane{
+    border:solid 1px #ddd;
+    border-top: 0;
+    padding: 15px;
+}
+
+.tab-pane .table-bordered th {
+    background-color: #eee;
+}
+
+.status {
+    margin: -5px;
+    margin-left: -10px;
+    padding: 5px;
+    border: none;
+    border-left: 4px solid #00f;
+    height: 100%;
+}
+
+.status-red { border-left-color: #d00;}
+.status-green { border-left-color: #0d0;}
+.status-blue { border-left-color: #00d;}
+
+.tab-pane table>tbody>tr>td {
+    padding-left: 10px;
+}
