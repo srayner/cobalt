@@ -22,7 +22,7 @@ function formatBytes($bytes, $precision = 2) {
     
     <div class="row">
         
-        <div class="col col-6">    
+        <div class="col col-md-6">    
             <dl class="dl-horizontal">
                 <dt>Hostname</dt><dd><?php echo $computer->getHostname();?></dd>
                 <dt>Domain</dt><dd><?php echo $computer->getDomain();?></dd>
@@ -40,12 +40,16 @@ function formatBytes($bytes, $precision = 2) {
             <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
         </div>
         <div class="col col-4">
+            <?php if ($computer->getImage() <> ''): ?>
             <img width="100%" src="/cobalt/computer/<?php echo trim($computer->getImage());?>">
+            <?php else: ?>
+            <div width="100%" class="text-center">No Image</div>
+            <?php endif; ?>
         </div>
     </div>
     
     <div class="row">
-        <div class="col col-6">
+        <div class="col col-md-6">
             <h3>Operating System</h3>
             <hr>
             <dl class="dl-horizontal">
@@ -57,7 +61,7 @@ function formatBytes($bytes, $precision = 2) {
 
             </dl>
         </div>
-        <div class="col col-6">
+        <div class="col col-md-6">
 
             <h3>Logical Disks</h1>
             <hr>
