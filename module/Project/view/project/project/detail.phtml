@@ -116,8 +116,8 @@
                                     </td>
                                     <td><?php echo $milestone->getName(); ?></td>
                                     <td><?php echo $milestone->getDescription(); ?></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?php echo $milestone->getStatus()->getName(); ?></td>
+                                    <td><?php echo $milestone->getPriority()->getName(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </table>

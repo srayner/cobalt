@@ -144,10 +144,10 @@ CREATE TABLE milestone_status (
   status_description     NVarChar(128),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into project_status (status_name, status_description) values ('Open', 'Milestone is currently active and in progress.');
-insert into project_status (status_name, status_description) values ('On hold', 'Milestone is currently on hold.');
-insert into project_status (status_name, status_description) values ('Cancelled', 'Milestone has been cancelled.');
-insert into project_status (status_name, status_description) values ('Completed', 'Milestone has been completed.');
+insert into milestone_status (status_name, status_description) values ('Open', 'Milestone is currently active and in progress.');
+insert into milestone_status (status_name, status_description) values ('On hold', 'Milestone is currently on hold.');
+insert into milestone_status (status_name, status_description) values ('Cancelled', 'Milestone has been cancelled.');
+insert into milestone_status (status_name, status_description) values ('Completed', 'Milestone has been completed.');
 
 -- Milestone priority table
 CREATE TABLE milestone_priority (
@@ -156,9 +156,9 @@ CREATE TABLE milestone_priority (
   priority_description   NVarChar(128),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into project_priority (priority_name, priority_description) values ('High', 'Milestone is a high priority.');
-insert into project_priority (priority_name, priority_description) values ('Medium', 'Milestone is a medium priority.');
-insert into project_priority (priority_name, priority_description) values ('Low', 'Milestone is low low priority.');
+insert into milestone_priority (priority_name, priority_description) values ('High', 'Milestone is a high priority.');
+insert into milestone_priority (priority_name, priority_description) values ('Medium', 'Milestone is a medium priority.');
+insert into milestone_priority (priority_name, priority_description) values ('Low', 'Milestone is low low priority.');
 
 -- Task table
 CREATE TABLE task (
