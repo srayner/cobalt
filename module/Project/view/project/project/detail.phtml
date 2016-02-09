@@ -10,6 +10,12 @@
         <h1>Project Details</h1>
         <hr>
         
+        <h4><?php echo $this->project->getName(); ?></h4>
+        <p>
+            <a href="#"><i class="fa fa-edit"></i></a>
+            <a href="#"><i class="fa fa-remove"></i></a>
+        </p>
+        
         <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
@@ -91,11 +97,15 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
                                 </tr>
                                 <?php foreach ($this->project->getMilestones() as $milestone): ?>
                                 <tr>
                                     <td><?php echo $milestone->getName(); ?></td>
                                     <td><?php echo $milestone->getDescription(); ?></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </table>

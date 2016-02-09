@@ -119,6 +119,13 @@ return array(
                 'label' => '<i class="fa fa-cubes"></i> Projects',
                 'route' => 'project/default',
                 'controller' => 'project',
+                'pages' => array(
+                    array(
+                        'label' => 'Project Detail',
+                        'controller' => 'project',
+                        'action' => 'detail',
+                    ),
+                ),
             ),
         ),
     ),
