@@ -90,10 +90,12 @@
                             <table class="table table-condensed">
                                 <tr>
                                     <th>Name</th>
+                                    <th>Description</th>
                                 </tr>
                                 <?php foreach ($this->project->getMilestones() as $milestone): ?>
                                 <tr>
                                     <td><?php echo $milestone->getName(); ?></td>
+                                    <td><?php echo $milestone->getDescription(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </table>
@@ -118,16 +120,6 @@
             </div>
 
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        <br>
-        <b>Milestones</b><br>
         
     </div>
 </div>
