@@ -68,7 +68,11 @@ class ProjectController extends AbstractController
                 $this->flashMessenger()->addMessage('Project ' . $project->getName() . ' successfully updated');
 
                 // Redirect to list of projects
-                return $this->redirect()->toRoute('project/default', array('controller' => 'project'));
+                return $this->redirect()->toRoute('project/default', array(
+                    'controller' => 'project',
+                    'action' => 'detail',
+                    'id' => $id
+                ));
             }
         }
 		

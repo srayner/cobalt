@@ -10,10 +10,11 @@
         <h1>Project Details</h1>
         <hr>
         
+        <i class="fa fa-cubes fa-3x pull-left"></i>
         <h4><?php echo $this->project->getName(); ?></h4>
         <p>
-            <a href="#"><i class="fa fa-edit"></i></a>
-            <a href="#"><i class="fa fa-remove"></i></a>
+            <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $this->project->getId())); ?>"><i class="fa fa-edit"></i></a>
+            <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $this->project->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
         
         <div>
