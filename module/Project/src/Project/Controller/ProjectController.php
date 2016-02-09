@@ -117,7 +117,7 @@ class ProjectController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('project/default', array(
-                 'controller' => 'proect',
+                 'controller' => 'project',
              ));
         }
         

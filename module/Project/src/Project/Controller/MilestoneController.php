@@ -68,6 +68,8 @@ class MilestoneController extends AbstractController
         $request = $this->getRequest();
         if ($request->isPost()) {
             
+            $projectId = $milestone->getProject()->getId();
+            
             // Only perform delete if value posted was 'Yes'.
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
@@ -75,7 +77,13 @@ class MilestoneController extends AbstractController
             }
 
             // Redirect to project detail
-            return $this->redirect()->toRoute('project/default', array('controller' => 'project', 'action' => 'detail'));
+            return $this->redirect()->toRoute('project/default',
+                array(
+                    'controller' => 'project',
+                    'action' => 'detail',
+                    'id' => $projectId),
+                array('fragment' => 'milestones')
+            );
          }
          
         return new ViewModel(array(
