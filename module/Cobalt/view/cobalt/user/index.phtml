@@ -25,7 +25,7 @@
                 <tbody>
                     <?php foreach ($this->users as $user): ?>
                     <tr>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'users', 'action' => 'detail', 'id' => $user->getId()));?>">
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'detail', 'id' => $user->getId()));?>">
                             <?php echo $user->getUsername(); ?>
                         </a></td>
                         <td><?php echo $user->getDisplayName(); ?></td>
