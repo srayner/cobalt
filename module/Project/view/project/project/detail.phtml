@@ -2,6 +2,7 @@
     $this->headLink()->appendStylesheet('/css/datatables.css');
     $this->headScript()->appendFile('/js/datatables.js')
                        ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/jquery-plugin/stickytabs.js')
                        ->appendFile('/js/project/project/detail.js');
 ?>
 
@@ -96,13 +97,23 @@
                         <div class="col-md-12">
                             <table class="table table-condensed">
                                 <tr>
+                                    <th></th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Priority</th>
+                                    
                                 </tr>
                                 <?php foreach ($this->project->getMilestones() as $milestone): ?>
                                 <tr>
+                                    <td style="width: 1%;" nowrap>
+                                        <a href="<?php echo $this->url('project/default', array('controller' => 'milestone', 'action' => 'edit', 'id' => $milestone->getId()));?>">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="<?php echo $this->url('project/default', array('controller' => 'milestone', 'action' => 'delete', 'id' => $milestone->getId()));?>">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    </td>
                                     <td><?php echo $milestone->getName(); ?></td>
                                     <td><?php echo $milestone->getDescription(); ?></td>
                                     <td></td>

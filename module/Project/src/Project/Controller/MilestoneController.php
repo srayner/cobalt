@@ -38,11 +38,13 @@ class MilestoneController extends AbstractController
                 $this->service->persist($milestone);
                 
                 // Redirect.
-                return $this->redirect()->toRoute('project/default', array(
-                    'controller' => 'project',
-                    'action' => 'detail',
-                    'id' => $id
-		));
+                return $this->redirect()->toRoute('project/default',
+                    array('controller' => 'project',
+                          'action' => 'detail',
+                          'id' => $id
+		    ),
+                    array('fragment' => 'milestones')
+                );
             }
             
         }
