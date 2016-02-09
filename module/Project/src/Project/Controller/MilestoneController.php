@@ -62,6 +62,24 @@ class MilestoneController extends AbstractController
     
     public function deleteAction()
     {
-        return new ViewModel();
+        $id = (int)$this->params()->fromRoute('id');
+        $milestone = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($milestone);
+            }
+
+            // Redirect to project detail
+            return $this->redirect()->toRoute('project/default', array('controller' => 'project', 'action' => 'detail'));
+         }
+         
+        return new ViewModel(array(
+            'milestone' => $milestone
+        ));
     }
 }
