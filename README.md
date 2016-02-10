@@ -14,10 +14,10 @@ It is also planned that users will have associated departments, offices and comp
 management hierarchy structure.
 
 Further possibilities include;
-  Helpdesk module
-  Change management module
-  Problems, solutions & FAQ
-  Hardware and service monitoring 
+* Helpdesk module
+* Change management module
+* Problems, solutions & FAQ
+*  Hardware and service monitoring 
 
 
 Installation
