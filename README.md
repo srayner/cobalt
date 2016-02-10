@@ -1,7 +1,24 @@
 Cobalt Application
 ==================
 
-Work in progress. Cobalt is an ICT asset management system.
+Work in progress. Cobalt is an ICT asset management and project management system.
+It can connect to Active Directory via an LDAP connector to extract user and computer information.
+
+Currently it can manage; users, computers and projects. Projects can have associated milestones and
+milestones can have associated tasks.
+
+It is planned to add capabilities to manage all sorts of ICT assets, such as; servers, workstations,
+tablets, mobile phones, printers and photo-copiers.
+
+It is also planned that users will have associated departments, offices and companies. Including
+management hierarchy structure.
+
+Further possibilities include;
+  Helpdesk module
+  Change management module
+  Problems, solutions & FAQ
+  Hardware and service monitoring 
+
 
 Installation
 ------------
