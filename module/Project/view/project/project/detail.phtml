@@ -114,7 +114,9 @@
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>
-                                    <td><?php echo $milestone->getName(); ?></td>
+                                    <td><a href="<?php echo $this->url('project/default', array('controller' => 'milestone', 'action' => 'detail', 'id' => $milestone->getID()));?>">
+                                        <?php echo $milestone->getName(); ?>
+                                    </a></td>
                                     <td><?php echo $milestone->getDescription(); ?></td>
                                     <td><?php echo $milestone->getStatus()->getName(); ?></td>
                                     <td><?php echo $milestone->getPriority()->getName(); ?></td>

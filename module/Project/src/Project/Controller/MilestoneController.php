@@ -125,4 +125,18 @@ class MilestoneController extends AbstractController
             'milestone' => $milestone
         ));
     }
+    
+    public function detailAction()
+    {
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('project/default', array('controller' => 'project'));
+	}
+        $milestone = $this->service->findById($id);
+        
+        return new ViewModel(array(
+            'milestone' => $milestone
+        ));
+    }
 }
