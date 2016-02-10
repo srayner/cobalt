@@ -9,7 +9,10 @@
     <div class="col-md-12">
         <?php
             $form = $this->form;
-            $form->setAttribute('action', $this->url('project/default', array('controller' => 'task', 'action' => 'add')));
+            $form->setAttribute('action', $this->url('project/default', array(
+                'controller' => 'task',
+                'action' => 'add',
+                'id' => $this->milestoneId)));
             $form->prepare();
 
             echo $this->form($form);

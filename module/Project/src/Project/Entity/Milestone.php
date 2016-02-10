@@ -40,6 +40,16 @@ class Milestone
      */
     protected $priority;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="milestone")
+     */
+    protected $tasks;
+    
+    public function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -69,6 +79,11 @@ class Milestone
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 
     public function setName($name)

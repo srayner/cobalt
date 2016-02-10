@@ -15,6 +15,7 @@ class TaskController extends AbstractController
     
     public function addAction()
     {
+        $id = (int)$this->params()->fromRoute('id');
         $form = $this->getServiceLocator()->get('Project\TaskForm');
         
         $request = $this->getRequest();
@@ -27,20 +28,29 @@ class TaskController extends AbstractController
             {
                 // Persist.
                 $em = $this->service->getEntityManager();
+                if ($id) {
+                  $task->setMilestone($em->getReference('Project\Entity\Milestone', $id));
+                }
                 $task->setStatus($em->getReference('Project\Entity\TaskStatus', 1));
                 $task->setPriority($em->getReference('Project\Entity\TaskPriority', 1));
                 $this->service->persist($task);
                 
                 // Redirect.
-                return $this->redirect()->toRoute('project/default', array(
-                    'controller' => 'task'
-		));
+                return $this->redirect()->toRoute('project/default',
+                    array(
+                        'controller' => 'milestone',
+                        'action' => 'detail',
+                        'id' => $id,
+                    ),
+                    array('fragment' => 'tasks')
+		);
             }
             
         }
         
         return new ViewModel(array(
-            'form' => $form
+            'form' => $form,
+            'milestoneId' => $id
         ));
     }
     
