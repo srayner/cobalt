@@ -5,7 +5,7 @@ Work in progress. Cobalt is an ICT asset management and project management syste
 It can connect to Active Directory via an LDAP connector to extract user and computer information.
 
 Currently it can manage; users, computers and projects. Projects can have associated milestones and
-milestones can have associated tasks. [See the Cobalt website](http://srayner.github.io/cobalt.)
+milestones can have associated tasks. [See the Cobalt website](http://srayner.github.io/cobalt)
 
 It is planned to add capabilities to manage all sorts of ICT assets, such as; servers, workstations,
 tablets, mobile phones, printers and photo-copiers.
