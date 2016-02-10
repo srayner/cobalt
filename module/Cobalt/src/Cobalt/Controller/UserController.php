@@ -7,11 +7,9 @@ use Zend\View\Model\ViewModel;
 class UserController extends AbstractController
 {   
     public function adupdateAction()
-    {
-        $dbMapper = $this->getServiceLocator()->get('cobalt_user_mapper');
-        
-        $adService = $this->getServiceLocator()->get('cobalt_active_directory_service');
-        $adService->getUsers($dbMapper);
+    {   
+        $adService = $this->getServiceLocator()->get('Cobalt\ActiveDirectoryService');
+        $adService->getUsers($this->service);
     
         return array();
     }

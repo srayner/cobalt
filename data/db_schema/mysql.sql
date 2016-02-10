@@ -62,6 +62,9 @@ CREATE TABLE user (
   description         NVarChar(128),
   office              NVarChar(64),
   photo_filename      NVarChar(64),
+  company             NVarChar(64),
+  department          NVarChar(64),
+  title               NVarChar(64)
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 

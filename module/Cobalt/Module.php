@@ -36,12 +36,6 @@ class Module
                 'cobalt_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods'
             ),
             'factories' => array(
-                'cobalt_active_directory_service' => function($sm) {
-                    $service = new Service\ActiveDirectory;
-                    $options = $sm->get('cobalt')['ldap'];
-                    $service->setOptions($options);
-                    return $service;
-                },
                 'cobalt_user_mapper' => function($sm) {
                     $mapper = new Model\User\UserMapper;
                     $mapper->setEntityPrototype(new Model\User\User());

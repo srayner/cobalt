@@ -33,7 +33,7 @@ class UserService
     public function findBySamAccountName($samAccountName)
     {
         return $this->entityManager->getRepository($this->repository)
-                ->findBy(array('samAccountName' => $samAccountName));
+                ->findOneBy(array('samAccountName' => $samAccountName));
     }
     
     public function persist($user)

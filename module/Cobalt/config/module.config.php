@@ -119,10 +119,11 @@ return array(
             'Cobalt\Computer' => 'Cobalt\Entity\Computer',
         ),
         'factories' => array(
-            'Cobalt\UserForm'        => 'Cobalt\Form\UserFormFactory',
-            'Cobalt\ComputerForm'    => 'Cobalt\Form\ComputerFormFactory',
-            'Cobalt\ComputerService' => 'Cobalt\Service\ComputerServiceFactory',
-            'Cobalt\UserService'     => 'Cobalt\Service\UserServiceFactory',
+            'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
+            'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
+            'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
+            'Cobalt\UserService'            => 'Cobalt\Service\UserServiceFactory',
         ),    
     ),
     

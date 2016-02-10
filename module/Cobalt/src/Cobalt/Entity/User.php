@@ -43,6 +43,15 @@ class User
     /** @ORM\Column(type="string") */
     protected $office;
     
+    /** @ORM\Column(type="string") */
+    protected $company;
+    
+    /** @ORM\Column(type="string") */
+    protected $department;
+    
+    /** @ORM\Column(type="string") */
+    protected $title;
+    
     /** @ORM\Column(type="string", name="photo_filename") */
     protected $photoFilename;
     
@@ -94,6 +103,18 @@ class User
     public function getOffice()
     {
         return $this->office;
+    }
+
+    public function getCompany() {
+        return $this->company;
+    }
+
+    public function getDepartment() {
+        return $this->department;
+    }
+
+    public function getTitle() {
+        return $this->title;
     }
 
     public function getPhotoFilename()
@@ -158,6 +179,21 @@ class User
     public function setOffice($office)
     {
         $this->office = $office;
+        return $this;
+    }
+
+    public function setCompany($company) {
+        $this->company = $company;
+        return $this;
+    }
+
+    public function setDepartment($department) {
+        $this->department = $department;
+        return $this;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
         return $this;
     }
 
