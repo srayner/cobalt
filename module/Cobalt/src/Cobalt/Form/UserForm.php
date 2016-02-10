@@ -24,6 +24,17 @@ class UserForm extends Form
         ));
         
         $this->add(array(
+                'name' => 'displayName',
+                'options' => array(
+                        'label' => 'Display Name',
+                ),
+                'attributes' => array(
+                        'type' => 'text',
+                        'class' => 'form-control input-sm'
+                ), 
+        ));
+        
+        $this->add(array(
                 'name' => 'office',
                 'options' => array(
                         'label' => 'Office',

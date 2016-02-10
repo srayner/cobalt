@@ -13,9 +13,15 @@
                 echo $this->form()->openTag($form);
             ?>
             <div class="form-group">
-                <label for="hostname" class="col-sm-2 control-label">Username</label>
+                <label for="username" class="col-sm-2 control-label">Username</label>
                 <div class="col-sm-6">
                     <?php echo $this->formInput($form->get('username')) ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="displayName" class="col-sm-2 control-label">Display Name</label>
+                <div class="col-sm-6">
+                    <?php echo $this->formInput($form->get('displayName')) ?>
                 </div>
             </div>
             <div class="form-group">
