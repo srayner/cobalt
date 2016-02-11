@@ -46,6 +46,17 @@ class UserForm extends Form
         ));
         
         $this->add(array(
+                'name' => 'email',
+                'options' => array(
+                        'label' => 'Email Address',
+                ),
+                'attributes' => array(
+                        'type' => 'text',
+                        'class' => 'form-control input-sm'
+                ), 
+        ));
+        
+        $this->add(array(
                 'name' => 'telephoneNumber',
                 'options' => array(
                         'label' => 'Telephone No',

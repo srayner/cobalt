@@ -42,10 +42,27 @@ class UserFilter extends InputFilter
             ),
         ));
         
+        // Email
+        $this->add(array(
+            'name'       => 'email',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 64,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
         // Telephone
         $this->add(array(
             'name'       => 'telephoneNumber',
-            'required'   => true,
+            'required'   => false,
             'validators' => array(
                 array(
                     'name'    => 'StringLength',
@@ -62,7 +79,7 @@ class UserFilter extends InputFilter
         // Extension
         $this->add(array(
             'name'       => 'extensionNumber',
-            'required'   => true,
+            'required'   => false,
             'validators' => array(
                 array(
                     'name'    => 'StringLength',
