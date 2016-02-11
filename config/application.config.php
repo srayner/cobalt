@@ -4,7 +4,7 @@ return array(
     // Module to load in the application.
     'modules' => array(
         'Application',
-        'ZendDeveloperTools',
+   //     'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',

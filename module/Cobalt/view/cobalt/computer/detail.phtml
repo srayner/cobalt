@@ -61,12 +61,6 @@ function formatBytes($bytes, $precision = 2) {
                                     <th>Serial No</th>
                                     <td><?php echo $this->computer->getSerialNumber(); ?></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-lg-6">
-                        <table class="table table-condensed table-bordered">
-                            <tbody>
                                 <tr>
                                     <th style="width: 35%;">Bios Version</th>
                                     <td><?php echo $this->computer->getBiosVersion(); ?></td>
@@ -90,6 +84,7 @@ function formatBytes($bytes, $precision = 2) {
                             </tbody>
                         </table>
                     </div>
+
                     
                     <div class="col col-md-4">
                     <?php if ($computer->getImage() <> ''): ?>

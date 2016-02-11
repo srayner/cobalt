@@ -16,6 +16,7 @@ class TaskForm extends HorizontalForm
              ->addText('name', 'Name', false)
              ->addText('description', 'Description', false)
              ->addText('estimatedHours', 'Estimated Hours', false)
+             ->addText('actualHours', 'Actual Hours', false)
              ->addButton('submit', 'Add', 'btn-primary');
     }
 }

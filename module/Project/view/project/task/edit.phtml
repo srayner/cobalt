@@ -1,0 +1,23 @@
+<div class="row">
+    
+    <div class="col-md-12">
+        <h1 class="title">Edit task</h1>
+        <hr>
+      
+    </div>
+    
+    <div class="col-md-12">
+        <?php
+            $form = $this->form;
+            $form->get('submit')->setOption('label', 'Edit');
+            $form->setAttribute('action', $this->url('project/default', array(
+                'controller' => 'task',
+                'action' => 'edit',
+                'id' => $this->id)));
+            $form->prepare();
+
+            echo $this->form($form);
+        ?>
+        
+    </div>
+</div>

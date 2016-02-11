@@ -56,7 +56,42 @@ class TaskController extends AbstractController
     
     public function editAction()
     {
-        return new ViewModel();
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('project/default', array('controller' => 'task', 'action'=>'add'));
+	}
+        $task = $this->service->findById($id);
+        
+        // Create a new form instance and bind the entity to it.
+        $form = $this->getServiceLocator()->get('Project\TaskForm');
+        $form->bind($task);
+        
+        // Check if this request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate the data.
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                $this->service->persist($task);
+
+                // Redirect.
+                return $this->redirect()->toRoute('project/default',
+                    array('controller' => 'milestone',
+                          'action' => 'detail',
+                          'id' => $task->getMilestone()->getId()
+		    ),
+                    array('fragment' => 'tasks')
+                );
+            }
+        }
+        
+        return new ViewModel(array(
+            'id' => $id,
+            'form' => $form
+        ));
     }
     
     public function deleteAction()
