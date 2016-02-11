@@ -53,6 +53,9 @@ class UserFilter extends InputFilter
                         'max' => 64,
                     ),
                 ),
+                array(
+                    'name' => 'EmailAddress'
+                )
             ),
             'filters'   => array(
                 array('name' => 'StringTrim'),

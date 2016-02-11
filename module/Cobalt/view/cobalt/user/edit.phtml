@@ -1,58 +1,15 @@
 <div class="row">
-        <div class="col-md-12 title">
-            <h1>Edit user</h1>
-            <hr>
-        </div>
-        <div class="col-md-6">
-
-            <?php
-                $form = $this->form;
-                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'user', 'action' => 'edit', 'id' => $this->id)));
-                $form->prepare();
-
-                echo $this->form()->openTag($form);
-            ?>
-            <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('username')) ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="displayName" class="col-sm-2 control-label">Display Name</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('displayName')) ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="domainname" class="col-sm-2 control-label">Office</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('office')) ?>
-                </div>
-            </div>
-             <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email Address</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('email')) ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="telephoneNumber" class="col-sm-2 control-label">Telephone No</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('telephoneNumber')) ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="Model" class="col-sm-2 control-label">Extension No</label>
-                <div class="col-sm-6">
-                    <?php echo $this->formInput($form->get('extensionNumber')) ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-6">
-                    <?php echo $this->formInput($form->get('submit')) ?>
-                </div>
-            </div>
-            <?php echo $this->form()->closeTag();?>
-        </div>
+    <div class="col-md-12 title">
+        <h1>Edit user</h1>
+        <hr>
     </div>
+    <div class="col-md-6">
+        <?php
+            $form = $this->form;
+            $form->get('submit')->setOption('label', 'Edit');
+            $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'user', 'action' => 'edit', 'id' => $this->id)));
+            $form->prepare();
+            echo $this->form($form);
+        ?>
+    </div>
+</div>
