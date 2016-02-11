@@ -26,26 +26,10 @@ class ProjectForm extends HorizontalForm
              ->addText('estimatedHours', 'Estimated Hours', false)
              ->addText('actualHours', 'Actual Hours', false)
              ->addText('estimatedCost', 'Estimated Cost', false)
-             ->addText('actualCost', 'Actual Cost', false);
-        
-        
-        // Status
-        $values = $this->getStatusArray();
-        $select = new Element\Select('status');
-        $select->setLabel('Status');
-        $select->setValueOptions($values);
-        $this->add($select);
-        
-        // Priority
-        $values = $this->getPriorityArray();
-        $select = new Element\Select('priority');
-        $select->setLabel('Priority');
-        $select->setValueOptions($values);
-        $this->add($select);
-        
-        // Priority
-        
-        $this->addButton('submit', 'Add', 'btn-primary');
+             ->addText('actualCost', 'Actual Cost', false)
+             ->addSelect('status', 'Status', $this->getStatusArray())
+             ->addSelect('priority', 'Priority', $this->getPriorityArray())
+             ->addButton('submit', 'Add', 'btn-primary');
     }
     
     private function getStatusArray()

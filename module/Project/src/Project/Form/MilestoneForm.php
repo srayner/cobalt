@@ -20,23 +20,10 @@ class MilestoneForm extends HorizontalForm
 
         $this->addHidden('id')
              ->addText('name', 'Name', false)
-             ->addText('description', 'Description', false);
-        
-        // Status
-        $values = $this->getStatusArray();
-        $select = new Element\Select('status');
-        $select->setLabel('Status');
-        $select->setValueOptions($values);
-        $this->add($select);
-        
-        // Priority
-        $values = $this->getPriorityArray();
-        $select = new Element\Select('priority');
-        $select->setLabel('Priority');
-        $select->setValueOptions($values);
-        $this->add($select);
-        
-        $this->addButton('submit', 'Add', 'btn-primary');
+             ->addText('description', 'Description', false)
+             ->addSelect('status', 'Status', $this->getStatusArray())
+             ->addSelect('priority', 'Priority', $this->getPriorityArray())
+             ->addButton('submit', 'Add', 'btn-primary');
     }
     
     private function getStatusArray()

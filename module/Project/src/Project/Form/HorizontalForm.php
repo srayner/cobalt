@@ -126,6 +126,22 @@ class HorizontalForm extends Form
         return $this;
     }
     
+    protected function addSelect($name, $label, array $values)
+    {
+        $select = new Element\Select($name);
+        $select->setLabel($label);
+        $select->setLabelAttributes(array('class' => "col-sm-$this->labelWidth"));
+        $select->setOption('column-size', "sm-$this->controlWidth");
+        $select->setValueOptions($values);
+        
+        if ($this->compact) {
+            $select->setAttribute('class', 'input-sm');
+        }
+        
+        $this->add($select);
+        return $this;
+    }
+    
     protected function addButton($name, $label, $class = null)
     {
         if ($this->compact) {
