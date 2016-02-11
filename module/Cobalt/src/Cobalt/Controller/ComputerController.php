@@ -102,4 +102,12 @@ class ComputerController extends AbstractController
              'form' => $form,
         ));
     }
+    
+    public function scanAction()
+    {
+        $form = $this->getServiceLocator()->get('Cobalt\HostnameForm');
+        return new ViewModel(array(
+            'form' => $form
+        ));
+    }
 }

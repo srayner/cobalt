@@ -120,6 +120,7 @@ return array(
         ),
         'factories' => array(
             'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
+            'Cobalt\WMIService'             => 'Cobalt\Service\WMIServiceFactory',
             'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
             'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
