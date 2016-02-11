@@ -142,6 +142,28 @@ class HorizontalForm extends Form
         return $this;
     }
     
+    protected function addDoctrineSelect($name, $label, $em, $entity, $property)
+    {
+        $select = $this->getFormFactory()->create(array(
+            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name' => $name,
+                'options' => array(
+                'object_manager' => $em,
+                'target_class'   => $entity,
+                'property'       => $property,
+            ),
+        ));
+        $select->setLabel($label);
+        $select->setLabelAttributes(array('class' => "col-sm-$this->labelWidth"));
+        $select->setOption('column-size', "sm-$this->controlWidth");
+        if ($this->compact) {
+            $select->setAttribute('class', 'input-sm');
+        }
+        
+        $this->add($select);
+        return $this;
+    }
+    
     protected function addButton($name, $label, $class = null)
     {
         if ($this->compact) {
