@@ -96,6 +96,40 @@ class TaskController extends AbstractController
     
     public function deleteAction()
     {
-        return new ViewModel();
+        $id = (int)$this->params()->fromRoute('id');
+        $task = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            $milestoneId = $task->getMilestone()->getId();
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($task);
+            }
+
+            // Redirect to project detail
+            return $this->redirect()->toRoute('project/default',
+                array(
+                    'controller' => 'milestone',
+                    'action' => 'detail',
+                    'id' => $milestoneId),
+                array('fragment' => 'tasks')
+            );
+         }
+         
+        return new ViewModel(array(
+            'task' => $task
+        ));
+    }
+    
+    public function detailAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        return new ViewModel(array(
+            'task' => $this->service->findById($id)
+        ));
     }
 }

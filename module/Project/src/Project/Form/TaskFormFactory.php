@@ -18,6 +18,7 @@ class TaskFormFactory implements FactoryInterface
         $hydrator = new DoctrineHydrator($em);
         $nullStrategy = new NullStrategy();
         $hydrator->addStrategy('estimatedHours', $nullStrategy);
+        $hydrator->addStrategy('actualHours', $nullStrategy);
         
         // Create the form.
         $form = new TaskForm();
