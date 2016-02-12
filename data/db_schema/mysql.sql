@@ -1,3 +1,12 @@
+-- Comment Table
+CREATE TABLE comment (
+  id Integer NOT NULL AUTO_INCREMENT,
+  comment Text,
+  PRIMARY KEY (
+    id
+  )
+) ENGINE=InnoDB;
+
 -- Activity Table
 CREATE TABLE activity (
   activity_id   Integer(11)  NOT NULL AUTO_INCREMENT,
@@ -116,6 +125,16 @@ insert into project_priority (priority_name, priority_description) values ('High
 insert into project_priority (priority_name, priority_description) values ('Medium', 'Project is a medium priority.');
 insert into project_priority (priority_name, priority_description) values ('Low', 'Project is low low priority.');
 
+-- Project Comment table
+CREATE TABLE project_comment (
+  project_id Integer,
+  comment_id Integer,
+  PRIMARY KEY (
+    project_id,
+    comment_id
+  )
+) ENGINE=InnoDB;
+
 -- Milestone table
 CREATE TABLE milestone (
   id                   Integer NOT NULL AUTO_INCREMENT,
@@ -225,15 +244,6 @@ CREATE TABLE milestone_task (
   PRIMARY KEY (
       milestone_id, 
       task_id
-  )
-) ENGINE=InnoDB;
-
--- Comment Table
-CREATE TABLE comment (
-  id Integer NOT NULL AUTO_INCREMENT,
-  comment Text,
-  PRIMARY KEY (
-    id
   )
 ) ENGINE=InnoDB;
 
