@@ -5,6 +5,7 @@ namespace Project\Form;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Project\Form\MilestoneFilter;
 
 class MilestoneFormFactory implements FactoryInterface
 {
@@ -12,8 +13,7 @@ class MilestoneFormFactory implements FactoryInterface
     {
         $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
         $form = new MilestoneForm($em);
-    //    $form->setInputFilter(new ProjectFilter());
-    //    $form->setHydrator(new ClassMethods());
+        $form->setInputFilter(new MilestoneFilter());
         $form->setHydrator(new DoctrineHydrator($em));
         return $form;
     }   

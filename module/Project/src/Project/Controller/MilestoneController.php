@@ -3,6 +3,7 @@
 namespace Project\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class MilestoneController extends AbstractController
 {
@@ -76,18 +77,15 @@ class MilestoneController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
+                // Save changes.
                 $this->service->persist($milestone);
 
-                // Redirect.
-                return $this->redirect()->toRoute('project/default',
-                    array('controller' => 'project',
-                          'action' => 'detail',
-                          'id' => $milestone->getProject()->getId()
-		    ),
-                    array('fragment' => 'milestones')
-                );
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }
         }
+        
+        $this->storeReferer();
         
         return new ViewModel(array(
             'id' => $id,
@@ -138,5 +136,24 @@ class MilestoneController extends AbstractController
         return new ViewModel(array(
             'milestone' => $milestone
         ));
+    }
+    
+    private function storeReferer()
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, 'milestone/edit') === false) {
+            $session = new Container('milestone');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('milestone');
+        $referer = $session->referer;
+        if (strpos($referer, 'project/detail') !== false) {
+            $referer .= '#milestones';
+        }
+        return $referer;
     }
 }
