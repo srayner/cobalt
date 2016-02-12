@@ -228,3 +228,13 @@ CREATE TABLE milestone_task (
   )
 ) ENGINE=InnoDB;
 
+-- Comment Table
+CREATE TABLE comment (
+  id Integer NOT NULL AUTO_INCREMENT,
+  comment Text,
+  PRIMARY KEY (
+    id
+  )
+) ENGINE=InnoDB;
+
+

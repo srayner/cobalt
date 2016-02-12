@@ -74,6 +74,11 @@ return array(
                 $service = $sm->get('Project\TaskService');
                 return new Controller\TaskController($service);
             },
+            'Project\Controller\Comment' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Project\CommentService');
+                return new Controller\CommentController($service);
+            },
         ),
     ),
     
@@ -87,9 +92,10 @@ return array(
     //Service manager config.
     'service_manager' => array (
         'invokables' => array(
-            'project'   => 'Project\Entity\Project',
-            'milestone' => 'Project\Entity\Milestone',
-            'task'      => 'Project\Entity\Task',
+            'project'         => 'Project\Entity\Project',
+            'milestone'       => 'Project\Entity\Milestone',
+            'task'            => 'Project\Entity\Task',
+            'Project\Comment' => 'Project\Entity\Comment',
         ),
         'factories' => array(
             'project_form'             => 'Project\Form\ProjectFormFactory',
@@ -98,6 +104,8 @@ return array(
             'Project\MilestoneForm'    => 'Project\Form\MilestoneFormFactory',
             'Project\TaskService'      => 'Project\Service\TaskServiceFactory',
             'Project\TaskForm'         => 'Project\Form\TaskFormFactory',
+            'Project\CommentService'   => 'Project\Service\CommentServiceFactory',
+            'Project\CommentForm'      => 'Project\Form\CommentFormFactory',
         ),
     ),
         
