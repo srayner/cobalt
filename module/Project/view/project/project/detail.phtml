@@ -146,9 +146,9 @@
         </div>
         <br>
         <a class="btn btn-default btn-sm" href="<?php echo $this->url('project/default', array(
-                                'controller' => 'comment',
-                                'action' => 'add',
-                                'id' => $this->project->getId()
-                            )) ?>">Add Comment</a>
+            'controller' => 'project',
+            'action' => 'comment',
+            'id' => $this->project->getId()
+        )) ?>">Add Comment</a>
     </div>
 </div>

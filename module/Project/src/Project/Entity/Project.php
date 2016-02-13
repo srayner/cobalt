@@ -70,9 +70,19 @@ class Project
      */
     protected $milestones;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Comment")
+     * @ORM\JoinTable(name="project_comment",
+     *      joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="comment_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    protected $comments;
+    
     public function __construct()
     {
         $this->milestones = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
     
     public function getId()
@@ -249,5 +259,10 @@ class Project
     {
         $this->milestones = $milestones;
         return $this;
+    }
+    
+    public function addComent($comment)
+    {
+        $this->comments[] = $comment;
     }
 }

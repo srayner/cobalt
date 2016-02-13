@@ -3,6 +3,7 @@
 namespace Project\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class ProjectController extends AbstractController
 {
@@ -125,5 +126,54 @@ class ProjectController extends AbstractController
             'project' => $this->service->findById($id)
         ));
         
+    }
+    
+    public function commentAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        
+        $form = $this->getServiceLocator()->get('Project\CommentForm');
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $comment = $this->getServiceLocator()->get('Project\Comment');
+            $form->bind($comment);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                
+                $project = $this->service->findById($id);
+                $project->addComment($comment);
+                
+                // Persist.
+                $this->service->persist($project);
+                
+                // Redirect.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+            
+        }
+        
+        $this->storeReferer('project\comment');
+        
+        return new ViewModel(array(
+            'form' => $form,
+            'projectId' => $id
+        ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('project');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('project');
+        return $session->referer;
     }
 }
