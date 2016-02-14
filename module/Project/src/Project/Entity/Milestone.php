@@ -46,6 +46,15 @@ class Milestone
      */
     protected $tasks;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Comment")
+     * @ORM\JoinTable(name="milestone_comment",
+     *      joinColumns={@ORM\JoinColumn(name="milestone_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="comment_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    protected $comments;
+    
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -87,6 +96,11 @@ class Milestone
         return $this->tasks;
     }
 
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
     public function setName($name)
     {
         $this->name = $name;
@@ -119,6 +133,11 @@ class Milestone
     {
         $this->priority = $priority;
         return $this;
+    }
+    
+    public function addComment($comment)
+    {
+        $this->comments[] = $comment;
     }
 }
 

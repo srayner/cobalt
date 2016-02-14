@@ -183,6 +183,16 @@ insert into milestone_priority (priority_name, priority_description) values ('Hi
 insert into milestone_priority (priority_name, priority_description) values ('Medium', 'Milestone is a medium priority.');
 insert into milestone_priority (priority_name, priority_description) values ('Low', 'Milestone is low low priority.');
 
+-- Milestone Comment table
+CREATE TABLE milestone_comment (
+  milestone_id Integer,
+  comment_id Integer,
+  PRIMARY KEY (
+    milestone_id,
+    comment_id
+  )
+) ENGINE=InnoDB;
+
 -- Task table
 CREATE TABLE task (
   id                   Integer NOT NULL AUTO_INCREMENT,

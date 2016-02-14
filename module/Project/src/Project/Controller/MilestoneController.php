@@ -4,6 +4,7 @@ namespace Project\Controller;
 
 use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
+use DateTime;
 
 class MilestoneController extends AbstractController
 {
@@ -138,10 +139,45 @@ class MilestoneController extends AbstractController
         ));
     }
     
-    private function storeReferer()
+    public function commentAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        
+        $form = $this->getServiceLocator()->get('Project\CommentForm');
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $comment = $this->getServiceLocator()->get('Project\Comment');
+            $form->bind($comment);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                $comment->setCreatedTime(new DateTime);
+                $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $milestone = $em->find('Project\Entity\Milestone', $id);
+                $milestone->addComment($comment);
+                $em->persist($comment);
+                $em->persist($milestone);
+                $em->flush();
+                
+                // Redirect.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+            
+        }
+        
+        $this->storeReferer('milestone\comment');
+        
+        return new ViewModel(array(
+            'form' => $form,
+            'projectId' => $id
+        ));
+    }
+    
+    private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
-        if (strpos($referer, 'milestone/edit') === false) {
+        if (strpos($referer, $except) === false) {
             $session = new Container('milestone');
             $session->referer = $referer;
         }
