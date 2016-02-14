@@ -53,7 +53,7 @@ class MilestoneController extends AbstractController
         
         return new ViewModel(array(
             'form' => $form,
-            'milestoneId' => $id
+            'projectId' => $id
         ));
     }
     
