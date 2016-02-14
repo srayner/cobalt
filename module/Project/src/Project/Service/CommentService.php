@@ -18,6 +18,11 @@ class CommentService
         return $this->entityManager;
     }
 
+    public function findById($id)
+    {
+        return $this->entityManager->find($this->repository, $id);
+    }
+    
     public function persist($comment)
     {
         $this->entityManager->persist($comment);

@@ -6,63 +6,80 @@ use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
 
 class CommentController extends AbstractController
-{
-    public function addAction()
-    {   
+{   
+    public function editAction()
+    {
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        $comment = $this->service->findById($id);
+         
+        // Create a new form instance and bind the entity to it.
         $form = $this->getServiceLocator()->get('Project\CommentForm');
+        $form->bind($comment);
+        
+        // Check if this request is a POST.
         $request = $this->getRequest();
-        if($request->isPost())
+        if ($request->isPost())
         {
-            $comment = $this->getServiceLocator()->get('Project\Comment');
-            $form->bind($comment);
+            // Validate the data.
             $form->setData($request->getPost());
             if ($form->isValid())
             {
-                // Persist.
+                // Save changes.
                 $this->service->persist($comment);
-                
-                // Redirect.
+
+                // Redirect back to original referer.
                 return $this->redirect()->toUrl($this->retrieveReferer());
             }
-            
         }
         
-        $this->storeReferer();
+        $this->storeReferer('comment/edit');
         
         return new ViewModel(array(
-            'form' => $form,
-            'projectId' => $id
-        ));
-    }
-    
-    public function editAction()
-    {
-        return new ViewModel(array(
-            
+            'id' => $id,
+            'form' => $form
         ));
     }
     
     public function deleteAction()
     {
-        return new ViewModel(array(
-            
-        ));
+        $id = (int)$this->params()->fromRoute('id');
+        $comment = $this->service->findById($id);
         
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($comment);
+            }
+
+            // Redirect to original referer.
+            return $this->redirect()->toUrl($this->retrieveReferer());
+            
+        }
+        
+        // Store referer
+        $this->storeReferer('comment/delete');
+        
+        return new ViewModel(array(
+            'comment' => $comment
+        ));
     }
     
-    private function storeReferer()
+    private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
-        if (strpos($referer, 'comment/edit') === false) {
+        if (strpos($referer, $except) === false) {
             $session = new Container('comment');
             $session->referer = $referer;
         }
-        
     }
     
     private function retrieveReferer()
     {
         $session = new Container('comment');
-        return $session->referer;
+        return  $session->referer;
     }
 }

@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12 title">
+        <h1>Delete Comment</h1>
+        <hr>
+        <p>Are you sure you want to delete this comment?</p>
+        
+        <form action="<?php echo $this->url('project/default', array(
+            'controller' => 'comment',
+            'action' => 'delete',
+            'id' => $this->comment->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
