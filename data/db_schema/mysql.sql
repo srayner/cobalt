@@ -240,6 +240,16 @@ insert into task_priority (priority_name, priority_description) values ('High', 
 insert into task_priority (priority_name, priority_description) values ('Medium', 'Task is a medium priority.');
 insert into task_priority (priority_name, priority_description) values ('Low', 'Task is low low priority.');
 
+-- Task Comment table
+CREATE TABLE task_comment (
+  task_id Integer,
+  comment_id Integer,
+  PRIMARY KEY (
+    task_id,
+    comment_id
+  )
+) ENGINE=InnoDB;
+
 CREATE TABLE project_task (
   project_id Integer NOT NULL,
   task_id    Integer NOT NULL, 

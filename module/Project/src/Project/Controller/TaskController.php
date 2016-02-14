@@ -3,6 +3,8 @@
 namespace Project\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
+use DateTime;
 
 class TaskController extends AbstractController
 {
@@ -131,5 +133,55 @@ class TaskController extends AbstractController
         return new ViewModel(array(
             'task' => $this->service->findById($id)
         ));
+    }
+    
+    public function commentAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        
+        $form = $this->getServiceLocator()->get('Project\CommentForm');
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $comment = $this->getServiceLocator()->get('Project\Comment');
+            $form->bind($comment);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                $comment->setCreatedTime(new DateTime);
+                $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $task = $em->find('Project\Entity\Task', $id);
+                $task->addComment($comment);
+                $em->persist($comment);
+                $em->persist($task);
+                $em->flush();
+                
+                // Redirect.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+            
+        }
+        
+        $this->storeReferer('task\comment');
+        
+        return new ViewModel(array(
+            'form' => $form,
+            'taskId' => $id
+        ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('task');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('task');
+        return $session->referer;
     }
 }

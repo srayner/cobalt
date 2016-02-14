@@ -46,6 +46,15 @@ class task
     /** @ORM\Column(name="actual_hours", type="decimal") */
     protected $actualHours;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Comment")
+     * @ORM\JoinTable(name="task_comment",
+     *      joinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="comment_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    protected $comments;
+    
     public function getId()
     {
         return $this->id;
@@ -86,6 +95,11 @@ class task
         return $this->actualHours;
     }
 
+    public function getComments()
+    {
+        return $this->comments;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -132,5 +146,10 @@ class task
     {
         $this->actualHours = $actualHours;
         return $this;
+    }
+    
+    public function addComment($comment)
+    {
+        $this->comments[] = $comment;
     }
 }

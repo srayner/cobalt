@@ -7,9 +7,9 @@
             <?php
                 $form = $this->form;
                 $form->setAttribute('action', $this->url('project/default', array(
-                    'controller' => 'milestone',
+                    'controller' => 'task',
                     'action' => 'comment',
-                    'id' => $this->milestoneId
+                    'id' => $this->taskId
                 )));
                 $form->prepare();
 
