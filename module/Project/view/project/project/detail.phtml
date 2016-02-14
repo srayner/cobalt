@@ -145,10 +145,24 @@
 
         </div>
         <br>
+        <b>Comments<b>
         <a class="btn btn-default btn-sm" href="<?php echo $this->url('project/default', array(
             'controller' => 'project',
             'action' => 'comment',
             'id' => $this->project->getId()
         )) ?>">Add Comment</a>
+        <div class="col-lg-12">
+            <?php foreach($this->project->getComments() as $comment):?>
+            <div class="well well-sm">
+                <b>2016-02-14 </b><small>Steve Rayner</small>
+                <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'edit', 'id' => $comment->getId())); ?>"><i class="fa fa-edit"></i></a>
+                <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'delete', 'id' => $comment->getId())); ?>"><i class="fa fa-remove"></i></a>
+        
+                <p><?php echo $comment->getComment();?></p>
+                
+                
+            </div>
+            <?php endforeach;?>
+        </div>
     </div>
 </div>

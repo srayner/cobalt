@@ -165,6 +165,11 @@ class Project
         return $this->milestones;
     }
 
+    public function getComments()
+    {
+        return $this->comments;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -261,7 +266,7 @@ class Project
         return $this;
     }
     
-    public function addComent($comment)
+    public function addComment($comment)
     {
         $this->comments[] = $comment;
     }

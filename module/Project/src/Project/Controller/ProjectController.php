@@ -141,12 +141,14 @@ class ProjectController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
-                
-                $project = $this->service->findById($id);
+                $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $project = $em->find('Project\Entity\Project', $id);
                 $project->addComment($comment);
+                $em->persist($comment);
+                $em->persist($project);
+                $em->flush();
                 
-                // Persist.
-                $this->service->persist($project);
+               
                 
                 // Redirect.
                 return $this->redirect()->toUrl($this->retrieveReferer());
