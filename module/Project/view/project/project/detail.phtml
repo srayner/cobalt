@@ -145,24 +145,29 @@
 
         </div>
         <br>
-        <b>Comments<b>
-        <a class="btn btn-default btn-sm" href="<?php echo $this->url('project/default', array(
+        
+        <p>
+        <span class="text-primary">Comments</span>
+        <a class="btn btn-primary btn-xs pull-right" href="<?php echo $this->url('project/default', array(
             'controller' => 'project',
             'action' => 'comment',
             'id' => $this->project->getId()
         )) ?>">Add Comment</a>
-        <div class="col-lg-12">
-            <?php foreach($this->project->getComments() as $comment):?>
-            <div class="well well-sm">
-                <b>2016-02-14 </b><small>Steve Rayner</small>
-                <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'edit', 'id' => $comment->getId())); ?>"><i class="fa fa-edit"></i></a>
-                <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'delete', 'id' => $comment->getId())); ?>"><i class="fa fa-remove"></i></a>
-        
-                <p><?php echo $comment->getComment();?></p>
-                
-                
+        </p>
+        <?php foreach($this->project->getComments() as $comment):?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>Steve Rayner </b><span class="text-muted">2016-02-14</span>
+                <span class="pull-right">
+                    <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'edit', 'id' => $comment->getId())); ?>"><i class="fa fa-edit"></i></a>
+                    <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'delete', 'id' => $comment->getId())); ?>"><i class="fa fa-remove"></i></a>
+                </span>
             </div>
-            <?php endforeach;?>
+            <div class="panel-body">
+                <p><?php echo $comment->getComment();?></p>
+            </div>        
         </div>
+        <?php endforeach;?>
+        
     </div>
 </div>
