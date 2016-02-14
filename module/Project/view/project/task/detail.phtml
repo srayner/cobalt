@@ -28,28 +28,57 @@
                 <div role="tabpanel" class="tab-pane active" id="detail">
                     <div class="row">
                         <div class="col-lg-6">
-                                <table class="table table-condensed table-bordered">
-                                    <tbody>
-                                         <tr>
-                                            <th style="width: 35%;">Name</th>
-                                            <td><?php echo $this->task->getName(); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Scheduled Start Time</th>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Estimated Hours</th>
-                                            <td><?php echo $this->task->getEstimatedHours(); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Estimated Cost</th>
-                                            <td><?php echo $this->task->getActualHours(); ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 35%;">Name</th>
+                                        <td><?php echo $this->task->getName(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 35%;">Milestone</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Scheduled Start Time</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estimated Hours</th>
+                                        <td><?php echo $this->task->getEstimatedHours(); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estimated Cost</th>
+                                        <td><?php echo $this->task->getActualHours(); ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-6">
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 35%;">Status</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Owner</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Priority</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Actual Hours</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Actual Cost</th>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
