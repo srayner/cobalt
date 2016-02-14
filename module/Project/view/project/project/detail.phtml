@@ -18,6 +18,9 @@
             <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $this->project->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
         
+        <!-- Project description -->
+        <p><?php echo $this->project->getDescription();?></p>
+        
         <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
@@ -46,8 +49,8 @@
                                         <td><?php echo $this->project->getName(); ?></td>
                                     </tr>
                                     <tr>
-                                        <th>Description</th>
-                                        <td><?php echo $this->project->getDescription(); ?></td>
+                                        <th>Scheduled Start Date</th>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <th>Estimated Hours</th>

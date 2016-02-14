@@ -16,6 +16,9 @@
             <a href="<?php echo $this->url('project/default', array('controller' => 'milestone', 'action' => 'delete', 'id' => $this->milestone->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
         
+        <!-- Milestone description -->
+        <p><?php echo $this->milestone->getDescription();?></p>
+        
         <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
@@ -39,8 +42,8 @@
                                         <td><?php echo $this->milestone->getName(); ?></td>
                                     </tr>
                                     <tr>
-                                        <th>Description</th>
-                                        <td><?php echo $this->milestone->getDescription(); ?></td>
+                                        <th>Scheduled Start Date</th>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <th>Estimated Hours</th>

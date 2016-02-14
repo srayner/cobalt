@@ -10,6 +10,9 @@
             <a href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'delete', 'id' => $this->task->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
         
+        <!-- Task description -->
+        <p><?php echo $this->task->getDescription();?></p>
+        
         <div>
             
             <!-- Nav tabs -->
@@ -32,8 +35,8 @@
                                             <td><?php echo $this->task->getName(); ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Description</th>
-                                            <td><?php echo $this->task->getDescription(); ?></td>
+                                            <th>Scheduled Start Time</th>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th>Estimated Hours</th>
