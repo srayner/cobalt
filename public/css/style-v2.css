@@ -69,8 +69,10 @@
 }
 
 .status-red { border-left-color: #d00;}
+.status-amber { border-left-color: #daa520}
 .status-green { border-left-color: #0d0;}
 .status-blue { border-left-color: #00d;}
+.status-gray { border-left-color: #777;}
 
 .tab-pane table>tbody>tr>td {
     padding-left: 10px;

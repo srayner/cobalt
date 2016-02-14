@@ -22,6 +22,9 @@ class ProjectPriority
     /** @ORM\Column(type="string", name="priority_description") */
     protected $description;
     
+    /** @ORM\Column(type="string") */
+    protected $colour;
+    
     public function getId()
     {
         return $this->id;
@@ -35,6 +38,11 @@ class ProjectPriority
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getColour()
+    {
+        return $this->colour;
     }
 
     public function setId($id)
@@ -54,7 +62,11 @@ class ProjectPriority
         $this->description = $description;
         return $this;
     }
-
-
+    
+    public function setColour($colour)
+    {
+        $this->colour = $colour;
+        return $this;
+    }
 }
 

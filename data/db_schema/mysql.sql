@@ -108,23 +108,25 @@ CREATE TABLE project_status (
   id                     Integer NOT NULL AUTO_INCREMENT,
   status_name            NVarChar(32),
   status_description     NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into project_status (status_name, status_description) values ('Open', 'Project is currently active and in progress.');
-insert into project_status (status_name, status_description) values ('On hold', 'Project is currently on hold.');
-insert into project_status (status_name, status_description) values ('Cancelled', 'Project has been cancelled.');
-insert into project_status (status_name, status_description) values ('Completed', 'Project has been completed.');
+insert into project_status (status_name, status_description, colour) values ('Open', 'Project is currently active and in progress.', 'blue');
+insert into project_status (status_name, status_description, colour) values ('On hold', 'Project is currently on hold.', 'red');
+insert into project_status (status_name, status_description, colour) values ('Cancelled', 'Project has been cancelled.', 'gray');
+insert into project_status (status_name, status_description, colour) values ('Completed', 'Project has been completed.', 'gray');
 
 -- Project priority table
 CREATE TABLE project_priority (
   id                     Integer NOT NULL AUTO_INCREMENT,
   priority_name          NVarChar(32),
   priority_description   NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into project_priority (priority_name, priority_description) values ('High', 'Project is a high priority.');
-insert into project_priority (priority_name, priority_description) values ('Medium', 'Project is a medium priority.');
-insert into project_priority (priority_name, priority_description) values ('Low', 'Project is low low priority.');
+insert into project_priority (priority_name, priority_description, colour) values ('High', 'Project is a high priority.', 'red');
+insert into project_priority (priority_name, priority_description, colour) values ('Medium', 'Project is a medium priority.', 'amber');
+insert into project_priority (priority_name, priority_description, colour) values ('Low', 'Project is low low priority.', 'green');
 
 -- Project Comment table
 CREATE TABLE project_comment (

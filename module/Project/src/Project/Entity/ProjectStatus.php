@@ -22,6 +22,9 @@ class ProjectStatus
     /** @ORM\Column(type="string", name="status_description") */
     protected $description;
     
+     /** @ORM\Column(type="string") */
+    protected $colour;
+    
     public function getId()
     {
         return $this->id;
@@ -35,6 +38,11 @@ class ProjectStatus
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getColour()
+    {
+        return $this->colour;
     }
 
     public function setId($id)
@@ -54,4 +62,5 @@ class ProjectStatus
         $this->description = $description;
         return $this;
     }
+    
 }
