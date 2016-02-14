@@ -167,23 +167,25 @@ CREATE TABLE milestone_status (
   id                     Integer NOT NULL AUTO_INCREMENT,
   status_name            NVarChar(32),
   status_description     NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into milestone_status (status_name, status_description) values ('Open', 'Milestone is currently active and in progress.');
-insert into milestone_status (status_name, status_description) values ('On hold', 'Milestone is currently on hold.');
-insert into milestone_status (status_name, status_description) values ('Cancelled', 'Milestone has been cancelled.');
-insert into milestone_status (status_name, status_description) values ('Completed', 'Milestone has been completed.');
+insert into milestone_status (status_name, status_description, colour) values ('Open', 'Milestone is currently active and in progress.', 'blue');
+insert into milestone_status (status_name, status_description, colour) values ('On hold', 'Milestone is currently on hold.', 'red');
+insert into milestone_status (status_name, status_description, colour) values ('Cancelled', 'Milestone has been cancelled.', 'gray');
+insert into milestone_status (status_name, status_description, colour) values ('Completed', 'Milestone has been completed.', 'gray');
 
 -- Milestone priority table
 CREATE TABLE milestone_priority (
   id                     Integer NOT NULL AUTO_INCREMENT,
   priority_name          NVarChar(32),
   priority_description   NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into milestone_priority (priority_name, priority_description) values ('High', 'Milestone is a high priority.');
-insert into milestone_priority (priority_name, priority_description) values ('Medium', 'Milestone is a medium priority.');
-insert into milestone_priority (priority_name, priority_description) values ('Low', 'Milestone is low low priority.');
+insert into milestone_priority (priority_name, priority_description, colour) values ('High', 'Milestone is a high priority.', 'red');
+insert into milestone_priority (priority_name, priority_description, colour) values ('Medium', 'Milestone is a medium priority.', 'amber');
+insert into milestone_priority (priority_name, priority_description, colour) values ('Low', 'Milestone is low low priority.', 'green');
 
 -- Milestone Comment table
 CREATE TABLE milestone_comment (
@@ -224,23 +226,25 @@ CREATE TABLE task_status (
   id                     Integer NOT NULL AUTO_INCREMENT,
   status_name            NVarChar(32),
   status_description     NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into task_status (status_name, status_description) values ('Open', 'Task is currently active and in progress.');
-insert into task_status (status_name, status_description) values ('On hold', 'Task is currently on hold.');
-insert into task_status (status_name, status_description) values ('Cancelled', 'Task has been cancelled.');
-insert into task_status (status_name, status_description) values ('Completed', 'Task has been completed.');
+insert into task_status (status_name, status_description, colour) values ('Open', 'Task is currently active and in progress.', 'blue');
+insert into task_status (status_name, status_description, colour) values ('On hold', 'Task is currently on hold.', 'red');
+insert into task_status (status_name, status_description, colour) values ('Cancelled', 'Task has been cancelled.', 'gray');
+insert into task_status (status_name, status_description, colour) values ('Completed', 'Task has been completed.', 'gray');
 
 -- Task priority table
 CREATE TABLE task_priority (
   id                     Integer NOT NULL AUTO_INCREMENT,
   priority_name          NVarChar(32),
   priority_description   NVarChar(128),
+  colour                 NVarChar(12),
   PRIMARY KEY (id)
 ) ENGINE=InnoDb CHARACTER SET utf8 COLLATE utf8_general_ci;
-insert into task_priority (priority_name, priority_description) values ('High', 'Task is a high priority.');
-insert into task_priority (priority_name, priority_description) values ('Medium', 'Task is a medium priority.');
-insert into task_priority (priority_name, priority_description) values ('Low', 'Task is low low priority.');
+insert into task_priority (priority_name, priority_description, colour) values ('High', 'Task is a high priority.', 'red');
+insert into task_priority (priority_name, priority_description, colour) values ('Medium', 'Task is a medium priority.', 'amber');
+insert into task_priority (priority_name, priority_description, colour) values ('Low', 'Task is low low priority.', 'green');
 
 -- Task Comment table
 CREATE TABLE task_comment (

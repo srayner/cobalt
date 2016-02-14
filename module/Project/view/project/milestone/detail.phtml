@@ -66,7 +66,9 @@
                                 <tbody>
                                     <tr>
                                         <th style="width: 35%;">Status</th>
-                                        <td><div class="status status-blue"><?php echo $this->milestone->getStatus()->getName(); ?></div></td>
+                                        <td><div class="status status-<?php echo $this->milestone->getStatus()->getColour();?>">
+                                            <?php echo $this->milestone->getStatus()->getName(); ?>
+                                        </div></td>
                                     </tr>
                                     <tr>
                                         <th>Owner</th>
@@ -74,7 +76,9 @@
                                     </tr>
                                     <tr>
                                         <th>Priority</th>
-                                        <td><div class="status status-red"><?php echo $this->milestone->getPriority()->getName(); ?></div></td>
+                                        <td><div class="status status-<?php echo $this->milestone->getPriority()->getColour();?>">
+                                            <?php echo $this->milestone->getPriority()->getName(); ?>
+                                        </div></td>
                                     </tr>
                                     <tr>
                                         <th>Actual Hours</th>

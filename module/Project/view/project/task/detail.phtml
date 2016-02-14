@@ -58,7 +58,9 @@
                                 <tbody>
                                     <tr>
                                         <th style="width: 35%;">Status</th>
-                                        <td></td>
+                                        <td><div class="status status-<?php echo $this->task->getStatus()->getColour();?>">
+                                            <?php echo $this->task->getStatus()->getName(); ?>
+                                        </div></td>
                                     </tr>
                                     <tr>
                                         <th>Owner</th>
@@ -66,7 +68,9 @@
                                     </tr>
                                     <tr>
                                         <th>Priority</th>
-                                        <td></td>
+                                        <td><div class="status status-<?php echo $this->task->getPriority()->getColour();?>">
+                                            <?php echo $this->task->getPriority()->getName(); ?>
+                                        </div></td>
                                     </tr>
                                     <tr>
                                         <th>Actual Hours</th>

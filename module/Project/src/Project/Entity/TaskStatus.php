@@ -22,6 +22,9 @@ class TaskStatus
     /** @ORM\Column(type="string", name="status_description") */
     protected $description;
     
+    /** @ORM\Column(type="string") */
+    protected $colour;
+    
     public function getId()
     {
         return $this->id;
@@ -35,6 +38,11 @@ class TaskStatus
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getColour()
+    {
+        return $this->colour;
     }
 
     public function setId($id)
@@ -52,6 +60,12 @@ class TaskStatus
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
+    }
+    
+    public function setColour($colour)
+    {
+        $this->colour = $colour;
         return $this;
     }
 }
