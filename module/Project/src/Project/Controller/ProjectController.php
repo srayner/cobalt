@@ -4,6 +4,7 @@ namespace Project\Controller;
 
 use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
+use DateTime;
 
 class ProjectController extends AbstractController
 {
@@ -141,6 +142,7 @@ class ProjectController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
+                $comment->setCreatedTime(new DateTime);
                 $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 $project = $em->find('Project\Entity\Project', $id);
                 $project->addComment($comment);

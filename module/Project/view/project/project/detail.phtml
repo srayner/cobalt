@@ -157,7 +157,7 @@
         <?php foreach($this->project->getComments() as $comment):?>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <b>Steve Rayner </b><span class="text-muted">2016-02-14</span>
+                <b>Guest </b><small class="text-muted"><?php echo $comment->getCreatedTime()->format(DATE_COOKIE); ?></small>
                 <span class="pull-right">
                     <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'edit', 'id' => $comment->getId())); ?>"><i class="fa fa-edit"></i></a>
                     <a href="<?php echo $this->url('project/default', array('controller' => 'comment', 'action' => 'delete', 'id' => $comment->getId())); ?>"><i class="fa fa-remove"></i></a>

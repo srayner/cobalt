@@ -2,6 +2,7 @@
 CREATE TABLE comment (
   id Integer NOT NULL AUTO_INCREMENT,
   comment Text,
+  createdTime DateTime,
   PRIMARY KEY (
     id
   )

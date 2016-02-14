@@ -19,6 +19,9 @@ class Comment
     /** @ORM\Column(type="string") */
     protected $comment;
     
+    /** @ORM\Column(type="datetime") */
+    protected $createdTime;
+    
     public function getId()
     {
         return $this->id;
@@ -29,6 +32,11 @@ class Comment
         return $this->comment;
     }
 
+    public function getCreatedTime()
+    {
+        return $this->createdTime;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -38,6 +46,12 @@ class Comment
     public function setComment($comment)
     {
         $this->comment = $comment;
+        return $this;
+    }
+    
+    public function setCreatedTime($createdTime)
+    {
+        $this->createdTime = $createdTime;
         return $this;
     }
 }
