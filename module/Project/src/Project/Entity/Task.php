@@ -23,12 +23,6 @@ class task
     protected $description;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Milestone", inversedBy="tasks")
-     * @ORM\JoinColumn(name="milestone_id", referencedColumnName="id")
-     */
-    protected $milestone;
-    
-    /**
      * @ORM\ManyToOne(targetEntity="TaskStatus")
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
@@ -58,11 +52,6 @@ class task
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getMilestone()
-    {
-        return $this->milestone;
     }
 
     public function getName()
@@ -103,12 +92,6 @@ class task
     public function setId($id)
     {
         $this->id = $id;
-        return $this;
-    }
-    
-    public function setMilestone($milestone)
-    {
-        $this->milestone = $milestone;
         return $this;
     }
 

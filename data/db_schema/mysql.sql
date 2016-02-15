@@ -159,6 +159,8 @@ CREATE TABLE milestone (
   estimated_cost       Decimal(18, 2),
   actual_cost          Decimal(18, 2),
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  task_count           Integer,
+  task_completed       Integer,
   PRIMARY KEY (
       id
   )
@@ -299,6 +301,27 @@ begin
   
 end
 
+CREATE PROCEDURE milestone_recalc(mile_id Integer(11))
+  NO SQL
+begin
+
+  declare t_count int;
+  declare t_completed int;
+  
+  set t_count = (select count(id) from milestone_task where milestone_id = mile_id);
+  set t_completed = (SELECT count(milestone_id) FROM milestone_task inner join task
+                     on task.id = milestone_task.task_id WHERE milestone_id = 2 and status_id = 4);
+  
+  update
+    milestone
+  set
+    task_count = t_count,
+    task_completed = t_completed
+  where
+    id = mile_id; 
+  
+end//
+
 -- TRIGGERS
 
 CREATE TRIGGER milestone_insert
@@ -308,7 +331,7 @@ begin
 
  call project_recalc(new.project_id);
   
-end
+end//
 
 CREATE TRIGGER milestone_update
   AFTER UPDATE
@@ -318,7 +341,7 @@ begin
   call project_recalc(new.project_id);
   call project_recalc(old.project_id);
   
-end
+end//
 
 CREATE TRIGGER milestone_delete
   AFTER DELETE
@@ -327,4 +350,32 @@ begin
 
   call project_recalc(old.project_id);
    
-end
+end//
+
+CREATE TRIGGER milestone_task_insert
+  AFTER INSERT
+  ON milestone_task FOR EACH ROW
+begin
+
+ call milestone_recalc(new.milestone_id);
+  
+end//
+
+CREATE TRIGGER milestone_task_update
+  AFTER UPDATE
+  ON milestone_task FOR EACH ROW
+begin
+
+  call milestone_recalc(new.milestone_id);
+  call milestone_recalc(old.milestone_id);
+  
+end//
+
+CREATE TRIGGER milestone_task_delete
+  AFTER DELETE
+  ON milestone_task FOR EACH ROW
+begin
+
+  call milestone_recalc(old.milestone_id);
+   
+end//

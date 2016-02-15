@@ -41,8 +41,18 @@ class Milestone
      */
     protected $priority;
     
+    /** @ORM\Column(type="integer", name="task_count") */
+    protected $taskCount;
+    
+    /** @ORM\Column(type="integer", name="task_completed") */
+    protected $taskCompleted;
+    
     /**
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="milestone")
+     * @ORM\ManyToMany(targetEntity="Task")
+     * @ORM\JoinTable(name="milestone_task",
+     *      joinColumns={@ORM\JoinColumn(name="milestone_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id", unique=true)}
+     * )
      */
     protected $tasks;
     
@@ -91,6 +101,16 @@ class Milestone
         return $this->priority;
     }
 
+    public function getTaskCount()
+    {
+        return $this->taskCount;
+    }
+
+    public function getTaskCompleted()
+    {
+        return $this->taskCompleted;
+    }
+
     public function getTasks()
     {
         return $this->tasks;
@@ -135,6 +155,23 @@ class Milestone
         return $this;
     }
    
+    public function setTaskCount($taskCount)
+    {
+        $this->taskCount = $taskCount;
+        return $this;
+    }
+
+    public function setTaskCompleted($taskCompleted)
+    {
+        $this->taskCompleted = $taskCompleted;
+        return $this;
+    }
+
+    public function addTask($task)
+    {
+        $this->tasks[] = $task;
+    }
+    
     public function addComment($comment)
     {
         $this->comments[] = $comment;

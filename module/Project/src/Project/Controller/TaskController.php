@@ -30,12 +30,15 @@ class TaskController extends AbstractController
             {
                 // Persist.
                 $em = $this->service->getEntityManager();
-                if ($id) {
-                  $task->setMilestone($em->getReference('Project\Entity\Milestone', $id));
-                }
                 $task->setStatus($em->getReference('Project\Entity\TaskStatus', 1));
                 $task->setPriority($em->getReference('Project\Entity\TaskPriority', 1));
-                $this->service->persist($task);
+                if ($id) {
+                    $milestone = $em->find('Project\Entity\Milestone', $id);
+                    $milestone->addTask($task);
+                }
+                $em->persist($task);
+                $em->persist($milestone);
+                $em->flush();
                 
                 // Redirect.
                 return $this->redirect()->toRoute('project/default',
@@ -104,8 +107,6 @@ class TaskController extends AbstractController
         $request = $this->getRequest();
         if ($request->isPost()) {
             
-            $milestoneId = $task->getMilestone()->getId();
-            
             // Only perform delete if value posted was 'Yes'.
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
@@ -113,15 +114,11 @@ class TaskController extends AbstractController
             }
 
             // Redirect to project detail
-            return $this->redirect()->toRoute('project/default',
-                array(
-                    'controller' => 'milestone',
-                    'action' => 'detail',
-                    'id' => $milestoneId),
-                array('fragment' => 'tasks')
-            );
-         }
-         
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('task/delete');
+        
         return new ViewModel(array(
             'task' => $task
         ));

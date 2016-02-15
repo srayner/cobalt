@@ -77,6 +77,15 @@ class Project
     protected $milestones;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Task")
+     * @ORM\JoinTable(name="project_task",
+     *      joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    protected $tasks;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Comment")
      * @ORM\JoinTable(name="project_comment",
      *      joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
@@ -181,6 +190,11 @@ class Project
         return $this->milestones;
     }
 
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+    
     public function getComments()
     {
         return $this->comments;
@@ -292,6 +306,11 @@ class Project
     {
         $this->milestoneCompleted = $milestoneCompleted;
         return $this;
+    }
+    
+    public function addTask($task)
+    {
+        $this->comments[] = $task;
     }
     
     public function addComment($comment)
