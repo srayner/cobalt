@@ -7,18 +7,61 @@
 ?>
 
 <div class="row">
-    <div class="col-md-12 title">
+    
+    <!-- Page title -->
+    <div class="col-lg-12 title">
         <h1>Project Details</h1>
         <hr>
-        
+    </div>
+    
+    <!-- Project header -->
+    <div class="col-lg-6">
         <i class="fa fa-cubes fa-3x pull-left"></i>
-        <h4><?php echo $this->project->getName(); ?></h4>
+        <h4 style="margin-top: 0;"><?php echo $this->project->getName(); ?></h4>
         <p>
             <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $this->project->getId())); ?>"><i class="fa fa-edit"></i></a>
             <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $this->project->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
+    </div>
+    
+    <!-- Project progress -->
+    <div class="col-lg-6">
         
-        <!-- Project description -->
+        <div class="pull-right">
+            <div class="myprogress">
+                <div class="progress-header">
+                    <span>Milestones</span>
+                </div>
+                <div class="progress-body">
+                    <div class="progress-left">
+                        <span>0</span>   
+                    </div>
+                    <div class="progress-right progress-green">
+                        <span>0</span>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="myprogress">
+                <div class="progress-header">
+                    <span>Tasks</span>
+                </div>
+                <div class="progress-body">
+                    <div class="progress-left">
+                        <span>0</span>   
+                    </div>
+                    <div class="progress-right progress-blue">
+                        <span>0</span>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Project description -->
+    <div class="col-lg-12">
         <p><?php echo $this->project->getDescription();?></p>
         
         <div>

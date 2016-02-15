@@ -77,3 +77,65 @@
 .tab-pane table>tbody>tr>td {
     padding-left: 10px;
 }
+
+
+
+.myprogress {
+                background-color: #eee;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                display: inline-block;
+                padding: 4px 16px;
+                font-family: 'Open Sans', sans-serif;
+                overflow-y: visible !important;
+                box-sizing: content-box;
+            }
+            
+            .progress-header {
+                font-weight: 700;
+                color: #333;
+                text-align: center;
+            }
+            
+            .progress-body {
+                
+                padding: 4px;
+                margin: auto;
+                text-align: center;
+                font-size: 0;
+                
+            }
+            
+            .progress-body > div {
+                background-color: #aaa;
+                display: inline-block;
+                padding: 3px 10px;
+                margin: 0;
+                font-size: 14px;
+                border: 1px solid #777;
+                
+            }
+            
+            .progress-body .progress-left {  
+                border-top-left-radius:13px;
+                border-bottom-left-radius:13px;
+                border-top-right-radius:0;
+                border-bottom-right-radius:0;
+                border-right: 0;
+                padding-left: 15px;
+                padding-right: 15px;
+                color: #fff;
+            }
+            
+            .progress-body .progress-right {
+                border-top-left-radius:0;
+                border-bottom-left-radius:0;
+                border-top-right-radius:13px;
+                border-bottom-right-radius:13px;
+                padding-left: 8px;
+                padding-right: 8px;
+                color: #fff;
+            }
+            
+            .progress-body .progress-green {background-color: #5cb85c;}
+            .progress-body .progress-blue {background-color: #36c;}

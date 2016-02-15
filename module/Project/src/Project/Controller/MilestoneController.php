@@ -86,7 +86,7 @@ class MilestoneController extends AbstractController
             }
         }
         
-        $this->storeReferer();
+        $this->storeReferer('milestone/edit');
         
         return new ViewModel(array(
             'id' => $id,
