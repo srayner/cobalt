@@ -28,30 +28,30 @@
     <div class="col-lg-6">
         
         <div class="pull-right">
-            <div class="myprogress">
-                <div class="progress-header">
+            <div class="proj-progress">
+                <div class="proj-progress-header">
                     <span>Milestones</span>
                 </div>
-                <div class="progress-body">
-                    <div class="progress-left">
-                        <span>0</span>   
+                <div class="proj-progress-body">
+                    <div class="proj-progress-left">
+                        <span><?php echo $this->project->getMilestoneCount();?></span>   
                     </div>
-                    <div class="progress-right progress-green">
-                        <span>0</span>
+                    <div class="proj-progress-right proj-progress-green">
+                        <span><?php echo $this->project->getMilestoneCompleted();?></span>
                         <i class="fa fa-check"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="myprogress">
-                <div class="progress-header">
+            <div class="proj-progress">
+                <div class="proj-progress-header">
                     <span>Tasks</span>
                 </div>
-                <div class="progress-body">
-                    <div class="progress-left">
+                <div class="proj-progress-body">
+                    <div class="proj-progress-left">
                         <span>0</span>   
                     </div>
-                    <div class="progress-right progress-blue">
+                    <div class="proj-progress-right proj-progress-blue">
                         <span>0</span>
                         <i class="fa fa-check"></i>
                     </div>

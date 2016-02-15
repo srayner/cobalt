@@ -134,7 +134,7 @@ class Milestone
         $this->priority = $priority;
         return $this;
     }
-    
+   
     public function addComment($comment)
     {
         $this->comments[] = $comment;

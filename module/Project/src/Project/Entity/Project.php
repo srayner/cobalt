@@ -65,6 +65,12 @@ class Project
     /** @ORM\Column(type="decimal", name="actual_cost") */
     protected $actualCost;
     
+    /** @ORM\Column(type="integer", name="milestone_count") */
+    protected $milestoneCount;
+    
+    /** @ORM\Column(type="integer", name="milestone_completed") */
+    protected $milestoneCompleted;
+    
     /**
      * @ORM\OneToMany(targetEntity="Milestone", mappedBy="project")
      */
@@ -160,6 +166,16 @@ class Project
         return $this->actualCost;
     }
 
+    public function getMilestoneCount()
+    {
+        return $this->milestoneCount;
+    }
+
+    public function getMilestoneCompleted()
+    {
+        return $this->milestoneCompleted;
+    }
+    
     public function getMilestones()
     {
         return $this->milestones;
@@ -263,6 +279,18 @@ class Project
     public function setMilestones($milestones)
     {
         $this->milestones = $milestones;
+        return $this;
+    }
+    
+    public function setMilestoneCount($milestoneCount)
+    {
+        $this->milestoneCount = $milestoneCount;
+        return $this;
+    }
+
+    public function setMilestoneCompleted($milestoneCompleted)
+    {
+        $this->milestoneCompleted = $milestoneCompleted;
         return $this;
     }
     

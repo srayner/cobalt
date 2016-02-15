@@ -98,6 +98,8 @@ CREATE TABLE project (
   estimated_cost       Decimal(18, 2),
   actual_cost          Decimal(18, 2),
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  milestone_count      Integer,
+  milestone_completed  Integer,
   PRIMARY KEY (
       id
   )
@@ -307,7 +309,7 @@ begin
  call project_recalc(new.project_id);
   
 end
-/
+
 CREATE TRIGGER milestone_update
   AFTER UPDATE
   ON milestone FOR EACH ROW
@@ -317,7 +319,7 @@ begin
   call project_recalc(old.project_id);
   
 end
-/
+
 CREATE TRIGGER milestone_delete
   AFTER DELETE
   ON milestone FOR EACH ROW
@@ -326,4 +328,3 @@ begin
   call project_recalc(old.project_id);
    
 end
-/
