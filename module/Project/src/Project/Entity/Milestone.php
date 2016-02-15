@@ -48,7 +48,7 @@ class Milestone
     protected $taskCompleted;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Task")
+     * @ORM\ManyToMany(targetEntity="Task", inversedBy="milestone")
      * @ORM\JoinTable(name="milestone_task",
      *      joinColumns={@ORM\JoinColumn(name="milestone_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id", unique=true)}

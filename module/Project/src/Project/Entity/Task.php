@@ -3,6 +3,7 @@
 namespace Project\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="task")
@@ -41,6 +42,11 @@ class task
     protected $actualHours;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Milestone", mappedBy="tasks")
+     */
+    protected $milestone;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Comment")
      * @ORM\JoinTable(name="task_comment",
      *      joinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id")},
@@ -48,6 +54,12 @@ class task
      * )
      */
     protected $comments;
+    
+    public function __construct()
+    {
+        $this->milestone = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
     
     public function getId()
     {
@@ -84,6 +96,11 @@ class task
         return $this->actualHours;
     }
 
+    public function getMilestone()
+    {
+        return $this->milestone->first();
+    }
+    
     public function getComments()
     {
         return $this->comments;
@@ -128,6 +145,12 @@ class task
     public function setActualHours($actualHours)
     {
         $this->actualHours = $actualHours;
+        return $this;
+    }
+    
+    public function setMilestone($milestone)
+    {
+        $this->milestone = $milestone;
         return $this;
     }
     
