@@ -274,4 +274,56 @@ CREATE TABLE milestone_task (
   )
 ) ENGINE=InnoDB;
 
+ 
+--  STORED PROCEDURES 
 
+CREATE PROCEDURE project_recalc(proj_id Integer(11))
+  NO SQL
+begin
+
+  declare m_count int;
+  declare m_completed int;
+  
+  set m_count = (select count(id) from milestone where project_id = proj_id);
+  set m_completed = (select count(id) from milestone where project_id = proj_id and status_id = 4);
+  
+  update
+    project
+  set
+    milestone_count = m_count,
+    milestone_completed = m_completed
+  where
+    id = proj_id; 
+  
+end
+
+-- TRIGGERS
+
+CREATE TRIGGER milestone_insert
+  AFTER INSERT
+  ON milestone FOR EACH ROW
+begin
+
+ call project_recalc(new.project_id);
+  
+end
+/
+CREATE TRIGGER milestone_update
+  AFTER UPDATE
+  ON milestone FOR EACH ROW
+begin
+
+  call project_recalc(new.project_id);
+  call project_recalc(old.project_id);
+  
+end
+/
+CREATE TRIGGER milestone_delete
+  AFTER DELETE
+  ON milestone FOR EACH ROW
+begin
+
+  call project_recalc(old.project_id);
+   
+end
+/
