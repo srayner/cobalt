@@ -60,6 +60,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Cobalt\Controller\Index'    => 'Cobalt\Controller\IndexController',
+            'Cobalt\Controller\Domain'   => 'Cobalt\Controller\DomainController',
         ),
         'factories' => array(
             'Cobalt\Controller\Computer' => function(ControllerManager $cm) {
@@ -115,8 +116,10 @@ return array(
     // Service manger configuration.
     'service_manager' => array(
         'invokables' => array(
-            'Cobalt\User'     => 'Cobalt\Entity\User',
-            'Cobalt\Computer' => 'Cobalt\Entity\Computer',
+            'Cobalt\User'      => 'Cobalt\Entity\User',
+            'Cobalt\Computer'  => 'Cobalt\Entity\Computer',
+            'WhoIsService'     => 'Cobalt\Service\WhoIsService',
+            
         ),
         'factories' => array(
             'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
