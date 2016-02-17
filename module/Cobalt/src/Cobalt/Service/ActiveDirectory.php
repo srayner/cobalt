@@ -47,6 +47,11 @@ class ActiveDirectory {
                 if (array_key_exists('telephonenumber', $item)){
                     $user->setExtensionNumber($item['telephonenumber'][0]);
                 }
+                
+                if (array_key_exists('mobile', $item)){
+                    $user->setMobileNumber($item['mobile'][0]);
+                }
+                
                 if (array_key_exists('displayname', $item)){
                     $user->setDisplayName($item['displayname'][0]);
                 }

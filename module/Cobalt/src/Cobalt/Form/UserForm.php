@@ -18,6 +18,7 @@ class UserForm extends HorizontalForm
              ->addText('email', 'Email Address')
              ->addText('telephoneNumber', 'Telephone Number')
              ->addText('extensionNumber', 'Extension Number')
+             ->addText('mobileNumber', 'Mobile Number')
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }

@@ -96,5 +96,22 @@ class UserFilter extends InputFilter
             ),
         ));
         
+        // Mobile
+        $this->add(array(
+            'name'       => 'mobileNumber',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 64,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
     }
 }

@@ -34,6 +34,9 @@ class User
     /** @ORM\Column(type="string", name="extension_number") */
     protected $extensionNumber;
     
+    /** @ORM\Column(type="string", name="mobile_number") */
+    protected $mobileNumber;
+    
     /** @ORM\Column(type="string", name="display_name") */
     protected $displayName;
     
@@ -90,6 +93,11 @@ class User
         return $this->extensionNumber;
     }
 
+    public function getMobileNumber()
+    {
+        return $this->mobileNumber;
+    }
+    
     public function getDisplayName()
     {
         return $this->displayName;
@@ -164,6 +172,12 @@ class User
         return $this;
     }
 
+    public function setMobileNumber($mobileNumber)
+    {
+        $this->mobileNumber = $mobileNumber;
+        return $this;
+    }
+    
     public function setDisplayName($displayName)
     {
         $this->displayName = $displayName;
