@@ -113,15 +113,18 @@ class User
         return $this->office;
     }
 
-    public function getCompany() {
+    public function getCompany()
+    {
         return $this->company;
     }
 
-    public function getDepartment() {
+    public function getDepartment()
+    {
         return $this->department;
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -196,17 +199,20 @@ class User
         return $this;
     }
 
-    public function setCompany($company) {
+    public function setCompany($company)
+    {
         $this->company = $company;
         return $this;
     }
 
-    public function setDepartment($department) {
+    public function setDepartment($department)
+    {
         $this->department = $department;
         return $this;
     }
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
         return $this;
     }
@@ -216,7 +222,4 @@ class User
         $this->photoFilename = $photoFilename;
         return $this;
     }
-
-
-    
 }

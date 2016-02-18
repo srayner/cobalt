@@ -45,17 +45,17 @@ class Domain
     /** @ORM\Column(type="string") */
     protected $registrant;
     
-    /** @ORM\Column(type="string") */
-    protected $registrant_type;
+    /** @ORM\Column(type="string", name="registrant_type") */
+    protected $registrantType;
     
-    /** @ORM\Column(type="string") */
-    protected $registrant_address;
+    /** @ORM\Column(type="string", name="registrant_address") */
+    protected $registrantAddress;
     
     /** @ORM\Column(type="string") */
     protected $registrar;
     
-    /** @ORM\Column(type="string") */
-    protected $registrar_url;
+    /** @ORM\Column(type="string", name="registrant_url) */
+    protected $registrarUrl;
     
     public function getId()
     {
@@ -87,7 +87,8 @@ class Domain
         return $this->changed;
     }
 
-    public function getExpires() {
+    public function getExpires()
+    {
         return $this->expires;
     }
 
@@ -121,14 +122,14 @@ class Domain
         return $this->registrant;
     }
 
-    public function getRegistrant_type()
+    public function getRegistrantType()
     {
-        return $this->registrant_type;
+        return $this->registrantType;
     }
 
-    public function getRegistrant_address()
+    public function getRegistrantAddress()
     {
-        return $this->registrant_address;
+        return $this->registrantAddress;
     }
 
     public function getRegistrar()
@@ -136,9 +137,9 @@ class Domain
         return $this->registrar;
     }
 
-    public function getRegistrar_url()
+    public function getRegistrarUrl()
     {
-        return $this->registrar_url;
+        return $this->registrarUrl;
     }
 
     public function setId($id)
@@ -219,15 +220,15 @@ class Domain
         return $this;
     }
 
-    public function setRegistrant_type($registrant_type)
+    public function setRegistrantType($registrantType)
     {
-        $this->registrant_type = $registrant_type;
+        $this->registrantType = $registrantType;
         return $this;
     }
 
-    public function setRegistrant_address($registrant_address)
+    public function setRegistrantAddress($registrantAddress)
     {
-        $this->registrant_address = $registrant_address;
+        $this->registrantAddress = $registrantAddress;
         return $this;
     }
 
@@ -237,12 +238,9 @@ class Domain
         return $this;
     }
 
-    public function setRegistrar_url($registrar_url)
+    public function setRegistrarUrl($registrarUrl)
     {
-        $this->registrar_url = $registrar_url;
+        $this->registrarUrl = $registrarUrl;
         return $this;
     }
-
-
 }
-

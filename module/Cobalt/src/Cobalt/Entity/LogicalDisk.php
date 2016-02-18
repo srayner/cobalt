@@ -38,48 +38,48 @@ class LogicalDisk
     protected $freeSpace;
     
     public function getId()
-            {
+    {
         return $this->id;
     }
 
     public function getComputer()
-            {
+    {
         return $this->computer;
     }
 
     public function getDeviceId()
-            {
+    {
         return $this->deviceId;
     }
 
     public function getDescription()
-            {
+    {
         return $this->description;
     }
 
     public function getFileSystem()
-            {
+    {
         return $this->fileSystem;
     }
 
     public function getCapacity()
-            {
+    {
         return $this->capacity;
     }
 
     public function getFreeSpace()
-            {
+    {
         return $this->freeSpace;
     }
 
     public function setId($id)
-            {
+    {
         $this->id = $id;
         return $this;
     }
 
     public function setComputer($computer)
-            {
+    {
         $this->computer = $computer;
         return $this;
     }
@@ -116,47 +116,35 @@ class LogicalDisk
 
     public function freeSpaceText()
     {
-        if ($this->capacity == 0)
-        {
+        if ($this->capacity == 0) {
             return '';
-        }
-        else
-        {
+        } else {
             $value = ($this->freeSpace / $this->capacity)*100;
             return round($value, 0, PHP_ROUND_HALF_UP);
-            
         }
     }
     
     public function freeSpacePercent()
     {
-        if ($this->capacity == 0)
-        {
+        if ($this->capacity == 0) {
             return null;
-        }
-        else
-        {
+        } else {
             return ($this->freeSpace / $this->capacity)*100;
-            
         }
     }
     
     public function freeSpaceClass()
     {
-        
         $free = $this->freeSpacePercent();
         
-            $result = 'progress-bar-success';
-            if ($free < 33) {
-                $result = 'progress-bar-warning';
-            }
-            if ($free < 25) {
-                $result = 'progress-bar-danger';
-            }
-        
+        $result = 'progress-bar-success';
+        if ($free < 33) {
+            $result = 'progress-bar-warning';
+        }
+        if ($free < 25) {
+            $result = 'progress-bar-danger';
+        }
         
         return $result;
     }
-
 }
-
