@@ -60,14 +60,18 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Cobalt\Controller\Index'    => 'Cobalt\Controller\IndexController',
-            'Cobalt\Controller\Domain'   => 'Cobalt\Controller\DomainController',
         ),
         'factories' => array(
             'Cobalt\Controller\Computer' => function(ControllerManager $cm) {
                 $sm = $cm->getServiceLocator();
                 $service = $sm->get('Cobalt\ComputerService');
                 return new Controller\ComputerController($service);
-            },
+            },  
+            'Cobalt\Controller\Domain' => function(ControllerManager $cm) {
+                $sm = $cm->getServiceLocator();
+                $service = $sm->get('Cobalt\DomainService');
+                return new Controller\DomainController($service);
+            },  
             'Cobalt\Controller\User' => function(ControllerManager $cm) {
                 $sm = $cm->getServiceLocator();
                 $service = $sm->get('Cobalt\UserService');
@@ -118,12 +122,15 @@ return array(
         'invokables' => array(
             'Cobalt\User'      => 'Cobalt\Entity\User',
             'Cobalt\Computer'  => 'Cobalt\Entity\Computer',
+            'Cobalt\Domain'    => 'Cobalt\Entity\Domain',
             'WhoIsService'     => 'Cobalt\Service\WhoIsService',
             
         ),
         'factories' => array(
             'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
             'Cobalt\WMIService'             => 'Cobalt\Service\WMIServiceFactory',
+            'Cobalt\DomainForm'             => 'Cobalt\Form\DomainFormFactory',
+            'Cobalt\DomainService'          => 'Cobalt\Service\DomainServiceFactory',
             'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
             'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',

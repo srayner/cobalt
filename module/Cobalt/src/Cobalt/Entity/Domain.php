@@ -2,11 +2,18 @@
 
 namespace Cobalt\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity
+  * @ORM\Table(name="domain")
+  */
 class Domain
 {
-    /** @ORM\Entity
-      * @ORM\Table(name="domain")
-      */
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */  
     protected $id;
     
     /** @ORM\Column(type="string", name="domain_name") */
@@ -54,7 +61,7 @@ class Domain
     /** @ORM\Column(type="string") */
     protected $registrar;
     
-    /** @ORM\Column(type="string", name="registrant_url) */
+    /** @ORM\Column(type="string", name="registrar_url") */
     protected $registrarUrl;
     
     public function getId()
