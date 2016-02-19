@@ -127,6 +127,11 @@ return array(
                     ),
                 ),
             ),
+            array(
+                'label' => '<i class="fa fa-cloud"></i> Domains',
+                'route' => 'cobalt/default',
+                'controller' => 'domain',
+            ),
         ),
     ),
     
