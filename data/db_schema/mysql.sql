@@ -59,6 +59,30 @@ CREATE TABLE logical_disk (
   )
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Domain table
+CREATE TABLE domain (
+  id                 Integer(11) NOT NULL AUTO_INCREMENT,
+  domain_name        NVarChar(256),
+  description        NVarChar(128),
+  status             NVarChar(128),
+  created            Date,
+  changed            Date,
+  expires            Date,
+  sponsor            NVarChar(128),
+  referer            NVarChar(128),
+  handle             NVarChar(128),
+  source             NVarChar(128),
+  dnssec             NVarChar(128),
+  registrant         NVarChar(128),
+  registrant_type    NVarChar(128),
+  registrant_address Text,
+  registrar          NVarChar(128),
+  registrar_url      NVarChar(256),
+  PRIMARY KEY (
+    id
+  )
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- User table
 CREATE TABLE user (
   user_id Integer NOT NULL AUTO_INCREMENT,
