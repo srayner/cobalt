@@ -53,23 +53,49 @@ class DomainController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $domain = $this->service->findById($id);
+        return new ViewModel(array(
+            'domain' => $domain,
+        ));
+    }
+    
+    public function refreshAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $domain = $this->service->findById($id);
         $whois = $this->getServiceLocator()->get('WhoisService');
         $result = $whois->lookup($domain->getName());
         
         $domainResult = $result['regrinfo'];
         $registryResult = $result['regyinfo'];
         
-        $keys = array_keys($domainResult);
+        //die(var_dump($registryResult['registrar']));
         
-        $created = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['created']);
-        $changed = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['changed']);
-        $expires = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['expires']);
+        if (array_key_exists('registrar', $registryResult)) {
+            $domain->setRegistrar($registryResult['registrar']);
+        }
         
-        $domain->setCreated($created);
-        $domain->setChanged($changed);
-        $domain->setExpires($expires);
+        if (array_key_exists('domain', $domainResult)) {
+            
+            if (array_key_exists('created', $domainResult['domain'])) {
+                $created = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['created']);
+                $domain->setCreated($created);
+            }
+            
+            if (array_key_exists('changed', $domainResult['domain'])) {
+                $changed = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['changed']);
+                $domain->setChanged($changed);
+            }
+            
+            if (array_key_exists('expires', $domainResult['domain'])) {
+                $expires = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['expires']);
+                $domain->setExpires($expires);
+            }
+        }
+        
         $this->service->persist($domain);
         
-        die('ok');
+        return $this->redirect()->toRoute('cobalt/default', array('controller' => 'domain'));
+        
+        
     }
 }

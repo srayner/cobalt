@@ -1,0 +1,110 @@
+
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Domain Details</h1>
+        <hr>
+            
+        <i class="fa fa-cloud fa-3x pull-left"></i>
+        <h4><?php echo $this->domain->getName(); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'edit', 'id' => $this->domain->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'delete', 'id' => $this->domain->getId())); ?>"><i class="fa fa-remove"></i></a>
+        </p>
+        
+    
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"       role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#registrant"             aria-controls="os"         role="tab" data-toggle="tab">Registrar</a></li>
+            <li role="presentation"><a href="#registrar"              aria-controls="milestones" role="tab" data-toggle="tab">Registrant</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="milestones" role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Domain Name</th>
+                                    <td><?php echo $this->domain->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Name Servers</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Created</th>
+                                    <td>
+                                        <?php if ($this->domain->getCreated()) {
+                                            echo $this->domain->getCreated()->format('d/m/Y');
+                                        } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Changed</th>
+                                    <td>
+                                        <?php if ($this->domain->getChanged()) {
+                                            echo $this->domain->getChanged()->format('d/m/Y');
+                                        } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Expires</th>
+                                    <td>
+                                        <?php if ($this->domain->getExpires()) {
+                                            echo $this->domain->getExpires()->format('d/m/Y');
+                                        } ?>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Registrar tab -->
+            <div role="tabpanel" class="tab-pane" id="registrar">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Registrant tab -->
+            <div role="tabpanel" class="tab-pane" id="registrant">
+                <table class="table">
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                No history to show yet.
+            </div>
+        </div>
+    </div>
+
+</div>
