@@ -44,7 +44,11 @@
                                 </tr>
                                 <tr>
                                     <th>Status</th>
-                                    <td></td>
+                                    <td>
+                                        <?php foreach($this->domain->getStatuses() as $status):?>
+                                        <?php echo $status->getStatus();?>
+                                        <?php endforeach;?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Created</th>

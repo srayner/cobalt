@@ -22,7 +22,7 @@
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'detail', 'id' => $domain->getId()));?>">
                             <?php echo $domain->getName();?></a></td>
                         <td><?php echo $domain->getRegistrar();?></td>
-                        <td><?php echo $domain->getStatus();?></td>
+                        <td></td>
                         <td>
                             <?php if ($domain->getExpires()) {
                                     echo $domain->getExpires()->format('d/m/Y');

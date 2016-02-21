@@ -120,10 +120,11 @@ return array(
     // Service manger configuration.
     'service_manager' => array(
         'invokables' => array(
-            'Cobalt\User'      => 'Cobalt\Entity\User',
-            'Cobalt\Computer'  => 'Cobalt\Entity\Computer',
-            'Cobalt\Domain'    => 'Cobalt\Entity\Domain',
-            'WhoIsService'     => 'Cobalt\Service\WhoIsService',
+            'Cobalt\User'         => 'Cobalt\Entity\User',
+            'Cobalt\Computer'     => 'Cobalt\Entity\Computer',
+            'Cobalt\Domain'       => 'Cobalt\Entity\Domain',
+            'Cobalt\DomainStatus' => 'Cobalt\Entity\DomainStatus',
+            'WhoIsService'        => 'Cobalt\Service\WhoIsService',
             
         ),
         'factories' => array(

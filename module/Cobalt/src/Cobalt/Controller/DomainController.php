@@ -86,6 +86,27 @@ class DomainController extends AbstractController
         
         if (array_key_exists('domain', $domainResult)) {
             
+            if (array_key_exists('status', $domainResult['domain'])) {
+                $domain->getStatuses()->clear();
+                foreach($domainResult['domain']['status'] as $s)
+                {
+                    $status = $this->getServiceLocator()->get('Cobalt\DomainStatus');
+                    $status->setStatus($s);
+                    $status->setDomain($domain);
+                    $domain->addStatus($status);
+                    $this->service->persist($status);
+                }
+                
+            }
+            
+            if (array_key_exists('nserver', $domainResult['domain'])) {
+                $domain->getNameServers()->clear;
+                foreach($domainResult['domain']['nserver'] as $key=>$value) {
+                    
+                }
+                
+            }
+            
             if (array_key_exists('created', $domainResult['domain'])) {
                 $created = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['created']);
                 $domain->setCreated($created);

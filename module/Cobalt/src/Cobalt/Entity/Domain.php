@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="domain")
@@ -22,8 +23,19 @@ class Domain
     /** @ORM\Column(type="string") */
     protected $description;
     
-    /** @ORM\Column(type="string") */
-    protected $status;
+    /**
+     * @ORM\ManyToMany(targetEntity="NameServer")
+     * @ORM\JoinTable(name="domain_name_server",
+     *      joinColumns={@ORM\JoinColumn(name="domain_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="name_server_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    protected $nameSevers;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="DomainStatus", mappedBy="domain")
+     */
+    protected $statuses;
     
     /** @ORM\Column(type="date") */
     protected $created;
@@ -64,6 +76,12 @@ class Domain
     /** @ORM\Column(type="string", name="registrar_url") */
     protected $registrarUrl;
     
+    public function __construct()
+    {
+        $this->nameServers = new ArrayCollection();
+        $this->statuses = new ArrayCollection();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -79,9 +97,14 @@ class Domain
         return $this->description;
     }
 
-    public function getStatus()
+    public function getNameServers()
     {
-        return $this->status;
+        return $this->nameServers;
+    }
+    
+    public function getStatuses()
+    {
+        return $this->statuses;
     }
 
     public function getCreated()
@@ -167,9 +190,15 @@ class Domain
         return $this;
     }
 
-    public function setStatus($status)
+    public function addNameServer($nameServer)
     {
-        $this->status = $status;
+        $this->nameServers[] = $nameServer;
+        return $this;
+    }
+    
+    public function addStatus($status)
+    {
+        $this->statuses[] = $status;
         return $this;
     }
 
