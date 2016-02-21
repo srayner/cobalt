@@ -23,7 +23,11 @@
                             <?php echo $domain->getName();?></a></td>
                         <td><?php echo $domain->getRegistrant();?></td>
                         <td><?php echo $domain->getStatus();?></td>
-                        <td><?php echo $domain->getExpires();?></td>
+                        <td>
+                            <?php if ($domain->getExpires()) {
+                                    echo $domain->getExpires()->format('Y-m-d');
+                            }?>
+                        </td>
                         <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'edit', 'id' => $domain->getId()));?>">Edit</a>
                             <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'delete', 'id' => $domain->getId()));?>">Delete</a>

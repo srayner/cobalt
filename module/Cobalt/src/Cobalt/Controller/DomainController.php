@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use DateTime;
 
 class DomainController extends AbstractController
 {
@@ -46,5 +47,29 @@ class DomainController extends AbstractController
         return new ViewModel(array(
             'form'   => $form,
         ));
+    }
+    
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $domain = $this->service->findById($id);
+        $whois = $this->getServiceLocator()->get('WhoisService');
+        $result = $whois->lookup($domain->getName());
+        
+        $domainResult = $result['regrinfo'];
+        $registryResult = $result['regyinfo'];
+        
+        $keys = array_keys($domainResult);
+        
+        $created = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['created']);
+        $changed = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['changed']);
+        $expires = DateTime::CreateFromFormat('Y-m-d', $domainResult['domain']['expires']);
+        
+        $domain->setCreated($created);
+        $domain->setChanged($changed);
+        $domain->setExpires($expires);
+        $this->service->persist($domain);
+        
+        die('ok');
     }
 }
