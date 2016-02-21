@@ -68,10 +68,20 @@ class DomainController extends AbstractController
         $domainResult = $result['regrinfo'];
         $registryResult = $result['regyinfo'];
         
-        //die(var_dump($registryResult['registrar']));
-        
         if (array_key_exists('registrar', $registryResult)) {
             $domain->setRegistrar($registryResult['registrar']);
+        }
+        
+        if (array_key_exists('owner', $domainResult)) {
+            
+            if (array_key_exists('organization', $domainResult['owner'])) {
+                $domain->setRegistrant($domainResult['owner']['organization']);
+            }
+            
+            if (array_key_exists('address', $domainResult['owner'])) {
+                $domain->setRegistrantAddress($this->getMultiValue($domainResult['owner']['address']));
+            }
+            
         }
         
         if (array_key_exists('domain', $domainResult)) {
@@ -119,5 +129,18 @@ class DomainController extends AbstractController
         return new ViewModel(array(
             'domain' => $domain
         ));
+    }
+    
+    private function getMultiValue(array $lines)
+    {
+        $result = '';
+        foreach($lines as $line) {
+            if (strpos($line, 'Data validation:') !== false) {
+                break;
+            } else {
+                $result .= $line . '<br>';
+            }
+        }
+        return $result;
     }
 }
