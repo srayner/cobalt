@@ -91,6 +91,7 @@ CREATE TABLE user (
   sam_account_name    NVarChar(128),
   user_principal_name NVarChar(128),
   telephone_number    NVarChar(32),
+  mobile_number       NVarchar(32),
   extension_number    NVarChar(32),
   display_name        NVarChar(64),
   description         NVarChar(128),
