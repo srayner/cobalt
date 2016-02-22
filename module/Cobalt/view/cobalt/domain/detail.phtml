@@ -88,7 +88,14 @@
                     <div class="col-lg-6">
                         <table class="table table-condensed table-bordered">
                             <tbody>
-                                
+                                <tr>
+                                    <th>Registrar</th>
+                                    <td><?php echo $this->domain->getRegistrar(); ?></td>                        
+                                </tr>
+                                <tr>
+                                    <th>Registrar URL</th>
+                                    <td><a href="<?php echo $this->domain->getRegistrarUrl(); ?>"><?php echo $this->domain->getRegistrarUrl(); ?></a></td>                        
+                                </tr>    
                             </tbody>
                         </table>
                     </div>
