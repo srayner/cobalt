@@ -21,7 +21,7 @@ class TaskFormFactory implements FactoryInterface
         $hydrator->addStrategy('actualHours', $nullStrategy);
         
         // Create the form.
-        $form = new TaskForm();
+        $form = new TaskForm($em);
         $form->setHydrator($hydrator);
         return $form;
     }   
