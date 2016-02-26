@@ -259,4 +259,14 @@ class IndexController extends AbstractActionController
         }
     }
     
+    public function groupAction()
+    {
+        $adService = $this->getServiceLocator()->get('Cobalt\ActiveDirectoryService');
+        $adService->getGroups();
+    
+        die('still ok');
+        
+        return array();
+    }
+    
 }

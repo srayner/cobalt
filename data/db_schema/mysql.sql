@@ -139,7 +139,8 @@ CREATE TABLE ad_group (
   display_name    NVarChar(128) COLLATE utf8_general_ci NOT NULL,
   description     Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   scope           NVarChar(12) COLLATE utf8_general_ci NOT NULL,
-  group_type      NVarChar(12) COLLATE utf8_general_ci NOT NULL, 
+  group_type      NVarChar(12) COLLATE utf8_general_ci NOT NULL,
+  sam_account_name NVarChar(20) NOT NULL,  
   PRIMARY KEY (
       id
   )

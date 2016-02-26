@@ -17,6 +17,9 @@ class AdGroup
      */
     protected $id;
     
+    /** @ORM\Column(type="string" name="sam_account_name") */
+    protected $samAccountName;
+    
     /** @ORM\Column(type="string" name="diaply_name") */
     protected $displayName;
     
@@ -33,6 +36,11 @@ class AdGroup
         return $this->id;
     }
 
+    public function getSamAccountName()
+    {
+        return $this->samAccountName;
+    }
+    
     public function getDisplayName() {
         return $this->displayName;
     }
@@ -54,6 +62,12 @@ class AdGroup
         return $this;
     }
 
+    public function setSamAccountName($samAccountName)
+    {
+        $this->samAccountName = $samAccountName;
+        return $this;
+    }
+    
     public function setDisplayName($displayName) {
         $this->displayName = $displayName;
         return $this;

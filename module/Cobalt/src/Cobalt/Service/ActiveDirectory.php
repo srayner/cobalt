@@ -14,6 +14,38 @@ class ActiveDirectory {
         $this->options = $options;
     }
     
+    public function getGroups()
+    {
+        
+        $ldap = new Ldap($this->options);
+
+        $ldap->bind();
+        
+        $result = $ldap->search('(groupType:1.2.840.113556.1.4.803:=2147483648)',
+                             $this->options['baseDn'],
+                             Ldap::SEARCH_SCOPE_SUB);
+        
+        foreach ($result as $item)
+        {
+             if ($item['samaccountname'][0] != '') {
+                // Get existing entity, or create new entity.
+                $adGroup = $adGroupService->findBySamAccountName($item['samaccountname'][0]);
+                if (!$adGroup) {
+                    $group = new AdGroup();
+                }
+            
+                // Update group properties based on values from active directory.
+                $adGroup->setSamAccountName($item['samaccountname'][0]);
+                $adGroup->setDisplayname($item['name'][0]);
+                if (array_key_exists('grouptype', $item)){
+                    $adGroup ->setGroupType($item['grouptype'][0]);
+                }
+                
+                $adGroupService->persist($adGroup);
+             }
+        }
+    }
+    
     public function getUsers($userService)
     {
         $ldap = new Ldap($this->options);
