@@ -133,6 +133,18 @@ CREATE TABLE user (
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Active Directory Group table.
+CREATE TABLE ad_group (
+  id              Integer(11) NOT NULL AUTO_INCREMENT,
+  display_name    NVarChar(128) COLLATE utf8_general_ci NOT NULL,
+  description     Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  scope           NVarChar(12) COLLATE utf8_general_ci NOT NULL,
+  group_type      NVarChar(12) COLLATE utf8_general_ci NOT NULL, 
+  PRIMARY KEY (
+      id
+  )
+) ENGINE=InnoDB ROW_FORMAT=DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Project table
 CREATE TABLE project (
   id                   Integer NOT NULL AUTO_INCREMENT,
