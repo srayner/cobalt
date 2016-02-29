@@ -25,7 +25,7 @@ class DomainService
         return $this->entityManager->getRepository($this->repository)->findAll();
     }
     
-    public function findById()
+    public function findById($id)
     {
         return $this->entityManager->find($this->repository, $id);
     }
