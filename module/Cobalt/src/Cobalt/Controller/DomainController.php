@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 use DateTime;
 
 class DomainController extends AbstractController
@@ -75,12 +76,12 @@ class DomainController extends AbstractController
                 // Persist domain.
             	$this->service->persist($domain);
                 
-                // Redirect to list of domains
-                return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'domain'
-                ));
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }     
         }
+        
+        $this->storeReferer('domain/edit');
         
         return new ViewModel(array(
              'id' => $id,
@@ -208,5 +209,21 @@ class DomainController extends AbstractController
             }
         }
         return $result;
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('domain');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('domain');
+        $referer = $session->referer;
+        return $referer;
     }
 }
