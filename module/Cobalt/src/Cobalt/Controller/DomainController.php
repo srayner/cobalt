@@ -49,6 +49,45 @@ class DomainController extends AbstractController
         ));
     }
     
+    public function editAction()
+    {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'domain',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the domain with the specified id.
+        $domain = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\DomainForm');
+        $form->bind($domain);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist domain.
+            	$this->service->persist($domain);
+                
+                // Redirect to list of domains
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'domain'
+                ));
+            }     
+        }
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
+    }
+    
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
