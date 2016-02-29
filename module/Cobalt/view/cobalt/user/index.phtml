@@ -1,6 +1,7 @@
 <?php
-    $this->headLink()->appendStylesheet('/css/datatables.css');
-    $this->headScript()->appendFile('/js/datatables.js')
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
                        ->appendFile('/js/cobalt/user/index.js');
 ?>
     
@@ -11,7 +12,7 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="users" class="display" cellspacing="0" width="100%">
+            <table id="users" class="table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>User</th>

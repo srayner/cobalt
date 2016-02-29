@@ -1,4 +1,11 @@
-<div class="row">
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/domain/index.js');
+?>
+
+    <div class="row">
         <div class="col col-md-12 title">
             
             <h1>Domains</h1>

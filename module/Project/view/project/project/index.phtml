@@ -1,6 +1,7 @@
 <?php
-    $this->headLink()->appendStylesheet('/css/datatables.css');
-    $this->headScript()->appendFile('/js/datatables.js')
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
                        ->appendFile('/js/project/project/index.js');
 ?>
 
@@ -11,7 +12,7 @@
             <hr>
         </div>
         <div class="col-md-12 title">
-            <table id="projects" class="display" cellspacing="0" width="100%">
+            <table id="projects" class="table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Name</th>
