@@ -88,15 +88,15 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-life-bouy fa-5x"></i>
+                            <i class="fa fa-cloud fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"><?php echo $this->userCount;?></div>
-                            <div>Problems!</div>
+                            <div class="huge"><?php echo $this->domainCount;?></div>
+                            <div>Domains</div>
                         </div>
                     </div>
                 </div>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'support'));?>">
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain'));?>">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right">

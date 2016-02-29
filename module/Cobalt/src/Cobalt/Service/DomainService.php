@@ -13,6 +13,13 @@ class DomainService
         $this->repository = $repository;
     }
     
+    public function count()
+    {
+        return $this->entityManager
+                    ->createQuery('SELECT COUNT(d.id) FROM Cobalt\Entity\Domain d')
+                    ->getSingleScalarResult();
+    }
+    
     public function findAll()
     {
         return $this->entityManager->getRepository($this->repository)->findAll();

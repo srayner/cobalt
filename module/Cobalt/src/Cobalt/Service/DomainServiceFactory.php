@@ -10,7 +10,7 @@ class DomainServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $service = new ComputerService($entityManager, 'Cobalt\Entity\Domain');
+        $service = new DomainService($entityManager, 'Cobalt\Entity\Domain');
         return $service;
     }   
 }
