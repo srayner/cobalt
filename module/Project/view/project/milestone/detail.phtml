@@ -70,7 +70,11 @@
                                     </tr>
                                     <tr>
                                         <th>Project</th>
-                                        <td><?php echo $this->milestone->getProject()->getName();?></td>
+                                        <td><a href="<?php echo $this->url('project/default', array(
+                                            'controller' => 'project',
+                                            'action'     => 'detail',
+                                            'id'         => $this->milestone->getProject()->getId()
+                                                ));?>"><?php echo $this->milestone->getProject()->getName();?></a></td>
                                     </tr>
                                     <tr>
                                         <th>Scheduled Start Date</th>
