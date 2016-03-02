@@ -4,7 +4,7 @@ Cobalt Application
 Work in progress. Cobalt is an ICT asset management and project management system.
 It can connect to Active Directory via an LDAP connector to extract user and computer information.
 
-Currently it can manage; users, computers and projects and domains.
+Currently it can manage; users, computers, projects and domains.
 
 Users
 -----
@@ -13,10 +13,10 @@ from Microsoft Active Directory.
 
 Computers
 ---------
-You can add, edit, search view and delete computers. Various properties including
+You can add, edit, search, view and delete computers. Various properties including
 operating system and logical disk information can be extracted from computers using WMI.
 You can get remote access to computers via remote desktop or VNC. There is also easy
-access to C$ share for browsing the hard drive of the remote computer.
+access to the computer's C$ share for browsing the hard drive of the remote computer.
 
 Projects
 --------
@@ -28,6 +28,8 @@ Domains
 Domain names can be added, and then information can be extracted from the WhoIs database
 for DNS records.
 
+Development Roadmap
+-------------------
 It is planned to add capabilities to manage all sorts of ICT assets, such as; servers, workstations,
 tablets, mobile phones, printers and photo-copiers.
 
