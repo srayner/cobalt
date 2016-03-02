@@ -69,15 +69,13 @@ class ProjectController extends AbstractController
                 // Create information message.
                 $this->flashMessenger()->addMessage('Project ' . $project->getName() . ' successfully updated');
 
-                // Redirect to list of projects
-                return $this->redirect()->toRoute('project/default', array(
-                    'controller' => 'project',
-                    'action' => 'detail',
-                    'id' => $id
-                ));
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }
         }
 		
+        $this->storeReferer('project/edit');
+        
 	// Render (or re-render) the form.
 	return new ViewModel(array(
             'id' => $id,
