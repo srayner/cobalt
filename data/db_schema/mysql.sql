@@ -376,9 +376,9 @@ begin
   declare t_count int;
   declare t_completed int;
   
-  set t_count = (select count(id) from milestone_task where milestone_id = mile_id);
+  set t_count = (select count(*) from milestone_task where milestone_id = mile_id);
   set t_completed = (SELECT count(milestone_id) FROM milestone_task inner join task
-                     on task.id = milestone_task.task_id WHERE milestone_id = 2 and status_id = 4);
+                     on task.id = milestone_task.task_id WHERE milestone_id = mile_id and status_id = 4);
   
   update
     milestone
@@ -425,18 +425,27 @@ CREATE TRIGGER milestone_task_insert
   ON milestone_task FOR EACH ROW
 begin
 
- call milestone_recalc(new.milestone_id);
-  
+  call milestone_recalc(new.milestone_id);
+   
 end//
 
-CREATE TRIGGER milestone_task_update
-  AFTER UPDATE
-  ON milestone_task FOR EACH ROW
+CREATE TRIGGER task_update AFTER UPDATE ON task FOR EACH ROW
 begin
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE mile_id integer;
+  DECLARE cur CURSOR FOR SELECT milestone_id FROM milestone_task WHERE task_id = new.id;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
-  call milestone_recalc(new.milestone_id);
-  call milestone_recalc(old.milestone_id);
-  
+  OPEN cur;
+  read_loop: LOOP
+    FETCH cur INTO mile_id;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    CALL milestone_recalc(mile_id);
+  END LOOP;
+  CLOSE cur;
+
 end//
 
 CREATE TRIGGER milestone_task_delete
