@@ -16,7 +16,7 @@ class UserFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 128,
                     ),
                 ),
             ),
@@ -25,9 +25,9 @@ class UserFilter extends InputFilter
             ),
         ));
         
-        // Office
+        // Display name
         $this->add(array(
-            'name'       => 'office',
+            'name'       => 'displayName',
             'required'   => true,
             'validators' => array(
                 array(
@@ -50,7 +50,7 @@ class UserFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 256,
                     ),
                 ),
                 array(
@@ -70,7 +70,7 @@ class UserFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 32,
                     ),
                 ),
             ),
@@ -87,7 +87,7 @@ class UserFilter extends InputFilter
                 array(
                     'name'    => 'StringLength',
                     'options' => array(
-                        'max' => 64,
+                        'max' => 32,
                     ),
                 ),
             ),
@@ -99,6 +99,57 @@ class UserFilter extends InputFilter
         // Mobile
         $this->add(array(
             'name'       => 'mobileNumber',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 32,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
+        // Company
+        $this->add(array(
+            'name'       => 'company',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 64,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
+        // Department
+        $this->add(array(
+            'name'       => 'department',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 64,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
+        // Title
+        $this->add(array(
+            'name'       => 'title',
             'required'   => false,
             'validators' => array(
                 array(
