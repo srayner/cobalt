@@ -179,6 +179,10 @@ class TaskController extends AbstractController
     private function retrieveReferer()
     {
         $session = new Container('task');
-        return $session->referer;
+        $referer = $session->referer;
+        if (strpos($referer, 'milestone/detail') !== false) {
+            $referer .= '#tasks';
+        }
+        return $referer;
     }
 }
