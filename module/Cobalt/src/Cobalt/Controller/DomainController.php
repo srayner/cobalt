@@ -108,8 +108,6 @@ class DomainController extends AbstractController
         $domainResult = $result['regrinfo'];
         $registryResult = $result['regyinfo'];
         
-        die(var_dump($result['rawdata']));
-        
         if (array_key_exists('registrar', $registryResult)) {
             $domain->setRegistrar($registryResult['registrar']);
         }
