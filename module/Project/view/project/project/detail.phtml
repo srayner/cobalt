@@ -184,7 +184,12 @@
                 
                 <!-- Tasks tab -->
                 <div role="tabpanel" class="tab-pane" id="tasks">
-                    Tasks
+                    Tasks<br>
+                    <a class="btn btn-default btn-sm" href="<?php echo $this->url('project/default', array(
+                                'controller' => 'project',
+                                'action' => 'task',
+                                'id' => $this->project->getId()
+                            )) ?>">Add Task</a>
                 </div>
                 
                 <!-- History tab -->

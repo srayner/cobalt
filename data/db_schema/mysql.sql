@@ -346,7 +346,15 @@ CREATE TABLE milestone_task (
   )
 ) ENGINE=InnoDB;
 
- 
+CREATE TABLE project_task (
+  project_id Integer NOT NULL,
+  task_id    Integer NOT NULL,
+  PRIMARY KEY (
+    project_id,
+    task_id
+  )
+) ENGINE=InnoDB;
+
 --  STORED PROCEDURES 
 
 CREATE PROCEDURE project_recalc(proj_id Integer(11))
