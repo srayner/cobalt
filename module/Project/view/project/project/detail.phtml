@@ -49,10 +49,10 @@
                 </div>
                 <div class="proj-progress-body">
                     <div class="proj-progress-left">
-                        <span>0</span>   
+                        <span><?php echo $this->project->getTaskCount();?></span>   
                     </div>
                     <div class="proj-progress-right proj-progress-blue">
-                        <span>0</span>
+                        <span><?php echo $this->project->getTaskCompleted();?></span>
                         <i class="fa fa-check"></i>
                     </div>
                 </div>

@@ -71,6 +71,12 @@ class Project
     /** @ORM\Column(type="integer", name="milestone_completed") */
     protected $milestoneCompleted;
     
+    /** @ORM\Column(type="integer", name="task_count") */
+    protected $taskCount;
+    
+    /** @ORM\Column(type="integer", name="task_completed") */
+    protected $taskCompleted;
+    
     /**
      * @ORM\OneToMany(targetEntity="Milestone", mappedBy="project")
      */
@@ -183,6 +189,16 @@ class Project
     public function getMilestoneCompleted()
     {
         return $this->milestoneCompleted;
+    }
+    
+    public function getTaskCount()
+    {
+        return $this->taskCount;
+    }
+
+    public function getTaskCompleted()
+    {
+        return $this->taskCompleted;
     }
     
     public function getMilestones()
@@ -305,6 +321,18 @@ class Project
     public function setMilestoneCompleted($milestoneCompleted)
     {
         $this->milestoneCompleted = $milestoneCompleted;
+        return $this;
+    }
+    
+    public function setTaskCount($taskCount)
+    {
+        $this->taskCount = $taskCount;
+        return $this;
+    }
+
+    public function setTaskCompleted($taskCompleted)
+    {
+        $this->taskCompleted = $taskCompleted;
         return $this;
     }
     

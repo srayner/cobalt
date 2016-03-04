@@ -195,6 +195,8 @@ class ProjectController extends AbstractController
             }
         }
         
+        $this->storeReferer('project/task');
+        
         return new ViewModel(array(
             'form' => $form,
             'projectId' => $id
@@ -213,6 +215,10 @@ class ProjectController extends AbstractController
     private function retrieveReferer()
     {
         $session = new Container('project');
-        return $session->referer;
+        $referer = $session->referer;
+        if (strpos($referer, 'project/detail') !== false) {
+            $referer .= '#tasks';
+        }
+        return $referer;
     }
 }
