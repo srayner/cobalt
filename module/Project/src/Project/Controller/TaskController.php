@@ -82,16 +82,12 @@ class TaskController extends AbstractController
             {
                 $this->service->persist($task);
 
-                // Redirect.
-                return $this->redirect()->toRoute('project/default',
-                    array('controller' => 'milestone',
-                          'action' => 'detail',
-                          'id' => $task->getMilestone()->getId()
-		    ),
-                    array('fragment' => 'tasks')
-                );
+                // Redirect to original referrer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }
         }
+        
+        $this->storeReferer('task/edit');
         
         return new ViewModel(array(
             'id' => $id,
@@ -180,6 +176,9 @@ class TaskController extends AbstractController
     {
         $session = new Container('task');
         $referer = $session->referer;
+        if (strpos($referer, 'project/detail') !== false) {
+            $referer .= '#tasks';
+        }
         if (strpos($referer, 'milestone/detail') !== false) {
             $referer .= '#tasks';
         }

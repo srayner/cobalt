@@ -310,7 +310,7 @@ class Project
     
     public function addTask($task)
     {
-        $this->comments[] = $task;
+        $this->tasks[] = $task;
     }
     
     public function addComment($comment)

@@ -189,15 +189,9 @@ class ProjectController extends AbstractController
                 $em->persist($project);
                 $em->flush();
                 
-                // Redirect.
-                return $this->redirect()->toRoute('project/default',
-                    array(
-                        'controller' => 'project',
-                        'action' => 'detail',
-                        'id' => $id,
-                    ),
-                    array('fragment' => 'tasks')
-		);
+                // Redirect to original referrer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            
             }
         }
         
