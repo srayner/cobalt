@@ -479,7 +479,7 @@ begin
   END LOOP;
   CLOSE mile_cur;
  
-  done = FALSE;
+  SET done = FALSE;
   OPEN proj_cur;
   read_loop2: LOOP
     FETCH proj_cur INTO proj_id;
