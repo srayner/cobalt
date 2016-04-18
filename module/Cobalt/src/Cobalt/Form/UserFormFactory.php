@@ -11,7 +11,7 @@ class UserFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $form = new UserForm();
+        $form = new UserForm($em);
         $form->setInputFilter(new UserFilter());
         $form->setHydrator(new DoctrineHydrator($em));
         return $form;

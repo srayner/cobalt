@@ -58,6 +58,12 @@ class User
     /** @ORM\Column(type="string", name="photo_filename") */
     protected $photoFilename;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="reports_to_id", referencedColumnName="user_id")
+     */
+    protected $reportsTo;
+    
     public function getId()
     {
         return $this->id;
@@ -133,6 +139,11 @@ class User
         return $this->photoFilename;
     }
 
+    public function getReportsTo()
+    {
+        return $this->reportsTo;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -220,6 +231,12 @@ class User
     public function setPhotoFilename($photoFilename)
     {
         $this->photoFilename = $photoFilename;
+        return $this;
+    }
+    
+    public function setReportsTo($user)
+    {
+        $this->reportsTo = $user;
         return $this;
     }
 }
