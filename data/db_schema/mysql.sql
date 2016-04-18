@@ -169,6 +169,8 @@ CREATE TABLE project (
   created_time         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   milestone_count      Integer,
   milestone_completed  Integer,
+  task_count           Integer,
+  task_completed       Integer,
   PRIMARY KEY (
       id
   )
@@ -347,7 +349,15 @@ CREATE TABLE milestone_task (
   )
 ) ENGINE=InnoDB;
 
- 
+CREATE TABLE project_task (
+  project_id Integer NOT NULL,
+  task_id    Integer NOT NULL,
+  PRIMARY KEY (
+    project_id,
+    task_id
+  )
+) ENGINE=InnoDB;
+
 --  STORED PROCEDURES 
 
 CREATE PROCEDURE project_recalc(proj_id Integer(11))
@@ -369,6 +379,27 @@ begin
     id = proj_id; 
   
 end
+
+CREATE PROCEDURE project_recalc_tasks(proj_id Integer(11))
+  NO SQL
+begin
+
+  declare t_count int;
+  declare t_completed int;
+  
+  set t_count = (select count(*) from project_task where project_id = proj_id);
+  set t_completed = (SELECT count(project_id) FROM project_task inner join task
+                     on task.id = project_task.task_id WHERE project_id = proj_id and status_id = 4);
+  
+  update
+    project
+  set
+    task_count = t_count,
+    task_completed = t_completed
+  where
+    id = proj_id; 
+  
+end//
 
 CREATE PROCEDURE milestone_recalc(mile_id Integer(11))
   NO SQL
@@ -434,18 +465,31 @@ CREATE TRIGGER task_update AFTER UPDATE ON task FOR EACH ROW
 begin
   DECLARE done INT DEFAULT FALSE;
   DECLARE mile_id integer;
-  DECLARE cur CURSOR FOR SELECT milestone_id FROM milestone_task WHERE task_id = new.id;
+  DECLARE proj_id integer;
+  DECLARE mile_cur CURSOR FOR SELECT milestone_id FROM milestone_task WHERE task_id = new.id;
+  DECLARE proj_cur CURSOR FOR SELECT project_id FROM project_task WHERE task_id = new.id;
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
-  OPEN cur;
-  read_loop: LOOP
-    FETCH cur INTO mile_id;
+  OPEN mile_cur;
+  read_loop1: LOOP
+    FETCH mile_cur INTO mile_id;
     IF done THEN
-      LEAVE read_loop;
+      LEAVE read_loop1;
     END IF;
     CALL milestone_recalc(mile_id);
   END LOOP;
-  CLOSE cur;
+  CLOSE mile_cur;
+ 
+  SET done = FALSE;
+  OPEN proj_cur;
+  read_loop2: LOOP
+    FETCH proj_cur INTO proj_id;
+    IF done THEN
+      LEAVE read_loop2;
+    END IF;
+    CALL project_recalc_tasks(proj_id);
+  END LOOP;
+  CLOSE proj_cur;
 
 end//
 
@@ -455,5 +499,23 @@ CREATE TRIGGER milestone_task_delete
 begin
 
   call milestone_recalc(old.milestone_id);
+   
+end//
+
+CREATE TRIGGER project_task_insert
+  AFTER INSERT
+  ON project_task FOR EACH ROW
+begin
+
+  call project_recalc_tasks(new.project_id);
+   
+end//
+
+CREATE TRIGGER project_task_delete
+  AFTER DELETE
+  ON project_task FOR EACH ROW
+begin
+
+  call project_recalc_tasks(old.project_id);
    
 end//

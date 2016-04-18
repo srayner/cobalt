@@ -164,6 +164,45 @@ class ProjectController extends AbstractController
         ));
     }
     
+    public function taskAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $form = $this->getServiceLocator()->get('Project\TaskForm');
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $task = $this->getServiceLocator()->get('task');
+            $form->bind($task);
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Persist.
+                $em = $this->service->getEntityManager();
+                $task->setStatus($em->getReference('Project\Entity\TaskStatus', 1));
+                $task->setPriority($em->getReference('Project\Entity\TaskPriority', 1));
+                if ($id) {
+                    $project = $em->find('Project\Entity\Project', $id);
+                    $project->addTask($task);
+                }
+                $em->persist($task);
+                $em->persist($project);
+                $em->flush();
+                
+                // Redirect to original referrer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            
+            }
+        }
+        
+        $this->storeReferer('project/task');
+        
+        return new ViewModel(array(
+            'form' => $form,
+            'projectId' => $id
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
@@ -176,6 +215,10 @@ class ProjectController extends AbstractController
     private function retrieveReferer()
     {
         $session = new Container('project');
-        return $session->referer;
+        $referer = $session->referer;
+        if (strpos($referer, 'project/detail') !== false) {
+            $referer .= '#tasks';
+        }
+        return $referer;
     }
 }

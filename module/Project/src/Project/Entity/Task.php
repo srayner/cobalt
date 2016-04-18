@@ -42,6 +42,11 @@ class task
     protected $actualHours;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Project", mappedBy="tasks")
+     */
+    protected $project;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Milestone", mappedBy="tasks")
      */
     protected $milestone;

@@ -49,10 +49,10 @@
                 </div>
                 <div class="proj-progress-body">
                     <div class="proj-progress-left">
-                        <span>0</span>   
+                        <span><?php echo $this->project->getTaskCount();?></span>   
                     </div>
                     <div class="proj-progress-right proj-progress-blue">
-                        <span>0</span>
+                        <span><?php echo $this->project->getTaskCompleted();?></span>
                         <i class="fa fa-check"></i>
                     </div>
                 </div>
@@ -184,7 +184,44 @@
                 
                 <!-- Tasks tab -->
                 <div role="tabpanel" class="tab-pane" id="tasks">
-                    Tasks
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    
+                                </tr>
+                                <?php foreach ($this->project->getTasks() as $task): ?>
+                                <tr>
+                                    <td style="width: 1%;" nowrap>
+                                        <a href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'edit', 'id' => $task->getId()));?>">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'delete', 'id' => $task->getId()));?>">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="<?php echo $this->url('project/default', array('controller' => 'task', 'action' => 'detail', 'id' => $task->getId()));?>">
+                                        <?php echo $task->getName(); ?>
+                                    </a></td>
+                                    <td><?php echo $task->getDescription(); ?></td>
+                                    <td><?php echo $task->getStatus()->getName(); ?></td>
+                                    <td><?php echo $task->getPriority()->getName(); ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+                    </div>
+                
+                    <a class="btn btn-default btn-sm" href="<?php echo $this->url('project/default', array(
+                                'controller' => 'project',
+                                'action' => 'task',
+                                'id' => $this->project->getId()
+                            )) ?>">Add Task</a>
                 </div>
                 
                 <!-- History tab -->
