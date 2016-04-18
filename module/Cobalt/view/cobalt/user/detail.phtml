@@ -1,3 +1,9 @@
+<?php
+$this->inlineScript()->appendFile(
+    '/js/draw.js',
+    'text/javascript'
+);
+?>
 
 <div class="row">
     <div class="col-md-12 title">
@@ -94,8 +100,8 @@
                 </div>
                 
                 <!-- Relationships tab -->
-                <div role="tabpanel" class="tab-pane" id="relationships">
-                    Relationships               
+                <div role="tabpanel" class="tab-pane" id="relationships" style="height: 500px;">
+                    <canvas id="myCanvas"></canvas>               
                 </div>
                 
  
