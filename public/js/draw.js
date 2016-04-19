@@ -3,11 +3,14 @@ var originX, originY;
 var mousePos;
 var downPos;
 var isMouseDown = false;
+var container = document.getElementById("canvas-container");
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 
-canvas.style.width ='100%';
-canvas.style.height="100%";
+//canvas.style.width ='100%';
+//canvas.style.height="100%";
+console.log('width: ' + canvas.clientWidth);
+console.log('height: ' + container.offsetHeight);
 //canvas.width  = canvas.offsetWidth;
 //canvas.height = canvas.offsetHeight;
 
