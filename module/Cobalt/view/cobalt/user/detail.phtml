@@ -1,8 +1,7 @@
 <?php
-$this->inlineScript()->appendFile(
-    '/js/draw.js',
-    'text/javascript'
-);
+$this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
+                     ->appendFile('/js/cobalt/user/detail.js', 'text/javascript');
+
 ?>
 
 <div class="row">
@@ -22,7 +21,7 @@ $this->inlineScript()->appendFile(
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab">Information</a></li>
-                <li role="presentation"><a href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
+                <li role="presentation"><a id="r" href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
                 <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
             </ul>
         
@@ -101,7 +100,7 @@ $this->inlineScript()->appendFile(
                 
                 <!-- Relationships tab -->
                 <div role="tabpanel" class="tab-pane" id="relationships">
-                     <div id="canvas-container" style="height: 400px; width: 800px; background-color: #ff0000; overflow:hidden">
+                     <div id="canvas-container" style="height: 400px; width: 100%; overflow:hidden">
                          
                          <canvas id="myCanvas" width="800" height="400"></canvas>  
                     </div>
@@ -120,4 +119,5 @@ $this->inlineScript()->appendFile(
         
     </div>
 </div>
+<br>
     

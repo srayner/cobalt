@@ -7,12 +7,15 @@ var container = document.getElementById("canvas-container");
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 
-//canvas.style.width ='100%';
-//canvas.style.height="100%";
-console.log('width: ' + canvas.clientWidth);
-console.log('height: ' + container.offsetHeight);
-//canvas.width  = canvas.offsetWidth;
-//canvas.height = canvas.offsetHeight;
+var imageLoadedCount = 0;
+
+canvas.style.width ='100%';
+canvas.style.height="100%";
+
+container.addEventListener('show', resizeCanvas, false);
+
+window.addEventListener('resize', resizeCanvas, false);
+resizeCanvas();
 
 originX = 100;
 originY = 250;
@@ -159,38 +162,57 @@ function drawLineDown(x,y,l)
 
 function redraw()
 {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    //drawCoords();
+    console.log('width: ' + container.clientWidth);
+    console.log('height: ' + container.clientHeight);
     
-    curX=originX;
-    curY=originY;
-    drawLineRight(curX,curY,100, "");
-    drawEntity(curX - 100,curY,"Steve Bloggs", userImage);
-    curX = curX + 100;
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
     
-    curX=originX+100;
-    curY=originY;
-    drawArcRightUp(curX,curY,20);
-    drawLineUp(curX, curY, 60);
-    drawArcUpRight(curX,curY,20);
-    drawLineRight(curX,curY,200, "Uses");
-    drawEntity(curX, curY, "pc-7248", computerImage);
+    if (container.clientWidth > 0) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //drawCoords();
     
-    curX=originX+100;
-    curY=originY;
-    drawLineRight(curX,curY,40, "");
-    drawLineRight(curX,curY,200, "Reports to");
-    drawEntity(curX,curY,"Bill Fence", userImage);
-    
-    curX=originX+100;
-    curY=originY;
-    drawArcRightDown(curX,curY,20);
-    drawLineDown(curX, curY, 60);
-    drawArcDownRight(curX,curY,20);
-    drawLineRight(curX,curY,200, "Works in");
-    drawEntity(curX, curY, "Research & Development", departmentImage);
+        curX=originX;
+        curY=originY;
+        drawLineRight(curX,curY,100, "");
+        drawEntity(curX - 100,curY,"Steve Bloggs", userImage);
+        curX = curX + 100;
+
+        curX=originX+100;
+        curY=originY;
+        drawArcRightUp(curX,curY,20);
+        drawLineUp(curX, curY, 60);
+        drawArcUpRight(curX,curY,20);
+        drawLineRight(curX,curY,200, "Uses");
+        drawEntity(curX, curY, "pc-7248", computerImage);
+
+        curX=originX+100;
+        curY=originY;
+        drawLineRight(curX,curY,40, "");
+        drawLineRight(curX,curY,200, "Reports to");
+        drawEntity(curX,curY,"Bill Fence", userImage);
+
+        curX=originX+100;
+        curY=originY;
+        drawArcRightDown(curX,curY,20);
+        drawLineDown(curX, curY, 60);
+        drawArcDownRight(curX,curY,20);
+        drawLineRight(curX,curY,200, "Works in");
+        drawEntity(curX, curY, "Research & Development", departmentImage);
+    }
 }
 
+function resizeCanvas() {
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
+    console.log('width: ' + container.clientWidth);
+    console.log('height: ' + container.clientHeight);
+    
+    originX = Math.round(canvas.width/2);
+    originY = Math.round(canvas.height/2);
+    
+    redraw();
+}
 
 
 canvas.addEventListener('mousedown', function(event) {
