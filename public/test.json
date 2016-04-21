@@ -1,3 +1,10 @@
-{
-    "name": "srayner"
-}
+[
+    {
+        "name": "Steve Rayner",
+        "type": "user"
+    },
+    {
+        "name": "Bill Fence",
+        "type": "user"
+    }
+]

@@ -3,11 +3,15 @@ var originX, originY;
 var mousePos;
 var downPos;
 var isMouseDown = false;
+var nodes = [];
 var container = document.getElementById("canvas-container");
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 
 var imageLoadedCount = 0;
+
+// Get the data from the server.
+loadData();
 
 canvas.style.width ='100%';
 canvas.style.height="100%";
@@ -38,7 +42,13 @@ departmentImage.onload = function(){
 };
 departmentImage.src = "/img/group.png";
 
-
+function loadData() {
+    $.getJSON("/test.json", function(result){
+        $.each(result, function(i, field){
+            nodes.push(field);
+        });
+    });
+}
 
 function getMousePos(event) {
     var rect = canvas.getBoundingClientRect();
