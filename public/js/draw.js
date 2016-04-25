@@ -193,37 +193,32 @@ function redraw()
         drawEntity(curX - 100,curY, entity[0].name, userImage);
         curX = curX + 100;
 
+        th = (relationships.length - 1) * 100;
+        ch = (th / 2);
         for (var i = 0; i < relationships.length; ++i) {
         
-            curX=originX+100;
-            curY=originY + (i *100);
-            drawLineRight(curX,curY,200, relationships[i].label);
+            curX = originX+100;
+            curY = originY;
+            console.log(ch);
+            if (ch > 0) {
+                drawArcRightDown(curX, curY, 20);
+                drawLineDown(curX, curY, ch - 40);
+                drawArcDownRight(curX, curY, 20);
+            }
+            if (ch < 0) {
+                drawArcRightUp(curX, curY, 20);
+                drawLineUp(curX, curY, Math.abs(ch) - 40);
+                drawArcUpRight(curX, curY, 20);
+            }
+            if (ch === 0) {
+                console.log('here');
+                drawLineRight(curX, curY, 40, '');
+            }
+            drawLineRight(curX, curY, 200, relationships[i].label);
             e = findEntity(relationships[i].to);
             drawEntity(curX, curY, e.name, images[e.type]);
+            ch = ch - 100;
         };
-        /*
-        curX=originX+100;
-        curY=originY;
-        drawArcRightUp(curX,curY,20);
-        drawLineUp(curX, curY, 60);
-        drawArcUpRight(curX,curY,20);
-        drawLineRight(curX,curY,200, "Uses");
-        drawEntity(curX, curY, "pc-7248", computerImage);
-
-        curX=originX+100;
-        curY=originY;
-        drawLineRight(curX,curY,40, "");
-        drawLineRight(curX,curY,200, "Reports to");
-        drawEntity(curX,curY,"Bill Fence", userImage);
-
-        curX=originX+100;
-        curY=originY;
-        drawArcRightDown(curX,curY,20);
-        drawLineDown(curX, curY, 60);
-        drawArcDownRight(curX,curY,20);
-        drawLineRight(curX,curY,200, "Works in");
-        drawEntity(curX, curY, "Research & Development", departmentImage);
-        */
     }
 }
 
