@@ -31,7 +31,7 @@
         {
             "id"   : "r2",
             "from" : "u100",
-            "to"   : "d200",
+            "to"   : "d10",
             "label": "Works In"
         },
         {

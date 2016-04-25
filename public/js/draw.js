@@ -3,11 +3,11 @@ var originX, originY;
 var mousePos;
 var downPos;
 var isMouseDown = false;
-var nodes = [];
+var data = [];
 var container = document.getElementById("canvas-container");
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
-
+var dataLoaded = false;
 var imageLoadedCount = 0;
 
 // Get the data from the server.
@@ -45,8 +45,9 @@ departmentImage.src = "/img/group.png";
 function loadData() {
     $.getJSON("/test.json", function(result){
         $.each(result, function(i, field){
-            nodes.push(field);
+            data.push(field);
         });
+        dataLoaded = true;
     });
 }
 
@@ -178,16 +179,29 @@ function redraw()
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
     
-    if (container.clientWidth > 0) {
+    if ((container.clientWidth > 0) && (dataLoaded)) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         //drawCoords();
     
+        entity = data[0].nodes;
+        relationships = data[1].relationships;
+        images = {computer : computerImage, user: userImage, department: departmentImage };
+        
         curX=originX;
         curY=originY;
         drawLineRight(curX,curY,100, "");
-        drawEntity(curX - 100,curY,"Steve Bloggs", userImage);
+        drawEntity(curX - 100,curY, entity[0].name, userImage);
         curX = curX + 100;
 
+        for (var i = 0; i < relationships.length; ++i) {
+        
+            curX=originX+100;
+            curY=originY + (i *100);
+            drawLineRight(curX,curY,200, relationships[i].label);
+            e = findEntity(relationships[i].to);
+            drawEntity(curX, curY, e.name, images[e.type]);
+        };
+        /*
         curX=originX+100;
         curY=originY;
         drawArcRightUp(curX,curY,20);
@@ -209,7 +223,20 @@ function redraw()
         drawArcDownRight(curX,curY,20);
         drawLineRight(curX,curY,200, "Works in");
         drawEntity(curX, curY, "Research & Development", departmentImage);
+        */
     }
+}
+
+function findEntity(id)
+{
+    var result;
+    entities = data[0].nodes;
+    for(var i=0; i< entities.length; ++i) {
+        if (entities[i].id === id ) {
+            result = i;
+        }
+    }
+    return entities[result];
 }
 
 function resizeCanvas() {
