@@ -43,7 +43,7 @@ departmentImage.onload = function(){
 departmentImage.src = "/img/group.png";
 
 function loadData() {
-    $.getJSON("/test.json", function(result){
+    $.getJSON("/test2.json", function(result){
         $.each(result, function(i, field){
             data.push(field);
         });

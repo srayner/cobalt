@@ -1,0 +1,33 @@
+[
+    { "nodes" : [
+        {
+            "id"  : "u100",
+            "name": "Steve Rayner",
+            "type": "user"
+        },
+        {
+            "id"  : "d10",
+            "name": "ICT Department",
+            "type": "department"
+        },
+        {
+            "id"  : "c50",
+            "name": "PC-LA200",
+            "type": "computer"
+        }
+    ]},
+    { "relationships" : [
+        {
+            "id"   : "r1",
+            "from" : "u100",
+            "to"   : "d10",
+            "label": "Works in"
+        },
+        {
+            "id"   : "r3",
+            "from" : "u100",
+            "to"   : "c50",
+            "label": "Uses"
+        }
+    ]}
+]
