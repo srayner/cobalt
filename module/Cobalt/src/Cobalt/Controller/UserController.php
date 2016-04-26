@@ -133,4 +133,19 @@ class UserController extends AbstractController
             'user' => $user
         ));
     }
+    
+    public function relationshipsAction()
+    {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        $user = $this->service->findById($id);
+        
+        return array(
+            'user' => $user
+        );
+    }
 }

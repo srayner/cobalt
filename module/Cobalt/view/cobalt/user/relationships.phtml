@@ -1,0 +1,25 @@
+<?php
+
+  $node = new StdClass();
+  $node->id = 'u' . $this->user->getId();
+  $node->name = $this->user->getDisplayName();#
+  $node->type = 'user';
+  
+  $nodes = new StdClass();
+  $nodes->nodes = array($node);
+  
+  $relationship = new StdClass();
+  $relationship->id = 'r1';
+  $relationship->from = $node->id;
+  $relationship->to = $node->id;
+  $relationship->label = 'Is the same as';
+  
+  $relationships = new stdClass();
+  $relationships->relationships = array($relationship);
+  
+  $result = json_encode(array($nodes, $relationships));
+  
+  echo $result;
+  die;   
+?>
+
