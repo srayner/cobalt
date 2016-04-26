@@ -146,7 +146,7 @@ function drawLineRight(x,y,l, txt)
     context.font = "14px Arial";
     context.textAlign="center";
     context.fillStyle = "#aaaaaa";
-    context.fillText(txt,x+(l/2),y-6);
+    context.fillText(txt,x+(l/2)-20,y-6);
     
     curX = curX + l;
 }
@@ -187,7 +187,7 @@ function redraw()
         relationships = data[1].relationships;
         images = {computer : computerImage, user: userImage, department: departmentImage };
         
-        curX=originX;
+        curX=originX - 170;
         curY=originY;
         drawLineRight(curX,curY,100, "");
         drawEntity(curX - 100,curY, entity[0].name, userImage);
@@ -197,7 +197,7 @@ function redraw()
         ch = (th / 2);
         for (var i = 0; i < relationships.length; ++i) {
         
-            curX = originX+100;
+            curX = originX - 170 + 100;
             curY = originY;
             console.log(ch);
             if (ch > 0) {
