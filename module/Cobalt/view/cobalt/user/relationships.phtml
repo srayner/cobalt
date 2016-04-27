@@ -13,8 +13,25 @@
   $nodes = new StdClass();
   $nodes->nodes = array($node, $manager);
   
+  $i = 0;
+  foreach($this->user->getComputers() as $computer)
+  {
+      $n = new StdClass();
+      $n->id = 'c' . $computer->getId();
+      $n->name = $computer->getHostname();
+      $n->type = 'computer';
+      array_push($node->nodes, $n);
+      
+      $r = $r1 = new StdClass();
+      $r1->id = 'r' . $i;
+      $i++;
+      $r1->from = $node->id;
+      $r1->to = $n->id;
+      $r1->label = 'Uses';
+  }
+  
   $r1 = new StdClass();
-  $r1->id = 'r1';
+  $r1->id = 'r100';
   $r1->from = $node->id;
   $r1->to = $node->id;
   $r1->label = 'Is the same as';

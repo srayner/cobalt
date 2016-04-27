@@ -147,6 +147,16 @@ CREATE TABLE ad_group (
   )
 ) ENGINE=InnoDB ROW_FORMAT=DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- User computer relationship table
+CREATE TABLE user_computer (
+  user_id     Integer NOT NULL,
+  computer_id Integer NOT NULL, 
+  PRIMARY KEY (
+      user_id, 
+      computer_id
+  )
+) ENGINE=InnoDB;
+
 -- Project table
 CREATE TABLE project (
   id                   Integer NOT NULL AUTO_INCREMENT,

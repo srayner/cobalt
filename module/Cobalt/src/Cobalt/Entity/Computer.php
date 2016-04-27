@@ -64,9 +64,20 @@ class Computer
      */
     protected $logicalDisks;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="computers")
+     */
+    protected $users;
+    
     public function __construct()
     {
         $this->logicalDisks = new ArrayCollection();
+        $this->users = new \ArrayCollection();
+    }
+    
+    public function addUser($user)
+    {
+        $this->users[] = $user;
     }
     
     public function getId()

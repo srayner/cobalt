@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="user")
@@ -63,6 +64,23 @@ class User
      * @ORM\JoinColumn(name="reports_to_id", referencedColumnName="user_id")
      */
     protected $reportsTo;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
+     * @ORM\JoinTable(name="user_computer")
+     */
+    protected $computers;
+    
+    public function __construct()
+    {
+        $this->computers = new ArrayCollection();
+    }
+    
+    public function addComputer($computer)
+    {
+        $computer->addUser($this);
+        $this->computers[] = $computer;
+    }
     
     public function getId()
     {
@@ -142,6 +160,11 @@ class User
     public function getReportsTo()
     {
         return $this->reportsTo;
+    }
+
+    public function getComputers()
+    {
+        return $this->computers;
     }
     
     public function setId($id)
