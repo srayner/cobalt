@@ -143,9 +143,11 @@ class UserController extends AbstractController
         }
         
         $user = $this->service->findById($id);
+        $reportsTo = $user->getReportsTo();
         
         return array(
-            'user' => $user
+            'user' => $user,
+            'reportsTo' => $reportsTo
         );
     }
 }

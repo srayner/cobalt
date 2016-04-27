@@ -46,6 +46,7 @@ function loadData() {
     var id = window.location.pathname.split('/')[3];
     console.log(id);
     $.getJSON("/user/relationships/" +id, function(result){
+        
         $.each(result, function(i, field){
             data.push(field);
         });

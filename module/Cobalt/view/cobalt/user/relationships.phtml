@@ -5,17 +5,28 @@
   $node->name = $this->user->getDisplayName();#
   $node->type = 'user';
   
-  $nodes = new StdClass();
-  $nodes->nodes = array($node);
+  $manager = new StdClass();
+  $manager->id = 'u' . $this->reportsTo->getId();
+  $manager->name = $this->reportsTo->getDisplayName();#
+  $manager->type = 'user';
   
-  $relationship = new StdClass();
-  $relationship->id = 'r1';
-  $relationship->from = $node->id;
-  $relationship->to = $node->id;
-  $relationship->label = 'Is the same as';
+  $nodes = new StdClass();
+  $nodes->nodes = array($node, $manager);
+  
+  $r1 = new StdClass();
+  $r1->id = 'r1';
+  $r1->from = $node->id;
+  $r1->to = $node->id;
+  $r1->label = 'Is the same as';
+  
+  $r2 = new StdClass();
+  $r2->id = 'r2';
+  $r2->from = $node->id;
+  $r2->to = $manager->id;
+  $r2->label = 'Reports To';
   
   $relationships = new stdClass();
-  $relationships->relationships = array($relationship);
+  $relationships->relationships = array($r1, $r2);
   
   $result = json_encode(array($nodes, $relationships));
   
