@@ -4,6 +4,7 @@ namespace Cobalt\Service;
 
 use Zend\Ldap\Ldap;
 use Cobalt\Entity\User;
+use DateTime;
 
 class ActiveDirectory {
     
@@ -102,6 +103,19 @@ class ActiveDirectory {
                 }
                 if (array_key_exists('title', $item)){
                     $user->setTitle($item['title'][0]);
+                }
+                
+                if (array_key_exists('badpasswordtime', $item)){
+                    $fileTime = $item['badpasswordtime'][0];
+                    $winSecs       = (int)($fileTime / 10000000); // divide by 10 000 000 to get seconds
+                    $unixTimestamp = ($winSecs - 11644473600); // 1.1.1600 -> 1.1.1970 difference in seconds
+                    $d = new DateTime();
+                    $d->setTimestamp($unixTimestamp);
+                    $user->setBadPasswordTime($d);
+                }
+                
+                if (array_key_exists('badpwdcount', $item)){
+                    $user->setBadPasswordCount($item['badpwdcount'][0]);
                 }
 
                 // Persist new data.

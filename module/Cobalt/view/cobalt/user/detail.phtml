@@ -21,6 +21,7 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab">Information</a></li>
+                <li role="presentation"><a id="r" href="#account" aria-controls="account" role="tab" data-toggle="tab">Active Directory</a></li>
                 <li role="presentation"><a id="r" href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
                 <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
             </ul>
@@ -95,6 +96,29 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                         </div>
                         
                         
+                    </div>
+                </div>
+                
+                <!-- Account tab -->
+                <div role="tabpanel" class="tab-pane" id="account">
+                    <div class="row">
+                        
+                        <div class="col-lg-6">
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 35%;">Bad Password Count</th>
+                                        <td><?php echo $this->user->getBadPasswordCount(); ?></td>
+                                    </tr>
+                                     <tr>
+                                        <th style="width: 35%;">Bad Password Time</th>
+                                        <td><?php echo date_format($this->user->getBadPasswordTime(), 'd/m/Y H:i:s'); ?></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+               
                     </div>
                 </div>
                 

@@ -56,6 +56,12 @@ class User
     /** @ORM\Column(type="string") */
     protected $title;
     
+    /** @ORM\Column(type="datetime", name="bad_password_time") */
+    protected $badPasswordTime;
+    
+    /** @ORM\Column(type="integer", name="bad_password_count") */
+    protected $badPasswordCount;
+    
     /** @ORM\Column(type="string", name="photo_filename") */
     protected $photoFilename;
     
@@ -67,7 +73,10 @@ class User
     
     /**
      * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
-     * @ORM\JoinTable(name="user_computer")
+     * @ORM\JoinTable(name="user_computer",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="computer_id", referencedColumnName="computer_id")}
+     * )
      */
     protected $computers;
     
@@ -150,6 +159,16 @@ class User
     public function getTitle()
     {
         return $this->title;
+    }
+    
+    public function getBadPasswordTime()
+    {
+        return $this->badPasswordTime;
+    }
+
+    public function getBadPasswordCount()
+    {
+        return $this->badPasswordCount;
     }
 
     public function getPhotoFilename()
@@ -251,6 +270,18 @@ class User
         return $this;
     }
 
+    public function setBadPasswordTime($badPasswordTime)
+    {
+        $this->badPasswordTime = $badPasswordTime;
+        return $this;
+    }
+
+    public function setBadPasswordCount($badPasswordCount)
+    {
+        $this->badPasswordCount = $badPasswordCount;
+        return $this;
+    }
+    
     public function setPhotoFilename($photoFilename)
     {
         $this->photoFilename = $photoFilename;
