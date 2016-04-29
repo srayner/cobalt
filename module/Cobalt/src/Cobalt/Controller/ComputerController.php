@@ -106,6 +106,22 @@ class ComputerController extends AbstractController
     public function scanAction()
     {
         $form = $this->getServiceLocator()->get('Cobalt\HostnameForm');
+        
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Redirect to list of computers
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'computer'
+                )); 
+            }
+     
+        }
+        
         return new ViewModel(array(
             'form' => $form
         ));
