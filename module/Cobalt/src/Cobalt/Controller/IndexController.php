@@ -80,6 +80,8 @@ class IndexController extends AbstractActionController
         
         $WbemLocator = new \COM ("WbemScripting.SWbemLocator");
         $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
+        
+        
         $WbemServices->Security_->ImpersonationLevel = 3;
         
         $computerResults = $WbemServices->ExecQuery("Select * from Win32_ComputerSystem");

@@ -5,7 +5,7 @@ namespace Cobalt\Service;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ActiveDirectoryServiceFactory implements FactoryInterface
+class WMIServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

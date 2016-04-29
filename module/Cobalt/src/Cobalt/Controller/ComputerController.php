@@ -114,6 +114,11 @@ class ComputerController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
+                $hostname = $form->getInputFilter()->getValue('hostname');
+                $wmiService = $this->getServiceLocator()->get('Cobalt\WMIService');
+                $computerService = $this->getServiceLocator()->get('Cobalt\ComputerService');
+                $wmiService->scanComputer($hostname, $computerService);
+                
                 // Redirect to list of computers
                 return $this->redirect()->toRoute('cobalt/default', array(
                     'controller' => 'computer'

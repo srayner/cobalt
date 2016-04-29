@@ -16,8 +16,8 @@ class WMI
     public function ScanComputer($host, $service)
     {
         // Get credentials.
-        $account = $options['account'];
-        $password = $options['password'];
+        $account = $this->options['account'];
+        $password = $this->options['password'];
         
         $WbemLocator = new \COM ("WbemScripting.SWbemLocator");
         $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
