@@ -1,0 +1,17 @@
+
+    <div class="row">
+        <div class="col-md-12 title">
+            <h1>Scan computer</h1>
+            <hr>
+        </div>
+        <div class="col-md-6">
+
+            <?php
+                $form = $this->form;
+                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'scan')));
+                $form->prepare();
+
+                echo $this->form($form);
+            ?>
+        </div>
+    </div>

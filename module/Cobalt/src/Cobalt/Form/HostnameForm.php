@@ -2,36 +2,19 @@
 
 namespace Cobalt\Form;
 
-use Zend\Form\Form;
-
-class HostNameForm extends Form
+class HostnameForm extends HorizontalForm
 {
     public function __construct()
     {
         parent::__construct();
         
+        $this->compact = true;
+        $this->labelWidth = 3;
+        $this->controlWidth = 9;
+        
         $this->setAttribute('class', 'form-horizontal');
         
-        $this->add(array(
-                'name' => 'hostname',
-                'options' => array(
-                        'label' => 'Hostname',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-        
-        // Submit button.
-        $this->add(array(
-            'name' => 'submit',
-            'attributes' => array(
-                'type'  => 'submit',
-                'value' => 'Add',
-                'id'    => 'submitbutton',
-                'class' => 'btn btn-primary'
-            ),
-        ));
+        $this->addText('hostname', 'Hostname')
+             ->addButton('submit', 'Scan', 'btn-primary'); 
     }
 }
