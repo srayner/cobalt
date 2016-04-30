@@ -137,6 +137,7 @@ return array(
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
             'Cobalt\HostnameForm'           => 'Cobalt\Form\HostnameFormFactory',
             'Cobalt\UserService'            => 'Cobalt\Service\UserServiceFactory',
+            'Cobalt\HistoryService'         => 'Cobalt\Service\HistoryServiceFactory'
         ),    
     ),
     

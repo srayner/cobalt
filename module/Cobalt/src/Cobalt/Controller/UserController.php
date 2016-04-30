@@ -29,8 +29,17 @@ class UserController extends AbstractController
             return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
         }
         
+        // Grab a copy of the user object.
+        $user = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(1, $user->getID());
+        
+        // Return the object and history to the view.
         return new ViewModel(array(
-            'user' => $this->service->findById($id)
+            'user'    => $user,
+            'history' => $history
         ));
     }
     

@@ -370,6 +370,15 @@ CREATE TABLE project_task (
   )
 ) ENGINE=InnoDB;
 
+CREATE TABLE history (
+    id        Integer      NOT NULL AUTO_INCREMENT,
+    table_id  Integer      NOT NULL,
+    row_id    Integer      NOT NULL,
+    date_time Timestamp    NOT NULL,
+    what      Varchar(120) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
 --  STORED PROCEDURES 
 
 CREATE PROCEDURE project_recalc(proj_id Integer(11))
@@ -531,3 +540,18 @@ begin
   call project_recalc_tasks(old.project_id);
    
 end//
+
+create trigger user_history_insert after insert on user
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (1, new.user_id, now(), 'User created.');
+end//
+
+create trigger user_history_update after update on user
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (1, new.user_id, now(), 'User modified.');
+end//
+
