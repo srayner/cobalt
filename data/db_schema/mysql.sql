@@ -555,3 +555,17 @@ begin
   values (1, new.user_id, now(), 'User modified.');
 end//
 
+create trigger computer_history_insert after insert on computer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (2, new.computer_id, now(), 'Computer created.');
+end//
+
+create trigger computer_history_update after update on computer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (2, new.computer_id, now(), 'Computer modified.');
+end//
+

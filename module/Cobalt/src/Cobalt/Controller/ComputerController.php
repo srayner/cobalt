@@ -22,8 +22,17 @@ class ComputerController extends AbstractController
              ));
         }
 
+        // Get a copy of the computer object.
+        $computer = $this->service->findById($id);
+                
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(2, $computer->getID());
+        
+        // Pass the object and the history to the view.
         return new ViewModel(array(
-            'computer' => $this->service->findById($id)
+            'computer' => $computer,
+            'history' => $history
         ));
     }
     

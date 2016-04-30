@@ -72,7 +72,7 @@ class Computer
     public function __construct()
     {
         $this->logicalDisks = new ArrayCollection();
-        $this->users = new \ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     public function addUser($user)

@@ -161,19 +161,37 @@ function formatBytes($bytes, $precision = 2) {
 
             <!-- History tab -->
             <div role="tabpanel" class="tab-pane" id="history">
-                No history to show yet.
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->history as $history): ?>
+                        <tr>
+                            <td><?php echo $history->getTime()->format('d/m/Y h:i:s');?></td>
+                            <td><?php echo $history->getEvent(); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
+    
         </div>
-    </div>
-
-    <div class="col-lg-12">
-        <br>
-        <a class="btn btn-primary" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
-        <a class="btn btn-danger" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
-        <a class="btn btn-default" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
-        <a class="btn btn-default" href="/assets/index/disk/<?php echo $computer->getHostname();?>">Scan Drives</a>
-        <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
+        
     </div>
 </div>
+
+<div class="col-lg-12">
+    <br>
+    <a class="btn btn-primary" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
+    <a class="btn btn-danger" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
+    <a class="btn btn-default" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
+    <a class="btn btn-default" href="/assets/index/disk/<?php echo $computer->getHostname();?>">Scan Drives</a>
+    <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
+</div>
+
 
 
