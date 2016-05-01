@@ -225,9 +225,6 @@ class ProjectController extends AbstractController
     {
         $session = new Container('project');
         $referer = $session->referer;
-        if (strpos($referer, 'project/detail') !== false) {
-            $referer .= '#tasks';
-        }
         return $referer;
     }
 }
