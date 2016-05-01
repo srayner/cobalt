@@ -30,13 +30,13 @@ class ProjectController extends AbstractController
                 // Persist.
                 $this->service->persist($project);
                 
-                // Redirect.
-                return $this->redirect()->toRoute('project/default', array(
-                    'controller' => 'project'
-		));
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }
             
         }
+        
+        $this->storeReferer('project/add');
         
         return new ViewModel(array(
             'form' => $form
