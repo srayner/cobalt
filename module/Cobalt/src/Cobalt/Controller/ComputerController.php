@@ -112,6 +112,34 @@ class ComputerController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
+        }
+        
+        $computer = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($computer);
+            }
+
+            // Redirect to list of users
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
+         }
+         
+        return new ViewModel(array(
+            'computer' => $computer
+        ));
+    }
+    
     public function scanAction()
     {
         $form = $this->getServiceLocator()->get('Cobalt\HostnameForm');
