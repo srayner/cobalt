@@ -121,8 +121,17 @@ class ProjectController extends AbstractController
              ));
         }
         
+        // Get a copy of the object.
+        $project = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(100, $project->getID());
+        
+        // Pass the obect and history to the view.
         return new ViewModel(array(
-            'project' => $this->service->findById($id)
+            'project' => $project,
+            'history' => $history 
         ));
         
     }

@@ -103,7 +103,11 @@ class Project
     public function __construct()
     {
         $this->milestones = new ArrayCollection();
-        $this->comments = new ArrayCollection();
+        $this->comments = new ArrayCollection(); 
+        $this->milestoneCount = 0;
+        $this->milestoneCompleted = 0;
+        $this->taskCount = 0;
+        $this->taskCompleted = 0;
     }
     
     public function getId()
