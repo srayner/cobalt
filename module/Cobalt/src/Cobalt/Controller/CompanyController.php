@@ -114,4 +114,13 @@ class CompanyController extends AbstractController
             'company' => $company
         ));
     }
+    
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $company = $this->service->findById($id);
+        return new ViewModel(array(
+            'company' => $company
+        ));
+    }
 }
