@@ -71,6 +71,30 @@ return array(
                 'label' => '<i class="fa fa-area-chart"></i> Dashboard',
                 'route' => 'cobalt',
              ),
+            
+            array(
+                'label' => '<i class="fa fa-building"></i> Companies',
+                'route' => 'cobalt/default',
+                'controller' => 'company',
+                'pages' => array(
+                    array(
+                        'label' => 'New Company',
+                        'controller' => 'company',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'company',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'company',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            
             array(
                 'label' => '<i class="fa fa-user"></i> Users',
                 'route' => 'cobalt/default',
