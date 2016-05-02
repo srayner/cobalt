@@ -20,6 +20,25 @@ CREATE TABLE activity (
   )
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Company table
+create table company(
+  id Integer       NOT NULL AUTO_INCREMENT,
+  name Varchar(64) NOT NULL,
+  address Text         NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Office table
+CREATE TABLE office (
+  id         Integer     NOT NULL AUTO_INCREMENT,
+  name       Varchar(64) NOT NULL,
+  address    Text            NULL,
+  company_id Integer     NOT NULL,
+  INDEX idx_office_comapny_id (company_id),
+  FOREIGN KEY (company_id)  REFERENCES office(id) ON DELETE CASCADE,
+  PRIMARY KEY (id)
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Computer table
 CREATE TABLE computer (
   computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,
