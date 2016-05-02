@@ -1,6 +1,7 @@
 <?php
 
 namespace Cobalt\Controller;
+
 use Zend\View\Model\ViewModel;
 
 class ComputerController extends AbstractController
