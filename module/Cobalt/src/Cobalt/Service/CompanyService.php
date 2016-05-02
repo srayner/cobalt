@@ -1,6 +1,6 @@
 <?php
 
-namespace Coablt\Service;
+namespace Cobalt\Service;
 
 class CompanyService
 {

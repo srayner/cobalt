@@ -1,0 +1,39 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/company/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Offices</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'add'));?>">New Company</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="companies" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->companies as $company): ?> 
+                    <tr>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'detail', 'id' => $company->getId()));?>">
+                            <?php echo $company->getName();?></a></td>
+                        <td><?php echo $company->getAddress();?></td>
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'edit', 'id' => $company->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'delete', 'id' => $company->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
