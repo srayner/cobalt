@@ -91,4 +91,27 @@ class CompanyController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $company = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($company);
+            }
+
+            // Redirect to domain index
+            return $this->redirect()->toRoute('cobalt/default',
+                array('controller' => 'company'));
+         }
+         
+        return new ViewModel(array(
+            'company' => $company
+        ));
+    }
 }
