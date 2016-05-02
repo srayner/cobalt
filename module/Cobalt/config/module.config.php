@@ -120,12 +120,13 @@ return array(
     // Service manger configuration.
     'service_manager' => array(
         'invokables' => array(
-            'Cobalt\User'         => 'Cobalt\Entity\User',
+            'Cobalt\Company'      => 'Cobalt\Entity\Company',
             'Cobalt\Computer'     => 'Cobalt\Entity\Computer',
             'Cobalt\Domain'       => 'Cobalt\Entity\Domain',
             'Cobalt\DomainStatus' => 'Cobalt\Entity\DomainStatus',
+            'Cobalt\Office'       => 'Cobalt\Entity\Office',
+            'Cobalt\User'         => 'Cobalt\Entity\User',
             'WhoIsService'        => 'Cobalt\Service\WhoIsService',
-            
         ),
         'factories' => array(
             'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
@@ -134,8 +135,10 @@ return array(
             'Cobalt\DomainService'          => 'Cobalt\Service\DomainServiceFactory',
             'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
             'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\CompanyService'         => 'Cobalt\Service\CompanyServiceFactory',
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
             'Cobalt\HostnameForm'           => 'Cobalt\Form\HostnameFormFactory',
+            'Coablt\OfficeService'          => 'Cobalt\ServiceOfficeServiceFactory',
             'Cobalt\UserService'            => 'Cobalt\Service\UserServiceFactory',
             'Cobalt\HistoryService'         => 'Cobalt\Service\HistoryServiceFactory'
         ),    
