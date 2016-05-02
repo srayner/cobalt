@@ -13,6 +13,11 @@ class OfficeService
         $this->repository = $repository;
     }
     
+    public function getEntityManager()
+    {
+        return $this->entityManager;
+    }
+    
     public function findAll()
     {
         return $this->entityManager->getRepository($this->repository)->findAll();

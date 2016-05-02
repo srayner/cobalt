@@ -17,6 +17,12 @@ class OfficeController extends AbstractController
     
     public function addAction()
     {
+        // Check we have a company id, if not redirect back to list of companies.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'company'));
+	}
+        
         // Create a new form.
         $form = $this->getServiceLocator()->get('Cobalt\OfficeForm');
          
@@ -24,30 +30,31 @@ class OfficeController extends AbstractController
         $request = $this->getRequest();
         if ($request->isPost())
         {
-            // POST, so check if valid.
-            $data = (array) $request->getPost();
-          
-            // Create a new office object.
             $office = $this->getServiceLocator()->get('Cobalt\Office');
-            
             $form->bind($office);
-            $form->setData($data);
+            $form->setData($request->getPost());
             if ($form->isValid())
             {
-          	// Persist office.
-            	$this->service->persist($office);
+                // Persist office
+          	$em = $this->service->getEntityManager();
+                $office->setCompany($em->getReference('Cobalt\Entity\Company', $id));
+                $this->service->persist($office);
                 
-            	// Redirect to list of offices
-		return $this->redirect()->toRoute('cobalt/default', array(
-		    'controller' => 'office',
-                    'action'     => 'index'
-		));
+            	// Redirect.
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'company',
+                          'action' => 'detail',
+                          'id' => $id
+		    ),
+                    array('fragment' => 'offices')
+                );
             }
         } 
         
         // If not a POST request, or invalid data, then just render the form.
         return new ViewModel(array(
-            'form'   => $form
+            'form'   => $form,
+            'companyId' => $id
         ));
         
     }

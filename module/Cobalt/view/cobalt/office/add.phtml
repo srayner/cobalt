@@ -6,7 +6,11 @@
         <div class="col-md-6">
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'office', 'action' => 'add')));
+                $form->setAttribute('action', $this->url('cobalt/default', array(
+                    'controller' => 'office',
+                    'action' => 'add',
+                    'id' => $this->companyId
+                )));
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);
