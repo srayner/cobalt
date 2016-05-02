@@ -68,7 +68,7 @@ class HorizontalForm extends Form
         return $this;
     }
     
-    protected function addTextArea($name, $label)
+    protected function addTextArea($name, $label, $rows = 4)
     {
         $element = $this->getFormFactory()->create(array(
             'name' => $name,
@@ -79,6 +79,8 @@ class HorizontalForm extends Form
                 'column-size' => "sm-$this->controlWidth"
             ),
         ));
+        
+        $element->setAttribute('rows', $rows);
         
         if ($this->compact) {
             $element->setAttribute('class', 'input-sm');

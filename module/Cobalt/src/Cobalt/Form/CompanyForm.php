@@ -13,7 +13,7 @@ class CompanyForm extends HorizontalForm
         $this->controlWidth = 8;
         
         $this->addText('name', 'Company Name')
-             ->addTextArea('address', 'Registered')
+             ->addTextArea('address', 'Registered', 5)
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }

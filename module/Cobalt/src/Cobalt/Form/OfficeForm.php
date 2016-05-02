@@ -13,7 +13,7 @@ class OfficeForm extends HorizontalForm
         $this->controlWidth = 8;
         
         $this->addText('name', 'Office Name')
-             ->addTextArea('address', 'Address')
+             ->addTextArea('address', 'Address', 5)
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }
