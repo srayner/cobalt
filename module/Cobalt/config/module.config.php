@@ -120,6 +120,8 @@ return array(
             'Cobalt\DomainForm'             => 'Cobalt\Form\DomainFormFactory',
             'Cobalt\DomainService'          => 'Cobalt\Service\DomainServiceFactory',
             'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
+            'Cobalt\CompanyForm'            => 'Cobalt\Form\CompanyFormFactory',
+            'Cobalt\OfficeForm'             => 'Cobalt\Form\OfficeFormFactory',
             'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
             'Cobalt\CompanyService'         => 'Cobalt\Service\CompanyServiceFactory',
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
