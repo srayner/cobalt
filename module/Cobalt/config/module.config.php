@@ -61,22 +61,8 @@ return array(
         'invokables' => array(
             'Cobalt\Controller\Index'    => 'Cobalt\Controller\IndexController',
         ),
-        'factories' => array(
-            'Cobalt\Controller\Computer' => function(ControllerManager $cm) {
-                $sm = $cm->getServiceLocator();
-                $service = $sm->get('Cobalt\ComputerService');
-                return new Controller\ComputerController($service);
-            },  
-            'Cobalt\Controller\Domain' => function(ControllerManager $cm) {
-                $sm = $cm->getServiceLocator();
-                $service = $sm->get('Cobalt\DomainService');
-                return new Controller\DomainController($service);
-            },  
-            'Cobalt\Controller\User' => function(ControllerManager $cm) {
-                $sm = $cm->getServiceLocator();
-                $service = $sm->get('Cobalt\UserService');
-                return new Controller\UserController($service);
-            },     
+        'abstract_factories' => array(
+            'Cobalt\Controller\AbstractControllerFactory'
         ),
     ),
     
@@ -138,7 +124,7 @@ return array(
             'Cobalt\CompanyService'         => 'Cobalt\Service\CompanyServiceFactory',
             'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
             'Cobalt\HostnameForm'           => 'Cobalt\Form\HostnameFormFactory',
-            'Coablt\OfficeService'          => 'Cobalt\ServiceOfficeServiceFactory',
+            'Cobalt\OfficeService'          => 'Cobalt\Service\OfficeServiceFactory',
             'Cobalt\UserService'            => 'Cobalt\Service\UserServiceFactory',
             'Cobalt\HistoryService'         => 'Cobalt\Service\HistoryServiceFactory'
         ),    

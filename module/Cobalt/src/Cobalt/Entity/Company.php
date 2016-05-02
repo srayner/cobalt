@@ -24,7 +24,7 @@ class Company
     protected $address;
     
     /**
-     * @OneToMany(targetEntity="Office", mappedBy="company")
+     * @ORM\OneToMany(targetEntity="Office", mappedBy="company")
      */
     protected $offices;
     

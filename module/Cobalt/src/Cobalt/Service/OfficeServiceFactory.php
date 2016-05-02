@@ -1,6 +1,6 @@
 <?php
 
-namespace CoabltService;
+namespace Cobalt\Service;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

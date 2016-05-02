@@ -23,8 +23,8 @@ class office
     protected $address;
     
     /**
-     * @ManyToOne(targetEntity="Company", inversedBy="offices")
-     * @JoinColumn(name="company_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="offices")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      */
     protected $company;
     

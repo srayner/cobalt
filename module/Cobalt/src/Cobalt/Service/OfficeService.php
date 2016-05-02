@@ -1,8 +1,8 @@
 <?php
 
-namespace Coablt\Service;
+namespace Cobalt\Service;
 
-class officeService
+class OfficeService
 {
     private $entityManager;
     private $repository;
