@@ -12,6 +12,7 @@ return array(
         'TwbBundle',
         'Cobalt',
         'Project',
+        'FAQ',
      //   'CivAuth',
     ),
 
