@@ -400,6 +400,7 @@ CREATE TABLE history (
 
 --  STORED PROCEDURES 
 
+delimiter //
 CREATE PROCEDURE project_recalc(proj_id Integer(11))
   NO SQL
 begin
@@ -461,9 +462,11 @@ begin
     id = mile_id; 
   
 end//
+delimiter ;
 
 -- TRIGGERS
 
+delimiter //
 CREATE TRIGGER milestone_insert
   AFTER INSERT
   ON milestone FOR EACH ROW
@@ -602,3 +605,4 @@ begin
   values (100, new.id, now(), 'Project modified.');
 end//
 
+delimiter ;
