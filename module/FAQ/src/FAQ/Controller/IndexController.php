@@ -16,7 +16,11 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel();
+        $questions = $this->service->findAll();
+        
+        return new ViewModel(array(
+            'questions' => $questions
+        ));
     }
     
     public function addAction()

@@ -3,4 +3,10 @@
         <h1>Frequently Asked Questions</h1>
         <hr>
     </div>
+    <div class="col-md-12">
+        <?php foreach ($this->questions as $question): ?>
+        <h4><?php echo $question->getQuestion(); ?></h4>
+        <p><?php echo $question->getAnswer(); ?></p>
+        <?php endforeach; ?>
+    </div>
 </div>
