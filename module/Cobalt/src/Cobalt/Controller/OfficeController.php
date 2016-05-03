@@ -100,7 +100,33 @@ class OfficeController extends AbstractController
     
     public function deleteAction()
     {
+        $id = (int)$this->params()->fromRoute('id');
+        $office = $this->service->findById($id);
         
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            $companyId = $office->getCompany()->getId();
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($office);
+            }
+
+            // Redirect to company detail
+            return $this->redirect()->toRoute('cobalt/default',
+                array(
+                    'controller' => 'company',
+                    'action' => 'detail',
+                    'id' => $companyId),
+                array('fragment' => 'offices')
+            );
+         }
+         
+        return new ViewModel(array(
+            'office' => $office
+        ));
     }
     
     public function detailAction()
