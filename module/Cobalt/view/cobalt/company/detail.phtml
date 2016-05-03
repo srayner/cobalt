@@ -64,14 +64,14 @@
                                 <?php foreach ($this->company->getOffices() as $office): ?>
                                 <tr>
                                     <td style="width: 1%;" nowrap>
-                                        <a href="<?php echo $this->url('project/default', array('controller' => 'office', 'action' => 'edit', 'id' => $office->getId()));?>">
+                                        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'edit', 'id' => $office->getId()));?>">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="<?php echo $this->url('project/default', array('controller' => 'office', 'action' => 'delete', 'id' => $office->getId()));?>">
+                                        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'delete', 'id' => $office->getId()));?>">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>
-                                    <td><a href="<?php echo $this->url('project/default', array('controller' => 'office', 'action' => 'detail', 'id' => $office->getId()));?>">
+                                    <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'detail', 'id' => $office->getId()));?>">
                                         <?php echo $office->getName(); ?>
                                     </a></td>
                                     <td><?php echo $office->getName(); ?></td>

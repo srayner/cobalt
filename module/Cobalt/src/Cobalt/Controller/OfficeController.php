@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class OfficeController extends AbstractController
 {
@@ -61,6 +62,39 @@ class OfficeController extends AbstractController
     
     public function editAction()
     {
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'office', 'action'=>'add'));
+	}
+        $office = $this->service->findById($id);
+        
+        // Create a new form instance and bind the entity to it.
+        $form = $this->getServiceLocator()->get('Cobalt\OfficeForm');
+        $form->bind($office);
+        
+        // Check if this request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate the data.
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Save changes.
+                $this->service->persist($office);
+
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+        }
+        
+        $this->storeReferer('milestone/edit');
+        
+        return new ViewModel(array(
+            'id' => $id,
+            'form' => $form
+        ));
         
     }
     
@@ -72,5 +106,24 @@ class OfficeController extends AbstractController
     public function detailAction()
     {
         
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('office');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('office');
+        $referer = $session->referer;
+        if (strpos($referer, 'company/detail') !== false) {
+            $referer .= '#offices';
+        }
+        return $referer;
     }
 }

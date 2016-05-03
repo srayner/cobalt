@@ -9,8 +9,8 @@ class OfficeForm extends HorizontalForm
         parent::__construct();
         
         $this->compact = true;
-        $this->labelWidth = 4;
-        $this->controlWidth = 8;
+        $this->labelWidth = 3;
+        $this->controlWidth = 9;
         
         $this->addText('name', 'Office Name')
              ->addTextArea('address', 'Address', 5)
