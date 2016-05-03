@@ -42,7 +42,7 @@
                                 </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <td><?php echo $this->company->getAddress(); ?></td>
+                                    <td><?php echo nl2br($this->company->getAddress()); ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -65,16 +65,14 @@
                             <tr>
                                 <td style="width: 1%;" nowrap>
                                     <a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'edit', 'id' => $office->getId()));?>">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                        <i class="fa fa-edit"></i></a>
                                     <a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'delete', 'id' => $office->getId()));?>">
-                                        <i class="fa fa-remove"></i>
-                                    </a>
+                                        <i class="fa fa-remove"></i></a>
                                 </td>
                                 <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'office', 'action' => 'detail', 'id' => $office->getId()));?>">
                                     <?php echo $office->getName(); ?>
                                 </a></td>
-                                <td><?php echo $office->getAddress(); ?></td>
+                                <td><?php echo nl2br($office->getAddress()); ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </table>
