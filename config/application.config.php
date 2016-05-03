@@ -11,8 +11,9 @@ return array(
      //   'ZfcUser',
         'TwbBundle',
         'Cobalt',
-        'Project',
         'FAQ',
+        'Project',
+        
      //   'CivAuth',
     ),
 

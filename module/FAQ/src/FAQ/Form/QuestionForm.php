@@ -2,7 +2,7 @@
 
 namespace FAQ\Form;
 
-class CompanyForm extends HorizontalForm
+class QuestionForm extends HorizontalForm
 {
     public function __construct()
     {

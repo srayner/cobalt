@@ -39,7 +39,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => ':controller[/:action[/:id]]',
+                            'route'    => '/:controller[/:action[/:id]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -56,9 +56,13 @@ return array(
     
     // Controllers
     'controllers' => array(
-        'invokables' => array(
-            'FAQ\Controller\Index'    => 'FAQ\Controller\IndexController',
-        ),
+        'factories' => array(
+            'FAQ\Controller\Index' => function($sm) {
+                $service = $sm->getServiceLocator()->get('FAQ\QuestionService');
+                $controller = new Controller\IndexController($service);
+                return $controller;
+            }
+        )
     ),
     
     // View manager
