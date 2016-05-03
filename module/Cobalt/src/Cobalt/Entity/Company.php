@@ -23,6 +23,11 @@ class Company
     /** @ORM\Column(type="text") */
     protected $address;
     
+    /** @ORM\Column(type="string") */
+    protected $phone;
+    
+    /** @ORM\Column(type="string") */
+    protected $fax;
     /**
      * @ORM\OneToMany(targetEntity="Office", mappedBy="company")
      */
@@ -58,6 +63,16 @@ class Company
         return $this->address;
     }
 
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -75,5 +90,16 @@ class Company
         $this->address = $address;
         return $this;
     }
-            
+    
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+        return $this;
+    }
 }

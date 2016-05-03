@@ -22,6 +22,12 @@ class office
     /** @ORM\Column(type="text") */
     protected $address;
     
+    /** @ORM\Column(type="string") */
+    protected $phone;
+    
+    /** @ORM\Column(type="string") */
+    protected $fax;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Company", inversedBy="offices")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
@@ -43,6 +49,16 @@ class office
         return $this->address;
     }
 
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+    
+    public function getFax()
+    {
+        return $this->fax;
+    }
+    
     public function getCompany()
     {
         return $this->company;
@@ -69,6 +85,18 @@ class office
     public function setCompany($company)
     {
         $this->company = $company;
+        return $this;
+    }
+    
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
         return $this;
     }
 }

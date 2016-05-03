@@ -47,6 +47,20 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Telephone No</th>
+                                    <td><?php echo $this->company->getPhone(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Fax No</th>
+                                    <td><?php echo nl2br($this->company->getFax()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
             </div>

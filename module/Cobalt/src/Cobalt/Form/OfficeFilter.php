@@ -33,6 +33,40 @@ class OfficeFilter extends InputFilter
                 array('name' => 'StringTrim'),
             ),
         ));
+        
+        // telephone
+        $this->add(array(
+            'name'       => 'phone',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 24,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
+        
+        // fax
+        $this->add(array(
+            'name'       => 'fax',
+            'required'   => false,
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'max' => 24,
+                    ),
+                ),
+            ),
+            'filters'   => array(
+                array('name' => 'StringTrim'),
+            ),
+        ));
     }
 }
         

@@ -89,7 +89,7 @@ class OfficeController extends AbstractController
             }
         }
         
-        $this->storeReferer('milestone/edit');
+        $this->storeReferer('office/edit');
         
         return new ViewModel(array(
             'id' => $id,

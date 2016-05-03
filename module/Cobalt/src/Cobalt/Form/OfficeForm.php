@@ -14,6 +14,8 @@ class OfficeForm extends HorizontalForm
         
         $this->addText('name', 'Office Name')
              ->addTextArea('address', 'Address', 5)
+             ->addText('phone', 'Telephone No')
+             ->addText('fax', 'Fax No')
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }

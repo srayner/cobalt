@@ -14,6 +14,8 @@ class CompanyForm extends HorizontalForm
         
         $this->addText('name', 'Company Name')
              ->addTextArea('address', 'Registered Address', 5)
+             ->addText('phone', 'Telephone No')
+             ->addText('fax', 'Fax No')
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }
