@@ -105,7 +105,11 @@ class OfficeController extends AbstractController
     
     public function detailAction()
     {
-        
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $office = $this->service->findById($id);
+        return new ViewModel(array(
+            'office' => $office
+        ));
     }
     
     private function storeReferer($except)
