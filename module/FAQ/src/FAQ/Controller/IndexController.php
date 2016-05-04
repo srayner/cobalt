@@ -58,4 +58,28 @@ class IndexController extends AbstractActionController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $question = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($question);
+            }
+
+            // Redirect to domain index
+            return $this->redirect()->toRoute('faq/default',
+                array('controller' => 'index'));
+         }
+         
+        return new ViewModel(array(
+            'question' => $question
+        ));
+    }
+    
 }
