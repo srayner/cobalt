@@ -112,17 +112,22 @@ class OfficeController extends AbstractController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 $this->service->remove($office);
+            
+                // Redirect to company detail
+                return $this->redirect()->toRoute('cobalt/default',
+                    array(
+                        'controller' => 'company',
+                        'action' => 'detail',
+                        'id' => $companyId),
+                    array('fragment' => 'offices')
+                );
             }
-
-            // Redirect to company detail
-            return $this->redirect()->toRoute('cobalt/default',
-                array(
-                    'controller' => 'company',
-                    'action' => 'detail',
-                    'id' => $companyId),
-                array('fragment' => 'offices')
-            );
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
          }
+        
+        $this->storeReferer('office/edit');
          
         return new ViewModel(array(
             'office' => $office
