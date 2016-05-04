@@ -2,6 +2,25 @@
 
 return array(
     
+    'router' => array(
+        'routes' => array(
+            
+            'admin' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/admin',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'admin',
+                    ),
+                ),
+            ),
+        ),
+    ),
+    
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -160,6 +179,11 @@ return array(
                 'label' => '<i class="fa fa-comment"></i> FAQ',
                 'route' => 'faq/default',
                 'controller' => 'index',
+            ),
+            array(
+                'label' => '<i class="fa fa-cogs"></i> Admin',
+                'route' => 'admin',
+                
             ),
         ),
     ),

@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -13,6 +14,11 @@ class IndexController extends AbstractActionController
         return array(
             'computers' => $count
         );
+    }
+    
+    public function adminAction()
+    {
+        return new ViewModel();
     }
     
     public function consoleAction()
