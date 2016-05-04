@@ -108,6 +108,7 @@ return array(
         'invokables' => array(
             'Cobalt\Company'      => 'Cobalt\Entity\Company',
             'Cobalt\Computer'     => 'Cobalt\Entity\Computer',
+            'Cobalt\Department'   => 'Cobalt\Entity\Department',
             'Cobalt\Domain'       => 'Cobalt\Entity\Domain',
             'Cobalt\DomainStatus' => 'Cobalt\Entity\DomainStatus',
             'Cobalt\Office'       => 'Cobalt\Entity\Office',
@@ -117,6 +118,8 @@ return array(
         'factories' => array(
             'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
             'Cobalt\WMIService'             => 'Cobalt\Service\WMIServiceFactory',
+            'Cobalt\DepartmentForm'         => 'Cobalt\Form\DepartmentFormFactory',
+            'Cobalt\DepartmentService'      => 'Cobalt\Service\DepartmentServiceFactory',
             'Cobalt\DomainForm'             => 'Cobalt\Form\DomainFormFactory',
             'Cobalt\DomainService'          => 'Cobalt\Service\DomainServiceFactory',
             'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',

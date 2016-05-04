@@ -1,0 +1,79 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('/js/cobalt/department/detail.js');
+?>
+
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Department Details</h1>
+        <hr>
+            
+        <i class="fa fa-building fa-3x pull-left"></i>
+        <h4><?php echo $this->office->getName(); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'edit', 'id' => $this->department->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'delete', 'id' => $this->department->getId())); ?>"><i class="fa fa-remove"></i></a>
+        </p>
+        
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#users"                  aria-controls="Users" role="tab" data-toggle="tab">Users</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+            
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Office Name</th>
+                                    <td><?php echo $this->department->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td><?php echo nl2br($this->department->getDescription()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Telephone No</th>
+                                    <td><?php echo $this->department->getPhone(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Fax No</th>
+                                    <td><?php echo nl2br($this->department->getFax()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="users">
+                No users to show yet.
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                No history to show yet.
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
