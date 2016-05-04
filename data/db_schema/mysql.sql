@@ -43,6 +43,16 @@ CREATE TABLE office (
   PRIMARY KEY (id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Department table
+CREATE TABLE department(
+  id Integer       NOT NULL AUTO_INCREMENT,
+  name Varchar(64) NOT NULL,
+  description Text     NULL,
+  phone Varchar(24)    NULL,
+  fax Varchar(24)      NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Computer table
 CREATE TABLE computer (
   computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,
