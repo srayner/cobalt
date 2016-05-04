@@ -156,6 +156,11 @@ return array(
                 'route' => 'cobalt/default',
                 'controller' => 'domain',
             ),
+            array(
+                'label' => '<i class="fa fa-comment"></i> FAQ',
+                'route' => 'faq/default',
+                'controller' => 'index',
+            ),
         ),
     ),
     
