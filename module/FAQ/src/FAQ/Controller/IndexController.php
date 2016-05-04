@@ -58,6 +58,46 @@ class IndexController extends AbstractActionController
         ));
     }
     
+    public function editAction()
+    {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('faq/default', array(
+                 'controller' => 'index',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the question with the specified id.
+        $question = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('FAQ\QuestionForm');
+        $form->bind($question);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist question.
+            	$this->service->persist($question);
+                
+                // Redirect to list of questions
+                return $this->redirect()->toRoute('faq/default', array(
+                    'controller' => 'index'
+                ));
+            }     
+        }
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
+    }
+    
     public function deleteAction()
     {
         $id = (int)$this->params()->fromRoute('id');

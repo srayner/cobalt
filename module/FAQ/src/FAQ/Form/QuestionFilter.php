@@ -8,7 +8,7 @@ class QuestionFilter extends InputFilter
 {
     public function __construct()
     {
-        // name
+        // question
         $this->add(array(
             'name'       => 'question',
             'required'   => true,
