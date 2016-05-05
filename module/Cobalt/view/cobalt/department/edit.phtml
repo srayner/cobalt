@@ -1,8 +1,20 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    <div class="row">
+        <div class="col-md-12 title">
+            <h1>Edit department</h1>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <?php
+                $form = $this->form;
+                $form->setAttribute('action', $this->url('cobalt/default', array(
+                    'controller' => 'department',
+                    'action'     => 'edit',
+                    'id'         => $this->id)));
+                $form->get('submit')->setOption('label', 'Edit');
+                $form->prepare();
+                echo $this->form()->openTag($form);
+                echo $this->form($form);
+                echo $this->form()->closeTag();
+            ?>
+        </div>
+    </div>

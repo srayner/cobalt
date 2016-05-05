@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class DepartmentController extends AbstractController
 {
@@ -61,7 +62,39 @@ class DepartmentController extends AbstractController
     
     public function editAction()
     {
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'department', 'action'=>'add'));
+	}
+        $department = $this->service->findById($id);
         
+        // Create a new form instance and bind the entity to it.
+        $form = $this->getServiceLocator()->get('Cobalt\DepartmentForm');
+        $form->bind($department);
+        
+        // Check if this request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate the data.
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Save changes.
+                $this->service->persist($department);
+
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+        }
+        
+        $this->storeReferer('office/edit');
+        
+        return new ViewModel(array(
+            'id' => $id,
+            'form' => $form
+        ));
     }
     
     public function deleteAction()
@@ -74,6 +107,23 @@ class DepartmentController extends AbstractController
         
     }
     
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('department');
+            $session->referer = $referer;
+        }
+    }
     
+    private function retrieveReferer()
+    {
+        $session = new Container('department');
+        $referer = $session->referer;
+        if (strpos($referer, 'company/detail') !== false) {
+            $referer .= '#departments';
+        }
+        return $referer;
+    }
 }
 
