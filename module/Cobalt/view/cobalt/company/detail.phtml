@@ -24,6 +24,7 @@
         <ul class="nav nav-tabs" role="tablist" id="tabs">
             <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
             <li role="presentation"><a href="#offices"                aria-controls="offices" role="tab" data-toggle="tab">Offices</a></li>
+            <li role="presentation"><a href="#departments"            aria-controls="offices" role="tab" data-toggle="tab">Departments</a></li>
             <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
         </ul>
         
@@ -95,6 +96,40 @@
                             'action' => 'add',
                             'id' => $this->company->getId()
                         )) ?>">Add Office</a>
+                    </div>
+                </div>                    
+            </div>
+            
+            <!-- Departments tab -->
+            <div role="tabpanel" class="tab-pane" id="departments">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed table-bordered">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <?php foreach ($this->company->getDepartments() as $department): ?>
+                            <tr>
+                                <td style="width: 1%;" nowrap>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'edit', 'id' => $department->getId()));?>">
+                                        <i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'delete', 'id' => $department->getId()));?>">
+                                        <i class="fa fa-remove"></i></a>
+                                </td>
+                                <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'detail', 'id' => $department->getId()));?>">
+                                    <?php echo $department->getName(); ?>
+                                </a></td>
+                                <td><?php echo nl2br($department->getDescription()); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                        <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                            'controller' => 'department',
+                            'action' => 'add',
+                            'id' => $this->company->getId()
+                        )) ?>">Add Department</a>
                     </div>
                 </div>                    
             </div>
