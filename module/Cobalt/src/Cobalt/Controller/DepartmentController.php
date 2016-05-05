@@ -99,6 +99,38 @@ class DepartmentController extends AbstractController
     
     public function deleteAction()
     {
+        $id = (int)$this->params()->fromRoute('id');
+        $department = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            $companyId = $department->getCompany()->getId();
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($department);
+            
+                // Redirect to company detail
+                return $this->redirect()->toRoute('cobalt/default',
+                    array(
+                        'controller' => 'company',
+                        'action' => 'detail',
+                        'id' => $companyId),
+                    array('fragment' => 'departments')
+                );
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+         }
+        
+        $this->storeReferer('department/delete');
+         
+        return new ViewModel(array(
+            'department' => $department
+        ));
         
     }
     

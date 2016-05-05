@@ -127,7 +127,7 @@ class OfficeController extends AbstractController
             return $this->redirect()->toUrl($this->retrieveReferer());
          }
         
-        $this->storeReferer('office/edit');
+        $this->storeReferer('office/delete');
          
         return new ViewModel(array(
             'office' => $office
