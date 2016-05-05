@@ -136,7 +136,11 @@ class DepartmentController extends AbstractController
     
     public function detailAction()
     {
-        
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $department = $this->service->findById($id);
+        return new ViewModel(array(
+            'department' => $department
+        ));
     }
     
     private function storeReferer($except)

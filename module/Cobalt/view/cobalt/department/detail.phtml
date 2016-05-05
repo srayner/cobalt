@@ -13,7 +13,7 @@
         <hr>
             
         <i class="fa fa-building fa-3x pull-left"></i>
-        <h4><?php echo $this->office->getName(); ?></h4>
+        <h4><?php echo $this->department->getName(); ?></h4>
         <p>
             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'edit', 'id' => $this->department->getId())); ?>"><i class="fa fa-edit"></i></a>
         <a href="<?php echo $this->url('cobalt/default', array('controller' => 'department', 'action' => 'delete', 'id' => $this->department->getId())); ?>"><i class="fa fa-remove"></i></a>
@@ -36,11 +36,11 @@
                         <table class="table table-condensed table-bordered">
                             <tbody>
                                 <tr>
-                                    <th style="width: 35%;">Office Name</th>
+                                    <th style="width: 35%;">Department Name</th>
                                     <td><?php echo $this->department->getName(); ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Address</th>
+                                    <th>Description</th>
                                     <td><?php echo nl2br($this->department->getDescription()); ?></td>
                                 </tr>
                             </tbody>
