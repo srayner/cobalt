@@ -28,14 +28,21 @@ class Company
     
     /** @ORM\Column(type="string") */
     protected $fax;
+    
     /**
      * @ORM\OneToMany(targetEntity="Office", mappedBy="company")
      */
     protected $offices;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Department", mappedBy="company")
+     */
+    protected $departments;
+    
     public function __construct()
     {
         $this->offices = new ArrayCollection();
+        $this->departments = new ArrayCollection();
     }
     
     public function addOffice($office)
@@ -43,11 +50,21 @@ class Company
         $this->offices[] = $office;
     }
     
+    public function addDepartment($department)
+    {
+        $this->departments[] = $department;
+    }
+    
     public function getOffices()
     {
         return $this->offices->toArray();
     }
     
+    public function getDepartments()
+    {
+        return $this->departments->toArray();
+    }
+
     public function getId()
     {
         return $this->id;

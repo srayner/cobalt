@@ -28,6 +28,12 @@ class Department
     /** @ORM\Column(type="string") */
     protected $fax;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="departments")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+    protected $company;
+    
     public function getId()
     {
         return $this->id;
@@ -46,6 +52,16 @@ class Department
     public function getFax()
     {
         return $this->fax;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     public function setId($id)
@@ -71,6 +87,16 @@ class Department
         $this->fax = $fax;
         return $this;
     }
+    
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
 
-
+    public function setCompany($company)
+    {
+        $this->company = $company;
+        return $this;
+    }
 }
