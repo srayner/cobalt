@@ -1,0 +1,38 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/softwarecategory/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Software Categories</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'add'));?>">New Category</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="computers" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->categories as $category): ?> 
+                    <tr>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'detail', 'id' => $category->getId()));?>">
+                            <?php echo $category->getName();?></a></td>
+                        <td><?php echo nl2br($category->getDescription());?></td>
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'edit', 'id' => $category->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'delete', 'id' => $category->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
