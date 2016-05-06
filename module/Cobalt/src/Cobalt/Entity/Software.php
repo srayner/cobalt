@@ -4,15 +4,46 @@ namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/** @ORM\Entity
+  * @ORM\Table(name="software")
+  */
 class Software
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
     protected $id;
+    
+    /** @ORM\Column(type="string") */
     protected $name;
+    
+    /** @ORM\Column(type="string") */
     protected $version;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="SoftwareManufacturer")
+     * @ORM\JoinColumn(name="manufacturer_id", referencedColumnName="id")
+     */
     protected $manufacturer;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="SoftwareCategory")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
     protected $type;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="SoftwareType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
     protected $category;
+    
+    /** @ORM\Column(type="integer") */
     protected $installation_count;
+    
+    /** @ORM\Column(type="text") */
     protected $description;
     
     public function getId()

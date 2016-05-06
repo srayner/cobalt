@@ -4,10 +4,22 @@ namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/** @ORM\Entity
+  * @ORM\Table(name="software_category")
+  */
 class SoftwareCategory
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
     protected $id;
+    
+    /** @ORM\Column(type="string") */
     protected $name;
+    
+    /** @ORM\Column(type="string") */
     protected $description;
     
     public function getId()
