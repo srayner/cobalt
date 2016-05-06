@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class SoftwareTypeController extends AbstractController
 {
@@ -79,12 +80,12 @@ class SoftwareTypeController extends AbstractController
                 // Persist type.
             	$this->service->persist($type);
                 
-                // Redirect to list of companies
-                return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'softwaretype'
-                ));
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }     
         }
+        
+        $this->storeReferer('softwarecategory/edit');
         
         return new ViewModel(array(
              'id' => $id,
@@ -104,13 +105,18 @@ class SoftwareTypeController extends AbstractController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 $this->service->remove($type);
+            
+                // Redirect to domain index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'softwaretype'));
             }
-
-            // Redirect to domain index
-            return $this->redirect()->toRoute('cobalt/default',
-                array('controller' => 'softwaretype'));
-         }
-         
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('softwarecategory/edit');
+        
         return new ViewModel(array(
             'type' => $type
         ));
@@ -123,5 +129,21 @@ class SoftwareTypeController extends AbstractController
         return new ViewModel(array(
             'type' => $type
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('softwarecategory');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('softwarecategory');
+        $referer = $session->referer;
+        return $referer;
     }
 }

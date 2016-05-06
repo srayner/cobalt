@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class SoftwareCategoryController extends AbstractController
 {
@@ -79,12 +80,12 @@ class SoftwareCategoryController extends AbstractController
                 // Persist category.
             	$this->service->persist($category);
                 
-                // Redirect to list of categories
-                return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'softwarecategory'
-                ));
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }     
         }
+        
+        $this->storeReferer('softwarecategory/edit');
         
         return new ViewModel(array(
              'id' => $id,
@@ -104,24 +105,45 @@ class SoftwareCategoryController extends AbstractController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 $this->service->remove($category);
-            }
-
-            // Redirect to domain index
-            return $this->redirect()->toRoute('cobalt/default',
-                array('controller' => 'softwarecategory'));
-         }
-         
+            
+                // Redirect to domain index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'softwarecategory'));
+                }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('softwarecategory/edit');
+        
         return new ViewModel(array(
             'category' => $category
         ));
     }
     
-    public function detialAction()
+    public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $category = $this->service->findById($id);
         return new ViewModel(array(
             'category' => $category
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('softwarecategory');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('softwarecategory');
+        $referer = $session->referer;
+        return $referer;
     }
 }
