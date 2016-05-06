@@ -117,7 +117,7 @@ return array(
             'Cobalt\SoftwareInstallation' => 'Cobalt\Entity\SoftwareInstallation',
             'Cobalt\SoftwareLicense'      => 'Cobalt\Entity\SoftwareLicense',
             'Cobalt\SoftwareManufacturer' => 'Cobalt\Entity\SoftwareManufacturer',
-            'Cobalt\SoftwareType'         => 'Cobalt\Entity\SoftwareManufacturer',
+            'Cobalt\SoftwareType'         => 'Cobalt\Entity\SoftwareType',
             'Cobalt\User'                 => 'Cobalt\Entity\User',
             'WhoIsService'                => 'Cobalt\Service\WhoIsService',
         ),
