@@ -3,10 +3,53 @@
         <h1>Administration Area</h1>
         <hr>
     </div>
-    <div class="col-md-12">
-        <a href="<?php echo $this->url('cobalt/default', array(
-            'controller' => 'User',
-            'action' => 'adupdate',
-        ))?>">Update From Active Directory</a>
+    
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-desktop"></i> Hardware</div>
+            <div class="panel-body">
+                <a href="#">Hardware Types</a><br>
+                <a href="#">Hardware Categories</a><br>
+                <a href="#">Hardware Manufacturers</a><br>
+                <a href="#">Update from Active Directory</a><br>
+            </div>
+        </div>
     </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-floppy-o"></i> Software</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'softwaretype'
+                    ))?>">Software Types</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'softwarecategory'
+                    ))?>">Software Categories</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'softwaremanufacturer'
+                    ))?>">Software Manufacturers</a><br>
+                <a href="#">Manage Licences</a><br>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-users"></i> Users</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'User',
+                    'action' => 'adupdate',
+                ))?>">Update From Active Directory</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-book"></i> Active Directory</div>
+            <div class="panel-body">
+                <a href="">Administration Settings</a>
+            </div>
+        </div>
+    </div>
+    
 </div>
