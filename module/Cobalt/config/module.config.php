@@ -122,35 +122,29 @@ return array(
             'WhoIsService'                => 'Cobalt\Service\WhoIsService',
         ),
         'factories' => array(
-            'Cobalt\ActiveDirectoryService' => 'Cobalt\Service\ActiveDirectoryServiceFactory',
-            'Cobalt\WMIService'             => 'Cobalt\Service\WMIServiceFactory',
-            'Cobalt\DepartmentForm'         => 'Cobalt\Form\DepartmentFormFactory',
-            'Cobalt\DepartmentService'      => 'Cobalt\Service\DepartmentServiceFactory',
-            'Cobalt\DomainForm'             => 'Cobalt\Form\DomainFormFactory',
-            'Cobalt\DomainService'          => 'Cobalt\Service\DomainServiceFactory',
-            'Cobalt\UserForm'               => 'Cobalt\Form\UserFormFactory',
-            'Cobalt\CompanyForm'            => 'Cobalt\Form\CompanyFormFactory',
-            'Cobalt\OfficeForm'             => 'Cobalt\Form\OfficeFormFactory',
-            'Cobalt\ComputerForm'           => 'Cobalt\Form\ComputerFormFactory',
-            'Cobalt\CompanyService'         => 'Cobalt\Service\CompanyServiceFactory',
-            'Cobalt\ComputerService'        => 'Cobalt\Service\ComputerServiceFactory',
-            'Cobalt\HostnameForm'           => 'Cobalt\Form\HostnameFormFactory',
-            'Cobalt\OfficeService'            => 'Cobalt\Service\OfficeServiceFactory',
             
+            // Services
+            'Cobalt\ActiveDirectoryService'   => 'Cobalt\Service\ActiveDirectoryServiceFactory',
+            'Cobalt\WMIService'               => 'Cobalt\Service\WMIServiceFactory',
+            'Cobalt\HistoryService'           => 'Cobalt\Service\HistoryServiceFactory',
+         
+            // Forms
+            'Cobalt\DepartmentForm'           => 'Cobalt\Form\DepartmentFormFactory',
+            'Cobalt\DomainForm'               => 'Cobalt\Form\DomainFormFactory',
+            'Cobalt\UserForm'                 => 'Cobalt\Form\UserFormFactory',
+            'Cobalt\CompanyForm'              => 'Cobalt\Form\CompanyFormFactory',
+            'Cobalt\OfficeForm'               => 'Cobalt\Form\OfficeFormFactory',
+            'Cobalt\ComputerForm'             => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\HostnameForm'             => 'Cobalt\Form\HostnameFormFactory',
             'Cobalt\SoftwareForm'             => 'Cobalt\Form\SoftwareFormFactory',
             'Cobalt\SoftwareCategoryForm'     => 'Cobalt\Form\SoftwareCategoryFormFactory',
             'Cobalt\SoftwareManufacturerForm' => 'Cobalt\Form\SoftwareManufacturerFormFactory',
             'Cobalt\SoftwareTypeForm'         => 'Cobalt\Form\SoftwareTypeFormFactory',
             
-            'Cobalt\SoftwareService'             => 'Cobalt\Service\SoftwareServiceFactory',
-            'Cobalt\SoftwareCategoryService'     => 'Cobalt\Service\SoftwareCategoryServiceFactory',
-            'Cobalt\SoftwareManufacturerService' => 'Cobalt\Service\SoftwareManufacturerServiceFactory',
-            'Cobalt\SoftwareTypeService'         => 'Cobalt\Service\SoftwareTypeServiceFactory',
-            
-            
-            'Cobalt\UserService'            => 'Cobalt\Service\UserServiceFactory',
-            'Cobalt\HistoryService'         => 'Cobalt\Service\HistoryServiceFactory'
-        ),    
+        ),
+        'abstract_factories' => array(
+            'Cobalt\Service\EntityServiceFactory'
+        ),
     ),
     
     // Cobalt

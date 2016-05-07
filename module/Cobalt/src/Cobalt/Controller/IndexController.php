@@ -18,10 +18,10 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        $computerService = $this->getServiceLocator()->get('Cobalt\ComputerService');
+        $computerService = $this->getServiceLocator()->get('Cobalt\EntityService\ComputerService');
         $projectService  = $this->getServiceLocator()->get('Project\ProjectService');
-        $userService     = $this->getServiceLocator()->get('cobalt_user_service');
-        $domainService   = $this->getServiceLocator()->get('Cobalt\DomainService');
+        $userService     = $this->getServiceLocator()->get('Cobalt\EntityService\UserService');
+        $domainService   = $this->getServiceLocator()->get('Cobalt\EntityService\DomainService');
         
         return array(
             'computerCount' => $computerService->count(),

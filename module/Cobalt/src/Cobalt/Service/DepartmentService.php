@@ -12,6 +12,11 @@ class DepartmentService
         $this->entityManager = $entityManager;
         $this->repository = $repository;
     }
+    
+    public function getEntityManager()
+    {
+        return $this->entityManager;
+    }
 
     public function findAll()
     {

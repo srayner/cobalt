@@ -16,7 +16,7 @@ class AbstractControllerFactory implements AbstractFactoryInterface
     {
         $entityName = substr($requestedName, strrpos($requestedName, '\\') + 1);
         $className = $requestedName . 'Controller';
-        $serviceName = 'Cobalt\\' . $entityName . 'Service';
+        $serviceName = 'Cobalt\\EntityService\\' . $entityName . 'Service';
         
         if (class_exists($className)) {
             $service = $serviceLocator->getServiceLocator()->get($serviceName);
