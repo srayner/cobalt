@@ -3,41 +3,147 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class SoftwareManufacturerController extends AbstractController
 {
     public function indexAction()
     {
+        $manufacturers = $this->service->findAll();
+        
         return new ViewModel(array(
-            
+            'manufacturers' => $manufacturers
         ));
+
     }
     
     public function addAction()
     {
-        return new ViewModel(array(
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Cobalt\SoftwareManufacturerForm');
+         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+          
+            // Create a new company object.
+            $manufacturer = $this->getServiceLocator()->get('Cobalt\SoftwareManufacturer');
             
+            $form->bind($manufacturer);
+            $form->setData($data);
+            if ($form->isValid())
+            {
+          	// Persist type.
+            	$this->service->persist($manufacturer);
+                
+            	// Redirect to list of types
+		return $this->redirect()->toRoute('cobalt/default', array(
+		    'controller' => 'softwaremanufacturer',
+                    'action'     => 'index'
+		));
+            }
+        } 
+        
+        // If not a POST request, or invalid data, then just render the form.
+        return new ViewModel(array(
+            'form'   => $form
         ));
     }
     
     public function editAction()
     {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'softwaremanufacturer',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the manufacturer with the specified id.
+        $manufacturer = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\SoftwareManufacturerForm');
+        $form->bind($manufacturer);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist manufacturer.
+            	$this->service->persist($manufacturer);
+                
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }     
+        }
+        
+        $this->storeReferer('softwaremanufacturer/edit');
+        
         return new ViewModel(array(
-            
+             'id' => $id,
+             'form' => $form,
         ));
     }
     
     public function deleteAction()
     {
-        return new ViewModel(array(
+        $id = (int)$this->params()->fromRoute('id');
+        $manufacturer = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
             
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($manufacturer);
+            
+                // Redirect to domain index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'softwaremanufacturer'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('softwaremanufacturer/edit');
+        
+        return new ViewModel(array(
+            'manufacturer' => $manufacturer
         ));
     }
     
-    public function detialAction()
+    public function detailAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $manufacturer = $this->service->findById($id);
         return new ViewModel(array(
-            
+            'manufacturer' => $manufacturer
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('softwaremanufacturer');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('softwaremanufacturer');
+        $referer = $session->referer;
+        return $referer;
     }
 }

@@ -1,0 +1,75 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('/js/cobalt/softwaremanufacturer/detail.js');
+?>
+
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Software Manufacturer Details</h1>
+        <hr>
+            
+        <i class="fa fa-floppy-o fa-3x pull-left"></i>
+        <h4><?php echo $this->manufacturer->getName(); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwaremanufacturer', 'action' => 'edit', 'id' => $this->manufacturer->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwaremanufacturer', 'action' => 'delete', 'id' => $this->manufacturer->getId())); ?>"><i class="fa fa-remove"></i></a>
+        </p>
+        
+    
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Name</th>
+                                    <td><?php echo $this->manufacturer->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td><?php echo nl2br($this->manufacturer->getAddress()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Support Email</th>
+                                    <td><?php echo $this->manufacturer->getSupportEmail(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Website</th>
+                                    <td><?php echo nl2br($this->manufacturer->getWebsiteUrl()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                No history to show yet.
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -22,10 +22,10 @@ class SoftwareManufacturer
     /** @ORM\Column(type="text") */
     protected $address;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="support_email") */
     protected $supportEmail;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="website_url") */
     protected $websiteUrl;
     
     public function getId()
