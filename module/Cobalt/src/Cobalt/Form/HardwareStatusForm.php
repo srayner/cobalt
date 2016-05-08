@@ -2,7 +2,7 @@
 
 namespace Cobalt\Form;
 
-class HardwareCategoryForm extends HorizontalForm
+class HardwareStatusForm extends HorizontalForm
 {
     public function __construct()
     {

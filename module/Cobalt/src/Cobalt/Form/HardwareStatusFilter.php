@@ -4,7 +4,7 @@ namespace Cobalt\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class HardwareCategoryFilter extends InputFilter
+class HardwareStatusFilter extends InputFilter
 {
     public function __construct()
     {

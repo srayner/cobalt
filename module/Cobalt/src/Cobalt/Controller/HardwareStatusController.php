@@ -5,21 +5,21 @@ namespace Cobalt\Controller;
 use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
 
-class HardwareTypeController extends AbstractController
+class HardwareStatusController extends AbstractController
 {
     public function indexAction()
     {
-        $types = $this->service->findAll();
+        $statuses = $this->service->findAll();
         
         return new ViewModel(array(
-            'types' => $types
+            'statuses' => $statuses
         ));
     }
     
     public function addAction()
     {
         // Create a new form.
-        $form = $this->getServiceLocator()->get('Cobalt\HardwareTypeForm');
+        $form = $this->getServiceLocator()->get('Cobalt\HardwareStatusForm');
          
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -28,19 +28,19 @@ class HardwareTypeController extends AbstractController
             // POST, so check if valid.
             $data = (array) $request->getPost();
           
-            // Create a new company object.
-            $type = $this->getServiceLocator()->get('Cobalt\HardwareType');
+            // Create a new status object.
+            $status = $this->getServiceLocator()->get('Cobalt\HardwareStatus');
             
-            $form->bind($type);
+            $form->bind($status);
             $form->setData($data);
             if ($form->isValid())
             {
-          	// Persist type.
-            	$this->service->persist($type);
+          	// Persist status.
+            	$this->service->persist($status);
                 
-            	// Redirect to list of types
+            	// Redirect to list of statuses
 		return $this->redirect()->toRoute('cobalt/default', array(
-		    'controller' => 'hardwaretype',
+		    'controller' => 'hardwarestatus',
                     'action'     => 'index'
 		));
             }
@@ -58,16 +58,16 @@ class HardwareTypeController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('cobalt/default', array(
-                 'controller' => 'hardwaretype',
+                 'controller' => 'hardwarestatus',
                  'action' => 'add'
              ));
         }
         
-        // Grab the type with the specified id.
-        $type = $this->service->findById($id);
+        // Grab the status with the specified id.
+        $status = $this->service->findById($id);
         
-        $form = $this->getServiceLocator()->get('Cobalt\HardwareTypeForm');
-        $form->bind($type);
+        $form = $this->getServiceLocator()->get('Cobalt\HardwareStatusForm');
+        $form->bind($status);
         $form->get('submit')->setAttribute('value', 'Edit');
         
         $request = $this->getRequest();
@@ -76,15 +76,15 @@ class HardwareTypeController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                // Persist type.
-            	$this->service->persist($type);
+                // Persist status.
+            	$this->service->persist($status);
                 
                 // Redirect to original referer
                 return $this->redirect()->toUrl($this->retrieveReferer());
             }     
         }
         
-        $this->storeReferer('hardwaretype/edit');
+        $this->storeReferer('hardwarestatus/edit');
         
         return new ViewModel(array(
              'id' => $id,
@@ -95,7 +95,7 @@ class HardwareTypeController extends AbstractController
     public function deleteAction()
     {
         $id = (int)$this->params()->fromRoute('id');
-        $type = $this->service->findById($id);
+        $status = $this->service->findById($id);
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -103,30 +103,30 @@ class HardwareTypeController extends AbstractController
             // Only perform delete if value posted was 'Yes'.
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
-                $this->service->remove($type);
+                $this->service->remove($status);
             
-                // Redirect to domain index
+                // Redirect to status index
                 return $this->redirect()->toRoute('cobalt/default',
-                    array('controller' => 'hardwaretype'));
+                    array('controller' => 'hardwarestatus'));
             }
             
             // Redirect back to original referer
             return $this->redirect()->toUrl($this->retrieveReferer());
         }
         
-        $this->storeReferer('hardwaretype/edit');
+        $this->storeReferer('hardwarestatus/edit');
         
         return new ViewModel(array(
-            'type' => $type
+            'status' => $status
         ));
     }
     
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        $type = $this->service->findById($id);
+        $status = $this->service->findById($id);
         return new ViewModel(array(
-            'type' => $type
+            'status' => $status
         ));
     }
     
@@ -134,14 +134,14 @@ class HardwareTypeController extends AbstractController
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
         if (strpos($referer, $except) === false) {
-            $session = new Container('hardwaretype');
+            $session = new Container('hardwarestatus');
             $session->referer = $referer;
         }
     }
     
     private function retrieveReferer()
     {
-        $session = new Container('hardwaretype');
+        $session = new Container('hardwarestatus');
         $referer = $session->referer;
         return $referer;
     }
