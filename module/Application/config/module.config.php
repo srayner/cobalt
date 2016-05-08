@@ -134,6 +134,11 @@ return array(
                         'controller' => 'user',
                         'action' => 'delete',
                     ),
+                    array(
+                        'label' => 'User Detail',
+                        'controller' => 'user',
+                        'action' => 'detail',
+                    ),
                 ),
             ),
             array(
@@ -157,6 +162,23 @@ return array(
                         'action' => 'delete',
                     ),
                 ),
+            ),
+            array(
+                'label' => '<i class="fa fa-cubes"></i> Hardware',
+                'route' => 'cobalt/default',
+                'controller' => 'hardware',
+                'pages' => array(
+                    array(
+                        'label' => 'Hardware Detail',
+                        'controller' => 'hadware',
+                        'action' => 'detail',
+                    ),
+                ),
+            ),
+            array(
+                'label' => '<i class="fa fa-cloud"></i> Software',
+                'route' => 'cobalt/default',
+                'controller' => 'software',
             ),
             array(
                 'label' => '<i class="fa fa-cubes"></i> Projects',
