@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\TableName="printer"
+ * @ORM\Table="printer"
  */
 class Printer extends Hardware
 {

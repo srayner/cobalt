@@ -1,0 +1,40 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/hardware/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Hardware</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'add'));?>">New Hardware</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="hardware" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Reference</th>
+                        <th>Serial Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->hardware as $hardware): ?> 
+                    <tr>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'detail', 'id' => $hardware->getId()));?>">
+                            <?php echo $hardware->getReference();?></a></td>
+                        <td><?php echo $hardware->getModel();?></td>
+                        <td><?php echo $hardware->getSerialNumber();?></td>
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'edit', 'id' => $hardware->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'delete', 'id' => $hardware->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>

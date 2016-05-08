@@ -46,6 +46,17 @@ CREATE TABLE hardware(
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Printer table
+CREATE TABLE printer (
+  id             Integer(11)  NOT NULL,
+  technology     VarChar(32)      NULL,
+  resolution     VarChar(32)      NULL,
+  speed          VarChar(32)      NULL,
+  quality        Varchar(32)      NULL,
+  duty_cycle     Varchar(32)      NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Computer table
 CREATE TABLE computer (
   computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,

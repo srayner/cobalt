@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /** @ORM\Entity
   * @ORM\Table(name="software_license")
   */
-class SoftwareInstallation
+class SoftwareLicense
 {
     /**
      * @ORM\Id

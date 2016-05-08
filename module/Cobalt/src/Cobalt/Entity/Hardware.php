@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\TableName="printer"
+ * @ORM\Table="hardware"
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorColumn(name="type_id", type="string")
  */
 class Hardware
 {
@@ -37,7 +37,7 @@ class Hardware
     /** @ORM\Column(type="string") */
     protected $model;
     
-    /** @ORM\Column(type="string", name="serial_number"*/
+    /** @ORM\Column(type="string", name="serial_number")*/
     protected $serialNumber;
     
     /**
