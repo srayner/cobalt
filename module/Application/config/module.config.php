@@ -205,7 +205,6 @@ return array(
             array(
                 'label' => '<i class="fa fa-cogs"></i> Admin',
                 'route' => 'admin',
-                
             ),
         ),
     ),
