@@ -135,6 +135,7 @@ return array(
             'Cobalt\CompanyForm'              => 'Cobalt\Form\CompanyFormFactory',
             'Cobalt\OfficeForm'               => 'Cobalt\Form\OfficeFormFactory',
             'Cobalt\ComputerForm'             => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\HardwareTypeForm'         => 'Cobalt\Form\HardwareTypeFormFactory',
             'Cobalt\HostnameForm'             => 'Cobalt\Form\HostnameFormFactory',
             'Cobalt\SoftwareForm'             => 'Cobalt\Form\SoftwareFormFactory',
             'Cobalt\SoftwareCategoryForm'     => 'Cobalt\Form\SoftwareCategoryFormFactory',
