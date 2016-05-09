@@ -11,7 +11,7 @@ class HardwareFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $form = new HardwareForm();
+        $form = new HardwareForm($entityManager);
         $form->setInputFilter(new HardwareFilter());
         $form->setHydrator(new DoctrineHydrator($entityManager));
         return $form;

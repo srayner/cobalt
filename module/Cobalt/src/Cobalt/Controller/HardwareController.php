@@ -36,6 +36,18 @@ class HardwareController extends AbstractController
             if ($form->isValid())
             {
           	// Persist hardware.
+                $type = $this->getServiceLocator()->get('Cobalt\HardwareType');
+                $status = $this->getServiceLocator()->get('Cobalt\HardwareStatus');
+                $manufacturer = $this->getServiceLocator()->get('Cobalt\HardwareManufacturer');
+                $type->setName('test');
+                $status->setName('test');
+                $manufacturer->setName('test');
+                $hardware->setType($type);
+                $hardware->setStatus($status);
+                $hardware->setManufacturer($manufacturer);
+                $this->service->persist($status);
+                $this->service->persist($type);
+                $this->service->persist($manufacturer);
             	$this->service->persist($hardware);
                 
             	// Redirect to list of hardware

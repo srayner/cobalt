@@ -37,6 +37,7 @@ CREATE TABLE hardware(
     disposal_date     Date            NULL,
     asset_number      Varchar(32)     NULL,
     notes             Text            NULL,
+    classname         Varchar(32) NOT NULL,
     INDEX idx_hardware_type_id (type_id),
     INDEX idx_hardware_status_id (status_id),
     INDEX idx_hardware_manufacturer_id (manufacturer_id),
