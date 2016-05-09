@@ -1,0 +1,42 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/hardwaremanufacturer/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Hardware Manufacturers</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'add'));?>">New Manufacturer</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="manufacturers" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->manufacturers as $manufacturer): ?> 
+                    <tr>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'detail', 'id' => $manufacturer->getId()));?>">
+                            <?php echo $manufacturer->getName();?></a></td>
+                        <td><?php echo nl2br($manufacturer->getAddress());?></td>
+                        <td><?php echo $manufacturer->getEmail();?></td>
+                        <td><?php echo $manufacturer->getWebsiteUrl();?></td>
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturers', 'action' => 'delete', 'id' => $manufacturer->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>

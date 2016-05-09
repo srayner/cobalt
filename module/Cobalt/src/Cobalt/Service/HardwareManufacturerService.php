@@ -2,7 +2,7 @@
 
 namespace Cobalt\Service;
 
-class HardwareManufacturerService extends AbractEntityService
+class HardwareManufacturerService extends AbstractEntityService
 {
     public function findByName($name)
     {
