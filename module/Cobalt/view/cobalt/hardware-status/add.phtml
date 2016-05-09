@@ -1,12 +1,12 @@
     <div class="row">
         <div class="col-md-12 title">
-            <h1>Add New Hardware Category</h1>
+            <h1>Add New Hardware Status</h1>
             <hr>
         </div>
         <div class="col-md-6">
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'hardwarecategory', 'action' => 'add')));
+                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'add')));
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);

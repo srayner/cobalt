@@ -7,8 +7,8 @@
         
     <div class="row">
         <div class="col col-md-12 title">
-            <h1>Software Categories</h1>
-            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'add'));?>">New Category</a>
+            <h1>Hardware Statuses</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'add'));?>">New Status</a>
             <hr>
         </div>
         <div class="col-md-12">
@@ -21,14 +21,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($this->categories as $category): ?> 
+                    <?php foreach($this->statuses as $status): ?> 
                     <tr>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'detail', 'id' => $category->getId()));?>">
-                            <?php echo $category->getName();?></a></td>
-                        <td><?php echo nl2br($category->getDescription());?></td>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'detail', 'id' => $status->getId()));?>">
+                            <?php echo $status->getName();?></a></td>
+                        <td><?php echo nl2br($status->getDescription());?></td>
                         <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'edit', 'id' => $category->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'delete', 'id' => $category->getId()));?>">Delete</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'edit', 'id' => $status->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'delete', 'id' => $status->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach ?>
