@@ -139,6 +139,7 @@ return array(
             'Cobalt\CompanyForm'              => 'Cobalt\Form\CompanyFormFactory',
             'Cobalt\OfficeForm'               => 'Cobalt\Form\OfficeFormFactory',
             'Cobalt\ComputerForm'             => 'Cobalt\Form\ComputerFormFactory',
+            'Cobalt\HardwareForm'             => 'Cobalt\Form\HardwareFormFactory',
             'Cobalt\HardwareManufacturerForm' => 'Cobalt\Form\HardwareManufacturerFormFactory',
             'Cobalt\HardwareTypeForm'         => 'Cobalt\Form\HardwareTypeFormFactory',
             'Cobalt\HardwareStatusForm'       => 'Cobalt\Form\HardwareStatusFormFactory',
