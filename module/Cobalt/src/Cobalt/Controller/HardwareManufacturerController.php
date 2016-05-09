@@ -67,7 +67,7 @@ class HardwareManufacturerController extends AbstractController
         $manufacturer = $this->service->findById($id);
         
         $form = $this->getServiceLocator()->get('Cobalt\HardwareManufacturerForm');
-        $form->bind($status);
+        $form->bind($manufacturer);
         $form->get('submit')->setAttribute('value', 'Edit');
         
         $request = $this->getRequest();
@@ -126,7 +126,7 @@ class HardwareManufacturerController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         $manufacturer = $this->service->findById($id);
         return new ViewModel(array(
-            'status' => $manufacturer
+            'manufacturer' => $manufacturer
         ));
     }
     

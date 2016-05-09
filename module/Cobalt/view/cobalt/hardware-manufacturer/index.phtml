@@ -32,7 +32,7 @@
                         <td><?php echo $manufacturer->getWebsiteUrl();?></td>
                         <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturers', 'action' => 'delete', 'id' => $manufacturer->getId()));?>">Delete</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'delete', 'id' => $manufacturer->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach ?>
