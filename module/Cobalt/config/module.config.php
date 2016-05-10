@@ -144,6 +144,7 @@ return array(
             'Cobalt\HardwareTypeForm'         => 'Cobalt\Form\HardwareTypeFormFactory',
             'Cobalt\HardwareStatusForm'       => 'Cobalt\Form\HardwareStatusFormFactory',
             'Cobalt\HostnameForm'             => 'Cobalt\Form\HostnameFormFactory',
+            'Cobalt\PrinterForm'              => 'Cobalt\Form\PrinterFormFactory',
             'Cobalt\SoftwareForm'             => 'Cobalt\Form\SoftwareFormFactory',
             'Cobalt\SoftwareCategoryForm'     => 'Cobalt\Form\SoftwareCategoryFormFactory',
             'Cobalt\SoftwareManufacturerForm' => 'Cobalt\Form\SoftwareManufacturerFormFactory',

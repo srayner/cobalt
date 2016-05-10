@@ -1,0 +1,36 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/printer/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Printers</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'add'));?>">New Printer</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="printers" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->printers as $printer): ?> 
+                    <tr>
+                        <td><?php echo $printer->getTechnology;?></td>
+                       
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'edit', 'id' => $printer->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'delete', 'id' => $printer->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
