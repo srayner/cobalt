@@ -104,6 +104,35 @@ class PrinterController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $printer = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($printer);
+            
+                // Redirect to status index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'printer'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('printer/delete');
+        
+        return new ViewModel(array(
+            'printer' => $printer
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
