@@ -164,6 +164,28 @@ return array(
                 ),
             ),
             array(
+                'label' => '<i class="fa fa-print"></i> Printers',
+                'route' => 'cobalt/default',
+                'controller' => 'printer',
+                'pages' => array(
+                    array(
+                        'label' => 'New Printer',
+                        'controller' => 'printer',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit Printer',
+                        'controller' => 'printer',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete Printer',
+                        'controller' => 'printer',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
                 'label' => '<i class="fa fa-cubes"></i> Hardware',
                 'route' => 'cobalt/default',
                 'controller' => 'hardware',
