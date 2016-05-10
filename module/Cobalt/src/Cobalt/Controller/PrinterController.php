@@ -63,4 +63,60 @@ class PrinterController extends AbstractController
             'form'   => $form
         ));
     }
+    
+    public function editAction()
+    {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'printer',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the status with the specified id.
+        $printer = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\PrinterForm');
+        $form->bind($printer);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist status.
+            	$this->service->persist($printer);
+                
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }     
+        }
+        
+        $this->storeReferer('printer/edit');
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('printer');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('printer');
+        $referer = $session->referer;
+        return $referer;
+    }
 }
