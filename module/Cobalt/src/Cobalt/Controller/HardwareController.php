@@ -89,6 +89,35 @@ class HardwareController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $hardware = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($hardware);
+            
+                // Redirect to manufacturer index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'hardware'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('hardware/delete');
+        
+        return new ViewModel(array(
+            'hardware' => $hardware
+        ));
+    }
+    
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
