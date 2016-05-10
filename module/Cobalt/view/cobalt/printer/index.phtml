@@ -22,7 +22,7 @@
                 <tbody>
                     <?php foreach($this->printers as $printer): ?> 
                     <tr>
-                        <td><?php echo $printer->getTechnology;?></td>
+                        <td><?php echo $printer->getTechnology();?></td>
                        
                         <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'edit', 'id' => $printer->getId()));?>">Edit</a>

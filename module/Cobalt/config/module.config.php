@@ -116,6 +116,7 @@ return array(
             'Cobalt\HardwareStatus'       => 'Cobalt\Entity\HardwareStatus',
             'Cobalt\HardwareType'         => 'Cobalt\Entity\HardwareType',
             'Cobalt\Office'               => 'Cobalt\Entity\Office',
+            'Cobalt\Printer'              => 'Cobalt\Entity\Printer',
             'Cobalt\Software'             => 'Cobalt\Entity\Software',
             'Cobalt\SoftwareCategory'     => 'Cobalt\Entity\SoftwareCategory',
             'Cobalt\SoftwareInstallation' => 'Cobalt\Entity\SoftwareInstallation',

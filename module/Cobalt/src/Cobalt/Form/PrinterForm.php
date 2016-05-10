@@ -2,7 +2,7 @@
 
 namespace Cobalt\Form;
 
-class HardwareForm extends HorizontalForm
+class PrinterForm extends HorizontalForm
 {
     protected $em;
     
