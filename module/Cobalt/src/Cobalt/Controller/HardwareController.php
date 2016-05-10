@@ -101,6 +101,16 @@ class HardwareController extends AbstractController
         ));
     }
     
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $hardware = $this->service->findById($id);
+        return new ViewModel(array(
+            'hardware' => $hardware
+        ));
+        
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
