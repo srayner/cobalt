@@ -15,6 +15,7 @@
             <table id="printers" class="table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th>Unique Reference</th>
                         <th>Technology</th>
                         <th>Actions</th>
                     </tr>
@@ -22,8 +23,8 @@
                 <tbody>
                     <?php foreach($this->printers as $printer): ?> 
                     <tr>
+                        <td><?php echo $printer->getReference();?></td>
                         <td><?php echo $printer->getTechnology();?></td>
-                       
                         <td style="width: 1%;" nowrap>
                             <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'edit', 'id' => $printer->getId()));?>">Edit</a>
                             <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'delete', 'id' => $printer->getId()));?>">Delete</a>
