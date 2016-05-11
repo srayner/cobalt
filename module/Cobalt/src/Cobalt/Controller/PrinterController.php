@@ -36,18 +36,7 @@ class PrinterController extends AbstractController
             if ($form->isValid())
             {
           	// Persist printer.
-                $type = $this->getServiceLocator()->get('Cobalt\HardwareType');
-                $status = $this->getServiceLocator()->get('Cobalt\HardwareStatus');
-                $manufacturer = $this->getServiceLocator()->get('Cobalt\HardwareManufacturer');
-                $type->setName('test');
-                $status->setName('test');
-                $manufacturer->setName('test');
-                $printer->setType($type);
-                $printer->setStatus($status);
-                $printer->setManufacturer($manufacturer);
-                $this->service->persist($status);
-                $this->service->persist($type);
-                $this->service->persist($manufacturer);
+                $this->service->setType($printer, 'Printer');
             	$this->service->persist($printer);
                 
             	// Redirect to list of printers

@@ -15,6 +15,8 @@ class PrinterForm extends HardwareForm
         $this->labelWidth = 4;
         $this->controlWidth = 8;
         
+        $this->remove('type');
+        
         $this->addText('technology', 'Technology')
              ->addText('resolution', 'Resolution')
              ->addText('speed', 'Speed')
