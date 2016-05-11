@@ -122,6 +122,7 @@ class HardwareController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $hardware = $this->service->findById($id);
+        
         return new ViewModel(array(
             'hardware' => $hardware
         ));

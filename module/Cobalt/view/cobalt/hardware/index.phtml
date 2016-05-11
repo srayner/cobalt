@@ -24,7 +24,11 @@
                 <tbody>
                     <?php foreach($this->hardware as $hardware): ?> 
                     <tr>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'detail', 'id' => $hardware->getId()));?>">
+                        <?php
+                            $class = get_class($hardware);
+                            $controller = strtolower(substr($class, strrpos($class, '\\') + 1));
+                        ?>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => $controller, 'action' => 'detail', 'id' => $hardware->getId()));?>">
                             <?php echo $hardware->getReference();?></a></td>
                         <td><?php echo $hardware->getModel();?></td>
                         <td><?php echo $hardware->getSerialNumber();?></td>
