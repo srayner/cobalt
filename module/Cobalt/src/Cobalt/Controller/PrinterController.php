@@ -133,6 +133,16 @@ class PrinterController extends AbstractController
         ));
     }
     
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $printer = $this->service->findById($id);
+        return new ViewModel(array(
+            'printer' => $printer
+        ));
+        
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
