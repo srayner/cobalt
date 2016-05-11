@@ -65,6 +65,33 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Technology</th>
+                                    <td><?php echo $this->printer->getTechnology(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Resolution</th>
+                                    <td><?php echo $this->printer->getResolution(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Quality</th>
+                                    <td><?php echo $this->printer->getQuality(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Print Speed</th>
+                                    <td><?php echo $this->printer->getSpeed(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Duty Cycle</th>
+                                    <td><?php echo $this->printer->getDutyCycle(); ?></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             
