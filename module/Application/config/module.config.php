@@ -30,7 +30,8 @@ return array(
             'translator' => 'MvcTranslator',
         ),
         'factories' => array(
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'Application\DbConfigForm' => 'Application\Form\DbConfigFormFactory',
         ),
     ),
     'translator' => array(
