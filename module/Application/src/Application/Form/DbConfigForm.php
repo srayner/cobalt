@@ -10,24 +10,32 @@ class DbConfigForm extends Form
     {
         parent::__construct();
         
-        $this->add(array(
-            'type'    => 'text',
-            'name'    => 'Server Name',
+        $this->addText('serverName', 'Server Name')
+             ->addText('databaseName', 'Database Name')
+             ->addText('username', 'username')
+             ->addText('password', 'password');
+    }
+    
+    private function addText($name, $label, $autocomplete = true)
+    {
+        $element = $this->getFormFactory()->create(array(
+            'name' => $name,
+            'type' => 'text',
+            'options' => array(
+                'label' => $label,
+                'label_attributes' => array('class' => "col-sm-2"),
+                'column-size' => "sm-9",
+            )
         ));
         
-        $this->add(array(
-            'type'    => 'text',
-            'name'    => 'Database Name',
-        ));
         
-        $this->add(array(
-            'type'    => 'text',
-            'name'    => 'Username',
-        ));
+       
         
-        $this->add(array(
-            'type'    => 'text',
-            'name'    => 'Password',
-        ));
+        if ($autocomplete === false) {
+            $element->setAttribute('autocomplete', 'off');
+        }   
+        
+        $this->add($element);
+        return $this;
     }
 }
