@@ -16,10 +16,10 @@ class DbConfigForm extends Form
         $this->labelWidth = 3;
         $this->controlWidth = 9;
         
-        $this->addText('serverName', 'Server Name')
-             ->addText('databaseName', 'Database Name')
-             ->addText('Username', 'Username')
-             ->addPassword('Password', 'Password')
+        $this->addText('hostname', 'Hostname')
+             ->addText('database', 'Database')
+             ->addText('username', 'Username')
+             ->addPassword('password', 'Password')
              ->addButton('submit', 'Submit', 'btn-primary');
     }
     

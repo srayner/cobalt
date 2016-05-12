@@ -4,6 +4,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Config\Config;
+use Zend\Config\Writer\PhpArray as Writer;
 
 class IndexController extends AbstractActionController
 {
@@ -57,8 +59,16 @@ class IndexController extends AbstractActionController
             $form->setData($data);
             if ($form->isValid())
             {
-          	// TODO: Persist config.
-            	
+          	// Convert to  config object.
+            	$config = new Config(array(), true);
+                $config->hostname = $data['hostname'];
+                $config->database = $data['database'];
+                $config->username = $data['username'];
+                $config->password = $data['password'];
+                
+                // Persist to file system.
+                $writer = new Writer();
+                $writer->toFile('config/database.config.php', $config);
                 
             	// Redirect to admin index page
 		return $this->redirect()->toRoute('admin');

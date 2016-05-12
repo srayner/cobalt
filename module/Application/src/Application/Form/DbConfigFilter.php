@@ -8,9 +8,9 @@ class DbConfigFilter extends InputFilter
 {
     public function __construct()
     {
-        // Server name
+        // Hostname
         $this->add(array(
-            'name'       => 'serverName',
+            'name'       => 'hostname',
             'required'   => true,
             'validators' => array(
                 array(
@@ -25,9 +25,9 @@ class DbConfigFilter extends InputFilter
             ),
         ));
         
-        // Database name
+        // Database
         $this->add(array(
-            'name'       => 'databaseName',
+            'name'       => 'database',
             'required'   => true,
             'validators' => array(
                 array(
@@ -44,7 +44,7 @@ class DbConfigFilter extends InputFilter
         
         // Username
         $this->add(array(
-            'name'       => 'Username',
+            'name'       => 'username',
             'required'   => true,
             'validators' => array(
                 array(
@@ -61,7 +61,7 @@ class DbConfigFilter extends InputFilter
         
         // Password
         $this->add(array(
-            'name'       => 'Username',
+            'name'       => 'password',
             'required'   => true,
             'validators' => array(
                 array(
