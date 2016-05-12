@@ -8,6 +8,8 @@ class DbConfigForm extends Form
 {
     public function __construct()
     {
+        parent::__construct();
+        
         $this->add(array(
             'type'    => 'text',
             'name'    => 'Server Name',

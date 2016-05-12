@@ -18,6 +18,20 @@ return array(
                     ),
                 ),
             ),
+            
+            'dbconfig' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/admin',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'dbconfig',
+                    ),
+                ),
+            ),
         ),
     ),
     

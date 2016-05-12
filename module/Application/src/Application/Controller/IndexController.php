@@ -41,4 +41,33 @@ class IndexController extends AbstractActionController
             // error opening the file.
         }  
     }
+    
+    public function dbconfigAction()
+    {
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Application\DbConfigForm');
+         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+          
+            $form->setData($data);
+            if ($form->isValid())
+            {
+          	// TODO: Persist config.
+            	
+                
+            	// Redirect to admin index page
+		return $this->redirect()->toRoute('admin');
+            }
+        } 
+        
+        // If not a POST request, or invalid data, then just render the form.
+        return new ViewModel(array(
+            'form'   => $form
+        ));
+    }
 }
