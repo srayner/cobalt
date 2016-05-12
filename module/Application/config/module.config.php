@@ -23,7 +23,7 @@ return array(
                 'type'    => 'Literal',
                 'priority' => 9000,
                 'options' => array(
-                    'route'    => '/admin',
+                    'route'    => '/dbconfig',
                     
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
