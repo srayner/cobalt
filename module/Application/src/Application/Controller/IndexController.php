@@ -80,4 +80,45 @@ class IndexController extends AbstractActionController
             'form'   => $form
         ));
     }
+    
+    public function adconfigAction()
+    {
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Application\AdConfigForm');
+         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+          
+            $form->setData($data);
+            if ($form->isValid())
+            {
+          	// Convert to  config object.
+            	$config = new Config(array(), true);
+                $config->domain_name       = $data['domain_name'];
+                $config->domain_name_short = $data['domain_name_short'];
+                $config->domain_controller = $data['domain_controller'];
+                $config->ldap_port         = $data['ldap_port'];          
+                $config->user              = $data['user'];
+                $config->password          = $data['password'];
+                $config->use_start_tls     = $data['use_start_tls'];
+                $config->baseDn            = $data['baseDn'];
+   
+                // Persist to file system.
+                $writer = new Writer();
+                $writer->toFile('config/activedirectory.config.php', $config);
+                
+            	// Redirect to admin index page
+		return $this->redirect()->toRoute('admin');
+            }
+        } 
+        
+        // If not a POST request, or invalid data, then just render the form.
+        return new ViewModel(array(
+            'form'   => $form
+        ));
+    }
 }

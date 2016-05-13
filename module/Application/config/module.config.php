@@ -32,6 +32,20 @@ return array(
                     ),
                 ),
             ),
+            
+            'adconfig' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/adconfig',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'adconfig',
+                    ),
+                ),
+            ),
         ),
     ),
     
@@ -46,6 +60,7 @@ return array(
         'factories' => array(
             'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'Application\DbConfigForm' => 'Application\Form\DbConfigFormFactory',
+            'Application\AdConfigForm' => 'Application\Form\AdConfigFormFactory',
         ),
     ),
     'translator' => array(
