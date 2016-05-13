@@ -15,15 +15,11 @@ class DbConfigForm extends Form
         
         $this->labelWidth = 3;
         $this->controlWidth = 9;
-                
-        $this->addText('domain_name', 'Domain Name')
-             ->addText('domain_name_short', 'Short Domain Name')
-             ->addText('domain_controller', 'Domain Controller')
-             ->addText('ldap_port', 'LDAP Port Number')
-             ->addText('user', 'Username')
+        
+        $this->addText('hostname', 'Hostname')
+             ->addText('database', 'Database')
+             ->addText('username', 'Username')
              ->addPassword('password', 'Password')
-             ->addText('use_start_tls', 'Use Start TLS')
-             ->addText('baseDn', 'Base DN')
              ->addButton('submit', 'Submit', 'btn-primary');
     }
     

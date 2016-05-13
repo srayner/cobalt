@@ -64,7 +64,7 @@ class IndexController extends AbstractActionController
                 $config->hostname = $data['hostname'];
                 $config->database = $data['database'];
                 $config->username = $data['username'];
-                $config->password = $data['password'];
+                $config->password = str_rot13($data['password']);
                 
                 // Persist to file system.
                 $writer = new Writer();
@@ -103,7 +103,7 @@ class IndexController extends AbstractActionController
                 $config->domain_controller = $data['domain_controller'];
                 $config->ldap_port         = $data['ldap_port'];          
                 $config->user              = $data['user'];
-                $config->password          = $data['password'];
+                $config->password          = str_rot13($data['password']);
                 $config->use_start_tls     = $data['use_start_tls'];
                 $config->baseDn            = $data['baseDn'];
    
