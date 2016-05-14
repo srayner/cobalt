@@ -14,9 +14,9 @@ class SoftwareForm extends HorizontalForm
         
         $this->addText('name', 'Name')
              ->addText('version', 'Version')
-             ->addDoctrineSelect('manufacturer', 'Manufacture', $em, 'SoftwareManufacturer', 'name')
-             ->addDoctrineSelect('type', 'Type', $em, 'SoftwareType', 'name')
-             ->addDoctrineSelect('category', 'Category', $em, 'SoftwareCategory', 'name')
+             ->addDoctrineSelect('manufacturer', 'Manufacture', $em, 'Cobalt\Entity\SoftwareManufacturer', 'name')
+             ->addDoctrineSelect('type', 'Type', $em, 'Cobalt\Entity\SoftwareType', 'name')
+             ->addDoctrineSelect('category', 'Category', $em, 'Cobalt\Entity\SoftwareCategory', 'name')
              ->addButton('submit', 'Add', 'btn-primary');   
     }
 }
