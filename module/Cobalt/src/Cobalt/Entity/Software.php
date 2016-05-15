@@ -40,8 +40,8 @@ class Software
      */
     protected $category;
     
-    /** @ORM\Column(type="integer") */
-    protected $installation_count;
+    /** @ORM\Column(type="integer", name="installation_count") */
+    protected $installationCount;
     
     /** @ORM\Column(type="text") */
     protected $description;
@@ -76,9 +76,9 @@ class Software
         return $this->category;
     }
 
-    public function getInstallation_count()
+    public function getInstallationCount()
     {
-        return $this->installation_count;
+        return $this->installationCount;
     }
 
     public function getDescription()
@@ -122,9 +122,9 @@ class Software
         return $this;
     }
 
-    public function setInstallation_count($installation_count)
+    public function setInstallationCount($installationCount)
     {
-        $this->installation_count = $installation_count;
+        $this->installationCount = $installationCount;
         return $this;
     }
 

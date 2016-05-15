@@ -32,7 +32,8 @@ class SoftwareController extends AbstractController
             $form->setData($data);
             if ($form->isValid())
             {
-          	// Persist hardware.
+          	// Persist software.
+                $software->setInstallationCount(0);
             	$this->service->persist($software);
                 
             	// Redirect to list of software
