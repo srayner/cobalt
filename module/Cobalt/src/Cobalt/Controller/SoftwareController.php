@@ -9,7 +9,7 @@ class SoftwareController extends AbstractController
     public function indexAction()
     {
         return new ViewModel(array(
-            
+            'software' => $this->service->findAll()   
         ));
     }
     
