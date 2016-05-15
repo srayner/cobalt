@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class SoftwareController extends AbstractController
 {
@@ -52,8 +53,38 @@ class SoftwareController extends AbstractController
     
     public function editAction()
     {
+        // Get a current copy of the entity.
+        $id = (int)$this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'software', 'action'=>'add'));
+	}
+        $software = $this->service->findById($id);
+        
+        // Create a new form instance and bind the entity to it.
+        $form = $this->getServiceLocator()->get('Cobalt\SoftwareForm');
+        $form->bind($software);
+        
+        // Check if this request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate the data.
+            $form->setData($request->getPost());
+            if ($form->isValid())
+            {
+                // Save changes.
+                $this->service->persist($software);
+
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }
+        }
+        
+        $this->storeReferer('software/edit');
+        
         return new ViewModel(array(
-            
+            'id' => $id,
+            'form' => $form
         ));
     }
     
@@ -69,5 +100,21 @@ class SoftwareController extends AbstractController
         return new ViewModel(array(
             
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('software');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('software');
+        $referer = $session->referer;
+        return $referer;
     }
 }
