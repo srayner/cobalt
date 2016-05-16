@@ -90,15 +90,40 @@ class SoftwareController extends AbstractController
     
     public function deleteAction()
     {
-        return new ViewModel(array(
+        $id = (int)$this->params()->fromRoute('id');
+        $software = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
             
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($software);
+            
+                // Redirect to software index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'software'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('software/delete');
+        
+        return new ViewModel(array(
+            'software' => $software
         ));
     }
     
     public function detialAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $software = $this->service->findById($id);
+        
         return new ViewModel(array(
-            
+            'software' => $software
         ));
     }
     
