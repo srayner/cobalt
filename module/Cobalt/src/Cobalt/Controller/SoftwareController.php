@@ -117,7 +117,7 @@ class SoftwareController extends AbstractController
         ));
     }
     
-    public function detialAction()
+    public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $software = $this->service->findById($id);
