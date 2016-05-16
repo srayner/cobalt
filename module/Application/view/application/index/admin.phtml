@@ -3,7 +3,9 @@
         <h1>Administration Area</h1>
         <hr>
     </div>
-    
+</div>
+
+<div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-desktop"></i> Hardware</div>
@@ -49,6 +51,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-book"></i> Active Directory</div>
@@ -67,4 +71,17 @@
         </div>
     </div>
     
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-life-ring"></i> Support Helpdesk</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype')); ?>">Ticket Types</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus')); ?>">Ticket States</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketcategory')); ?>">Ticket Categories</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority')); ?>">Ticket Priorities</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketimpact')); ?>">Ticket Impacts</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'technicians')); ?>">Support Technicians</a>
+            </div>
+        </div>
+    </div>    
 </div>
