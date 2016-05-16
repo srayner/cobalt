@@ -22,7 +22,7 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
             <li role="presentation" class="active"><a href="#details"        aria-controls="home"          role="tab" data-toggle="tab">Details</a></li>
-            <li role="presentation"><a                href="#history"        aria-controls="licenses"      role="tab" data-toggle="tab">Licenses</a></li>
+            <li role="presentation"><a                href="#licenses"       aria-controls="licenses"      role="tab" data-toggle="tab">Licenses</a></li>
             <li role="presentation"><a                href="#installations"  aria-controls="installations" role="tab" data-toggle="tab">Installations</a></li>
             <li role="presentation"><a                href="#history"        aria-controls="history"       role="tab" data-toggle="tab">History</a></li>
         </ul>
@@ -64,7 +64,12 @@
             
             <!-- Licenses tab -->
             <div role="tabpanel" class="tab-pane" id="licenses">
-                No licenses to show yet.
+                <table class="table table-bordered">
+                </table>
+                <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'softwarelicense',
+                    'action' => 'add'
+                )); ?>">Add License</a>
             </div>
             
             <!-- Installations tab -->
