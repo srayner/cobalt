@@ -88,6 +88,35 @@ class SoftwareLicenseController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $license = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($license);
+            
+                // Redirect to license index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'softwarelicense'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('softwarelicense/delete');
+        
+        return new ViewModel(array(
+            'license' => $license
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
