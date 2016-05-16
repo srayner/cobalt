@@ -148,6 +148,7 @@ return array(
             'Cobalt\PrinterForm'              => 'Cobalt\Form\PrinterFormFactory',
             'Cobalt\SoftwareForm'             => 'Cobalt\Form\SoftwareFormFactory',
             'Cobalt\SoftwareCategoryForm'     => 'Cobalt\Form\SoftwareCategoryFormFactory',
+            'Cobalt\SoftwareLicenseForm'      => 'Cobalt\Form\SoftwareLicenseFormFactory',
             'Cobalt\SoftwareManufacturerForm' => 'Cobalt\Form\SoftwareManufacturerFormFactory',
             'Cobalt\SoftwareTypeForm'         => 'Cobalt\Form\SoftwareTypeFormFactory',
             
