@@ -41,7 +41,7 @@ CREATE TABLE ticket_impact (
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
--- Ticket status table
+-- Ticket table
 CREATE TABLE ticket (
   id             integer      not null AUTO_INCREMENT,
   raised         datetime     not null,
