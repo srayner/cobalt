@@ -59,7 +59,7 @@ CREATE TABLE software_installation(
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Software license table
-CREATE TABLE software_licence(
+CREATE TABLE software_license(
     id Integer                    NOT NULL AUTO_INCREMENT,
     software_id Integer           NOT NULL,
     license_key Varchar(128)          NULL,
