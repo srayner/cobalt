@@ -22,10 +22,10 @@ class SoftwareLicense
      */
     protected $software;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="license_key") */
     protected $licenseKey;
     
-     /** @ORM\Column(type="integer") */
+     /** @ORM\Column(type="integer", name="installations_allowed") */
     protected $installationsAllowed;
     
     public function getId()

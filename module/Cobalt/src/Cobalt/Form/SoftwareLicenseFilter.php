@@ -4,7 +4,7 @@ namespace Cobalt\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class PrinterFilter extends InputFilter
+class SoftwareLicenseFilter extends InputFilter
 {
     public function __construct()
     {
@@ -27,7 +27,7 @@ class PrinterFilter extends InputFilter
         
         // instllations allowed
         $this->add(array(
-            'name'       => 'instllationsAllowed',
+            'name'       => 'installationsAllowed',
             'required'   => true,
             'filters'   => array(
                 array('name' => 'StringTrim'),
