@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="software")
@@ -46,6 +47,21 @@ class Software
     /** @ORM\Column(type="text") */
     protected $description;
     
+    /**
+     * @ORM\OneToMany(targetEntity="SoftwareLicense", mappedBy="software")
+     */
+    protected $licenses;
+    
+    public function __construct()
+    {
+        $this->licenses = new ArrayCollection();
+    }
+    
+    public function addLicense($license)
+    {
+        $this->licenses[] = $license;
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -86,6 +102,11 @@ class Software
         return $this->description;
     }
 
+    public function getLicenses()
+    {
+        return $this->licenses->toArray();
+    }
+    
     public function setId($id)
     {
         $this->id = $id;

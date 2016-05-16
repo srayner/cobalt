@@ -65,6 +65,23 @@
             <!-- Licenses tab -->
             <div role="tabpanel" class="tab-pane" id="licenses">
                 <table class="table table-bordered">
+                    <tr>
+                        <th></th>
+                        <th>License Key</th>
+                        <th>Installations Allowed</td>
+                    </tr>
+                    <?php foreach ($this->software->getLicenses() as $license): ?>
+                    <tr>
+                        <th style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarelicense', 'action' => 'edit', 'id' => $license->getId()));?>">
+                                <i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarelicense', 'action' => 'delete', 'id' => $license->getId()));?>">
+                                <i class="fa fa-remove"></i></a>
+                        </th>
+                        <td><?php echo $license->getLicenseKey();?></td>
+                        <td><?php echo $license->getInstallationsAllowed();?></td>
+                    </tr>
+                    <?php endforeach; ?>
                 </table>
                 <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
                     'controller' => 'softwarelicense',
