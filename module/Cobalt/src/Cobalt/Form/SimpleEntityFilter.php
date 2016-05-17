@@ -10,7 +10,7 @@ class SimpleEntityFilter extends InputFilter
     {
         // Name
         $this->add(array(
-            'name'       => 'hostname',
+            'name'       => 'name',
             'required'   => true,
             'validators' => array(
                 array(

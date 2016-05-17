@@ -123,6 +123,7 @@ return array(
             'Cobalt\SoftwareLicense'      => 'Cobalt\Entity\SoftwareLicense',
             'Cobalt\SoftwareManufacturer' => 'Cobalt\Entity\SoftwareManufacturer',
             'Cobalt\SoftwareType'         => 'Cobalt\Entity\SoftwareType',
+            'Cobalt\TicketType'           => 'Cobalt\Entity\TicketType',
             'Cobalt\User'                 => 'Cobalt\Entity\User',
             'WhoIsService'                => 'Cobalt\Service\WhoIsService',
         ),

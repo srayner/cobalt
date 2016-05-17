@@ -12,7 +12,7 @@ class SimpleEntityForm extends HorizontalForm
         $this->labelWidth = 4;
         $this->controlWidth = 8;
         
-        $this->addText('name', 'Company Name')
+        $this->addText('name', 'Name')
              ->addTextArea('description', 'Description', 5)
              ->addButton('submit', 'Add', 'btn-primary');   
     }
