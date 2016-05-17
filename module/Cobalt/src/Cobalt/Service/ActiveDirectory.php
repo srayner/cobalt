@@ -4,11 +4,24 @@ namespace Cobalt\Service;
 
 use Zend\Ldap\Ldap;
 use Cobalt\Entity\User;
+use Cobalt\Entity\Company;
+use Cobalt\Entity\Office;
+use Cobalt\Entity\Department;
 use DateTime;
 
 class ActiveDirectory {
     
     protected $options;
+    protected $companyService;
+    protected $officeService;
+    protected $departmentService;
+    
+    public function __construct($companyService, $officeService, $departmentService)
+    {
+        $this->companyService    = $companyService;
+        $this->officeService     = $officeService;
+        $this->departmentService = $departmentService;
+    }
     
     public function setOptions($options)
     {
@@ -56,9 +69,11 @@ class ActiveDirectory {
                              'dc=wr,dc=local',
                              Ldap::SEARCH_SCOPE_SUB);
         
-        foreach ($result as $item) {
+        foreach ($result as $item)
+        {
             
-            if ($item['samaccountname'][0] != '') {
+            if ($item['samaccountname'][0] != '')
+            {
                 // Get existing user entity, or create new user entity.
                 $user = $userService->findBySamAccountName($item['samaccountname'][0]);
                 if (!$user) {
@@ -96,7 +111,12 @@ class ActiveDirectory {
                 }
 
                 if (array_key_exists('company', $item)){
-                    $user->setCompany($item['company'][0]);
+                    $company = $this->companyService->findByName($item['company'][0]);
+                    if (!$company) {
+                        $company = new Company();
+                        $company->setName($item['company'][0]);
+                    }
+                    $user->setCompany($company);
                 }
                 if (array_key_exists('department', $item)){
                     $user->setDepartment($item['department'][0]);

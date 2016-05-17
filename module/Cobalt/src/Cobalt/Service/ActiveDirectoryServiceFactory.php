@@ -9,7 +9,11 @@ class ActiveDirectoryServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new ActiveDirectory;
+        $companyService    = $serviceLocator->get('Cobalt\EntityService\CompanyService');
+        $officeService     = $serviceLocator->get('Cobalt\EntityService\OfficeService');
+        $departmentService = $serviceLocator->get('Cobalt\EntityService\DepartmentService');
+        
+        $service = new ActiveDirectory($companyService, $officeService, $departmentService);
         $options = $serviceLocator->get('Config')['cobalt']['ldap'];
         $service->setOptions($options);
         return $service;
