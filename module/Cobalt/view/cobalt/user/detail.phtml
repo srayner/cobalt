@@ -73,7 +73,7 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                                 <tbody>
                                     <tr>
                                         <th style="width: 35%;">Company</th>
-                                        <td><?php echo $this->user->getCompany(); ?></td>
+                                        <td><?php echo $this->user->getCompany()->getName(); ?></td>
                                     </tr>
                                      <tr>
                                         <th style="width: 35%;">Office</th>

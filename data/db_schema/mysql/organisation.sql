@@ -29,7 +29,7 @@ CREATE TABLE department(
   phone Varchar(24)    NULL,
   fax Varchar(24)      NULL,
   company_id Integer NOT NULL,
-  INDEX idx_department_comapny_id (company_id),
+  INDEX idx_department_comapany_id (company_id),
   FOREIGN KEY (company_id)  REFERENCES office(id) ON DELETE CASCADE,
   PRIMARY KEY (id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -48,12 +48,14 @@ CREATE TABLE user (
   description         NVarChar(128),
   office              NVarChar(64),
   photo_filename      NVarChar(64),
-  company             NVarChar(64),
+  company_id          Integer,
   department          NVarChar(64),
   title               NVarChar(64),
   reports_to_id       Integer,
   bad_password_count  Integer,
-  bad_password_time   DateTime
+  bad_password_time   DateTime,
+  INDEX idx_department_comapany_id (company_id),
+  FOREIGN KEY (company_id) REFERENCES company(id) 
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 

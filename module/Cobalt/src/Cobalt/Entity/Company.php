@@ -39,10 +39,16 @@ class Company
      */
     protected $departments;
     
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="company")
+     */
+    protected $users;
+    
     public function __construct()
     {
-        $this->offices = new ArrayCollection();
+        $this->offices     = new ArrayCollection();
         $this->departments = new ArrayCollection();
+        $this->users       = new ArrayCollection();
     }
     
     public function addOffice($office)
@@ -55,6 +61,11 @@ class Company
         $this->departments[] = $department;
     }
     
+    public function addUser($user)
+    {
+        $this->users[] = $user;
+    }
+    
     public function getOffices()
     {
         return $this->offices->toArray();
@@ -65,6 +76,11 @@ class Company
         return $this->departments->toArray();
     }
 
+    public function getUsers()
+    {
+        return $this->users->toArray();
+    }
+    
     public function getId()
     {
         return $this->id;
