@@ -90,6 +90,35 @@ class TicketPriorityController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $priority = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($priority);
+            
+                // Redirect to priority index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'ticketpriority'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('ticketpriority/delete');
+        
+        return new ViewModel(array(
+            'priority' => $priority
+        ));
+    }
+    
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
