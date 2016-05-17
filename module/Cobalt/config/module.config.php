@@ -151,6 +151,11 @@ return array(
             'Cobalt\SoftwareLicenseForm'      => 'Cobalt\Form\SoftwareLicenseFormFactory',
             'Cobalt\SoftwareManufacturerForm' => 'Cobalt\Form\SoftwareManufacturerFormFactory',
             'Cobalt\SoftwareTypeForm'         => 'Cobalt\Form\SoftwareTypeFormFactory',
+            'Cobalt\TicketTypeForm'           => 'Cobalt\Form\SimpleEntityFormFactory',
+            'Cobalt\TicketStatusForm'         => 'Cobalt\Form\SimpleEntityFormFactory',
+            'Cobalt\TicketPriorityForm'       => 'Cobalt\Form\SimpleEntityFormFactory',
+            'Cobalt\TicketImpactForm'         => 'Cobalt\Form\SimpleEntityFormFactory',
+            'Cobalt\TicketCategoryForm'       => 'Cobalt\Form\SimpleEntityFormFactory',
             
         ),
         'abstract_factories' => array(
