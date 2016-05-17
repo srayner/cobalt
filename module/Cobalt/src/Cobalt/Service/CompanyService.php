@@ -23,6 +23,13 @@ class CompanyService
         return $this->entityManager->find($this->repository, $id);
     }
     
+    public function findByName($name)
+    {
+        return $this->entityManager->getRepository($this->repository)->findOneBy(array(
+            'name' => $name
+        ));
+    }
+    
     public function persist($company)
     {
         $this->entityManager->persist($company);
