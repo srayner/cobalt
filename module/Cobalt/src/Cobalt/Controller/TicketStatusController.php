@@ -125,7 +125,11 @@ class TicketStatusController extends AbstractController
     
     public function detailAction()
     {
-        
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $status = $this->service->findById($id);
+        return new ViewModel(array(
+            'status' => $status
+        ));    
     }
     
     private function storeReferer($except)
