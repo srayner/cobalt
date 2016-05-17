@@ -23,12 +23,12 @@
                 <tbody>
                     <?php foreach($this->states as $state): ?> 
                     <tr>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstate', 'action' => 'detail', 'id' => $state->getId()));?>">
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'detail', 'id' => $state->getId()));?>">
                             <?php echo $state->getName();?></a></td>
                         <td><?php echo nl2br($state->getDescription()); ?></td>
                         <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstate', 'action' => 'edit', 'id' => $state->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstate', 'action' => 'delete', 'id' => $state->getId()));?>">Delete</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'edit', 'id' => $state->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'delete', 'id' => $state->getId()));?>">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach ?>

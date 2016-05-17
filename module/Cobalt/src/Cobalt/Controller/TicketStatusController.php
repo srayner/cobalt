@@ -53,6 +53,42 @@ class TicketStatusController extends AbstractController
     
     public function editAction()
     {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'ticketstatus',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the status with the specified id.
+        $status = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\TicketStatusForm');
+        $form->bind($status);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist status.
+            	$this->service->persist($status);
+                
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }     
+        }
+        
+        $this->storeReferer('ticketstatus/edit');
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
         
     }
     
