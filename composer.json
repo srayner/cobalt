@@ -13,6 +13,7 @@
         "zf-commons/zfc-base": "0.1.2",
         "zf-commons/zfc-user": "dev-master",
         "doctrine/doctrine-orm-module": "^0.9.2",
+        "srayner/civuser":"dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "neilime/zf2-twb-bundle": "^2.6",
         "phpwhois/phpwhois": "dev-master"
