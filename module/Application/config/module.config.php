@@ -122,6 +122,29 @@ return array(
              ),
             
             array(
+                'label' => '<i class="fa fa-life-ring"></i> Support Tickets',
+                'route' => 'cobalt/default',
+                'controller' => 'ticket',
+                'pages' => array(
+                    array(
+                        'label' => 'New Ticket',
+                        'controller' => 'ticket',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Update Ticket',
+                        'controller' => 'ticket',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Cancel Ticket',
+                        'controller' => 'ticket',
+                        'action' => 'cancel',
+                    ),
+                ),
+            ),
+            
+            array(
                 'label' => '<i class="fa fa-building"></i> Companies',
                 'route' => 'cobalt/default',
                 'controller' => 'company',
