@@ -8,12 +8,12 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',
-     //   'ZfcUser',
+        
         'TwbBundle',
         'Cobalt',
         'FAQ',
         'Project',
-        
+        'CivUser',
      //   'CivAuth',
     ),
 
