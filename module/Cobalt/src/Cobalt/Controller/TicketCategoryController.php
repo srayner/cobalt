@@ -121,6 +121,14 @@ class TicketCategoryController extends AbstractController
         
     }
     
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        return new ViewModel(array(
+            'category' => $category = $this->service->findById($id)
+        ));    
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();

@@ -1,8 +1,61 @@
 <?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('/js/cobalt/ticket-category/detail.js');
+?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Support Ticket Category Details</h1>
+        <hr>
+            
+        <i class="fa fa-ticket fa-3x pull-left"></i>
+        <h4><?php echo $this->category->getName(); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketcategory', 'action' => 'edit', 'id' => $this->category->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketcategory', 'action' => 'delete', 'id' => $this->category->getId())); ?>"><i class="fa fa-remove"></i></a>
+        </p>
+        
+    
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
 
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Name</th>
+                                    <td><?php echo $this->category->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td><?php echo nl2br($this->category->getDescription()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                No history to show yet.
+            </div>
+        </div>
+    </div>
+
+</div>
