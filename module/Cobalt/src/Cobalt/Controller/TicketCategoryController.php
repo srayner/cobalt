@@ -90,6 +90,37 @@ class TicketCategoryController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        
+        $id = (int)$this->params()->fromRoute('id');
+        $category = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($category);
+            
+                // Redirect to category index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'ticketcategory'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('ticketcategory/delete');
+        
+        return new ViewModel(array(
+            'category' => $category
+        ));
+        
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();

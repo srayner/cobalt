@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12 title">
+        <h1>Delete Support Ticket Category</h1>
+        <hr>
+        <p>Are you sure you want to delete the support ticket category <i><b><?php echo $this->category->getName(); ?></b></i> ?</p>
+        
+        <form action="<?php echo $this->url('cobalt/default', array(
+            'controller' => 'ticketcategory',
+            'action' => 'delete',
+            'id' => $this->category->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>
