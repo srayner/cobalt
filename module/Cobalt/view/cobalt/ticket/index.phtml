@@ -1,0 +1,40 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/ticket/index.js');
+?>
+        
+    <div class="row">
+        <div class="col col-md-12 title">
+            <h1>Support Tickets</h1>
+            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'add'));?>">New Ticket</a>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="states" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Ticket No</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->tickets as $ticket): ?> 
+                    <tr>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'detail', 'id' => $ticket->getId()));?>">
+                            <?php echo $ticket->getId();?></a></td>
+                        <td><?php echo $ticket->getSubject(); ?></td>
+                        <td><?php echo $ticket->getStatus()->getName(); ?></td>
+                        <td style="width: 1%;" nowrap>
+                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $ticket->getId()));?>">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $ticket->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
