@@ -116,13 +116,16 @@ return array(
     // Navigation
     'navigation' => array(
         'default' => array(
+            
+            // Dashboard.
             array(
                 'label' => '<i class="fa fa-area-chart"></i> Dashboard',
                 'route' => 'cobalt',
              ),
             
+            // Helpdesk
             array(
-                'label' => '<i class="fa fa-life-ring"></i> Support Tickets',
+                'label' => '<i class="fa fa-life-ring"></i> Support Helpdesk',
                 'route' => 'cobalt/default',
                 'controller' => 'ticket',
                 'pages' => array(
@@ -144,8 +147,9 @@ return array(
                 ),
             ),
             
+            // Organisation
             array(
-                'label' => '<i class="fa fa-building"></i> Companies',
+                'label' => '<i class="fa fa-building"></i> Organisation',
                 'route' => 'cobalt/default',
                 'controller' => 'company',
                 'pages' => array(
