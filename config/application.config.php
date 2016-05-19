@@ -3,6 +3,7 @@ return array(
     
     // Module to load in the application.
     'modules' => array(
+        'CivUser',
         'Application',
    //     'ZendDeveloperTools',
         'DoctrineModule',
@@ -13,7 +14,7 @@ return array(
         'Cobalt',
         'FAQ',
         'Project',
-        'CivUser',
+        
      //   'CivAuth',
     ),
 
