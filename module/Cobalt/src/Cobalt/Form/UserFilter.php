@@ -42,9 +42,9 @@ class UserFilter extends InputFilter
             ),
         ));
         
-        // Email
+        // Email Address
         $this->add(array(
-            'name'       => 'email',
+            'name'       => 'emailAddress',
             'required'   => false,
             'validators' => array(
                 array(
