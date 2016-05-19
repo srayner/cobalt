@@ -20,7 +20,7 @@ class User
     /** @ORM\Column(type="string") */
     protected $username;
     
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", name="email_address") */
     protected $emailAddress;
     
     /** @ORM\Column(type="string", name="sam_account_name") */
