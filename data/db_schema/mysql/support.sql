@@ -69,13 +69,13 @@ CREATE TABLE ticket (
   INDEX idx_ticket_impact_id (impact_id),
   INDEX idx_ticket_requestor_id (requestor_id),
   INDEX idx_ticket_technician_id (technician_id),
-  FOREIGN KEY (raised_by_id)  REFERENCES user(user_id)       ON DELETE RESTRICT,
+  FOREIGN KEY (raised_by_id)  REFERENCES user(id)       ON DELETE RESTRICT,
   FOREIGN KEY (status_id)     REFERENCES ticket_status(id)   ON DELETE RESTRICT,
   FOREIGN KEY (type_id)       REFERENCES ticket_type(id)     ON DELETE RESTRICT,
   FOREIGN KEY (category_id)   REFERENCES ticket_category(id) ON DELETE RESTRICT,
   FOREIGN KEY (priority_id)   REFERENCES ticket_priority(id) ON DELETE RESTRICT,
   FOREIGN KEY (impact_id)     REFERENCES ticket_impact(id)   ON DELETE RESTRICT,
-  FOREIGN KEY (requestor_id)  REFERENCES user(user_id)       ON DELETE RESTRICT,
-  FOREIGN KEY (technician_id) REFERENCES user(user_id)       ON DELETE RESTRICT,
+  FOREIGN KEY (requestor_id)  REFERENCES user(id)            ON DELETE RESTRICT,
+  FOREIGN KEY (technician_id) REFERENCES user(id)            ON DELETE RESTRICT,
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;

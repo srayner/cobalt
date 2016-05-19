@@ -35,28 +35,28 @@ CREATE TABLE department(
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- User table
-CREATE TABLE user (
-  user_id Integer NOT NULL AUTO_INCREMENT,
-  username            NVarChar(128),
-  email               NVarChar(256),
-  sam_account_name    NVarChar(128),
-  user_principal_name NVarChar(128),
-  telephone_number    NVarChar(32),
-  mobile_number       NVarchar(32),
-  extension_number    NVarChar(32),
-  display_name        NVarChar(64),
-  description         NVarChar(128),
-  office              NVarChar(64),
-  photo_filename      NVarChar(64),
+CREATE TABLE `user` (
+  id                  Integer NOT NULL AUTO_INCREMENT,
+  username            VarChar(128),
+  email_address       VarChar(256),
+  sam_account_name    VarChar(128),
+  user_principal_name VarChar(128),
+  telephone_number    VarChar(32),
+  mobile_number       Varchar(32),
+  extension_number    VarChar(32),
+  display_name        VarChar(64),
+  description         VarChar(128),
+  office              VarChar(64),
+  photo_filename      VarChar(64),
   company_id          Integer,
-  department          NVarChar(64),
-  title               NVarChar(64),
+  department          VarChar(64),
+  title               VarChar(64),
   reports_to_id       Integer,
   bad_password_count  Integer,
   bad_password_time   DateTime,
   INDEX idx_department_comapany_id (company_id),
-  FOREIGN KEY (company_id) REFERENCES company(id) 
-  PRIMARY KEY (user_id)
+  FOREIGN KEY (company_id) REFERENCES company(id), 
+  PRIMARY KEY (id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Active Directory Group table.
@@ -99,14 +99,14 @@ create trigger user_history_insert after insert on user
 for each row
 begin
   insert into history (table_id, row_id, date_time, what)
-  values (1, new.user_id, now(), 'User created.');
+  values (1, new.id, now(), 'User created.');
 end//
 
 create trigger user_history_update after update on user
 for each row
 begin
   insert into history (table_id, row_id, date_time, what)
-  values (1, new.user_id, now(), 'User modified.');
+  values (1, new.id, now(), 'User modified.');
 end//
 
 create trigger computer_history_insert after insert on computer
