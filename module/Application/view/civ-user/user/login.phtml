@@ -2,7 +2,7 @@
     
     <!-- Title -->
     <div class="col-md-12 title">
-        <h1>Overridden Login View</h1>
+        <h1>Login</h1>
         <hr>
     </div>
     
@@ -10,7 +10,7 @@
     <div class="col-md-6">
         <?php $form = $this->form; ?>
 
-        <?php echo $this->form()->openTag($form); ?>
+        <?php echo $this->form(null, null)->openTag($form); ?>
         <?php echo $this->formRow($form->get('username')); ?>
         <?php echo $this->formRow($form->get('password')); ?>
         <?php echo $this->formRow($form->get('submit')); ?>
