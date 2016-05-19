@@ -21,7 +21,7 @@ class Ticket
     
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="raised_by_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="raised_by_id", referencedColumnName="id")
      */
     protected $raisedBy;
     
@@ -60,13 +60,13 @@ class Ticket
     
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="requestor_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="requestor_id", referencedColumnName="id")
      */
     protected $requestor;
     
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="requestor_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="requestor_id", referencedColumnName="id")
      */
     protected $technician;
     

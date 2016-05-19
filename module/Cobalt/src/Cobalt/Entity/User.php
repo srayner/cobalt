@@ -13,7 +13,7 @@ class User
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer", name="user_id")
+     * @ORM\Column(type="integer")
      */
     protected $id;
     
@@ -21,7 +21,7 @@ class User
     protected $username;
     
     /** @ORM\Column(type="string") */
-    protected $email;
+    protected $emailAddress;
     
     /** @ORM\Column(type="string", name="sam_account_name") */
     protected $samAccountName;
@@ -70,14 +70,14 @@ class User
     
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="reports_to_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="reports_to_id", referencedColumnName="id")
      */
     protected $reportsTo;
     
     /**
      * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
      * @ORM\JoinTable(name="user_computer",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")},
+     *     joinColumns={@ORM\JoinColumn(name="id", referencedColumnName="user_id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="computer_id", referencedColumnName="computer_id")}
      * )
      */
@@ -104,9 +104,9 @@ class User
         return $this->username;
     }
 
-    public function getEmail()
+    public function getEmailAddress()
     {
-        return $this->email;
+        return $this->emailAddress;
     }
 
     public function getSamAccountName()
@@ -201,9 +201,9 @@ class User
         return $this;
     }
 
-    public function setEmail($email)
+    public function setEmailAddress($emailAddress)
     {
-        $this->email = $email;
+        $this->emailAddress = $emailAddress;
         return $this;
     }
 
