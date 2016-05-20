@@ -87,7 +87,7 @@ class ActiveDirectory {
                     $user ->setUserPrincipalName($item['userprincipalname'][0]);
                 }
                 if (array_key_exists('mail', $item)){    
-                    $user->setEmail(strtolower($item['mail'][0]));
+                    $user->setEmailAddress(strtolower($item['mail'][0]));
                 }
                 if (array_key_exists('othertelephone', $item)){    
                     $user->setTelephoneNumber($item['othertelephone'][0]);
