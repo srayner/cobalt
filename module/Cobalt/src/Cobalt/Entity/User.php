@@ -77,7 +77,7 @@ class User
     /**
      * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
      * @ORM\JoinTable(name="user_computer",
-     *     joinColumns={@ORM\JoinColumn(name="id", referencedColumnName="user_id")},
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="computer_id", referencedColumnName="computer_id")}
      * )
      */
