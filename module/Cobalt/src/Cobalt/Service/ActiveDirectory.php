@@ -71,6 +71,7 @@ class ActiveDirectory {
         
         foreach ($result as $item)
         {
+            //die(var_dump($this->options));
             
             if ($item['samaccountname'][0] != '')
             {
@@ -80,6 +81,9 @@ class ActiveDirectory {
                     $user = new User();
                 }
                 
+                // Set domain.
+                $user->setDomain($this->options['accountDomainName']);
+                
                 // Update user properties based on values from active directory.
                 $user->setSamAccountName($item['samaccountname'][0]);
                 $user->setUsername($item['samaccountname'][0]);
@@ -87,7 +91,7 @@ class ActiveDirectory {
                     $user ->setUserPrincipalName($item['userprincipalname'][0]);
                 }
                 if (array_key_exists('mail', $item)){    
-                    $user->setEmail(strtolower($item['mail'][0]));
+                    $user->setEmailAddress(strtolower($item['mail'][0]));
                 }
                 if (array_key_exists('othertelephone', $item)){    
                     $user->setTelephoneNumber($item['othertelephone'][0]);

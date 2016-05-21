@@ -20,6 +20,9 @@ class User
     /** @ORM\Column(type="string") */
     protected $username;
     
+    /** @ORM\Column(type="string") */
+    protected $domain;
+    
     /** @ORM\Column(type="string", name="email_address") */
     protected $emailAddress;
     
@@ -77,7 +80,7 @@ class User
     /**
      * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
      * @ORM\JoinTable(name="user_computer",
-     *     joinColumns={@ORM\JoinColumn(name="id", referencedColumnName="user_id")},
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="computer_id", referencedColumnName="computer_id")}
      * )
      */
@@ -104,6 +107,11 @@ class User
         return $this->username;
     }
 
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+    
     public function getEmailAddress()
     {
         return $this->emailAddress;
@@ -201,6 +209,12 @@ class User
         return $this;
     }
 
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+        return $this;
+    }
+    
     public function setEmailAddress($emailAddress)
     {
         $this->emailAddress = $emailAddress;

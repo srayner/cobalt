@@ -63,6 +63,7 @@ class UserController extends AbstractController
             if ($form->isValid())
             {
           	// Persist user.
+                $user->setDomain('local');
             	$this->service->persist($user);
                 
             	// Redirect to list of users
