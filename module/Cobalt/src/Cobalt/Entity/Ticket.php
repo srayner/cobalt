@@ -66,7 +66,7 @@ class Ticket
     
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="requestor_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="technician_id", referencedColumnName="id")
      */
     protected $technician;
     

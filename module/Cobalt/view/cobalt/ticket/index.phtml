@@ -25,7 +25,7 @@
                     <?php foreach($this->tickets as $ticket): ?> 
                     <tr>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'detail', 'id' => $ticket->getId()));?>">
-                            <?php echo $ticket->getId();?></a></td>
+                            <?php echo sprintf('%08d', $ticket->getId());?></a></td>
                         <td><?php echo $ticket->getSubject(); ?></td>
                         <td><?php echo $ticket->getStatus()->getName(); ?></td>
                         <td style="width: 1%;" nowrap>

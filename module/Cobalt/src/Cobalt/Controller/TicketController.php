@@ -28,10 +28,22 @@ class TicketController extends AbstractController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
-                // TODO: Add raised by
+                // Add raised.
+                $ticket->setRaised(new \DateTime());
+                
+                // Add raised by
+                $authService = $this->getServiceLocator()->get('CivUser\AuthService');
+                $currentUserId = $authService->getIdentity()->getId();
+                $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $currentUser = $em->getReference('Cobalt\Entity\User', $currentUserId);
+                $ticket->setRaisedBy($currentUser);
+                
+                // Response due
+                $ticket->setResponseDue(new \DateTime());
+                $ticket->setResolutionDue(new \DateTime());
                 
                 // Persist
-            //    $this->service->persist($ticket);
+                $this->service->persist($ticket);
                 
                 // Redirect.
                 return $this->redirect()->toRoute('cobalt/default', array('controller' => 'ticket'));
