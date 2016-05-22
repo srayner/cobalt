@@ -12,8 +12,8 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="states" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
-                <tbody>
+            <table id="tickets" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
+                <thead>
                     <tr>
                         <th></th>
                         <th>Ticket No</th>
@@ -23,6 +23,8 @@
                         <th>Requester</th>
                         
                     </tr>
+                </thead>
+                <tbody>
                     <?php foreach($this->tickets as $ticket): ?> 
                     <tr>
                         <th style="width: 1%;" nowrap>
