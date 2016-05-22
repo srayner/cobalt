@@ -8,30 +8,44 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Support Tickets</h1>
-            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'add'));?>">New Ticket</a>
+            <a class="btn btn-primary btn-sm pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'add'));?>">New Ticket</a>
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="states" class="table" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Ticket No</th>
-                        <th>Subject</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+            <table id="states" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
                 <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Ticket No</th>
+                        <th>Status</th>
+                        <th>Subject</th>
+                        <th>Priority</th>
+                        <th>Requester</th>
+                        
+                    </tr>
                     <?php foreach($this->tickets as $ticket): ?> 
                     <tr>
+                        <th style="width: 1%;" nowrap>
+                            <i><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $ticket->getId()));?>"><i class="fa fa-edit"></i></a>
+                                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $ticket->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </th>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'detail', 'id' => $ticket->getId()));?>">
                             <?php echo sprintf('%08d', $ticket->getId());?></a></td>
-                        <td><?php echo $ticket->getSubject(); ?></td>
                         <td><?php echo $ticket->getStatus()->getName(); ?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $ticket->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $ticket->getId()));?>">Delete</a>
+                        <td><?php echo $ticket->getSubject(); ?></td>
+                        <td>
+                            <?php
+                                $priorityClass="label label-default";
+                                if ($ticket->getPriority()->getName() == 'High') {
+                                    $priorityClass="label label-danger";
+                                }
+                                if ($ticket->getPriority()->getName() == 'Medium') {
+                                    $priorityClass="label label-warning";
+                                }
+                            ?>
+                            <span class="<?php echo $priorityClass;?>"><?php echo $ticket->getPriority()->getName(); ?></span>
                         </td>
+                        <td><?php echo $ticket->getRequestor()->getDisplayName(); ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

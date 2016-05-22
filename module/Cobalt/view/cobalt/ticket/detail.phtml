@@ -16,7 +16,7 @@
         <h4><?php echo sprintf('%08d', $this->ticket->getId()); ?></h4>
         <p>
             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $this->ticket->getId())); ?>"><i class="fa fa-edit"></i></a>
-        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $this->ticket->getId())); ?>"><i class="fa fa-remove"></i></a>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $this->ticket->getId())); ?>"><i class="fa fa-remove"></i></a>
         </p>
         
     
