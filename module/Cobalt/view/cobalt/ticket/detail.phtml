@@ -1,0 +1,96 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/datatables.css');
+    $this->headScript()->appendFile('/js/datatables.js')
+                       ->appendFile('/js/bootstrap/tab.js')
+                       ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('/js/cobalt/ticket/detail.js');
+?>
+
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Support Ticket</h1>
+        <hr>
+            
+        <i class="fa fa-ticket fa-3x pull-left"></i>
+        <h4><?php echo sprintf('%08d', $this->ticket->getId()); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $this->ticket->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $this->ticket->getId())); ?>"><i class="fa fa-remove"></i></a>
+        </p>
+        
+    
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Subject</th>
+                                    <td><?php echo $this->ticket->getSubject(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Requestor</th>
+                                    <td><?php echo $this->ticket->getRequestor()->getDisplayName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Problem</th>
+                                    <td><?php echo nl2br($this->ticket->getProblem()); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Status</th>
+                                    <td><?php echo $this->ticket->getStatus()->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Technician</th>
+                                    <td><?php echo $this->ticket->getTechnician()->getDisplayName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Priority</th>
+                                    <td><?php echo $this->ticket->getPriority()->getName(); ?></td>
+                                </tr>
+                                 <tr>
+                                    <th>Impact</th>
+                                    <td><?php echo $this->ticket->getImpact()->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Category</th>
+                                    <td><?php echo $this->ticket->getCategory()->getName(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td><?php echo $this->ticket->getType()->getName(); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                No history to show yet.
+            </div>
+        </div>
+    </div>
+
+</div>

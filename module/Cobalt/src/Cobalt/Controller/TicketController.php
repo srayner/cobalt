@@ -55,4 +55,13 @@ class TicketController extends AbstractController
             'form' => $form
         ));
     }
+    
+    public function detailAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        
+        return new ViewModel(array(
+           'ticket' => $this->service->findById($id) 
+        ));
+    }
 }
