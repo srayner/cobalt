@@ -77,7 +77,7 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                                     </tr>
                                      <tr>
                                         <th style="width: 35%;">Office</th>
-                                        <td><?php echo $this->user->getOffice(); ?></td>
+                                        <td><?php echo ($user->getOffice()? $user->getOffice()->getName() : ''); ?></td>
                                     </tr>
                                     <tr>
                                         <th>Department</th>

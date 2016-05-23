@@ -47,7 +47,10 @@ class User
     /** @ORM\Column(type="string") */
     protected $description;
     
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\ManyToOne(targetEntity="Office", cascade={"persist"})
+     * @ORM\JoinColumn(name="office_id", referencedColumnName="id")
+     */
     protected $office;
     
     /**

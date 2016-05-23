@@ -110,10 +110,9 @@ class ActiveDirectory {
                 if (array_key_exists('description', $item)){
                     $user->setDescription(substr($item['description'][0], 0, 64));
                 }
-                if (array_key_exists('physicaldeliveryofficename', $item)){
-                    $user->setOffice($item['physicaldeliveryofficename'][0]);
-                }
-
+                
+                // Company
+                $company = null;
                 if (array_key_exists('company', $item)){
                     $company = $this->companyService->findByName($item['company'][0]);
                     if (!$company) {
@@ -122,9 +121,27 @@ class ActiveDirectory {
                     }
                     $user->setCompany($company);
                 }
+                
+                // Office
+                if (array_key_exists('physicaldeliveryofficename', $item)) {
+                    if (!$company) {
+                        $company = new Company();
+                        $company->setName('Unknown');
+                    }
+                    $office = $this->officeService->findByCompanyAndName($company, $item['physicaldeliveryofficename'][0]);
+                    if (!$office) {
+                        $office = new Office();
+                        $office->setCompany($company);
+                        $office->setName($item['physicaldeliveryofficename'][0]);
+                    }
+                    $user->setOffice($office);
+                }
+                
+                // Department
                 if (array_key_exists('department', $item)){
                     $user->setDepartment($item['department'][0]);
                 }
+                
                 if (array_key_exists('title', $item)){
                     $user->setTitle($item['title'][0]);
                 }

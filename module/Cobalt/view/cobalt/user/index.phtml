@@ -30,7 +30,7 @@
                             <?php echo $user->getUsername(); ?>
                         </a></td>
                         <td><?php echo $user->getDisplayName(); ?></td>
-                        <td><?php echo $user->getOffice(); ?></td>
+                        <td><?php echo ($user->getOffice()? $user->getOffice()->getName() : ''); ?></td>
                         <td><?php echo $user->getTelephoneNumber(); ?></td>
                         <td><?php echo $user->getExtensionNumber(); ?></td>
                         <td style="width: 1%;" nowrap>

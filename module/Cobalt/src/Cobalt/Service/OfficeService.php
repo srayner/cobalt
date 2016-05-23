@@ -28,6 +28,14 @@ class OfficeService
         return $this->entityManager->find($this->repository, $id);
     }
     
+    public function findByCompanyAndName($company, $name)
+    {
+        return $this->entityManager->getRepository($this->repository)->findOneBy(array(
+            'company' => $company,
+            'name' => $name
+        ));
+    }
+    
     public function persist($office)
     {
         $this->entityManager->persist($office);
