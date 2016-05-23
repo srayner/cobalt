@@ -17,7 +17,7 @@ CREATE TABLE office (
   fax        Varchar(24)     NULL,
   company_id Integer     NOT NULL,
   INDEX idx_office_comapny_id (company_id),
-  FOREIGN KEY (company_id)  REFERENCES office(id) ON DELETE CASCADE,
+  FOREIGN KEY (company_id)  REFERENCES company(id) ON DELETE CASCADE,
   PRIMARY KEY (id)
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
