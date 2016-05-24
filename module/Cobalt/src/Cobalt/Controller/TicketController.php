@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class TicketController extends AbstractController
 {
@@ -56,6 +57,36 @@ class TicketController extends AbstractController
         ));
     }
     
+    public function deleteAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $ticket = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($ticket);
+            
+                // Redirect to ticket index
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'ticket',
+                ));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+         }
+        
+        $this->storeReferer('ticket/delete');
+         
+        return new ViewModel(array(
+            'ticket' => $ticket
+        ));
+    }
+    
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -63,5 +94,21 @@ class TicketController extends AbstractController
         return new ViewModel(array(
            'ticket' => $this->service->findById($id) 
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('ticket');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('ticket');
+        $referer = $session->referer;
+        return $referer;
     }
 }
