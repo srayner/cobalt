@@ -149,10 +149,38 @@ class HorizontalForm extends Form
         $select = $this->getFormFactory()->create(array(
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'name' => $name,
-                'options' => array(
+            'options' => array(
                 'object_manager' => $em,
                 'target_class'   => $entity,
                 'property'       => $property,
+            ),
+        ));
+        $select->setLabel($label);
+        $select->setLabelAttributes(array('class' => "col-sm-$this->labelWidth"));
+        $select->setOption('column-size', "sm-$this->controlWidth");
+        if ($this->compact) {
+            $select->setAttribute('class', 'input-sm');
+        }
+        
+        $this->add($select);
+        return $this;
+    }
+    
+    protected function addFilteredDoctrineSelect($name, $label, $em, $entity, $property, Array $criteria)
+    {
+        $select = $this->getFormFactory()->create(array(
+            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name' => $name,
+            'options' => array(
+                'object_manager' => $em,
+                'target_class'   => $entity,
+                'property'       => $property,
+                'find_method'    => array(
+                    'name'   => 'findBy',
+                    'params' => array(
+                        'criteria' => $criteria,
+                    ),
+                ),
             ),
         ));
         $select->setLabel($label);
