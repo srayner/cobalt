@@ -63,9 +63,36 @@
                 </div>
             </div>
             
-            <!-- History tab -->
+            <!-- Users tab -->
             <div role="tabpanel" class="tab-pane" id="users">
-                No users to show yet.
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed table-bordered">
+                            <tr>
+                                <th></th>
+                                <th>User</th>
+                                <th>Display Name</th>
+                                <th>Telephone</th>
+                            </tr>
+                            <?php foreach ($this->office->getUsers() as $user): ?>
+                            <tr>
+                                <td style="width: 1%;" nowrap>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'edit', 'id' => $user->getId()));?>">
+                                        <i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'delete', 'id' => $user->getId()));?>">
+                                        <i class="fa fa-remove"></i></a>
+                                </td>
+                                <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'detail', 'id' => $user->getId()));?>">
+                                    <?php echo $user->getUsername(); ?>
+                                </a></td>
+                                <td><?php echo $user->getDisplayName(); ?></td>
+                                <td><?php echo $user->getTelephoneNumber(); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                        
+                    </div>
+                </div>                    
             </div>
             
             <!-- History tab -->

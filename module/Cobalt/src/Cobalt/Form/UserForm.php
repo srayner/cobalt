@@ -17,7 +17,6 @@ class UserForm extends HorizontalForm
         
         $this->addText('username', 'Username')
              ->addText('displayName', 'Display Name')
-             ->addText('office', 'Office')
              ->addText('emailAddress', 'Email Address')
              ->addText('telephoneNumber', 'Telephone Number')
              ->addText('extensionNumber', 'Extension Number')
