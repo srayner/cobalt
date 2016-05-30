@@ -1,23 +1,35 @@
 Cobalt Application
 ==================
 
-Work in progress. Cobalt is an ICT asset management and project management system.
+Work in progress. Cobalt is a complete ICT solution for asset management, project management and support help desk.
 It can connect to Active Directory via an LDAP connector to extract user and computer information.
 
-Currently it can manage; users, computers, projects and domains.
+Currently it can manage; users, hardware, software, projects, domains and support tickets.
 
 Users
 -----
 You can add, edit, search for, view and delete users. You can also update user information
 from Microsoft Active Directory.
 
-Computers
+Hardware
 ---------
-You can add, edit, search, view and delete computers. Various properties including
-operating system and logical disk information can be extracted from computers using WMI.
-You can get remote access to computers via remote desktop or VNC. There is also easy
-access to the computer's C$ share for browsing the hard drive of the remote computer.
+You can add, edit, search, view and delete hardware. There are two specialised types of hardware;
+  * Computers
+  * Printers
 
+Computers have various additional properties including operating system and logical
+disk information can be extracted from computers using WMI. You can get remote access
+to computers via remote desktop or VNC. There is also easy access to the computer's
+C$ share for browsing the hard drive of the remote computer.
+
+Printers have additional properties such as print speed, print quality, etc. It is
+envisaged that printers will have associated consumables.
+
+Software
+--------
+Software has a manufacturer, a type and a category. Software can have associated licenses,
+as well as associated installations.
+   
 Projects
 --------
 Projects can have associated milestones and milestones can have associated tasks.
@@ -28,18 +40,17 @@ Domains
 Domain names can be added, and then information can be extracted from the WhoIs database
 for DNS records.
 
+FAQs
+----
+There is a simple FAQ section.
+
 Development Roadmap
 -------------------
-It is planned to add capabilities to manage all sorts of ICT assets, such as; servers, workstations,
-tablets, mobile phones, printers and photo-copiers.
-
-It is also planned that users will have associated departments, offices and companies. Including
-management hierarchy structure.
+The help desk module is currently work in progress.
 
 Further possibilities include;
-* Helpdesk module
 * Change management module
-* Problems, solutions & FAQ
+* Detailed problems & solutions.
 *  Hardware and service monitoring 
 
 
