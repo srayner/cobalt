@@ -14,6 +14,7 @@
         "zf-commons/zfc-user": "dev-master",
         "doctrine/doctrine-orm-module": "^0.9.2",
         "srayner/civuser":"dev-master",
+        "srayner/civmail":"dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "neilime/zf2-twb-bundle": "^2.6",
         "phpwhois/phpwhois": "dev-master"

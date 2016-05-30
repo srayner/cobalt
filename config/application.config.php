@@ -6,6 +6,7 @@ return array(
         'CivUser',
         'DoctrineModule',
         'DoctrineORMModule',
+        'CivMail',
         'TwbBundle',
         'Application',
         'Cobalt',
