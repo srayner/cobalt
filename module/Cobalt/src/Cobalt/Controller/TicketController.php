@@ -46,6 +46,9 @@ class TicketController extends AbstractController
                 // Persist
                 $this->service->persist($ticket);
                 
+                // Notify requestor
+                $this->service->notifySender($ticket);
+                
                 // Redirect.
                 return $this->redirect()->toRoute('cobalt/default', array('controller' => 'ticket'));
             }

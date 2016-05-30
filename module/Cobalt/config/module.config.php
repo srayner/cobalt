@@ -135,10 +135,11 @@ return array(
         'factories' => array(
             
             // Services
-            'Cobalt\ActiveDirectoryService'   => 'Cobalt\Service\ActiveDirectoryServiceFactory',
-            'Cobalt\WMIService'               => 'Cobalt\Service\WMIServiceFactory',
-            'Cobalt\HistoryService'           => 'Cobalt\Service\HistoryServiceFactory',
-         
+            'Cobalt\ActiveDirectoryService'      => 'Cobalt\Service\ActiveDirectoryServiceFactory',
+            'Cobalt\WMIService'                  => 'Cobalt\Service\WMIServiceFactory',
+            'Cobalt\HistoryService'              => 'Cobalt\Service\HistoryServiceFactory',
+            'Cobalt\EntityService\TicketService' => 'Cobalt\Service\TicketServiceFactory',
+            
             // Forms
             'Cobalt\DepartmentForm'           => 'Cobalt\Form\DepartmentFormFactory',
             'Cobalt\DomainForm'               => 'Cobalt\Form\DomainFormFactory',
