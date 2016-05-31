@@ -24,9 +24,9 @@ class TicketService extends AbstractEntityService
         $fromName = $this->mailConfig['email_name'];
         
         // Create email.
-        $mail = $this->mailService->createMail('Support Ticket Raised', $fromAddress, $fromName);
-        $this->mailService->addParticipant($mail, 'to', $to->getEmailAddress(), $to->getDisplayName());
-        $this->mailService->addParticipant($mail, 'from', $fromAddress, $fromName);
+        $mail = $this->mailService->createMail('Support Ticket Raised', $fromName, $fromAddress);
+        $this->mailService->addParticipant($mail, 'to', $to->getDisplayName(), $to->getEmailAddress());
+        $this->mailService->addParticipant($mail, 'from', $fromName, $fromAddress);
         $this->mailService->addContent($mail, 'text/plain', 'A new support ticket has been raised.');
         $this->mailService->persist($mail);
     }
