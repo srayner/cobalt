@@ -46,6 +46,34 @@ return array(
                     ),
                 ),
             ),
+            
+            'mailinconfig' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/mailinconfig',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'mailinconfig',
+                    ),
+                ),
+            ),
+            
+            'mailoutconfig' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/mailoutconfig',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'mailoutconfig',
+                    ),
+                ),
+            ),
         ),
     ),
     
