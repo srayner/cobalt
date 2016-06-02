@@ -1,0 +1,33 @@
+Dear {{ RequesterDisplayName }},
+
+This is an acknowledgement that your support ticket has been logged with the following details;
+
+Support Ticket No: {{ TicketId }}.
+
+<table>
+    <tr>
+        <td>Title</td>
+        <td>{{ TicketSubject }}</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>{{ TicketStatus }}</td>
+    </tr>
+    <tr>
+        <td>Assigned Technician</td>
+        <td>{{ TechnicianDisplayName }}</td> 
+    </tr>
+    <tr>
+        <td>Expected Resolution Date</td>
+        <td>{{ TicketResolutionDue }}</td> 
+    </tr>
+</table>
+
+{{ TicketProblem }}
+
+Please reply to this email if you have any further clarifications.
+
+
+Regards,
+
+The I.C.T. Department.
