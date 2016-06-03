@@ -121,4 +121,13 @@ class IndexController extends AbstractActionController
             'form'   => $form
         ));
     }
+    
+    public function templateAction()
+    {
+        $form = $this->getServiceLocator('Application\TemplateForm');
+        return array(
+            'form' => $form
+        );
+
+    }
 }

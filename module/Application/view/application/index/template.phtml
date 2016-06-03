@@ -1,0 +1,21 @@
+<?php
+    $this->headScript()->appendFile('https://cdn.tinymce.com/4/tinymce.min.js')
+                       ->appendFile('/js/application/index/template.js');
+?>
+
+    <div class="row">
+        <div class="col-md-12 title">
+            <h1>Edit Notification Template</h1>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <?php
+                $form = $this->form;
+                $form->setAttribute('action', $this->url('template'));
+                $form->prepare();
+                echo $this->form()->openTag($form);
+                echo $this->form($form);
+                echo $this->form()->closeTag();
+            ?>
+        </div>
+    </div>

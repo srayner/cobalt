@@ -47,6 +47,20 @@ return array(
                 ),
             ),
             
+            'template' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/template',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'template',
+                    ),
+                ),
+            ),
+            
             'mailinconfig' => array(
                 'type'    => 'Literal',
                 'priority' => 9000,
@@ -89,6 +103,7 @@ return array(
             'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'Application\DbConfigForm' => 'Application\Form\DbConfigFormFactory',
             'Application\AdConfigForm' => 'Application\Form\AdConfigFormFactory',
+            'Application\TemplateForm' => 'Application\Form\TemplateFormFactory',
         ),
     ),
     'translator' => array(
