@@ -13,10 +13,10 @@ class TemplateForm extends Form
     {
         parent::__construct();
         
-        $this->labelWidth = 4;
-        $this->controlWidth = 8;
+        $this->labelWidth = 1;
+        $this->controlWidth = 11;
                 
-        $this->addTextArea('template', 'Template')
+        $this->addTextArea('template', 'Template', 16)
              ->addButton('submit', 'Submit', 'btn-primary');
     }
     
