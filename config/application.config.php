@@ -12,6 +12,7 @@ return array(
         'Cobalt',
         'FAQ',
         'Project',
+        'Notification',
     ),
 
     'module_listener_options' => array(

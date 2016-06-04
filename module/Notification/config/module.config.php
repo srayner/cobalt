@@ -53,8 +53,8 @@ return array(
     
     // Controllers
     'controllers' => array(
-        'invokables' => array(
-            'Notification\Controller\Index'    => 'Cobalt\Controller\IndexController',
+        'factories' => array(
+            'Notification\Controller\Index'    => 'Cobalt\Controller\IndexControllerFactory',
         )
     ),
     
@@ -70,5 +70,8 @@ return array(
         'invokables' => array(
             'Notification\Template'              => 'Cobalt\Entity\Company',
         ),
+        'factories' => array(
+            'NotificationService' => 'Notification\Service\NotificationServiceFactory',
+        )
     ),
 );
