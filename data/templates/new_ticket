@@ -2,7 +2,7 @@ Dear {{ RequesterDisplayName }},
 
 This is an acknowledgement that your support ticket has been logged with the following details;
 
-Support Ticket Number: {{ TicketId }}.
+Support Ticket No: {{ TicketId }}.
 
 Title: {{ TicketSubject }}
 Status: {{ TicketStatus }}
