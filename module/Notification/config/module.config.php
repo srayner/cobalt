@@ -54,7 +54,7 @@ return array(
     // Controllers
     'controllers' => array(
         'factories' => array(
-            'Notification\Controller\Index'    => 'Cobalt\Controller\IndexControllerFactory',
+            'Notification\Controller\Index'    => 'Notification\Controller\IndexControllerFactory',
         )
     ),
     

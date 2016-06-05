@@ -9,7 +9,7 @@ class IndexControllerFactory implements FactoryInterface
 { 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = $serviceLocator->get('NotificationService');
+        $service = $serviceLocator->getServiceLocator()->get('NotificationService');
         return new IndexController($service);
     }
 }
