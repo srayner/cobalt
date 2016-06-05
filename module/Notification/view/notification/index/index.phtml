@@ -23,9 +23,9 @@
                 <tbody>
                     <?php foreach($this->notifications as $notification): ?> 
                     <tr>
-                        <td></td>
+                        <td class="text-center" width="32"><input type="checkbox" name="<?php echo $notification->getId();?>" value=""></td>
                         <td><?php echo $notification->getDescription(); ?></td>
-                        <td><a href="<?php echo $this->url('template'); ?>">Edit Template</a></td>
+                        <td class="text-center" width="128"><a href="<?php echo $this->url('template'); ?>">Edit Template</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
