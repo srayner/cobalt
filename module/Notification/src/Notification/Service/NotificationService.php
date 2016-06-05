@@ -4,7 +4,7 @@ namespace Notification\Service;
 
 class NotificationService
 {
-    const REPOSITORY = 'Notification\Entity\Notification';
+    const REPOSITORY = 'Notification\Entity\Template';
     
     private $entityManager;
     

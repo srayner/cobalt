@@ -68,7 +68,7 @@ return array(
     // Service manger configuration.
     'service_manager' => array(
         'invokables' => array(
-            'Notification\Template'              => 'Cobalt\Entity\Company',
+            'Notification\Template'              => 'Notification\Entity\Template',
         ),
         'factories' => array(
             'NotificationService' => 'Notification\Service\NotificationServiceFactory',
