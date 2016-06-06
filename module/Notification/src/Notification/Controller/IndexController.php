@@ -23,7 +23,7 @@ class IndexController extends AbstractActionController
     
     public function templateAction()
     {
-        $form = $this->getServiceLocator()->get('Application\TemplateForm');
+        $form = $this->getServiceLocator()->get('Notification\TemplateForm');
         $template = file_get_contents('data/templates/new_ticket');
         $data = array('template' => $template);
         $form->setData($data);

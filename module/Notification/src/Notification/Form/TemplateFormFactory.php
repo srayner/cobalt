@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Form;
+namespace Notification\Form;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

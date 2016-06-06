@@ -71,7 +71,8 @@ return array(
             'Notification\Template'              => 'Notification\Entity\Template',
         ),
         'factories' => array(
-            'NotificationService' => 'Notification\Service\NotificationServiceFactory',
+            'Notification\TemplateForm' => 'Notification\Form\TemplateFormFactory',
+            'NotificationService'       => 'Notification\Service\NotificationServiceFactory',
         )
     ),
 );

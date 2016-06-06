@@ -89,7 +89,6 @@ return array(
             'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'Application\DbConfigForm' => 'Application\Form\DbConfigFormFactory',
             'Application\AdConfigForm' => 'Application\Form\AdConfigFormFactory',
-            'Application\TemplateForm' => 'Application\Form\TemplateFormFactory',
         ),
     ),
     'translator' => array(

@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Form;
+namespace Notification\Form;
 
 use Zend\Form\Form;
 
@@ -8,6 +8,7 @@ class TemplateForm extends Form
 {
     protected $labelWidth;
     protected $controlWidth;
+    protected $compact;
     
     public function __construct()
     {
