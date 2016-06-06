@@ -3,6 +3,7 @@
 namespace Notification\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="notification_template")
@@ -25,8 +26,26 @@ class Template
     /** @ORM\Column(type="string", name="mime_type") */
     protected $mimeType;
     
+    /** @ORM\Column(type="text", name="subject") */
+    protected $subject;
+    
     /** @ORM\Column(type="text", name="content") */
     protected $template;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Field", mappedBy="template")
+     */
+    protected $fields;
+    
+    public function __construct()
+    {
+        $this->fields = new ArrayCollection();
+    }
+    
+    public function addField($field)
+    {
+        $this->fields[] = $field;
+    }
     
     public function getId()
     {
@@ -53,6 +72,11 @@ class Template
         return $this->template;
     }
 
+    public function getFields()
+    {
+        return $this->fields->toArray();
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
