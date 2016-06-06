@@ -11,7 +11,7 @@
         <div class="col-md-9">
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('template'));
+                $form->setAttribute('action', $this->url('template', array('id' => $this->notification->getId())));
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);

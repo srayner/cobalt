@@ -37,13 +37,14 @@ return array(
             ),
             
             'template' => array(
-                'type'    => 'Literal',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/template',
+                    'route'    => '/template/:id',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Notification\Controller',
                         'controller'    => 'Index',
                         'action'        => 'template',
+                        'id'            => 0
                     ),
                 ),
             ),

@@ -24,8 +24,9 @@ class IndexController extends AbstractActionController
     public function templateAction()
     {
         $form = $this->getServiceLocator()->get('Notification\TemplateForm');
-        $template = $this->service->find('1');
-        $form->bind($template);
+        $id = (int)$this->params()->fromRoute('id');
+        $notification = $this->service->find($id);
+        $form->bind($notification);
         
         $request = $this->getRequest();
         if ($request->isPost())
@@ -34,16 +35,17 @@ class IndexController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid())
             {
-                // persist template
-                $this->service->persist($template);
+                // persist notification
+                $this->service->persist($notification);
             }
             
             // Redirect to admin (for now)
-            $this->redirect()->toRoute('admin');
+            $this->redirect()->toRoute('notification');
         }
             
         return array(
-            'form' => $form
+            'form' => $form,
+            'notification' => $notification
         );
 
     }
