@@ -18,4 +18,14 @@
                 echo $this->form()->closeTag();
             ?>
         </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="sel1">Select list:</label>
+                <select class="form-control" id="sel1" multiple="multiple" size="10">
+                    <?php foreach ($this->fields as $descr => $field): ?>
+                    <option value="<?php echo $field; ?>"><?php echo $descr; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
     </div>
