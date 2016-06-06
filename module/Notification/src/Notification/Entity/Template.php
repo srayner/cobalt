@@ -25,8 +25,8 @@ class Template
     /** @ORM\Column(type="string", name="mime_type") */
     protected $mimeType;
     
-    /** @ORM\Column(type="text") */
-    protected $content;
+    /** @ORM\Column(type="text", name="content") */
+    protected $template;
     
     public function getId()
     {
@@ -48,9 +48,9 @@ class Template
         return $this->mimeType;
     }
 
-    public function getContent()
+    public function getTemplate()
     {
-        return $this->content;
+        return $this->template;
     }
 
     public function setId($id)
@@ -77,12 +77,10 @@ class Template
         return $this;
     }
 
-    public function setContent($content)
+    public function setTemplate($template)
     {
-        $this->content = $content;
+        $this->template = $template;
         return $this;
     }
-
-
 }
 

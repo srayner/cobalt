@@ -17,4 +17,15 @@ class NotificationService
     {
         return $this->entityManager->getRepository($this::REPOSITORY)->findAll();
     }
+    
+    public function find($id)
+    {
+        return $this->entityManager->find($this::REPOSITORY, $id);
+    }
+    
+    public function persist($notification)
+    {
+        $this->entityManager->persist($notification);
+        $this->entityManager->flush();
+    }
 }
