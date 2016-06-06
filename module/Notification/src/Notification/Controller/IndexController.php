@@ -45,14 +45,7 @@ class IndexController extends AbstractActionController
             
         return array(
             'form' => $form,
-            'notification' => $notification,
-            'fields' => array(
-                'Requestor Display Name'   => '{{ RequestorDisplayName }}',
-                'Ticket Id'                => '{{ TicketResolutionDate }}',
-                'Ticket Status'            => '{{ TicketResolutionDate }}',
-                'Technician Display Name'  => '{{ TicketResolutionDate }}',
-                'Expected Resolution Date' => '{{ TicketResolutionDate }}',
-            )
+            'notification' => $notification
         );
 
     }
