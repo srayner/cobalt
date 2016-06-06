@@ -1,6 +1,6 @@
 <?php
     $this->headScript()->appendFile('https://cdn.tinymce.com/4/tinymce.min.js')
-                       ->appendFile('/js/application/index/template.js');
+                       ->appendFile('/js/notification/index/template.js');
 ?>
 
     <div class="row">
@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="sel1">Select list:</label>
+                <label for="sel1">Fields:</label>
                 <select class="form-control" id="sel1" multiple="multiple" size="10">
                     <?php foreach ($this->fields as $descr => $field): ?>
                     <option value="<?php echo $field; ?>"><?php echo $descr; ?></option>
