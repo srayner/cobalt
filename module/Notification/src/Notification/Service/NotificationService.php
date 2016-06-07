@@ -23,6 +23,13 @@ class NotificationService
         return $this->entityManager->find($this::REPOSITORY, $id);
     }
     
+    public function findByName($name)
+    {
+        return $this->entityManager->getRepository($this::REPOSITORY)->findOneBy(array(
+            'name' => $name
+        ));
+    }
+    
     public function persist($notification)
     {
         $this->entityManager->persist($notification);

@@ -4,12 +4,14 @@ namespace Cobalt\Service;
 
 class TicketService extends AbstractEntityService
 {
+    protected $notificationService;
     protected $mailService;
     protected $mailConfig;
     
-    public function __construct($entityManager, $repository, $mailService, $mailConfig)
+    public function __construct($entityManager, $repository, $notificationService, $mailService, $mailConfig)
     {
         parent::__construct($entityManager, $repository);
+        $this->notificationService = $notificationService;
         $this->mailService = $mailService;
         $this->mailConfig = $mailConfig;
     }
@@ -35,13 +37,14 @@ class TicketService extends AbstractEntityService
     // This can be refactored later.
     private function getTemplate($name)
     {
-        return file_get_contents("data\\templates\\$name");
+        $notification =  $this->notificationService->findByName($name);
+        return $notification->getTemplate();
     }
     
     private function renderTemplate($ticket)
     {
         $loader = new \Twig_Loader_Array(array(
-            'new_ticket' => $this->getTemplate('new_ticket_html')
+            'new_ticket' => $this->getTemplate('requestor_new_ticket')
         ));
         $environment = new \Twig_Environment($loader);
         $txt = $environment->render('new_ticket', array(
