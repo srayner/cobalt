@@ -53,7 +53,7 @@ class IndexController extends AbstractActionController
     public function enableAction()
     {
         $id = (int)$this->params()->fromRoute('id');
-        $active = (boolean)$this->params()->fromRoute('active');
+        $active = 'true' == $this->params()->fromPost('active');
         
         $template = $this->service->find($id);
         $template->setActive($active);

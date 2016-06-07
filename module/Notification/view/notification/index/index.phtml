@@ -25,9 +25,9 @@
                     <tr>
                         <td class="text-center" width="32">
                             <?php if ($notification->getActive()): ?>
-                            <input type="checkbox" name="<?php echo $notification->getId();?>" value="" checked>
+                            <input type="checkbox" name="<?php echo $notification->getId();?>" value="<?php echo $notification->getId();?>" checked>
                             <?php else: ?>
-                            <input type="checkbox" name="<?php echo $notification->getId();?>" value="">
+                            <input type="checkbox" name="<?php echo $notification->getId();?>" value="<?php echo $notification->getId();?>">
                             <?php endif; ?>
                         </td>
                         <td><?php echo $notification->getDescription(); ?></td>
