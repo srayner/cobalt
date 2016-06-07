@@ -60,6 +60,13 @@ class TicketController extends AbstractController
         ));
     }
     
+    public function editAction()
+    {
+        return new ViewModel(array(
+             
+        ));
+    }
+    
     public function deleteAction()
     {
         $id = (int)$this->params()->fromRoute('id');
