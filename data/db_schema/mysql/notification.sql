@@ -74,3 +74,13 @@ insert into notification_field(id, notification_template_id, field_name, field_d
 (6, 1, '{{ TicketPriority }}',        'Priority'),
 (7, 1, '{{ TicketProblem }}',         'Problem'),
 (8, 1, '{{ TicketResolutionDue }}',   'Resolution Due');
+
+insert into notification_field(id, notification_template_id, field_name, field_display) values
+(9, 2, '{{ RequesterDisplayName }}',  'Requester Name'),
+(10, 2, '{{ TechnicianDisplayName }}', 'Technician Name'),
+(11, 2, '{{ TicketId }}',              'Ticket Id'),
+(12, 2, '{{ TicketSubject }}',         'Subject'),
+(13, 2, '{{ TicketStatus }}',          'Status'),
+(14, 2, '{{ TicketPriority }}',        'Priority'),
+(15, 2, '{{ TicketProblem }}',         'Problem'),
+(16, 2, '{{ TicketResolutionDue }}',   'Resolution Due');
