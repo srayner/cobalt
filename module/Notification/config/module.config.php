@@ -49,6 +49,19 @@ return array(
                 ),
             ),
             
+            'enable' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/enable/:id',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Notification\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'enable',
+                        'id'            => 0,
+                    ),
+                ),
+            ),
+            
         ),
     ),
     
