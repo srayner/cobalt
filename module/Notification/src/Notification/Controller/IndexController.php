@@ -49,5 +49,20 @@ class IndexController extends AbstractActionController
         );
 
     }
+    
+    public function enableAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $active = (boolean)$this->params()->fromRoute('active');
+        
+        $template = $this->service->find($id);
+        $template->setActive($active);
+        $this->service->persist($template);
+        
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent("Ok.");
+        return $response;
+    }
 }
 

@@ -17,6 +17,9 @@ class Template
      */
     protected $id;
     
+    /** @ORM\Column(type="boolean") */
+    protected $active;
+    
     /** @ORM\Column(type="string") */
     protected $name;
     
@@ -52,6 +55,11 @@ class Template
         return $this->id;
     }
 
+    public function getActive()
+    {
+        return $this->active;
+    }
+    
     public function getName()
     {
         return $this->name;
@@ -83,6 +91,12 @@ class Template
         return $this;
     }
 
+    public function setActive($active)
+    {
+        $this->active = $active;
+        return $this;
+    }
+    
     public function setName($name)
     {
         $this->name = $name;
