@@ -62,8 +62,41 @@ class TicketController extends AbstractController
     
     public function editAction()
     {
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array(
+                 'controller' => 'ticket',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the company with the specified id.
+        $ticket = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\TicketForm');
+        $form->bind($ticket);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist ticket.
+            	$this->service->persist($ticket);
+                
+                // Redirect to list of tickets
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'ticket'
+                ));
+            }     
+        }
+        
         return new ViewModel(array(
-             
+             'id' => $id,
+             'form' => $form,
         ));
     }
     
