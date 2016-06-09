@@ -9,8 +9,8 @@ class TicketForm extends HorizontalForm
         parent::__construct();
         
         $this->compact = true;
-        $this->labelWidth = 3;
-        $this->controlWidth = 9;
+        $this->labelWidth = 1;
+        $this->controlWidth = 11;
         
         $this->setAttribute('class', 'form-horizontal');
         

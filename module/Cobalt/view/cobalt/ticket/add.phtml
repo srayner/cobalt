@@ -1,9 +1,14 @@
-    <div class="row">
+<?php
+    $this->headScript()->appendFile('/js/tinymce/tinymce.min.js')
+                       ->appendFile('/js/tinymce/plugins/textcolor/plugin.min.js')
+                       ->appendFile('/js/cobalt/ticket/add.js');
+?>
+<div class="row">
         <div class="col-md-12 title">
             <h1>Add New Support Ticket</h1>
             <hr>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <?php
                 $form = $this->form;
                 $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'add')));
