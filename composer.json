@@ -18,7 +18,8 @@
         "zendframework/zend-developer-tools": "dev-master",
         "neilime/zf2-twb-bundle": "^2.6",
         "phpwhois/phpwhois": "dev-master",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "srayner/civaccess": "dev-master"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "2.*"

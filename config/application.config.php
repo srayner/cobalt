@@ -4,6 +4,7 @@ return array(
     // Modules to load in the application.
     'modules' => array(
         'CivUser',
+        'CivAccess',
         'DoctrineModule',
         'DoctrineORMModule',
         'CivMail',
