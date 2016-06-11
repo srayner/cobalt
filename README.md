@@ -44,6 +44,9 @@ FAQs
 ----
 There is a simple FAQ section.
 
+![Image of Dashboard](/docs/Screenshot.jpg)
+![Image of Project](/docs/Screenshot2.jpg)
+
 Development Roadmap
 -------------------
 The help desk module is currently work in progress.
