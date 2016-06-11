@@ -204,4 +204,34 @@ class UserController extends AbstractController
             'roles' => $roles
         );
     }
+    
+    public function removeroleAction()
+    {
+        // Ensure we have an id, else redirect to user index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        $service = $this->getServiceLocator()->get('CivAccess\AclService');
+        $role = $service->getRoleById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $service = $this->getServiceLocator()->get('CivAccess\AclService');
+                $service->deleteRoleById($id);
+            }
+            
+            // Redirect to list of users
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        return new ViewModel(array(
+            'role' => $role 
+        ));
+    }
 }

@@ -145,7 +145,13 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                 </tr>
                                 <?php foreach($user->getRoles() as $role): ?>
                                 <tr>
-                                    <td></td>
+                                    <td style="width: 1%;" nowrap>
+                                        <?php if ($role->getName() != 'user'): ?>
+                                        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'removerole', 'id' => $role->getId()));?>">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?php echo $role->getName(); ?></td>
                                     <td><?php echo $role->getType(); ?></td>
                                 </tr>
