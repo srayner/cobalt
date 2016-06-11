@@ -92,9 +92,15 @@ class User
      */
     protected $computers;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Role", mappedBy="user")
+     */
+    protected $roles;
+    
     public function __construct()
     {
         $this->computers = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
     
     public function addComputer($computer)
@@ -206,6 +212,11 @@ class User
     public function getComputers()
     {
         return $this->computers;
+    }
+    
+    public function getRoles()
+    {
+        return $this->roles->toArray();
     }
     
     public function setId($id)

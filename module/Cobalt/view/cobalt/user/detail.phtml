@@ -23,6 +23,7 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                 <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab">Information</a></li>
                 <li role="presentation"><a id="r" href="#account" aria-controls="account" role="tab" data-toggle="tab">Active Directory</a></li>
                 <li role="presentation"><a id="r" href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
+                <li role="presentation"><a id="r" href="#roles" aria-controls="roles" role="tab" data-toggle="tab">Roles</a></li>
                 <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
             </ul>
         
@@ -128,6 +129,29 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                          
                          <canvas id="myCanvas" width="800" height="400"></canvas>  
                     </div>
+                </div>
+                
+                <!-- Roles tab -->
+                <div role="tabpanel" class="tab-pane" id="roles">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th></th>
+                                    <th>Role</th>
+                                    <th>Type</th>
+                                </tr>
+                                <?php foreach($user->getRoles() as $role): ?>
+                                <tr>
+                                    <td></td>
+                                    <td><?php echo $role->getName(); ?></td>
+                                    <td><?php echo $role->getType(); ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                
+                            </table>
+                        </div>
+                    </div>                     
                 </div>
                 
  
