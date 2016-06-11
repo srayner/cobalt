@@ -10,5 +10,9 @@ Execute these statements in the following order;
 3. hardware.sql
 4. organisation.sql
 5. planning.sql
+6. support.sql
+7. email.sql
+8. notification.sql
+9. access.sql
 
 
