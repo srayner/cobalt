@@ -161,4 +161,39 @@ class UserController extends AbstractController
             'reportsTo' => $reportsTo
         );
     }
+    
+    public function addroleAction()
+    {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        // Grab the user
+        $user = $this->service->findById($id);
+        
+        $aclService = $this->getServiceLocator()->get('CivAccess\AclService');
+        $roles = $aclService->getRoles();
+        
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // Validate data
+            
+            // Persist
+            
+            // Redirect
+            $this->redirect()->toRoute('cobalt/default', array(
+                'controller' => 'user',
+                'action'     => 'detail',
+                'id'         => $id
+            ), array('fragment'=>'roles'));
+        }
+        
+        return array(
+            'user' => $user,
+            'roles' => $roles
+        );
+    }
 }

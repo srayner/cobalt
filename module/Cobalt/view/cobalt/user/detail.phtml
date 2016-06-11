@@ -1,5 +1,7 @@
 <?php
-$this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
+$this->inlineScript()->appendFile('/js/bootstrap/tab.js')
+                     ->appendFile('/js/jquery-plugin/stickytabs.js')
+                     ->appendFile('/js/draw.js', 'text/javascript')
                      ->appendFile('/js/cobalt/user/detail.js', 'text/javascript');
 
 ?>
@@ -150,6 +152,11 @@ $this->inlineScript()->appendFile('/js/draw.js', 'text/javascript')
                                 <?php endforeach; ?>
                                 
                             </table>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                            'controller' => 'user',
+                            'action' => 'addrole',
+                            'id' => $user->getId()
+                        )) ?>">Add Role</a>
                         </div>
                     </div>                     
                 </div>
