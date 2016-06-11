@@ -16,6 +16,7 @@ class UserForm extends HorizontalForm
         $this->controlWidth = 8;
         
         $this->addText('username', 'Username')
+             ->addPassword('password', 'Password')
              ->addText('displayName', 'Display Name')
              ->addText('emailAddress', 'Email Address')
              ->addText('telephoneNumber', 'Telephone Number')

@@ -21,6 +21,9 @@ class User
     protected $username;
     
     /** @ORM\Column(type="string") */
+    protected $password;
+    
+    /** @ORM\Column(type="string") */
     protected $domain;
     
     /** @ORM\Column(type="string", name="email_address") */
@@ -110,6 +113,11 @@ class User
         return $this->username;
     }
 
+    public function getPassword()
+    {
+            return $this->password;
+    }
+    
     public function getDomain()
     {
         return $this->domain;
@@ -212,6 +220,12 @@ class User
         return $this;
     }
 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
+    
     public function setDomain($domain)
     {
         $this->domain = $domain;

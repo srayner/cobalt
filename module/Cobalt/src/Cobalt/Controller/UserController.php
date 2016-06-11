@@ -54,6 +54,7 @@ class UserController extends AbstractController
         {
             // POST, so check if valid.
             $data = (array) $request->getPost();
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
           
             // Create a new user object.
             $user = $this->getServiceLocator()->get('Cobalt\User');
