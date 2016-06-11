@@ -180,8 +180,15 @@ class UserController extends AbstractController
         if ($request->isPost())
         {
             // Validate data
+            $roleName = $request->getPost('role');
+            
             
             // Persist
+            $role = new \Cobalt\Entity\Role();
+            $role->setName($roleName)
+                 ->setType('User role.');
+            $user->addRole($role);
+            $this->service->persist($user);
             
             // Redirect
             $this->redirect()->toRoute('cobalt/default', array(

@@ -93,7 +93,7 @@ class User
     protected $computers;
     
     /**
-     * @ORM\OneToMany(targetEntity="Role", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Role", mappedBy="user", cascade={"persist"})
      */
     protected $roles;
     
@@ -107,6 +107,12 @@ class User
     {
         $computer->addUser($this);
         $this->computers[] = $computer;
+    }
+    
+    public function addRole($role)
+    {
+        $role->setUser($this);
+        $this->roles[] = $role;
     }
     
     public function getId()

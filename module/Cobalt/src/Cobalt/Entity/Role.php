@@ -11,6 +11,7 @@ class Role
 {
     /**
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", name="role_id")
      */
     private $id;
@@ -46,6 +47,31 @@ class Role
     {
         return $this->type;
     }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
 
 
 }
