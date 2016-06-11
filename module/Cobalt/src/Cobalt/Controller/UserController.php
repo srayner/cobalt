@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Cobalt\Entity\Role;
 
 class UserController extends AbstractController
 {   
@@ -184,7 +185,7 @@ class UserController extends AbstractController
             
             
             // Persist
-            $role = new \Cobalt\Entity\Role();
+            $role = new Role;
             $role->setName($roleName)
                  ->setType('User role.');
             $user->addRole($role);
