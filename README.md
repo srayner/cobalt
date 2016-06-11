@@ -44,8 +44,8 @@ FAQs
 ----
 There is a simple FAQ section.
 
-![Image of Dashboard](/docs/Screenshot.jpg)
-![Image of Project](/docs/Screenshot2.jpg)
+![Image of Dashboard](/docs/Screenshot2.jpg)
+![Image of Project](/docs/Screenshot.jpg)
 
 Development Roadmap
 -------------------
