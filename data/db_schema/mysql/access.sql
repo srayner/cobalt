@@ -77,21 +77,18 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Co
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Project', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Project', 'comment');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Project', 'task');
-
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Milestone', 'comment');
-
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Task', 'comment');
-
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Comment', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Project\\Controller\\Comment', 'delete');
 
