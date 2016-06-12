@@ -6,8 +6,10 @@ insert into access_rule(role, resource, privilege) values ('user', 'CivUser\\Con
 insert into access_rule(role, resource, privilege) values ('user', 'CivUser\\Controller\\User', 'changepassword');
 
 -- Access rules (Cobalt).
-insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Index', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Application\\Controller\\Index', 'admin');
+insert into access_rule(role, resource, privilege) values ('admin', 'Application\\Controller\\Index', 'dbconfig');
+insert into access_rule(role, resource, privilege) values ('admin', 'Application\\Controller\\Index', 'adconfig');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Index', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'add');
