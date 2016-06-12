@@ -9,15 +9,6 @@ use Zend\Config\Writer\PhpArray as Writer;
 
 class IndexController extends AbstractActionController
 {
-    public function indexAction()
-    {
-        $service = $this->getServiceLocator()->get('cobalt_computer_service');
-        $count = $service->count();
-        return array(
-            'computers' => $count
-        );
-    }
-    
     public function adminAction()
     {
         return new ViewModel();
