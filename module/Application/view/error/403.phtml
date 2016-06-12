@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12 title">
+        <h1>Application Error</h1>
+        <hr>
+    </div>
+    <div class="col-md-12">
+  
+        <div class="media">
+            <div class="media-left">
+                <i style="color: red;" class="fa fa-5x fa-ban"></i>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">403 - Not Authorised</h4>
+                <p>You are not authorised to view this page.</p>
+                <p>Contact your system administrator if you feel there has been an error.</p>
+                
+                <?php if (isset($this->display_info) && $this->display_info): ?>
+                <br>
+                <h4>Exception info</h4>
+                <span>Role: <?php echo $this->role; ?></span><br>
+                <span>Resource: <?php echo $this->resource; ?></span><br>
+                <span>Privilege: <?php echo $this->privilege; ?></span><br>
+                <?php endif; ?>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+</div>
+
