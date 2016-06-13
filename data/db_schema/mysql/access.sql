@@ -1,4 +1,8 @@
 
+-- Create initial admin user
+insert into user(id, username, domain , password) values(1, 'admin', 'local', '$2y$10$dyXDkRD7JbsgYi14s8JuouZ56U6XLS8IAFaozi8ACL9vdWSM2xgrC');  
+insert into access_role(role, parent, role_type) values(1, 'admin', 'User role.');
+
 -- Access rules (CivUser).
 insert into access_rule(role, resource, privilege) values ('guest', 'CivUser\\Controller\\User', 'login');
 insert into access_rule(role, resource, privilege) values ('user', 'CivUser\\Controller\\User', 'logout');
@@ -27,6 +31,7 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'addrole');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'adupdate');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'removerole');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'add');
