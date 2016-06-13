@@ -6,6 +6,7 @@ use Zend\Form\Form;
 
 class DbConfigForm extends Form
 {
+    protected $compact;
     protected $labelWidth;
     protected $controlWidth;
     
@@ -15,6 +16,7 @@ class DbConfigForm extends Form
         
         $this->labelWidth = 3;
         $this->controlWidth = 9;
+        $this->compact = true;
         
         $this->addText('hostname', 'Hostname')
              ->addText('database', 'Database')

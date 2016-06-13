@@ -39,7 +39,12 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\DbConfigForm');
-         
+        $config = include './config/database.config.php';
+        if (is_array($config)) {
+            unset($config['password']);
+            $form->setData($config);
+        }
+        
         // Check if the request is a POST.
         $request = $this->getRequest();
         if ($request->isPost())
