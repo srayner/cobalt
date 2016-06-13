@@ -28,8 +28,8 @@
                     <?php foreach($this->tickets as $ticket): ?> 
                     <tr>
                         <th style="width: 1%;" nowrap>
-                            <i><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $ticket->getId()));?>"><i class="fa fa-edit"></i></a>
-                                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $ticket->getId()));?>"><i class="fa fa-remove"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'edit', 'id' => $ticket->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'delete', 'id' => $ticket->getId()));?>"><i class="fa fa-remove"></i></a>
                         </th>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket', 'action' => 'detail', 'id' => $ticket->getId()));?>">
                             <?php echo sprintf('%08d', $ticket->getId());?></a></td>

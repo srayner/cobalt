@@ -12,24 +12,25 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="companies" class="table" cellspacing="0" width="100%">
+            <table id="companies" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Company</th>
                         <th>Address</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->companies as $company): ?> 
                     <tr>
+                        <th style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'edit', 'id' => $company->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'delete', 'id' => $company->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </th>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'detail', 'id' => $company->getId()));?>">
                             <?php echo $company->getName();?></a></td>
                         <td><?php echo nl2br($company->getAddress());?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'edit', 'id' => $company->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'company', 'action' => 'delete', 'id' => $company->getId()));?>">Delete</a>
-                        </td>
+                        
                     </tr>
                     <?php endforeach ?>
                 </tbody>
