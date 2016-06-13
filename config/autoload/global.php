@@ -12,5 +12,20 @@
  */
 
 return array(
-    // ...
+    
+    'CivAccess' => array(
+        'new_role_event_id'     => 'Cobalt\Service\UserService',
+        'new_role_event'        => 'add.post',
+        'new_role_event_param'  => 'user',
+        'old_role_event_id'     => 'Cobalt\Service\UserService',
+        'old_role_event'        => 'remove.post',
+        'old_role_event_param'  => 'id',
+        'display_info'          => true
+    ),
+    
+    'service_manager' => array(
+        'aliases' => array(
+            'CivAccess\AuthService' => 'CivUser\AuthService'
+        ),
+    ),
 );
