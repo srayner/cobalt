@@ -56,10 +56,11 @@ class UserService implements EventManagerAwareInterface
 
     public function remove($user)
     {
-        $this->getEventManager()->trigger(__FUNCTION__, $this, $user);
+        $params = array('id' => (string)$user->getId());
+        $this->getEventManager()->trigger(__FUNCTION__, $this, $params);
         $this->entityManager->remove($user);
         $this->entityManager->flush(); 
-        $this->getEventManager()->trigger(__FUNCTION__ . '.post', $this, $user);
+        $this->getEventManager()->trigger(__FUNCTION__ . '.post', $this, $params);
     }
 
     public function getEventManager()
