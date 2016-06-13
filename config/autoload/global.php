@@ -13,6 +13,12 @@
 
 return array(
     
+    'civuser' => array(
+        'profile_link' => array(
+            'class' => 'btn btn-default'
+        ),
+    ),
+    
     'CivAccess' => array(
         'new_role_event_id'     => 'Cobalt\Service\UserService',
         'new_role_event'        => 'add.post',
