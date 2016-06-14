@@ -12,13 +12,13 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="hardware" class="table" cellspacing="0" width="100%">
+            <table id="hardware" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Reference</th>
                         <th>Model</th>
                         <th>Serial Number</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,14 +28,14 @@
                             $class = get_class($hardware);
                             $controller = strtolower(substr($class, strrpos($class, '\\') + 1));
                         ?>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'edit', 'id' => $hardware->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'delete', 'id' => $hardware->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => $controller, 'action' => 'detail', 'id' => $hardware->getId()));?>">
                             <?php echo $hardware->getReference();?></a></td>
                         <td><?php echo $hardware->getModel();?></td>
                         <td><?php echo $hardware->getSerialNumber();?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'edit', 'id' => $hardware->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'delete', 'id' => $hardware->getId()));?>">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
