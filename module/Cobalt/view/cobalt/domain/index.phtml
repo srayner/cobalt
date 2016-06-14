@@ -13,19 +13,24 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="domains" class="table">
+            <table id="domains" class="table table-bordered table-cobalt">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Domain Name</th>
                         <th>Registrar</th>
                         <th>Status</th>
                         <th>Expires</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->domains as $domain): ?> 
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'refresh', 'id' => $domain->getId()));?>"><i class="fa fa-refresh"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'edit', 'id' => $domain->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'delete', 'id' => $domain->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'detail', 'id' => $domain->getId()));?>">
                             <?php echo $domain->getName();?></a></td>
                         <td><?php echo $domain->getRegistrar();?></td>
@@ -35,11 +40,7 @@
                                     echo $domain->getExpires()->format('d/m/Y');
                             }?>
                         </td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'refresh', 'id' => $domain->getId()));?>">Refresh</a>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'edit', 'id' => $domain->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'domain', 'action' => 'delete', 'id' => $domain->getId()));?>">Delete</a>
-                        </td>
+                        
                     </tr>
                     <?php endforeach ?>
                 </tbody>
