@@ -12,28 +12,30 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="manufacturers" class="table" cellspacing="0" width="100%">
+            <table id="manufacturers" class="table table-bordered table-cobalt" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Address</th>
                         <th>Email</th>
                         <th>Website</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->manufacturers as $manufacturer): ?> 
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'delete', 'id' => $manufacturer->getId()));?>"><i class="fa fa-remove"</a>
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'detail', 'id' => $manufacturer->getId()));?>">
                             <?php echo $manufacturer->getName();?></a></td>
                         <td><?php echo nl2br($manufacturer->getAddress());?></td>
                         <td><?php echo $manufacturer->getEmail();?></td>
-                        <td><?php echo $manufacturer->getWebsiteUrl();?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'delete', 'id' => $manufacturer->getId()));?>">Delete</a>
-                        </td>
+                        <td><a target="_blank" href="<?php echo $manufacturer->getWebsiteUrl(); ?> ">
+                            <?php echo $manufacturer->getWebsiteUrl();?>
+                        </a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
