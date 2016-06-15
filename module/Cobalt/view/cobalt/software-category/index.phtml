@@ -12,24 +12,25 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="computers" class="table" cellspacing="0" width="100%">
+            <table id="computers" class="table table-bordered table-cobalt" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->categories as $category): ?> 
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'edit', 'id' => $category->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'delete', 'id' => $category->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'detail', 'id' => $category->getId()));?>">
                             <?php echo $category->getName();?></a></td>
                         <td><?php echo nl2br($category->getDescription());?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'edit', 'id' => $category->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'softwarecategory', 'action' => 'delete', 'id' => $category->getId()));?>">Delete</a>
-                        </td>
+                        
                     </tr>
                     <?php endforeach ?>
                 </tbody>
