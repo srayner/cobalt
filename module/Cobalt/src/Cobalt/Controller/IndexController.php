@@ -16,6 +16,11 @@ class IndexController extends AbstractActionController
         return $this->computerService;
     }
 
+    public function testAction()
+    {
+        return array();
+    }
+    
     public function indexAction()
     {
         $hardwareService = $this->getServiceLocator()->get('Cobalt\EntityService\HardwareService');

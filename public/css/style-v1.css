@@ -133,10 +133,9 @@ body {
    display: block;
 }
 
-i.fa {
+.side-nav i.fa {
     padding-right: 5px;
 }
-
 
 /* breadcrumb */
 .breadcrumb {
