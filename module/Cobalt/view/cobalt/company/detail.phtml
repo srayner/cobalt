@@ -3,6 +3,7 @@
     $this->headScript()->appendFile('/js/datatables.js')
                        ->appendFile('/js/bootstrap/tab.js')
                        ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('https://maps.googleapis.com/maps/api/js')
                        ->appendFile('/js/cobalt/company/detail.js');
 ?>
 
@@ -44,14 +45,8 @@
                                 </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <td><?php echo nl2br($this->company->getAddress()); ?></td>
+                                    <td id="address"><?php echo nl2br($this->company->getAddress()); ?></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-lg-6">
-                        <table class="table table-condensed table-bordered">
-                            <tbody>
                                 <tr>
                                     <th style="width: 35%;">Telephone No</th>
                                     <td><?php echo $this->company->getPhone(); ?></td>
@@ -62,6 +57,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="map">
+                        </div>
                     </div>
 
                 </div>
