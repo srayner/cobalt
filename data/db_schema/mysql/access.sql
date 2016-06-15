@@ -20,11 +20,25 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticket', 'detail');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'detail');
+
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'index');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'add');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'edit');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'delete');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'detail');
+
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Department', 'index');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Department', 'add');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Department', 'edit');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Department', 'delete');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Department', 'detail');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'edit');
