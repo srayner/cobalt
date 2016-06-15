@@ -3,6 +3,7 @@
     $this->headScript()->appendFile('/js/datatables.js')
                        ->appendFile('/js/bootstrap/tab.js')
                        ->appendFile('/js/jquery-plugin/stickytabs.js')
+                       ->appendFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBt0h9Yzlvj9B9E7P4dGkMpc27z4heYAbk&sensor=false')
                        ->appendFile('/js/cobalt/office/detail.js');
 ?>
 
@@ -41,14 +42,8 @@
                                 </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <td><?php echo nl2br($this->office->getAddress()); ?></td>
+                                    <td id="address"><?php echo nl2br($this->office->getAddress()); ?></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-lg-6">
-                        <table class="table table-condensed table-bordered">
-                            <tbody>
                                 <tr>
                                     <th style="width: 35%;">Telephone No</th>
                                     <td><?php echo $this->office->getPhone(); ?></td>
@@ -59,6 +54,11 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="map">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,3 +104,10 @@
         
     </div>
 </div>
+
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv);
+  }
+</script>

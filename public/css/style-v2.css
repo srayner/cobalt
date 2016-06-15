@@ -140,3 +140,9 @@
 
 .proj-progress-body .proj-progress-green {background-color: #5cb85c;}
 .proj-progress-body .proj-progress-blue {background-color: #2980b9;}
+
+#map {
+    width: 500px;
+    height: 400px;
+    background-color: #CCC;
+  }
