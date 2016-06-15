@@ -22,12 +22,14 @@ class IndexController extends AbstractActionController
         $projectService  = $this->getServiceLocator()->get('Project\ProjectService');
         $userService     = $this->getServiceLocator()->get('Cobalt\EntityService\UserService');
         $domainService   = $this->getServiceLocator()->get('Cobalt\EntityService\DomainService');
+        $ticketService   = $this->getServiceLocator()->get('Cobalt\EntityService\TicketService');
         
         return array(
             'hardwareCount' => $hardwareService->count(),
             'projectCount'  => $projectService->count(),
             'userCount'     => $userService->count(),
             'domainCount'   => $domainService->count(),
+            'ticketCount'   => $ticketService->count()
         );
     }
     

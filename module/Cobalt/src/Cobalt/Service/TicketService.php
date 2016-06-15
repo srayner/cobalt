@@ -8,6 +8,20 @@ class TicketService extends AbstractEntityService
     protected $mailService;
     protected $mailConfig;
     
+    public function count()
+    {
+        return $this->entityManager
+                    ->createQuery('SELECT COUNT(t.id) FROM Cobalt\Entity\Ticket t')
+                    ->getSingleScalarResult();
+    }
+    
+    public function countOpen()
+    {
+        return $this->entityManager
+                    ->createQuery('SELECT COUNT(t.id) FROM Cobalt\Entity\Ticket t WHERE t.status_id <> 2')
+                    ->getSingleScalarResult();
+    }
+    
     public function __construct($entityManager, $repository, $notificationService, $mailService, $mailConfig)
     {
         parent::__construct($entityManager, $repository);
