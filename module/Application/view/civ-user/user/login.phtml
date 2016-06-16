@@ -6,20 +6,44 @@
         <hr>
     </div>
     
-    <!-- Login Form -->
-    <div class="col-md-6">
-        <?php $form = $this->form; ?>
-
-        <?php echo $this->form(null, null)->openTag($form); ?>
-        <?php echo $this->formRow($form->get('username')); ?>
-        <?php echo $this->formRow($form->get('password')); ?>
-        <?php echo $this->formRow($form->get('submit')); ?>
-        <?php echo $this->form()->closeTag($form); ?>
-
-        <?php if($this->message): ?>
+    <div class="col-md-4 col-md-offset-4">
+    
+        <div class="col-ms-12 text-center">
+            <img class="logo" src="/img/cobalt-logo.png">
             <br>
-            <span class="alert alert-danger"><b>Error: </b><?php echo $this->message; ?></span>
-        <?php endif; ?>
+            <h4>Cobalt Application</h4>
+            <hr>
+        </div>
+    
+        <div class="well">
+
+                <h4 style="margin-top:0;" class="text-center">Sign In</h4>
+
+                <!-- Login Form -->
+                
+                    <?php $form = $this->form; ?>
+
+                    <?php echo $this->form(null, null)->openTag($form); ?>
+                    <?php echo $this->formRow($form->get('username')); ?>
+                    <?php echo $this->formRow($form->get('password')); ?>
+                    
+                    <?php if($this->message): ?>
+                        <br>
+                        <span class="alert alert-danger"><b>Error: </b><?php echo $this->message; ?></span>
+                    <?php endif; ?>
+                        
+                    <button type="submit" class="btn btn-block btn-primary">Login</button>
+                    <?php echo $this->form()->closeTag($form); ?>
+
+                    
+                
+
+        </div>
+
+        <div class="col-ms-12 text-center">
+            <hr>
+            <small>Civray Software</small>
+        </div>
     </div>
     
 </div>
