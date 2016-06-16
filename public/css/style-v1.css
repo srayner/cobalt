@@ -137,6 +137,10 @@ body {
     padding-right: 5px;
 }
 
+a i.fa {
+    padding-right: 2px;
+}
+
 /* breadcrumb */
 .breadcrumb {
     width: 100%;

@@ -12,31 +12,31 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="computers" class="table" cellspacing="0" width="100%">
+            <table id="computers" class="table table-bordered table-cobalt" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Hostname</th>
                         <th>Domain</th>
                         <th>Manufacturer</th>
                         <th>Model</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->computers as $computer): ?> 
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'edit', 'id' => $computer->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'delete', 'id' => $computer->getId()));?>"><i class="fa fa-remove"></i></a>
+                            <a class="btn btn-xs btn-primary" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
+                            <a class="btn btn-xs btn-danger" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
+                            <a class="btn btn-xs btn-default" href="cdollar://<?php echo $computer->getHostname();?>\c$">C$</a>    
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getId()));?>">
                             <?php echo $computer->getHostname();?></a></td>
                         <td><?php echo $computer->getDomain();?></td>
                         <td><?php echo $computer->getManufacturer();?></td>
-                        <td><?php echo $computer->getModel();?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-primary btn-sm" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
-                            <a class="btn btn-danger btn-sm" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
-                            <a class="btn btn-default btn-sm" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'edit', 'id' => $computer->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'delete', 'id' => $computer->getId()));?>">Delete</a>
-                        </td>
+                        <td><?php echo $computer->getModel();?></td>    
                     </tr>
                     <?php endforeach ?>
                 </tbody>
