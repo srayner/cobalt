@@ -1,4 +1,9 @@
-        
+<?php
+    $this->headScript()->appendFile('/js/jquery-jvectormap-2.0.3.min.js')
+                       ->appendFile('/js/jquery-jvectormap-world-mill-en.js');
+    $this->headLink()->appendStylesheet('/css/jquery-jvectormap-2.0.3.css');
+?>
+
     <div class="row">
         <div class="title col-lg-12">
             <h1>Dashboard</h1>
@@ -131,6 +136,17 @@
                     </div>
                 </a>
             </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div id="world-map" style="width: 600px; height: 400px"></div>
+            <script>
+                $(function(){
+                    $('#world-map').vectorMap({map: 'world_mill_en'});
+                    var mapObject = $('#world-map').vectorMap('get', 'mapObject');
+                    mapObject.setBackgroundColor('#aaa');
+                });
+            </script>
         </div>
 
     </div>
