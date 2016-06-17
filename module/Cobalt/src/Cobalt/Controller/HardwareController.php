@@ -129,6 +129,14 @@ class HardwareController extends AbstractController
         
     }
     
+    public function summaryAction()
+    {
+        $summary = $this->service->summaryByStatus();
+        return new ViewModel(array(
+            'summary' => $summary
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
