@@ -58,6 +58,23 @@ CREATE TABLE printer (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Consumale table
+CREATE TABLE consumable (
+  id           Integer(11)  NOT NULL,
+  name         Varchar(128) NOT NULL,
+  type         Varchar(32)      NULL,
+  supplier     Varchar(64)      NULL,
+  qty_in_stock Integer(11)      NULL,
+  reorder_qty  Integer(11)      NULL,
+  primary key(id)
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE printer_consumable (
+  printer_id Integer(11),
+  consumable_id Integer(11),
+  primary key(printer_id, consumable_id)
+) ENGINE=InnoDb;
+
 -- Computer table
 CREATE TABLE computer (
   computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,
