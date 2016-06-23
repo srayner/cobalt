@@ -2,80 +2,21 @@
 
 namespace Cobalt\Form;
 
-use Zend\Form\Form;
-
-class ComputerForm extends Form
+class ComputerForm extends HorizontalForm
 {
     public function __construct()
     {
         parent::__construct();
         
-        $this->setAttribute('class', 'form-horizontal');
+        $this->compact = true;
+        $this->labelWidth = 2;
+        $this->controlWidth = 10;
         
-        $this->add(array(
-                'name' => 'hostname',
-                'options' => array(
-                        'label' => 'Hostname',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-        
-        $this->add(array(
-                'name' => 'domain',
-                'options' => array(
-                        'label' => 'Domain',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-        
-        $this->add(array(
-                'name' => 'manufacturer',
-                'options' => array(
-                        'label' => 'Manufacturer',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-        
-        $this->add(array(
-                'name' => 'model',
-                'options' => array(
-                        'label' => 'Model',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-        
-        $this->add(array(
-                'name' => 'image',
-                'options' => array(
-                        'label' => 'Image',
-                ),
-                'attributes' => array(
-                        'type' => 'text',
-                        'class' => 'form-control input-sm'
-                ), 
-        ));
-
-        // Submit button.
-        $this->add(array(
-            'name' => 'submit',
-            'attributes' => array(
-                'type'  => 'submit',
-                'value' => 'Add',
-                'id'    => 'submitbutton',
-                'class' => 'btn btn-primary'
-            ),
-        ));
+        $this->addText('hostname', 'Hostname')
+             ->addText('domain', 'Domain')
+             ->addText('manufacturer', 'Manufacturer')
+             ->addText('model', 'Model')
+             ->addText('image', 'Image')
+             ->addButton('submit', 'Add', 'btn-primary');
     }
 }
