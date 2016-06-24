@@ -21,7 +21,7 @@ class HorizontalForm extends Form
         return $this;
     }
     
-    protected function addText($name, $label, $autocomplete = true)
+    protected function addText($name, $label, $autocomplete = true, $focus = false)
     {
         $element = $this->getFormFactory()->create(array(
             'name' => $name,
@@ -40,6 +40,10 @@ class HorizontalForm extends Form
         if ($autocomplete === false) {
             $element->setAttribute('autocomplete', 'off');
         }   
+        
+        if ($focus === true) {
+            $element->setAttribute('autofocus', true);
+        }
         
         $this->add($element);
         return $this;
