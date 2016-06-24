@@ -31,9 +31,9 @@ class WMI
         $osData = $osResults->itemIndex(0);
         
         if ($biosData->SerialNumber != '') {
-            $computer = $service->findBySerialNumber($biosData->SerialNumber);
+            $computer = $service->findBySerial($biosData->SerialNumber);
         } else {
-            $computer = $service->findBySerialNumber($host);
+            $computer = $service->findBySerial($host);
         }
         if (!$computer) {
             $computer = new Computer;
