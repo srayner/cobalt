@@ -35,6 +35,12 @@ class ComputerService implements ComputerServiceInterface
         return $this->entityManager->getRepository($this->repository)
                                    ->findOneBy(array('serialNumber' => $serial));
     }
+    
+    public function findByDNSName($hostname, $domain)
+    {
+        return $this->entityManager->getRepository($this->repository)
+                ->findOneBy(array('hostname' => $hostname, 'domain' => $domain));
+    }
 
     public function persist($computer)
     {

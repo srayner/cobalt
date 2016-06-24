@@ -7,6 +7,7 @@ use Cobalt\Entity\User;
 use Cobalt\Entity\Company;
 use Cobalt\Entity\Office;
 use Cobalt\Entity\Department;
+use Cobalt\Entity\Computer;
 use DateTime;
 
 class ActiveDirectory {
@@ -167,6 +168,9 @@ class ActiveDirectory {
     
     public function getComputers($computerService)
     {
+        
+        $domain = $this->options['accountDomainName'];
+    
         $ldap = new Ldap($this->options);
         $ldap->bind();
         
@@ -176,7 +180,36 @@ class ActiveDirectory {
         
         foreach ($result as $item)
         {
-            die(var_dump($item));
+            if ($item['name'][0] != '') {
+                
+                $hostname = $item['name'][0];
+                $computer = $computerService->findByDNSName($hostname, $domain);
+                if (!$computer) {
+                    $computer = new Computer();
+                    $computer->setHostname($hostname)
+                             ->setDomain($domain);
+                }
+                
+              //  die(print_r($item));
+                
+                // Operating system
+                if (array_key_exists('operatingsystem', $item)){
+                    $computer->setOsName($item['operatingsystem'][0]);
+                }
+                
+                // Operating system
+                if (array_key_exists('operatingsystemservicepack', $item)){
+                    $computer->setOsServicePack($item['operatingsystemservicepack'][0]);
+                }
+                
+                // Operating system
+                if (array_key_exists('operatingsystemversion', $item)){
+                    $computer->setOsVersion($item['operatingsystemversion'][0]);
+                }
+                
+                $computerService->persist($computer);
+                
+            }
             
         }
         
