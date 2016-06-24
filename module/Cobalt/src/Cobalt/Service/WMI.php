@@ -13,7 +13,7 @@ class WMI
         $this->options = $options;
     }
     
-    public function ScanComputer($host, $service)
+    public function ScanComputer($host, $domain, $service)
     {
         // Get credentials.
         $account = $this->options['account'];
@@ -30,14 +30,16 @@ class WMI
         $osResults = $WbemServices->ExecQuery("Select * from Win32_OperatingSystem");
         $osData = $osResults->itemIndex(0);
         
-        if ($biosData->SerialNumber != '') {
-            $computer = $service->findBySerial($biosData->SerialNumber);
-        } else {
-            $computer = $service->findBySerial($host);
-        }
-        if (!$computer) {
-            $computer = new Computer;
-        }
+        //if ($biosData->SerialNumber != '') {
+        //    $computer = $service->findBySerial($biosData->SerialNumber);
+        //} else {
+        //    $computer = $service->findBySerial($host);
+        //}
+        //if (!$computer) {
+        //    $computer = new Computer;
+        //}
+        
+        $computer = $service->findByDNSName($host, $domain);
         
         $computer->setHostname($host);
         $computer->setDomain($computerData->Domain);

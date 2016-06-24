@@ -141,7 +141,7 @@ class ComputerController extends AbstractController
         ));
     }
     
-    public function scanAction()
+    public function oldscanAction()
     {
         $form = $this->getServiceLocator()->get('Cobalt\HostnameForm');
         
@@ -167,6 +167,30 @@ class ComputerController extends AbstractController
         return new ViewModel(array(
             'form' => $form
         ));
+    }
+    
+    public function scanAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
+        }
+        
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        
+        $computer = $this->service->findById($id);
+        $hostname = $computer->getHostname();
+        $domain = $computer->getDomain();
+        $wmiService = $this->getServiceLocator()->get('Cobalt\WMIService');
+        $wmiService->scanComputer($hostname, $domain, $this->service);
+                
+        // Redirect to computer detail
+        return $this->redirect()->toRoute('cobalt/default', array(
+            'controller' => 'computer',
+            'action' => 'detail',
+            'id' => $id
+        )); 
     }
     
     public function adupdateAction()

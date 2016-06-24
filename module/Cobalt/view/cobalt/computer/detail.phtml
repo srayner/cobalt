@@ -189,6 +189,11 @@ function formatBytes($bytes, $precision = 2) {
     <a class="btn btn-primary" href="vnc://<?php echo $computer->getHostname();?>">VNC</a>
     <a class="btn btn-danger" href="rdp://<?php echo $computer->getHostname();?>">RDP</a>
     <a class="btn btn-default" href="cdollar://<?php echo $computer->getHostname();?>\c$">Browse Drive C:</a>
+    <a class="btn btn-default" href="<?php echo $this->url('cobalt/default', array(
+        'controller' => 'computer',
+        'action'     => 'scan',
+        'id'         => $this->computer->getId()
+    )); ?>">Scan</a>
     <a class="btn btn-default" href="/assets/index/disk/<?php echo $computer->getHostname();?>">Scan Drives</a>
     <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
 </div>
