@@ -165,4 +165,21 @@ class ActiveDirectory {
         }
     }
     
+    public function getComputers($computerService)
+    {
+        $ldap = new Ldap($this->options);
+        $ldap->bind();
+        
+        $result = $ldap->search('(&(objectCategory=computer))',
+                             'dc=wr,dc=local',
+                             Ldap::SEARCH_SCOPE_SUB);
+        
+        foreach ($result as $item)
+        {
+            die(var_dump($item));
+            
+        }
+        
+    }
+    
 }

@@ -169,4 +169,12 @@ class ComputerController extends AbstractController
             'form' => $form
         ));
     }
+    
+    public function adupdateAction()
+    {
+        $adService = $this->getServiceLocator()->get('Cobalt\ActiveDirectoryService');
+        $adService->getComputers($this->service);
+    
+        return array();
+    }
 }

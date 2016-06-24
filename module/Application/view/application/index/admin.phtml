@@ -19,7 +19,10 @@
                 <a href="<?php echo $this->url('cobalt/default', array(
                     'controller' => 'hardwaremanufacturer'
                     ))?>">Hardware Manufacturers</a><br>
-                <a href="#">Update from Active Directory</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'Computer',
+                    'action' => 'adupdate',
+                ))?>">Update from Active Directory</a><br>
             </div>
         </div>
     </div>
