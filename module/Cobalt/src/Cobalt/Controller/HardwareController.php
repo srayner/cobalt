@@ -152,4 +152,5 @@ class HardwareController extends AbstractController
         $referer = $session->referer;
         return $referer;
     }
+    
 }

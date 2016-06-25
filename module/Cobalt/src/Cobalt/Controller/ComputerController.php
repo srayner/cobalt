@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 class ComputerController extends AbstractController
 {
@@ -199,5 +200,35 @@ class ComputerController extends AbstractController
         $adService->getComputers($this->service);
     
         return array();
+    }
+    
+    public function pingAction()
+    {
+        $status = 'unknown';
+        
+        $id = (int)$this->params()->fromRoute('id');
+        if ($id) {
+            $computer = $this->service->findById($id);
+            $hostname = $computer->getHostname();
+            if ($hostname) {
+                $status = $this->ping($hostname);
+            }
+        }
+        
+        $view = new JsonModel(array(
+            'status' => $status
+        ));
+        return $view;
+    }
+    
+    private function ping($host)
+    {
+        exec("ping -n 2 $host", $output, $status);
+        if (0 == $status) {
+            $status = "alive";
+        } else {
+            $status = "dead";
+        }
+        return $status;
     }
 }
