@@ -1,6 +1,9 @@
 $(document).ready(function() {
 
-    $.get("/computer/ping/4", function(data, status){
+    var urlParts = window.location.pathname.split('/');
+    var id = urlParts[urlParts.length -1];
+    
+    $.get("/computer/ping/" + id, function(data, status){
         //alert("result: " + data.status);
         data.class='label label-default';
         data.text = 'Offline';
