@@ -1,4 +1,6 @@
 <?php
+    $this->headScript()->appendFile('/js/cobalt/computer/detail.js');
+
 function formatBytes($bytes, $precision = 2) { 
     $units = array('B', 'KB', 'MB', 'GB', 'TB');
     $bytes = max($bytes, 0); 
