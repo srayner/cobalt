@@ -2,11 +2,15 @@
 
 namespace Cobalt\Service;
 
-use Cobalt\Entity\Computer;
-
 class WMI
 {
     protected $options;
+    protected $serviceLocator;
+    
+    public function __construct($serviceLocator)
+    {
+        $this->serviceLocator = $serviceLocator;
+    }
     
     public function setOptions($options)
     {
@@ -55,6 +59,34 @@ class WMI
                 
         $service->persist($computer);
         
+    }
+    
+    public function scanLogicalDisks($host, $domain, $service)
+    {
+        // Get credentials.
+        $account = $this->options['account'];
+        $password = $this->options['password'];
+        
+        $WbemLocator = new \COM("WbemScripting.SWbemLocator");
+        $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
+        $WbemServices->Security_->ImpersonationLevel = 3;
+        $disks = $WbemServices->ExecQuery("Select * from Win32_LogicalDisk");
+    
+        // Delete existing disk info for this host.
+        $computer = $service->findByDNSName($host, $domain);
+        $computer->clearDisks();
+        
+        // loop through scanned disks and persist each one
+        foreach ($disks as $disk) {
+            $logicalDisk = $this->serviceLocator()->get('Cobalt\LogicalDisk');
+            $logicalDisk->setDeviceId($disk->DeviceId)
+                        ->setDescription($disk->Description)
+                        ->setFileSystem($disk->FileSystem)
+                        ->setCapacity($disk->Size)
+                        ->setFreeSpace($disk->FreeSpace);
+            $computer->addLogicalDisk($logicalDisk);
+        }
+        $service->persist($computer);
     }
 }
 

@@ -115,6 +115,7 @@ return array(
             'Cobalt\HardwareManufacturer' => 'Cobalt\Entity\HardwareManufacturer',
             'Cobalt\HardwareStatus'       => 'Cobalt\Entity\HardwareStatus',
             'Cobalt\HardwareType'         => 'Cobalt\Entity\HardwareType',
+            'Cobalt\LogicalDisk'          => 'Cobalt\Entity\LogicalDisk',
             'Cobalt\Office'               => 'Cobalt\Entity\Office',
             'Cobalt\Printer'              => 'Cobalt\Entity\Printer',
             'Cobalt\Software'             => 'Cobalt\Entity\Software',

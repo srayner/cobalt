@@ -197,7 +197,11 @@ function formatBytes($bytes, $precision = 2) {
         'action'     => 'scan',
         'id'         => $this->computer->getId()
     )); ?>">Scan</a>
-    <a class="btn btn-default" href="/assets/index/disk/<?php echo $computer->getHostname();?>">Scan Drives</a>
+    <a class="btn btn-default" href="<?php echo $this->url('cobalt/default', array(
+        'controller' => 'computer',
+        'action'     => 'scandisks',
+        'id'         => $this->computer->getId()
+    )); ?>">Scan Drives</a>
     <a class="btn btn-default" href="/assets/index/warranty/<?php echo $computer->getSerialNumber();?>">Tag Lookup</a>
 </div>
 

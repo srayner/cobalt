@@ -249,4 +249,9 @@ class Computer
     {
         return $this->logicalDisks;
     }
+    
+    public function clearLogicalDisks()
+    {
+        $this->logicalDisks.clear();
+    }
 }

@@ -9,7 +9,7 @@ class WMIServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new WMI;
+        $service = new WMI($serviceLocator);
         $options = $serviceLocator->get('Config')['cobalt'];
         $service->setOptions($options);
         return $service;

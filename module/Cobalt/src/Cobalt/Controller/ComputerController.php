@@ -177,8 +177,6 @@ class ComputerController extends AbstractController
             return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
         }
         
-        // Check if the request is a POST.
-        $request = $this->getRequest();
         
         $computer = $this->service->findById($id);
         $hostname = $computer->getHostname();
@@ -200,6 +198,27 @@ class ComputerController extends AbstractController
         $adService->getComputers($this->service);
     
         return array();
+    }
+    
+    public function scandisksAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
+        }
+        
+        $computer = $this->service->findById($id);
+        $hostname = $computer->getHostname();
+        $domain = $computer->getDomain();
+        $wmiService = $this->getServiceLocator()->get('Cobalt\WMIService');
+        $wmiService->scanLogicalDisks($hostname, $domain, $this->service);
+        
+        // Redirect to computer detail
+        return $this->redirect()->toRoute('cobalt/default', array(
+            'controller' => 'computer',
+            'action' => 'detail',
+            'id' => $id
+        )); 
     }
     
     public function pingAction()

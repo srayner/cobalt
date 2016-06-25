@@ -38,44 +38,6 @@ class IndexController extends AbstractActionController
         );
     }
     
-    public function DiskAction()
-    {
-        // Get credentials from config.
-        $config = $this->getServiceLocator()->get('Config')['cobalt'];
-        $account = $config['account'];
-        $password = $config['password'];
-    
-        $host = $this->params()->fromRoute('id');
-        $WbemLocator = new \COM("WbemScripting.SWbemLocator");
-        $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
-        $WbemServices->Security_->ImpersonationLevel = 3;
-        $drives = $WbemServices->ExecQuery("Select * from Win32_LogicalDisk");
-        
-        // Delete existing disk info for this host.
-        $service = $this->getComputerService();
-        $computer = $service->getComputerByHostname($host);
-        $computerId = $computer->getComputerId();
-        $service->deleteLogicalDisks($computerId);
-        
-        // loop through scanned disks and persist each one
-        foreach ($drives as $drive) {
-            $logicalDisk = $this->getServiceLocator()->get('cobalt_logical_disk');
-            $logicalDisk->setComputerId($computer->getComputerId())
-                        ->setDeviceId($drive->DeviceId)
-                        ->setDescription($drive->Description)
-                        ->setFileSystem($drive->FileSystem)
-                        ->setCapacity($drive->Size)
-                        ->setFreeSpace($drive->FreeSpace);
-            $service->persistLogicalDisk($logicalDisk);
-        }
-        
-        // Redirect back to this host.
-        $this->redirect()->toRoute('assets/default',
-                array('controller' => 'index',
-                      'action'     => 'host',
-                      'id'         => $computerId));
-    }
-    
     public function ComputerAction()
     {
         // Get credentials from config.
