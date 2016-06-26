@@ -10,13 +10,13 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
-                    <li><a href="#">New Support Ticket</a></li>
-                    <li><a href="#">New Task</a></li>
-                    <li><a href="#">New Project</a></li>
+                    <li><a href="<?php echo $this->url('cobalt/default', array ('controller' => 'ticket', 'action' => 'add')); ?>">New Support Ticket</a></li>
+                    <li><a href="<?php echo $this->url('project/default', array ('controller' => 'task', 'action' => 'add')); ?>">New Task</a></li>
+                    <li><a href="<?php echo $this->url('project/default', array ('controller' => 'project', 'action' => 'add')); ?>">New Project</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">New User</a></li>
-                    <li><a href="#">New Hardware</a></li>
-                    <li><a href="#">New Software</a></li>
+                    <li><a href="<?php echo $this->url('cobalt/default', array ('controller' => 'user', 'action' => 'add')); ?>">New User</a></li>
+                    <li><a href="<?php echo $this->url('cobalt/default', array ('controller' => 'hardware', 'action' => 'add')); ?>">New Hardware</a></li>
+                    <li><a href="<?php echo $this->url('cobalt/default', array ('controller' => 'software', 'action' => 'add')); ?>">New Software</a></li>
                 </ul>
             </li>
             <li class="dropdown">
