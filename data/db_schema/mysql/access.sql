@@ -52,11 +52,14 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'addrole');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'adupdate');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'removerole');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'detail');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'ping');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'edit');
