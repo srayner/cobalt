@@ -202,3 +202,7 @@ h1.error i {
 .btn-fixed-width {
     width: 84px;
 }
+
+#profile-menu li {
+    font-size: 12px;
+}
