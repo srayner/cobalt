@@ -75,21 +75,37 @@ return array(
                 ),
             ),
             
-            'test' => array(
+            'help' => array(
                 'type'    => 'Literal',
                 'priority' => 9000,
                 'options' => array(
-                    'route'    => '/test',
+                    'route'    => '/help',
                     
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'test',
+                        'action'        => 'help',
+                    ),
+                ),
+                
+            ),
+            
+            'settings' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/settings',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'settings',
                     ),
                 ),
                 
             )
         ),
+        
     ),
     
     'service_manager' => array(

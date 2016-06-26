@@ -15,11 +15,11 @@ class ProfileMenu extends AbstractHelper
     
     public function __invoke()
     {
-        $hasIdentity = 'No';
-        if ($this->authService->hasIdentity()) 
-        {
-            $hasIdentity = 'Yes';
+        if ($this->authService->hasIdentity()) {
+            return $this->view->partial('application/partial/profile_menu.phtml', array(
+                'displayName' => $this->authService->getIdentity()->getDisplayName()
+            ));
         }
-        return $hasIdentity;        
+        return '<a class="btn btn-default" href="/login">Login</a>';
     }
 }

@@ -117,4 +117,15 @@ class IndexController extends AbstractActionController
             'form'   => $form
         ));
     }
+    
+    public function helpAction()
+    {
+        return array();
+    }
+    
+    public function settingsAction()
+    {
+        return array();
+    }
+    
 }
