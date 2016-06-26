@@ -274,6 +274,11 @@ return array(
                         'controller' => 'CivUser\Controller\User',
                         'action' => 'profile',
                     ),
+                    array(
+                        'label' => 'Change Password',
+                        'controller' => 'CivUser\Controller\User',
+                        'action' => 'changepassword',
+                    ),
                 ),
             ),
             array(
