@@ -269,6 +269,11 @@ return array(
                         'controller' => 'user',
                         'action' => 'detail',
                     ),
+                    array(
+                        'label' => 'My Profile',
+                        'controller' => 'CivUser\Controller\User',
+                        'action' => 'profile',
+                    ),
                 ),
             ),
             array(
