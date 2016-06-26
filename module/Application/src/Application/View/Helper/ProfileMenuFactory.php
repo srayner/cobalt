@@ -5,7 +5,7 @@ namespace Application\View\Helper;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ProfileLinkFactory implements FactoryInterface
+class ProfileMenuFactory implements FactoryInterface
 {
     /**
      * Create service

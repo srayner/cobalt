@@ -74,6 +74,21 @@ return array(
                     ),
                 ),
             ),
+            
+            'test' => array(
+                'type'    => 'Literal',
+                'priority' => 9000,
+                'options' => array(
+                    'route'    => '/test',
+                    
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'test',
+                    ),
+                ),
+                
+            )
         ),
     ),
     
@@ -105,6 +120,13 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ),
+    ),
+    
+    // View helpers
+    'view_helpers' => array(
+        'factories' => array(
+            'ProfileMenu' => 'Application\View\Helper\ProfileMenuFactory',
+        )
     ),
     
     // View manager config.
