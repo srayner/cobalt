@@ -206,3 +206,8 @@ h1.error i {
 #profile-menu li {
     font-size: 12px;
 }
+
+
+#profile-menu .btn-primary {
+    margin-left: 5px;
+}
