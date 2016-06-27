@@ -242,7 +242,7 @@ class ComputerController extends AbstractController
     
     private function ping($host)
     {
-        exec("ping -n 2 $host", $output, $status);
+        exec("ping -n 1 -w 1000 $host", $output, $status);
         if (0 == $status) {
             $status = "alive";
         } else {
