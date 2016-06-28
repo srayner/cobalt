@@ -12,7 +12,7 @@ class ComputerForm extends HorizontalForm
         $this->labelWidth = 2;
         $this->controlWidth = 10;
         
-        $this->addText('hostname', 'Hostname')
+        $this->addText('hostname', 'Hostname', false, true)
              ->addText('domain', 'Domain')
              ->addText('manufacturer', 'Manufacturer')
              ->addText('model', 'Model')
