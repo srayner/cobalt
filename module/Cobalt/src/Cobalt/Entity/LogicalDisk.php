@@ -18,7 +18,7 @@ class LogicalDisk
     
     /**
      * @ORM\ManyToOne(targetEntity="Computer", inversedBy="logicalDisks")
-     * @ORM\JoinColumn(name="computer_id", referencedColumnName="computer_id")
+     * @ORM\JoinColumn(name="computer_id", referencedColumnName="id")
      */
     protected $computer;
     
