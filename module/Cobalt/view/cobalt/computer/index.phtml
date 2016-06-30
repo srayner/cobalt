@@ -36,7 +36,7 @@
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'computer', 'action' => 'detail', 'id' => $computer->getId()));?>">
                             <?php echo $computer->getHostname();?></a></td>
                         <td><?php echo $computer->getDomain();?></td>
-                        <td><?php echo $computer->getManufacturer();?></td>
+                        <td><?php echo $computer->getManufacturer()->getName();?></td>
                         <td><?php echo $computer->getModel();?></td>    
                     </tr>
                     <?php endforeach ?>
