@@ -77,7 +77,7 @@ CREATE TABLE printer_consumable (
 
 -- Computer table
 CREATE TABLE computer (
-  computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,
+  id              Integer(11)  NOT NULL AUTO_INCREMENT,
   hostname        NVarChar(64) NOT NULL,
   description     NVarChar(128),
   service_tag     NVarChar(8),
@@ -91,9 +91,7 @@ CREATE TABLE computer (
   os_version      NVarChar(32),
   os_build        NVarChar(16),
   os_service_pack NVarChar(16), 
-  PRIMARY KEY (
-      computer_id
-  )
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Computer logical_disk

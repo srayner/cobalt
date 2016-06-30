@@ -53,7 +53,7 @@ CREATE TABLE software_installation(
     usage_frequency Varchar(32)     NULL,
     INDEX idx_software_inst_comp_id (computer_id),
     INDEX idx_software_inst_soft_id (software_id),
-    FOREIGN KEY (computer_id) REFERENCES computer(computer_id) ON DELETE RESTRICT,
+    FOREIGN KEY (computer_id) REFERENCES computer(id) ON DELETE RESTRICT,
     FOREIGN KEY (software_id) REFERENCES software(id) ON DELETE RESTRICT,
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
