@@ -190,19 +190,17 @@ class ActiveDirectory {
                              ->setDomain($domain);
                 }
                 
-              //  die(print_r($item));
-                
                 // Operating system
                 if (array_key_exists('operatingsystem', $item)){
                     $computer->setOsName($item['operatingsystem'][0]);
                 }
                 
-                // Operating system
+                // Operating system service pack
                 if (array_key_exists('operatingsystemservicepack', $item)){
                     $computer->setOsServicePack($item['operatingsystemservicepack'][0]);
                 }
                 
-                // Operating system
+                // Operating system version.
                 if (array_key_exists('operatingsystemversion', $item)){
                     $computer->setOsVersion($item['operatingsystemversion'][0]);
                 }
