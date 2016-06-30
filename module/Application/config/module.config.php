@@ -338,7 +338,7 @@ return array(
                 ),
             ),
             array(
-                'label' => '<i class="fa fa-cloud"></i> Software',
+                'label' => '<i class="fa fa-floppy-o"></i> Software',
                 'route' => 'cobalt/default',
                 'controller' => 'software',
             ),
