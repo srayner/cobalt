@@ -8,15 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /** @ORM\Entity
   * @ORM\Table(name="computer")
   */
-class Computer
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer", name="computer_id")
-     */
-    protected $id;
-    
+class Computer extends Hardware
+{   
     /** @ORM\Column(type="string") */
     protected $hostname;
     
@@ -24,16 +17,7 @@ class Computer
     protected $domain;
     
     /** @ORM\Column(type="string") */
-    protected $manufacturer;
-    
-    /** @ORM\Column(type="string") */
-    protected $model;
-    
-    /** @ORM\Column(type="string") */
     protected $image;
-    
-    /** @ORM\Column(type="string", name="serial_number") */
-    protected $serialNumber;
     
     /** @ORM\Column(type="string", name="bios_version") */
     protected $biosVersion;

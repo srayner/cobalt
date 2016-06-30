@@ -2,20 +2,20 @@
 
 namespace Cobalt\Form;
 
-class ComputerForm extends HorizontalForm
+class ComputerForm extends HardwareForm
 {
-    public function __construct()
+    protected $em;
+    
+    public function __construct($em)
     {
-        parent::__construct();
+        parent::__construct($em);
         
         $this->compact = true;
-        $this->labelWidth = 2;
-        $this->controlWidth = 10;
+        $this->labelWidth = 4;
+        $this->controlWidth = 8;
         
         $this->addText('hostname', 'Hostname', false, true)
              ->addText('domain', 'Domain')
-             ->addText('manufacturer', 'Manufacturer')
-             ->addText('model', 'Model')
              ->addText('image', 'Image')
              ->addButton('submit', 'Add', 'btn-primary');
     }

@@ -58,7 +58,7 @@ CREATE TABLE printer (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
--- Consumale table
+-- Consumable table
 CREATE TABLE consumable (
   id           Integer(11)  NOT NULL,
   name         Varchar(128) NOT NULL,
@@ -79,15 +79,11 @@ CREATE TABLE printer_consumable (
 CREATE TABLE computer (
   computer_id     Integer(11)  NOT NULL AUTO_INCREMENT,
   hostname        NVarChar(64) NOT NULL,
-  ipv4            NVarChar(15),
   description     NVarChar(128),
   service_tag     NVarChar(8),
   created         Timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   domain          NVarChar(128),
-  manufacturer    NVarChar(128),
-  model           NVarChar(128),
   image           NVarChar(128),
-  serial_number   NVarChar(64),
   bios_version    NVarChar(32),
   system_type     NVarChar(32),
   modified        Timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',

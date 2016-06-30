@@ -58,6 +58,7 @@ class ComputerController extends AbstractController
             if ($form->isValid())
             {
           	// Persist computer.
+                $this->service->setType($computer, 'Computer');
             	$this->service->persist($computer);
                 
             	// Redirect to list of computers
