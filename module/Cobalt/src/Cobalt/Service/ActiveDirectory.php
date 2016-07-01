@@ -186,6 +186,9 @@ class ActiveDirectory {
                 $computer = $computerService->findByDNSName($hostname, $domain);
                 if (!$computer) {
                     $computer = new Computer();
+                    $computerService->setType($computer, 'Computer');
+                    $computerService->setStatus($computer, 'In Use');
+                    $computerService->setManufacturer($computer, 'Dell');
                     $computer->setHostname($hostname)
                              ->setDomain($domain);
                 }
@@ -204,7 +207,8 @@ class ActiveDirectory {
                 if (array_key_exists('operatingsystemversion', $item)){
                     $computer->setOsVersion($item['operatingsystemversion'][0]);
                 }
-                
+          
+              //  die(var_dump($computer->getStatus()));
                 $computerService->persist($computer);
                 
             }
