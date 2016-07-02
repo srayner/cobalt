@@ -168,9 +168,10 @@ function formatBytes($bytes, $precision = 2) {
             
             <!-- Network Adapters tab -->
             <div role="tabpanel" class="tab-pane" id="network-adapters">
-                <table class="table">
+                <table class="table table-condensed table-bordered">
                 <tbody>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Physical Address</th>
                         <th>DHCP Enabled</th>
@@ -179,6 +180,12 @@ function formatBytes($bytes, $precision = 2) {
                     </tr>
                     <?php foreach($computer->getNetworkAdapters() as $adapter): ?> 
                         <tr>
+                            <td style="width: 1%;" nowrap>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'networkadapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
+                                        <i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'setworkadapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
+                                        <i class="fa fa-remove"></i></a>
+                                </td>
                             <td><?php echo $adapter->getName();?></td>
                             <td><?php echo $adapter->getPhysicalAddress();?></td>
                             <td><?php echo $adapter->getDhcpEnabled();?></td>
@@ -188,7 +195,7 @@ function formatBytes($bytes, $precision = 2) {
                     <?php endforeach ?>
                     </tbody>
                 </table>
-                <a class="btn btn-default" href="<?php echo $this->url('cobalt/default', array(
+                <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
                     'controller' => 'networkadapter',
                     'action'     => 'add',
                     'id'         => $this->computer->getId()
