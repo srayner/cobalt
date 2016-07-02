@@ -12,7 +12,7 @@ class NetworkAdapterFilter extends AbstractFilter
     public function __construct()
     {
         $this->addTextFilter('name', true, 128)
-             ->addTextFilter('dnsSuffix', true, 64)
+             ->addTextFilter('dnsSuffix', false, 64)
              ->addTextFilter('ipv6Address', false, 45)
              ->addTextFilter('tempIpv6Address', false, 45)
              ->addTextFilter('localIpv6Address', false, 45)

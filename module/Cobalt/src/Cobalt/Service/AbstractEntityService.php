@@ -34,4 +34,9 @@ abstract class AbstractEntityService
         $this->entityManager->remove($entity);
         $this->entityManager->flush(); 
     }
+    
+    public function getReference($repository, $id)
+    {
+        return $this->entityManager->getReference($repository, $id);
+    }
 }

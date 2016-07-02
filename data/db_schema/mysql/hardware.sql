@@ -48,7 +48,7 @@ CREATE TABLE hardware(
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE network_adapter(
-    id                 Integer(11)  NOT NULL,
+    id                 Integer(11)  NOT NULL AUTO_INCREMENT,
     hardware_id        Integer(11)  NOT NULL,
     name               VarChar(128) NOT NULL,
     dns_suffix         VarChar(64)      NULL,

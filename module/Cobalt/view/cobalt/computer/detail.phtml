@@ -32,11 +32,11 @@ function formatBytes($bytes, $precision = 2) {
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
             <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
-            <li role="presentation"><a href="#os"            aria-controls="os"               role="tab" data-toggle="tab">Operating System</a></li>
-            <li role="presentation"><a href="#disks"         aria-controls="disks"            role="tab" data-toggle="tab">Logical Disks</a></li>
-            <li role="presentation"><a href="#disks"         aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
-            <li role="presentation"><a href="#relationships" aria-controls="relationships"    role="tab" data-toggle="tab">Relationships</a></li>
-            <li role="presentation"><a href="#history"       aria-controls="history"          role="tab" data-toggle="tab">History</a></li>
+            <li role="presentation"><a href="#os"               aria-controls="os"               role="tab" data-toggle="tab">Operating System</a></li>
+            <li role="presentation"><a href="#disks"            aria-controls="disks"            role="tab" data-toggle="tab">Logical Disks</a></li>
+            <li role="presentation"><a href="#network-adapters" aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
+            <li role="presentation"><a href="#relationships"    aria-controls="relationships"    role="tab" data-toggle="tab">Relationships</a></li>
+            <li role="presentation"><a href="#history"          aria-controls="history"          role="tab" data-toggle="tab">History</a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -188,6 +188,11 @@ function formatBytes($bytes, $precision = 2) {
                     <?php endforeach ?>
                     </tbody>
                 </table>
+                <a class="btn btn-default" href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'networkadapter',
+                    'action'     => 'add',
+                    'id'         => $this->computer->getId()
+                ));?>">Add Adapter</a>
             </div>
 
             <!-- Relationships tab -->
