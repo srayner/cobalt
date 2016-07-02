@@ -2,6 +2,11 @@
 
 namespace Cobalt\Form;
 
+/**
+ * NetworkAdapterFilter
+ * 
+ * @author Steve Rayner <srayner02@gmail.com>
+ */
 class NetworkAdapterFilter extends AbstractFilter
 {
     public function __construct()

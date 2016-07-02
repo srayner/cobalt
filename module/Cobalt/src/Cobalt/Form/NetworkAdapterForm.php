@@ -2,6 +2,11 @@
 
 namespace Cobalt\Form;
 
+/**
+ * NetworkAdapterForm
+ * 
+ * @author Steve Rayner <srayner02@gmail.com>
+ */
 class NetworkAdapterForm extends HorizontalForm
 {
     public function __construct()
