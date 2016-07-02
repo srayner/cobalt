@@ -22,6 +22,7 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
             <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#network-adapters"       aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
             <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
         </ul>
         
@@ -93,6 +94,42 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Network Adapters tab -->
+            <div role="tabpanel" class="tab-pane" id="network-adapters">
+                <table class="table table-condensed table-bordered">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Physical Address</th>
+                        <th>DHCP Enabled</th>
+                        <th>IPv4 Address</th>
+                        <th>Default Gateway</th>
+                    </tr>
+                    <?php foreach($printer->getNetworkAdapters() as $adapter): ?> 
+                        <tr>
+                            <td style="width: 1%;" nowrap>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
+                                        <i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
+                                        <i class="fa fa-remove"></i></a>
+                                </td>
+                            <td><?php echo $adapter->getName();?></td>
+                            <td><?php echo $adapter->getPhysicalAddress();?></td>
+                            <td><?php echo $adapter->getDhcpEnabled();?></td>
+                            <td><?php echo $adapter->getIpv4Address();?></td>
+                            <td><?php echo $adapter->getDefaultGateway();?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+                <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'NetworkAdapter',
+                    'action'     => 'add',
+                    'id'         => $this->printer->getId()
+                ));?>">Add Adapter</a>
             </div>
             
             <!-- History tab -->
