@@ -181,9 +181,9 @@ function formatBytes($bytes, $precision = 2) {
                     <?php foreach($computer->getNetworkAdapters() as $adapter): ?> 
                         <tr>
                             <td style="width: 1%;" nowrap>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'networkadapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
                                         <i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'setworkadapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
                                         <i class="fa fa-remove"></i></a>
                                 </td>
                             <td><?php echo $adapter->getName();?></td>

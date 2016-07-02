@@ -8,7 +8,7 @@ class NetworkAdapterController extends AbstractController
 {
     public function addAction()
     {
-        // Check we have a company id, if not redirect back to list of companies.
+        // Check we have a company id, if not redirect back to list of hardware.
         $hardwareId = (int)$this->params()->fromRoute('id');
         if (!$hardwareId) {
             return $this->redirect()->toRoute('cobalt/default', array('controller' => 'hardware'));
@@ -56,6 +56,40 @@ class NetworkAdapterController extends AbstractController
     
     public function editAction()
     {
+        // Ensure we have an id, else redirect to list of hardware.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('cobalt/default', array('controller' => 'hardware'));
+        }
+        
+        // Grab the adapter with the specified id.
+        $adapter = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Cobalt\NetworkAdapterForm');
+        $form->bind($adapter);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist adapter.
+            	$this->service->persist($adapter);
+                
+                // Redirect to hardware detail page.
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'hardware',
+                    'action'     => 'detail',
+                    'id'         => $adapter->getHardware()->getId()
+                ));
+            }     
+        }
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
         
     }
     
