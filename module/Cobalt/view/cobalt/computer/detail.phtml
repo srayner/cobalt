@@ -31,11 +31,12 @@ function formatBytes($bytes, $precision = 2) {
     
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
-            <li role="presentation" class="active"><a href="#details" aria-controls="home" role="tab" data-toggle="tab">Details</a></li>
-            <li role="presentation"><a href="#os"            aria-controls="os"            role="tab" data-toggle="tab">Operating System</a></li>
-            <li role="presentation"><a href="#disks"         aria-controls="disks"         role="tab" data-toggle="tab">Logical Disks</a></li>
-            <li role="presentation"><a href="#relationships" aria-controls="relationships" role="tab" data-toggle="tab">Relationships</a></li>
-            <li role="presentation"><a href="#history"       aria-controls="history"       role="tab" data-toggle="tab">History</a></li>
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#os"            aria-controls="os"               role="tab" data-toggle="tab">Operating System</a></li>
+            <li role="presentation"><a href="#disks"         aria-controls="disks"            role="tab" data-toggle="tab">Logical Disks</a></li>
+            <li role="presentation"><a href="#disks"         aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
+            <li role="presentation"><a href="#relationships" aria-controls="relationships"    role="tab" data-toggle="tab">Relationships</a></li>
+            <li role="presentation"><a href="#history"       aria-controls="history"          role="tab" data-toggle="tab">History</a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -159,6 +160,30 @@ function formatBytes($bytes, $precision = 2) {
 
                             </td>
 
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Network Adapters tab -->
+            <div role="tabpanel" class="tab-pane" id="network-adapters">
+                <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Physical Address</th>
+                        <th>DHCP Enabled</th>
+                        <th>IPv4 Address</th>
+                        <th>Default Gateway</th>
+                    </tr>
+                    <?php foreach($computer->getNetworkAdapters() as $adapter): ?> 
+                        <tr>
+                            <td><?php echo $adapter->getName();?></td>
+                            <td><?php echo $adapter->getPhysicalAddress();?></td>
+                            <td><?php echo $adapter->getDhcpEnabled();?></td>
+                            <td><?php echo $adapter->getIpv4Address();?></td>
+                            <td><?php echo $adapter->getDefaultGateway();?></td>
                         </tr>
                     <?php endforeach ?>
                     </tbody>
