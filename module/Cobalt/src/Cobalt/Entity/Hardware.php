@@ -61,6 +61,41 @@ class Hardware
     /** @ORM\Column(type="text") */
     protected $notes;
     
+    /**
+     * @ORM\OneToMany(targetEntity="NetworkAdapter", mappedBy="hardware")
+     *
+     * @var ArrayCollection 
+     */
+    protected $networkAdapters;
+    
+    public function __construct()
+    {
+        $this->networkAdapters = new ArrayCollection();
+    }
+    
+    /**
+     * Adds a network adapter to the hardware.
+     * 
+     * @param NetworkAdapter $networkAdapter
+     * @return Hardware
+     */
+    public function addNetworkAdapter(NetworkAdapter $networkAdapter)
+    {
+        $this->networkAdapters[] = $networkAdapter;
+        $networkAdapter->setHardware($this);
+        return $this;
+    }
+    
+    /**
+     * Returns an array containing the network adaptors.
+     * 
+     * @return Array
+     */
+    public function getNetworkAdapters()
+    {
+        return $this->networkAdapters->toArray();
+    }
+    
     public function getId()
     {
         return $this->id;

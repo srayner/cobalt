@@ -16,6 +16,12 @@ class NetworkAdapter
      */
     protected $id;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Hardware", inversedBy="networkAdapters")
+     * @ORM\JoinColumn(name="hardware_id", referencedColumnName="id")
+     */
+    protected $hardware;
+    
     /** @ORM\Column(type="string") */
     protected $name;
     
@@ -34,7 +40,7 @@ class NetworkAdapter
     /** @ORM\Column(type="string", name="physical_address") */
     protected $physicalAddress;
     
-    /** @ORM\Column(type="string, name="ipv4_address") */
+    /** @ORM\Column(type="string", name="ipv4_address") */
     protected $ipv4Address;
     
     /** @ORM\Column(type="string", name="subnet_mask") */
@@ -57,6 +63,11 @@ class NetworkAdapter
         return $this->id;
     }
 
+    public function getHardware()
+    {
+        return $this->hardware;
+    }
+    
     public function getName()
     {
         return $this->name;
@@ -123,6 +134,12 @@ class NetworkAdapter
         return $this;
     }
 
+    public function setHardware(Hardware $hardware)
+    {
+        $this->hardware = $hardware;
+        return $this;
+    }
+    
     public function setName($name)
     {
         $this->name = $name;
