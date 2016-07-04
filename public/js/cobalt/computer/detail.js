@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    $('#tabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+    
+    $('#tabs').stickyTabs();
+    
     var urlParts = window.location.pathname.split('/');
     var id = urlParts[urlParts.length -1];
     
