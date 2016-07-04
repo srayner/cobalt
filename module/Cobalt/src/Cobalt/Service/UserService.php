@@ -41,6 +41,12 @@ class UserService implements EventManagerAwareInterface
                 ->findOneBy(array('samAccountName' => $samAccountName));
     }
     
+    public function findTechnicians()
+    {
+        return $this->entityManager->getRepository($this->repository)
+                    ->findTechnicians();
+    }
+    
     public function persist($user)
     {
         $function = 'add';

@@ -234,4 +234,11 @@ class UserController extends AbstractController
             'role' => $role 
         ));
     }
+    
+    public function techniciansAction()
+    {
+        return array(
+            'users' => $this->service->findTechnicians()
+        );   
+    }
 }

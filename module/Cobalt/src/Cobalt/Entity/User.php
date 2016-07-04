@@ -5,7 +5,7 @@ namespace Cobalt\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-/** @ORM\Entity
+/** @ORM\Entity(repositoryClass="Cobalt\Repository\User")
   * @ORM\Table(name="user")
   */
 class User

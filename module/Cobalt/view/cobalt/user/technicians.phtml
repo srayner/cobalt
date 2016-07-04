@@ -1,0 +1,45 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/dataTables.bootstrap.css');
+    $this->headScript()->appendFile('/js/jquery.dataTables.js')
+                       ->appendFile('/js/dataTables.bootstrap.js')
+                       ->appendFile('/js/cobalt/user/index.js');
+?>
+    
+    <div class="row">
+        <div class="col-md-12 title">
+            <h1>Support Technicians</h1>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <table id="users" class="table table-bordered table-condensed table-cobalt" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>User</th>
+                        <th>Display Name</th>
+                        <th>Office</th>
+                        <th>Telephone No</th>
+                        <th>Extension</th>
+                        
+                    </tr>    
+                </thead>
+                <tbody>
+                    <?php foreach ($this->users as $user): ?>
+                    <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'edit', 'id' => $user->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'delete', 'id' => $user->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'detail', 'id' => $user->getId()));?>">
+                            <?php echo $user->getUsername(); ?>
+                        </a></td>
+                        <td><?php echo $user->getDisplayName(); ?></td>
+                        <td><?php echo ($user->getOffice()? $user->getOffice()->getName() : ''); ?></td>
+                        <td><?php echo $user->getTelephoneNumber(); ?></td>
+                        <td><?php echo $user->getExtensionNumber(); ?></td>
+                    </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </div>
+    </div>
