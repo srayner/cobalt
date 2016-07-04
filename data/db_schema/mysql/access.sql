@@ -84,6 +84,7 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\NetworkAdapter', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\NetworkAdapter', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\NetworkAdapter', 'delete');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\NetworkAdapter', 'monitor');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Software', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Software', 'add');

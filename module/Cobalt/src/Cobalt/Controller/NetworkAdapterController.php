@@ -97,5 +97,20 @@ class NetworkAdapterController extends AbstractController
     {
         
     }
+    
+    public function monitorAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $monitor = ('true' == $this->params()->fromPost('monitor'));
+        
+        $adapter = $this->service->findById($id);
+        $adapter->setMonitor($monitor);
+        $this->service->persist($adapter);
+        
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent("Ok.");
+        return $response;
+    }
 }
     

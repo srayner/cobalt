@@ -21,9 +21,10 @@
         
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
-            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"             role="tab" data-toggle="tab">Details</a></li>
             <li role="presentation"><a href="#network-adapters"       aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
-            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+            <li role="presentation"><a href="#monitoring"             aria-controls="monitoring"       role="tab" data-toggle="tab">Monitoring</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history"          role="tab" data-toggle="tab">History</a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -84,9 +85,9 @@
                     <?php foreach($hardware->getNetworkAdapters() as $adapter): ?> 
                         <tr>
                             <td style="width: 1%;" nowrap>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'network-adapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
                                         <i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
+                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'network-adapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
                                         <i class="fa fa-remove"></i></a>
                                 </td>
                             <td><?php echo $adapter->getName();?></td>
@@ -103,6 +104,32 @@
                     'action'     => 'add',
                     'id'         => $this->hardware->getId()
                 ));?>">Add Adapter</a>
+            </div>
+            
+            <!-- Monitoring tab -->
+            <div role="tabpanel" class="tab-pane" id="monitoring">
+                <table class="table table-condensed table-bordered">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Adapter Name</th>
+                        <th>IPv4 Address</th>
+                    </tr>
+                    <?php foreach($hardware->getNetworkAdapters() as $adapter): ?> 
+                        <tr>
+                            <td class="text-center" width="32">
+                            <?php if ($adapter->getMonitor()): ?>
+                                <input type="checkbox" name="<?php echo $adapter->getId();?>" value="<?php echo $adapter->getId();?>" checked>
+                            <?php else: ?>
+                                <input type="checkbox" name="<?php echo $adapter->getId();?>" value="<?php echo $adapter->getId();?>">
+                            <?php endif; ?>
+                            </td>
+                            <td><?php echo $adapter->getName();?></td>
+                            <td><?php echo $adapter->getIpv4Address();?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
             </div>
             
             <!-- History tab -->
