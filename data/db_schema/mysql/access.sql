@@ -67,6 +67,8 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'ping');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'adupdate');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'scan');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Computer', 'scandisks');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'add');
