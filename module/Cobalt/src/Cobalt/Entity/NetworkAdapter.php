@@ -58,6 +58,9 @@ class NetworkAdapter
     /** @ORM\Column(type="string", name="alternate_dns_server") */
     protected $alternateDnsServer;
     
+    /** @ORM\Column(type="boolean") */
+    protected $monitor;
+    
     public function getId()
     {
         return $this->id;
@@ -128,6 +131,11 @@ class NetworkAdapter
         return $this->alternateDnsServer;
     }
 
+    public function getMonitor()
+    {
+        return $this->monitor;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -210,5 +218,11 @@ class NetworkAdapter
     {
         $this->alternateDnsServer = $alternateDnsServer;
         return $this;
-    }    
+    }
+
+    public function setMonitor($monitor)
+    {
+        $this->monitor = $monitor;
+        return $this;
+    }
 }
