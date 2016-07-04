@@ -47,7 +47,7 @@ class WMI
         
         $computer->setHostname($host);
         $computer->setDomain($computerData->Domain);
-        $computer->setManufacturer($computerData->Manufacturer);
+    //    $computer->setManufacturer($computerData->Manufacturer);
         $computer->setModel($computerData->Model);
         $computer->setSerialNumber($biosData->SerialNumber);
         $computer->setBiosVersion($biosData->SMBIOSBIOSVersion);
@@ -71,14 +71,17 @@ class WMI
         $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
         $WbemServices->Security_->ImpersonationLevel = 3;
         $disks = $WbemServices->ExecQuery("Select * from Win32_LogicalDisk");
+        
     
         // Delete existing disk info for this host.
         $computer = $service->findByDNSName($host, $domain);
-        $computer->clearDisks();
+        $computer->clearLogicalDisks();
+        
         
         // loop through scanned disks and persist each one
         foreach ($disks as $disk) {
-            $logicalDisk = $this->serviceLocator()->get('Cobalt\LogicalDisk');
+            var_dump($disk);
+            $logicalDisk = $this->serviceLocator->get('Cobalt\LogicalDisk');
             $logicalDisk->setDeviceId($disk->DeviceId)
                         ->setDescription($disk->Description)
                         ->setFileSystem($disk->FileSystem)
@@ -86,6 +89,7 @@ class WMI
                         ->setFreeSpace($disk->FreeSpace);
             $computer->addLogicalDisk($logicalDisk);
         }
+        
         $service->persist($computer);
     }
 }

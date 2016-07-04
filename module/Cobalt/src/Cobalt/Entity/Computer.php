@@ -44,7 +44,7 @@ class Computer extends Hardware
     protected $modified;
 
     /**
-     * @ORM\OneToMany(targetEntity="LogicalDisk", mappedBy="computer")
+     * @ORM\OneToMany(targetEntity="LogicalDisk", mappedBy="computer", orphanRemoval=true, cascade={"persist", "remove"})
      */
     protected $logicalDisks;
     
@@ -57,6 +57,12 @@ class Computer extends Hardware
     {
         $this->logicalDisks = new ArrayCollection();
         $this->users = new ArrayCollection();
+    }
+    
+    public function addLogicalDisk($logicalDisk)
+    {
+        $this->logicalDisks[] = $logicalDisk;
+        $logicalDisk->setComputer($this);
     }
     
     public function addUser($user)
@@ -236,6 +242,6 @@ class Computer extends Hardware
     
     public function clearLogicalDisks()
     {
-        $this->logicalDisks.clear();
+        $this->logicalDisks->clear();
     }
 }
