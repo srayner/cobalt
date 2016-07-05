@@ -115,7 +115,7 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                     </tr>
                                      <tr>
                                         <th style="width: 35%;">Bad Password Time</th>
-                                        <td><?php echo date_format($this->user->getBadPasswordTime(), 'd/m/Y H:i:s'); ?></td>
+                                        <td><?php echo !$this->user->getBadPasswordTime() ? '' : date_format($this->user->getBadPasswordTime(), 'd/m/Y H:i:s'); ?></td>
                                     </tr>
                                     
                                 </tbody>
