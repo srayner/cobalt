@@ -28,4 +28,9 @@ class NetworkAdapterService extends AbstractEntityService
         return $status;
     }
     
+    public function monitor()
+    {
+        echo 'ok';
+    }
+    
 }

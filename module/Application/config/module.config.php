@@ -181,7 +181,7 @@ return array(
                             'action'     => 'console'
                         )
                     )
-                )
+                ),
             ),
         ),
     ),

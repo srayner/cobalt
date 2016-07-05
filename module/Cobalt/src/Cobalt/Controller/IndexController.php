@@ -243,4 +243,9 @@ class IndexController extends AbstractActionController
         return array();
     }
     
+    public function monitorAction()
+    {
+        $service = $this->getServiceLocator()->get('Cobalt\EntityService\NetworkAdapterService');
+        $service->monitor();
+    }
 }

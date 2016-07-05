@@ -99,6 +99,17 @@ return array(
                         ),
                     ),
                 ),
+                'monitor' => array(
+                    'type'    => 'simple',
+                    'options' => array(
+                        'route'    => 'monitor',
+                        'defaults' => array(
+                            '__NAMESPACE__' => 'Cobalt\Controller',
+                            'controller' => 'Cobalt\Controller\Index',
+                            'action'     => 'monitor'
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
