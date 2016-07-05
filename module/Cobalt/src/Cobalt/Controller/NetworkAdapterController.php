@@ -34,6 +34,7 @@ class NetworkAdapterController extends AbstractController
           	// Persist adapter.
             	$hardware = $this->service->getReference('Cobalt\Entity\Hardware', $hardwareId);
                 $adapter->setHardware($hardware);
+                $adapter->setMonitor(false);
                 $this->service->persist($adapter);
                 
                 
