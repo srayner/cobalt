@@ -30,7 +30,35 @@ class NetworkAdapterService extends AbstractEntityService
     
     public function monitor()
     {
-        echo 'ok';
+        // get list of adapters we are monitoring
+        $adapters = $this->entityManager->getRepository($this->repository)->findBy(array(
+            'monitor' => true
+        ));
+        
+        // loop through adapters
+        foreach($adapters as $adapter) {
+            
+            if ($adapter->getIpv4Address()) {
+                
+                // ping adapter
+                $status = $this->ping($adapter->getIpv4Address());
+                
+                // check for status change
+                if ($adapter->getStatus() != $status) {
+                    
+                    // store new status
+                    $adapter->setStatus($status);
+                    $this->persist($adapter);
+                    
+                    // raise an event
+                    $params = array(
+                        'id' => $adapter->getId(),
+                        'status', $status
+                    );
+                    $this->getEventManager()->trigger('network_adapter_status.post', $this, $params);
+                }
+            }    
+        }
     }
     
 }

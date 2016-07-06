@@ -61,6 +61,9 @@ class NetworkAdapter
     /** @ORM\Column(type="boolean") */
     protected $monitor;
     
+    /** @ORM\Column(type="string") */
+    protected $status;
+    
     public function getId()
     {
         return $this->id;
@@ -134,6 +137,11 @@ class NetworkAdapter
     public function getMonitor()
     {
         return $this->monitor;
+    }
+    
+    public function getStatus()
+    {
+        return $this->status;
     }
     
     public function setId($id)
@@ -223,6 +231,12 @@ class NetworkAdapter
     public function setMonitor($monitor)
     {
         $this->monitor = $monitor;
+        return $this;
+    }
+    
+    public function setStatus($status)
+    {
+        $this->status = $status;
         return $this;
     }
 }

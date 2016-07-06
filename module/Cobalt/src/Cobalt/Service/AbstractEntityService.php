@@ -2,8 +2,13 @@
 
 namespace Cobalt\Service;
 
-abstract class AbstractEntityService
+use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\EventManager;
+use Zend\EventManager\EventManagerAwareInterface;
+
+abstract class AbstractEntityService implements EventManagerAwareInterface
 {
+    protected $eventManager;
     protected $entityManager;
     protected $repository;
     
@@ -38,5 +43,24 @@ abstract class AbstractEntityService
     public function getReference($repository, $id)
     {
         return $this->entityManager->getReference($repository, $id);
+    }
+    
+    public function getEventManager()
+    {
+        if (null === $this->eventManager) {
+            $this->setEventManager(new EventManager());
+        }
+        return $this->eventManager;
+    }
+
+    public function setEventManager(EventManagerInterface $eventManager)
+    {
+        $eventManager->setIdentifiers(array(
+            __CLASS__,
+            get_called_class(),
+        ));
+        $this->eventManager = $eventManager;
+        return $this;
+        
     }
 }

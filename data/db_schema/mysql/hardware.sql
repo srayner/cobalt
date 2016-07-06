@@ -63,6 +63,7 @@ CREATE TABLE network_adapter(
     preferred_dns_server VarChar(15)      NULL,
     alternate_dns_server VarChar(15)      NULL,
     monitor              boolean      NOT NULL,
+    status               VarChar(16)      NULL,
     INDEX idx_adapter_hardware_id (hardware_id),
     FOREIGN KEY (hardware_id) REFERENCES hardware(id) ON DELETE CASCADE,
     PRIMARY KEY (id)
