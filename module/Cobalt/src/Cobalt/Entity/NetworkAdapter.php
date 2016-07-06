@@ -64,6 +64,11 @@ class NetworkAdapter
     /** @ORM\Column(type="string") */
     protected $status;
     
+    public function __construct()
+    {
+        $this->status = 'unknown';
+    }
+    
     public function getId()
     {
         return $this->id;
