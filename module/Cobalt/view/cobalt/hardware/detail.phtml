@@ -93,7 +93,14 @@
                             <td><?php echo $adapter->getName();?></td>
                             <td><?php echo $adapter->getPhysicalAddress();?></td>
                             <td><?php echo $adapter->getDhcpEnabled();?></td>
-                            <td><?php echo $adapter->getIpv4Address();?></td>
+                            <td>
+                                <?php echo $adapter->getIpv4Address();?>
+                                <?php if($adapter->getStatus() == 'alive'): ?>
+                                <span class="label label-success">Online</span>
+                                <?php else: ?>
+                                <span class="label label-danger">Offline</span>
+                                <?php endif; ?>
+                            </td>
                             <td><?php echo $adapter->getDefaultGateway();?></td>
                         </tr>
                     <?php endforeach ?>
