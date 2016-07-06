@@ -68,6 +68,9 @@ return array(
     
     // View manager
     'view_manager' => array(
+        'template_map' => array(
+            'partial/network-adapter' => __DIR__ . '/../view/cobalt/partial/network-adapter.phtml',    
+        ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),

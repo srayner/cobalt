@@ -108,21 +108,9 @@
                         <th>IPv4 Address</th>
                         <th>Default Gateway</th>
                     </tr>
-                    <?php foreach($printer->getNetworkAdapters() as $adapter): ?> 
-                        <tr>
-                            <td style="width: 1%;" nowrap>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
-                                        <i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'NetworkAdapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
-                                        <i class="fa fa-remove"></i></a>
-                                </td>
-                            <td><?php echo $adapter->getName();?></td>
-                            <td><?php echo $adapter->getPhysicalAddress();?></td>
-                            <td><?php echo $adapter->getDhcpEnabled();?></td>
-                            <td><?php echo $adapter->getIpv4Address();?></td>
-                            <td><?php echo $adapter->getDefaultGateway();?></td>
-                        </tr>
-                    <?php endforeach ?>
+                    <?php foreach($printer->getNetworkAdapters() as $adapter){ 
+                        echo $this->partial('partial/network-adapter', array('adapter' => $adapter));
+                    } ?>
                     </tbody>
                 </table>
                 <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(

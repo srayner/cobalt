@@ -82,28 +82,9 @@
                         <th>IPv4 Address</th>
                         <th>Default Gateway</th>
                     </tr>
-                    <?php foreach($hardware->getNetworkAdapters() as $adapter): ?> 
-                        <tr>
-                            <td style="width: 1%;" nowrap>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'network-adapter', 'action' => 'edit', 'id' => $adapter->getId()));?>">
-                                        <i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo $this->url('cobalt/default', array('controller' => 'network-adapter', 'action' => 'delete', 'id' => $adapter->getId()));?>">
-                                        <i class="fa fa-remove"></i></a>
-                                </td>
-                            <td><?php echo $adapter->getName();?></td>
-                            <td><?php echo $adapter->getPhysicalAddress();?></td>
-                            <td><?php echo $adapter->getDhcpEnabled();?></td>
-                            <td>
-                                <?php echo $adapter->getIpv4Address();?>
-                                <?php if($adapter->getStatus() == 'alive'): ?>
-                                <span class="label label-success">Online</span>
-                                <?php else: ?>
-                                <span class="label label-danger">Offline</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?php echo $adapter->getDefaultGateway();?></td>
-                        </tr>
-                    <?php endforeach ?>
+                    <?php foreach($hardware->getNetworkAdapters() as $adapter){
+                        echo $this->partial('partial/network-adapter', array('adapter' => $adapter));
+                    } ?>
                     </tbody>
                 </table>
                 <a class="btn btn-success btn-sm" href="<?php echo $this->url('cobalt/default', array(
