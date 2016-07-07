@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -21,6 +22,9 @@ class Hardware
     
     /** @ORM\Column(type="string") */
     protected $reference;
+    
+    /** @ORM\Column(type="string", name="hardware_name") */
+    protected $name;
     
     /**
      * @ORM\ManyToOne(targetEntity="HardwareType")
@@ -106,6 +110,11 @@ class Hardware
         return $this->reference;
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+    
     public function getType()
     {
         return $this->type;
@@ -162,6 +171,12 @@ class Hardware
         return $this;
     }
 
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+    
     public function setReference($reference)
     {
         $this->reference = $reference;

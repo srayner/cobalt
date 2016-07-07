@@ -1,8 +1,3 @@
-<?php
-    $this->headScript()->appendFile('/js/jquery-jvectormap-2.0.3.min.js')
-                       ->appendFile('/js/jquery-jvectormap-world-mill-en.js');
-    $this->headLink()->appendStylesheet('/css/jquery-jvectormap-2.0.3.css');
-?>
 
     <div class="row">
         <div class="title col-lg-12">
@@ -137,32 +132,29 @@
                 </a>
             </div>
         </div>
-        
-        <div class="col-md-6">
-            <div id="world-map" style="width: 600px; height: 400px"></div>
-            <script>
-                $(function(){
-                    $('#world-map').vectorMap({map: 'world_mill_en'});
-                    var mapObject = $('#world-map').vectorMap('get', 'mapObject');
-                    mapObject.setBackgroundColor('#aaa');
-                });
-            </script>
-        </div>
 
-        <div class="col-md-12">
-            <table table table-condensed table-bordered>
+        <div class="col-md-6">
+            <table class="table table-condensed table-bordered">
                 <tbody>
                     <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Physical Address</th>
-                        <th>DHCP Enabled</th>
+                        <th>Hardware Name</th>
+                        <th>Adapter Name</th>
                         <th>IPv4 Address</th>
-                        <th>Default Gateway</th>
                     </tr>
-                    <?php foreach($this->adapters as $adapter){
-                        echo $this->partial('partial/network-adapter', array('adapter' => $adapter));
-                    } ?>
+                    <?php foreach($this->adapters as $adapter): ?>
+                    <tr>    
+                        <td><?php echo $adapter->getHardware()->getName(); ?></td>
+                        <td><?php echo $adapter->getName() ?></td>
+                        <td>
+                            <span style="display: inline-block; width: 110px;"><?php echo $adapter->getIpv4Address();?></span>
+                            <?php if($adapter->getStatus() == 'alive'): ?>
+                            <span class="label label-success">Online</span>
+                            <?php else: ?>
+                            <span class="label label-danger">Offline</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>    
+                    <?php endforeach; ?>
                     </tbody>
             </table>
         </div>

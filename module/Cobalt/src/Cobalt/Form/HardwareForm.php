@@ -16,6 +16,7 @@ class HardwareForm extends HorizontalForm
         $this->controlWidth = 8;
         
         $this->addText('reference', 'Unique Reference')
+             ->addText('name', 'Name')
              ->addDoctrineSelect('type', 'Type', $em, 'Cobalt\Entity\HardwareType', 'name')
              ->addDoctrineSelect('status', 'Status', $em, 'Cobalt\Entity\HardwareStatus', 'name')
              ->addText('model', 'Model')

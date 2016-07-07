@@ -27,6 +27,7 @@ CREATE TABLE hardware_manufacturer(
 CREATE TABLE hardware(
     id                Integer     NOT NULL AUTO_INCREMENT,
     reference         Varchar(16)     NULL,
+    hardware_name     Varchar(128)    NULL,
     type_id           Integer     NOT NULL,
     status_id         Integer     NOT NULL,
     model             Varchar(64)     NULL,
