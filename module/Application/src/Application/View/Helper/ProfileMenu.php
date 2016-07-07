@@ -20,6 +20,6 @@ class ProfileMenu extends AbstractHelper
                 'displayName' => $this->authService->getIdentity()->getDisplayName()
             ));
         }
-        return '<a class="btn btn-default" href="/login">Login</a>';
+        return '<a class="btn btn-sm btn-primary" href="/login">Login</a>';
     }
 }
