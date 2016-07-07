@@ -29,12 +29,16 @@ class IndexController extends AbstractActionController
         $domainService   = $this->getServiceLocator()->get('Cobalt\EntityService\DomainService');
         $ticketService   = $this->getServiceLocator()->get('Cobalt\EntityService\TicketService');
         
+        $networkAdapterService = $this->getServiceLocator()->get('Cobalt\EntityService\NetworkAdapterService');
+        $adapters = $networkAdapterService->findBy(array('monitor' => true));
+        
         return array(
             'hardwareCount' => $hardwareService->count(),
             'projectCount'  => $projectService->count(),
             'userCount'     => $userService->count(),
             'domainCount'   => $domainService->count(),
-            'ticketCount'   => $ticketService->count()
+            'ticketCount'   => $ticketService->count(),
+            'adapters'      => $adapters
         );
     }
     

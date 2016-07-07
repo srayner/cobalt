@@ -23,6 +23,11 @@ abstract class AbstractEntityService implements EventManagerAwareInterface
         return $this->entityManager->getRepository($this->repository)->findAll();
     }
 
+    public function findBy($conditions)
+    {
+        return $this->entityManager->getRepository($this->repository)->findBy($conditions);
+    }
+    
     public function findById($id)
     {
         return $this->entityManager->find($this->repository, $id);

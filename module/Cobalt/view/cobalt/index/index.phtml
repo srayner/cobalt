@@ -149,5 +149,22 @@
             </script>
         </div>
 
+        <div class="col-md-12">
+            <table table table-condensed table-bordered>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Physical Address</th>
+                        <th>DHCP Enabled</th>
+                        <th>IPv4 Address</th>
+                        <th>Default Gateway</th>
+                    </tr>
+                    <?php foreach($this->adapters as $adapter){
+                        echo $this->partial('partial/network-adapter', array('adapter' => $adapter));
+                    } ?>
+                    </tbody>
+            </table>
+        </div>
     </div>
     
