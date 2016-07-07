@@ -143,7 +143,10 @@
                     </tr>
                     <?php foreach($this->adapters as $adapter): ?>
                     <tr>    
-                        <td><?php echo $adapter->getHardware()->getName(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'detail', 'id' => $adapter->getHardware()->getId()));?>">
+                            <?php echo $adapter->getHardware()->getName(); ?></a>
+                        </td>
                         <td><?php echo $adapter->getName() ?></td>
                         <td>
                             <span style="display: inline-block; width: 110px;"><?php echo $adapter->getIpv4Address();?></span>
