@@ -65,6 +65,45 @@ Regards,
 
 The I.C.T. Department.');
 
+nsert into notification_template(id, active, name, description, mime_type, subject, content)
+values(1, false, 'requestor_new_ticket', 'Notify requestor that a new support ticket has been raised.', 'text/html',
+'Support ticket raised.',
+'Dear {{ RequesterDisplayName }},
+
+This is an acknowledgement that your support ticket has been logged with the following details;
+
+Support Ticket Number: {{ TicketId }}.
+
+Title: {{ TicketSubject }}
+Status: {{ TicketStatus }}
+Assigned Technician: {{ TechnicianDisplayName }} 
+Expected Resolution Date: {{ TicketResolutionDue }} 
+
+
+{{ TicketProblem }}
+
+Please reply to this email if you have any further clarifications.
+
+
+Regards,
+
+The I.C.T. Department.');
+
+insert into notification_template(id, active, name, description, mime_type, subject, content)
+values(3, false, 'hardware_status_change', 'Notify admin that monitored hardware status has changed.', 'text/html',
+'Monitored hardware status changed',
+'Dear {{ AdminDisplayName }},
+
+This is a notification that monitored hardware status has changed;
+
+Hardware Name: {{ HardwareName }}
+Adapter Name: {{ AdapterName }}
+IPv4 Address: {{ Ipv4Address }}
+Status: {{ Status }}
+Date & Time: {{ DateTime }}
+
+Raised by Cobalt application.');
+
 insert into notification_field(id, notification_template_id, field_name, field_display) values
 (1, 1, '{{ RequesterDisplayName }}',  'Requester Name'),
 (2, 1, '{{ TechnicianDisplayName }}', 'Technician Name'),
@@ -84,3 +123,10 @@ insert into notification_field(id, notification_template_id, field_name, field_d
 (14, 2, '{{ TicketPriority }}',        'Priority'),
 (15, 2, '{{ TicketProblem }}',         'Problem'),
 (16, 2, '{{ TicketResolutionDue }}',   'Resolution Due');
+
+insert into notification_field(id, notification_template_id, field_name, field_display) values
+(17, 3, '{{ HardwareName }}',  'Hardware Name'),
+(18, 3, '{{ AdapterName }}', 'Adapter Name'),
+(19, 3, '{{ Ipv4Address }}',              'IPv4 Address'),
+(20, 3, '{{ Status }}',         'Status'),
+(21, 3, '{{ DateTime }}',          'Date & Time');
