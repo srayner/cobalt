@@ -8,28 +8,29 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Support Ticket Types</h1>
-            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'add'));?>">New Ticket Type</a>
+            <a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'add'));?>">New Ticket Type</a>
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="types" class="table" cellspacing="0" width="100%">
+            <table id="types" class="table table-bordered table-condensed table-cobalt">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Actions</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->types as $type): ?> 
                     <tr>
+                        <th style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'edit', 'id' => $type->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'delete', 'id' => $type->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </th>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket-type', 'action' => 'detail', 'id' => $type->getId()));?>">
                             <?php echo $type->getName();?></a></td>
                         <td><?php echo nl2br($type->getDescription()); ?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'edit', 'id' => $type->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'delete', 'id' => $type->getId()));?>">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
