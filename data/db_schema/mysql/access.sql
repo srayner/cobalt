@@ -28,6 +28,12 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketstatus', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketstatus', 'detail');
 
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Tickettype', 'index');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Tickettype', 'add');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Tickettype', 'edit');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Tickettype', 'delete');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Tickettype', 'detail');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketcategory', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketcategory', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketcategory', 'edit');
