@@ -48,26 +48,16 @@ class Computer extends Hardware
      */
     protected $logicalDisks;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="computers")
-     */
-    protected $users;
-    
     public function __construct()
     {
+        parent::__construct();
         $this->logicalDisks = new ArrayCollection();
-        $this->users = new ArrayCollection();
     }
     
     public function addLogicalDisk($logicalDisk)
     {
         $this->logicalDisks[] = $logicalDisk;
         $logicalDisk->setComputer($this);
-    }
-    
-    public function addUser($user)
-    {
-        $this->users[] = $user;
     }
     
     public function getId()

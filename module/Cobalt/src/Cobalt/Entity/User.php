@@ -84,13 +84,13 @@ class User
     protected $reportsTo;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Computer", inversedBy="users")
-     * @ORM\JoinTable(name="user_computer",
+     * @ORM\ManyToMany(targetEntity="Hardware", inversedBy="users")
+     * @ORM\JoinTable(name="hardware_user",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="computer_id", referencedColumnName="id")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="hardware_id", referencedColumnName="id")}
      * )
      */
-    protected $computers;
+    protected $hardware;
     
     /**
      * @ORM\OneToMany(targetEntity="Role", mappedBy="user", cascade={"persist"})
@@ -99,14 +99,15 @@ class User
     
     public function __construct()
     {
-        $this->computers = new ArrayCollection();
+        $this->hardware = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
     
-    public function addComputer($computer)
+    public function addHardware($hardware)
     {
-        $computer->addUser($this);
-        $this->computers[] = $computer;
+        $hardware->addUser($this);
+        $this->hardware[] = $hardware;
+        return $this;
     }
     
     public function addRole($role)
@@ -215,9 +216,9 @@ class User
         return $this->reportsTo;
     }
 
-    public function getComputers()
+    public function getHardware()
     {
-        return $this->computers;
+        return $this->hardware->toArray();
     }
     
     public function getRoles()

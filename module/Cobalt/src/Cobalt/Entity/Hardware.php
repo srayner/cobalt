@@ -72,9 +72,15 @@ class Hardware
      */
     protected $networkAdapters;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="hardware")
+     */
+    protected $users;
+    
     public function __construct()
     {
         $this->networkAdapters = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     /**
@@ -88,6 +94,23 @@ class Hardware
         $this->networkAdapters[] = $networkAdapter;
         $networkAdapter->setHardware($this);
         return $this;
+    }
+    
+    /**
+     * Adds a user to the hardware.
+     * 
+     * @param User $user
+     * @return Hardware
+     */
+    public function addUser($user)
+    {
+        $this->users[] = $user;
+        return $this;
+    }
+    
+    public function getUsers()
+    {
+        return $this->users->toArray();
     }
     
     /**
