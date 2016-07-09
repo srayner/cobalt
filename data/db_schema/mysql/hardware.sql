@@ -131,6 +131,17 @@ CREATE TABLE logical_disk (
   )
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- Hardware user relationship table
+CREATE TABLE hardware_user (
+  hardware_id Integer(11) NOT NULL,
+  user_id     Integer(11) NOT NULL,
+  INDEX idx_hardware_user_hardware_id (hardware_id),
+  INDEX idx_hardware_user_user_id (user_id),
+  FOREIGN KEY (hardware_id) REFERENCES hardware(id) ON DELETE RESTRICT,
+  FOREIGN KEY (user_id)     REFERENCES user(id)     ON DELETE RESTRICT,
+  PRIMARY KEY (hardware_id, user_id)
+) ENGINE=InnoDb;
+
 -- User computer relationship table
 CREATE TABLE user_computer (
   user_id     Integer NOT NULL,
