@@ -1,43 +1,47 @@
 <?php
 
-  $node = new StdClass();
-  $node->id = 'u' . $this->user->getId();
-  $node->name = $this->user->getDisplayName();#
-  $node->type = 'user';
+  // User node.
+  $userNode = new StdClass();
+  $userNode->id = 'u' . $this->user->getId();
+  $userNode->name = $this->user->getDisplayName();
+  $userNode->type = 'user';
   
-  $manager = new StdClass();
-  $manager->id = 'u' . $this->reportsTo->getId();
-  $manager->name = $this->reportsTo->getDisplayName();#
-  $manager->type = 'user';
+  // Manager node.
+  $managerNode = new StdClass();
+  $managerNode->id = 'u' . $this->reportsTo->getId();
+  $managerNode->name = $this->reportsTo->getDisplayName();
+  $managerNode->type = 'user';
   
   $nodes = new StdClass();
-  $nodes->nodes = array($node, $manager);
+  $nodes->nodes = array($userNode, $managerNode);
   
+  // User/manager relationship.
   $r2 = new StdClass();
   $r2->id = 'r2';
-  $r2->from = $node->id;
-  $r2->to = $manager->id;
+  $r2->from = $userNode->id;
+  $r2->to = $managerNode->id;
   $r2->label = 'Reports To';
   
   $relationships = new stdClass();
   $relationships->relationships = array($r2);
   
-  $i = 0;
-  foreach($this->user->getComputers() as $computer)
+  $i = 3;
+  foreach($this->user->getHardware() as $hardware)
   {
       $n = new StdClass();
-      $n->id = 'c' . $computer->getId();
-      $n->name = $computer->getHostname();
+      $n->id = 'c' . $hardware->getId();
+      $n->name = $hardware->getName();
       $n->type = 'computer';
       array_push($nodes->nodes, $n);
       
-      $r = $r1 = new StdClass();
-      $r1->id = 'r' . $i;
-      $i++;
-      $r1->from = $node->id;
-      $r1->to = $n->id;
-      $r1->label = 'Uses';
+      $r = new StdClass();
+      $r->id = 'r' . $i;
+      $r->from = $userNode->id;
+      $r->to = $n->id;
+      $r->label = 'Uses';
       array_push($relationships->relationships, $r);
+      
+      $i++;
   }
   
   
