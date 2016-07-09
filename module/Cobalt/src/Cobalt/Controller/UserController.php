@@ -93,6 +93,7 @@ class UserController extends AbstractController
         // Create a new form instance and bind the entity to it.
         $user = $this->service->findById($id);
         $form = $this->getServiceLocator()->get('Cobalt\UserForm');
+        $form->remove('password');
         $form->bind($user);
 
         // Check if this request is a POST.
