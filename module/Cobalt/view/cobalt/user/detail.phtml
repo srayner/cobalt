@@ -91,6 +91,18 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                         <td><?php echo $this->user->getTitle(); ?></td>
                                     </tr>
                                     <tr>
+                                        <th>Reports To</th>
+                                        <td>
+                                            <?php if ($user->getReportsTo()):?>
+                                            <a href ="<?php echo $this->url('cobalt/default', array(
+                                                'controller' => 'user',
+                                                'action' => 'detail',
+                                                'id' => $user->getReportsTo()->getId()
+                                            ))?>"><?php echo ($user->getReportsTo()->getDisplayName());?></a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <th>Mobile Number</th>
                                         <td><?php echo $this->user->getMobileNumber(); ?></td>
                                     </tr>
