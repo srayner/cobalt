@@ -1,8 +1,18 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div class="row">
+    <div class="col-md-12 title">
+        <h1>Remove Hardware</h1>
+        <hr>
+        <p>Are you sure you want to remove the hardware <?php echo $this->hardware->getName(); ?>?</p>
+        
+        <form action="<?php echo $this->url('cobalt/default', array(
+            'controller' => 'user',
+            'action' => 'removehardware',
+            'id' => $this->hardware->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>

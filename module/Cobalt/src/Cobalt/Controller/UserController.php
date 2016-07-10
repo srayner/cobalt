@@ -278,7 +278,32 @@ class UserController extends AbstractController
     
     public function removehardwareAction()
     {
+        // Ensure we have an id, else redirect to user index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
         
+        $hardwareService = $this->getServiceLocator()->get('Cobalt\EntityService\HardwareService');
+        $hardware = $hardwareService->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                
+                // todo: remove
+            }
+            
+            // Redirect to list of users
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        return new ViewModel(array(
+            'hardware' => $hardware 
+        ));
     }
     
     public function techniciansAction()
