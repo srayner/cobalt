@@ -7,7 +7,7 @@
         <form action="<?php echo $this->url('cobalt/default', array(
             'controller' => 'user',
             'action' => 'removehardware',
-            'id' => $this->hardware->getId()
+            'id' => $this->userId . '_' . $this->hardware->getId()
         )); ?>" method="post">
             <div>
                 <input class="btn btn-primary" type="submit" name="del" value="Yes" />

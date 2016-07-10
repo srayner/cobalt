@@ -108,6 +108,12 @@ class Hardware
         return $this;
     }
     
+    public function removeUser($user)
+    {
+        $this->users->removeElement($user);
+        return $this;
+    }
+    
     public function getUsers()
     {
         return $this->users->toArray();

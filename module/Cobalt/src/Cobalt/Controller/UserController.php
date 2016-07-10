@@ -278,14 +278,13 @@ class UserController extends AbstractController
     
     public function removehardwareAction()
     {
-        // Ensure we have an id, else redirect to user index action.
-        $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
-            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
-        }
+        // Extrad identifiers from route param.
+        $params = explode('_', $this->params()->fromRoute('id'));
+        $userId = $params[0];
+        $hardwareId = $params[1];
         
         $hardwareService = $this->getServiceLocator()->get('Cobalt\EntityService\HardwareService');
-        $hardware = $hardwareService->findById($id);
+        $hardware = $hardwareService->findById($hardwareId);
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -294,14 +293,21 @@ class UserController extends AbstractController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 
-                // todo: remove
+                $user = $this->service->findById($userId);
+                $user->removeHardware($hardware);
+                $hardwareService->persist($hardware);
             }
             
             // Redirect to list of users
-            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+            return $this->redirect()->toRoute('cobalt/default', array(
+                'controller' => 'user',
+                'action' => 'detail',
+                'id' => $userId
+            ), array('fragment'=>'hardware'));
         }
         
         return new ViewModel(array(
+            'userId' => $userId,
             'hardware' => $hardware 
         ));
     }

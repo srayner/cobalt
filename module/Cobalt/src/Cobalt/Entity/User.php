@@ -110,6 +110,13 @@ class User
         return $this;
     }
     
+    public function removeHardware($hardware)
+    {
+        $hardware->removeUser($this);
+        $this->hardware->removeElement($hardware);
+        return $this;
+    }
+    
     public function addRole($role)
     {
         $role->setUser($this);

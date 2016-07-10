@@ -162,7 +162,7 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                         <a href="<?php echo $this->url('cobalt/default', array(
                                             'controller' => 'user',
                                             'action' => 'removehardware',
-                                            'id' => $hardware->getId()));?>">
+                                            'id' => $user->getId() . '_' . $hardware->getId()));?>">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>
@@ -195,7 +195,10 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                 <tr>
                                     <td style="width: 1%;" nowrap>
                                         <?php if ($role->getName() != 'user'): ?>
-                                        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action' => 'removerole', 'id' => $role->getId()));?>">
+                                        <a href="<?php echo $this->url('cobalt/default', array(
+                                            'controller' => 'user',
+                                            'action' => 'removerole',
+                                            'id' => $role->getId()));?>">
                                             <i class="fa fa-remove"></i>
                                         </a>
                                         <?php endif; ?>
