@@ -36,6 +36,12 @@ computerImage.onload = function(){
 };
 computerImage.src = "/img/laptop.png";
 
+var routerImage = new Image();
+routerImage.onload = function(){
+    redraw();
+};
+routerImage.src = "/img/router.png";
+
 var departmentImage = new Image();
 departmentImage.onload = function(){
     redraw();
@@ -188,7 +194,12 @@ function redraw()
     
         entity = data[0].nodes;
         relationships = data[1].relationships;
-        images = {computer : computerImage, user: userImage, department: departmentImage };
+        images = {
+            computer : computerImage,
+            router : routerImage,
+            user: userImage,
+            department: departmentImage
+        };
         
         curX=originX - 170;
         curY=originY;

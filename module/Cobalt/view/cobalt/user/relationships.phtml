@@ -31,7 +31,11 @@
       $n = new StdClass();
       $n->id = 'c' . $hardware->getId();
       $n->name = $hardware->getName();
+      $hardwareTypeName = $hardware->getType()->getName();
       $n->type = 'computer';
+      if ($hardwareTypeName == 'Router') {
+          $n->type = 'router';
+      }
       array_push($nodes->nodes, $n);
       
       $r = new StdClass();
