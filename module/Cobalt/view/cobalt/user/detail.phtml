@@ -23,9 +23,10 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="tabs">
                 <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab">Information</a></li>
-                <li role="presentation"><a id="r" href="#account" aria-controls="account" role="tab" data-toggle="tab">Active Directory</a></li>
-                <li role="presentation"><a id="r" href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
-                <li role="presentation"><a id="r" href="#roles" aria-controls="roles" role="tab" data-toggle="tab">Roles</a></li>
+                <li role="presentation"><a href="#account" aria-controls="account" role="tab" data-toggle="tab">Active Directory</a></li>
+                <li role="presentation"><a href="#relationships" aria-controls="milestones" role="tab" data-toggle="tab">Relationships</a></li>
+                <li role="presentation"><a href="#hardware" aria-controls="roles" role="tab" data-toggle="tab">Hardware</a></li>
+                <li role="presentation"><a href="#roles" aria-controls="roles" role="tab" data-toggle="tab">Roles</a></li>
                 <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
             </ul>
         
@@ -143,6 +144,41 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                          
                          <canvas id="myCanvas" width="800" height="400"></canvas>  
                     </div>
+                </div>
+                
+                <!-- Hardware tab -->
+                <div role="tabpanel" class="tab-pane" id="hardware">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed table-bordered">
+                                <tr>
+                                    <th></th>
+                                    <th>Hardware Name</th>
+                                    <th>Type</th>
+                                </tr>
+                                <?php foreach($user->getHardware() as $hardware): ?>
+                                <tr>
+                                    <td style="width: 1%;" nowrap>
+                                        <a href="<?php echo $this->url('cobalt/default', array(
+                                            'controller' => 'user',
+                                            'action' => 'removehardware',
+                                            'id' => $user->getId()));?>">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    </td>
+                                    <td><?php echo $hardware->getName(); ?></td>
+                                    <td><?php echo $hardware->getType()->getName(); ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                
+                            </table>
+                            <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                            'controller' => 'user',
+                            'action' => 'addhardware',
+                            'id' => $user->getId()
+                        )) ?>">Add Hardware</a>
+                        </div>
+                    </div>                     
                 </div>
                 
                 <!-- Roles tab -->
