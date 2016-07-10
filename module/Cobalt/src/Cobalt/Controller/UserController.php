@@ -236,6 +236,51 @@ class UserController extends AbstractController
         ));
     }
     
+    public function addhardwareAction()
+    {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+        }
+        
+        // Grab the user
+        $user = $this->service->findById($id);
+        
+        $hardwareService = $this->getServiceLocator()->get('CivAccess\EntityService\HardwareService');
+        $hardware = $hardwareService->findAll();
+        
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // TODO: Validate data
+            $hardwareId = $request->getPost('hardware');
+            
+            // Persist
+            $h = $hardwareService->findById($hardwareId);
+            $user->addHardware($h);
+            $this->service->persist($user);
+            
+            // Redirect
+            $this->redirect()->toRoute('cobalt/default', array(
+                'controller' => 'user',
+                'action'     => 'detail',
+                'id'         => $id
+            ), array('fragment'=>'hardware'));
+        }
+        
+        return array(
+            'user' => $user,
+            'hardware' => $hardware
+        );
+        
+    }
+    
+    public function removehardwareAction()
+    {
+        
+    }
+    
     public function techniciansAction()
     {
         return array(
