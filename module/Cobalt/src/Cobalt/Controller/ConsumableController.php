@@ -76,7 +76,7 @@ class ConsumableController extends AbstractController
             if ($form->isValid()) {
                 
                 // Persist consumable.
-            	$this->service->persist($company);
+            	$this->service->persist($consumable);
                 
                 // Redirect to list of consumables
                 return $this->redirect()->toRoute('cobalt/default', array(
