@@ -16,7 +16,8 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Reference</th>
+                        <th>Unique Ref</th>
+                        <th>Name</th>
                         <th>Model</th>
                         <th>Serial Number</th>
                     </tr>
@@ -34,6 +35,7 @@
                         </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => $controller, 'action' => 'detail', 'id' => $hardware->getId()));?>">
                             <?php echo $hardware->getReference();?></a></td>
+                        <td><?php echo $hardware->getName();?></td>
                         <td><?php echo $hardware->getModel();?></td>
                         <td><?php echo $hardware->getSerialNumber();?></td>
                     </tr>
