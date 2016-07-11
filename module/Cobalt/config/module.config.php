@@ -122,6 +122,7 @@ return array(
         'invokables' => array(
             'Cobalt\Company'              => 'Cobalt\Entity\Company',
             'Cobalt\Computer'             => 'Cobalt\Entity\Computer',
+            'Cobalt\Consumable'           => 'Cobalt\Entity\Consumable',
             'Cobalt\Department'           => 'Cobalt\Entity\Department',
             'Cobalt\Domain'               => 'Cobalt\Entity\Domain',
             'Cobalt\DomainStatus'         => 'Cobalt\Entity\DomainStatus',

@@ -31,10 +31,10 @@
                             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'consumable', 'action' => 'delete', 'id' => $consumable->getId()));?>"><i class="fa fa-remove"></i></a> 
                         </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'consumable', 'action' => 'detail', 'id' => $consumable->getId()));?>">
-                            <?php echo $computer->getName();?></a></td>
-                        <td><?php echo $computer->getSupplier();?></td>
-                        <td><?php echo $computer->getQtyInStock()->getName();?></td>
-                        <td><?php echo $computer->getReorderQty();?></td>    
+                            <?php echo $consumable->getName();?></a></td>
+                        <td><?php echo $consumable->getSupplier();?></td>
+                        <td><?php echo $consumable->getQtyInStock();?></td>
+                        <td><?php echo $consumable->getReorderQty();?></td>    
                     </tr>
                     <?php endforeach ?>
                 </tbody>

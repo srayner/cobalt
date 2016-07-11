@@ -83,7 +83,7 @@ CREATE TABLE printer (
 
 -- Consumable table
 CREATE TABLE consumable (
-  id           Integer(11)  NOT NULL,
+  id           Integer(11)  NOT NULL AUTO_INCREMENT,
   name         Varchar(128) NOT NULL,
   description  Text,
   type         Varchar(32)      NULL,

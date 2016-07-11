@@ -14,7 +14,7 @@ class ConsumableForm extends HorizontalForm
         
         $this->addText('name', 'Name')
              ->addTextArea('description', 'Description', 5)
-                ->addTextArea('type', 'Description', 5)
+                ->addText('type', 'Type')
                 ->addText('supplier', 'Supplier')
                 ->addText('qtyInStock', 'Qty In Stock')
                 ->addText('reorderQty', 'Reorder Qty')
