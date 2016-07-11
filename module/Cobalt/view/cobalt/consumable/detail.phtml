@@ -1,0 +1,99 @@
+<?php
+    $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
+                         ->appendFile('/js/jquery-plugin/stickytabs.js')
+                         ->appendFile('/js/cobalt/consumable/detail.js');
+?>
+
+<div class="row">
+    <div class="col-md-12 title">
+            
+        <h1>Consumable Details</h1>
+        <hr>
+            
+        <i class="fa fa-desktop fa-3x pull-left"></i>
+        <h4><?php echo $this->consumable->getName(); ?></h4>
+        <p>
+            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'consumable', 'action' => 'edit', 'id' => $this->consumable->getId())); ?>"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo $this->url('cobalt/default', array('controller' => 'consumable', 'action' => 'delete', 'id' => $this->consumable->getId())); ?>"><i class="fa fa-remove"></i></a>
+        <span id="status"></span>
+        </p>
+        
+    
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"     role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#printers"               aria-controls="os"       role="tab" data-toggle="tab">Printers/Copiers</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history"  role="tab" data-toggle="tab">History</a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- Details tab -->
+            <div role="tabpanel" class="tab-pane active" id="details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 35%;">Name</th>
+                                    <td><?php echo $this->consumable->getName(); ?></td>
+                                </tr>
+                                 <tr>
+                                    <th>Type</th>
+                                    <td><?php echo $this->consumable->getType(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Supplier</th>
+                                    <td><?php echo $this->consumable->getSupplier() ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Qty In Stock</th>
+                                    <td><?php echo $this->consumable->getQtyInStock(); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Serial No</th>
+                                    <td><?php echo $this->consumable->getReorderQty(); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                    
+                </div>
+            </div>
+
+            <!-- Printers tab -->
+            <div role="tabpanel" class="tab-pane" id="printers">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table table-condensed table-bordered">
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- History tab -->
+            <div role="tabpanel" class="tab-pane" id="history">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+    
+        </div>
+        
+    </div>
+</div>
+
