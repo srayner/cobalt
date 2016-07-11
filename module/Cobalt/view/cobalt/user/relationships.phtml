@@ -36,6 +36,9 @@
       if ($hardwareTypeName == 'Router') {
           $n->type = 'router';
       }
+      if ($hardwareTypeName == 'Printer') {
+          $n->type = 'printer';
+      }
       array_push($nodes->nodes, $n);
       
       $r = new StdClass();
@@ -47,7 +50,6 @@
       
       $i++;
   }
-  
   
   
   $result = json_encode(array($nodes, $relationships));

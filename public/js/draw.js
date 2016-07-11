@@ -42,6 +42,12 @@ routerImage.onload = function(){
 };
 routerImage.src = "/img/router.png";
 
+var printerImage = new Image();
+printerImage.onload = function(){
+    redraw();
+};
+printerImage.src = "/img/printer.png";
+
 var departmentImage = new Image();
 departmentImage.onload = function(){
     redraw();
@@ -198,6 +204,7 @@ function redraw()
             computer : computerImage,
             router : routerImage,
             user: userImage,
+            printer: printerImage,
             department: departmentImage
         };
         
