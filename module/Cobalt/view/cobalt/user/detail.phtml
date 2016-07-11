@@ -166,7 +166,11 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                             <i class="fa fa-remove"></i>
                                         </a>
                                     </td>
-                                    <td><?php echo $hardware->getName(); ?></td>
+                                    <td><a href="<?php echo $this->url('cobalt/default', array(
+                                        'controller' => 'hardware',
+                                        'action'     => 'detail',
+                                        'id'         => $hardware->getId()
+                                    ))?>"><?php echo $hardware->getName(); ?></a></td>
                                     <td><?php echo $hardware->getType()->getName(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
