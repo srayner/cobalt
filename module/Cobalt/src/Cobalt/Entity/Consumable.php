@@ -22,6 +22,18 @@ class Consumable
     /** @ORM\Column(type="text", name="description") */
     protected $description;
     
+    /** @ORM\Column(type="string", name="type") */
+    protected $type;
+   
+    /** @ORM\Column(type="string", name="supplier") */
+    protected $supplier;
+   
+    /** @ORM\Column(type="integer", name="qty_in_stock") */
+    protected $qtyInStock;
+    
+    /** @ORM\Column(type="integer", name="reorder_qty") */
+    protected $reorderQty;
+    
     public function getId()
     {
         return $this->id;
@@ -35,6 +47,26 @@ class Consumable
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    public function getQtyInStock()
+    {
+        return $this->qtyInStock;
+    }
+
+    public function getReorderQty()
+    {
+        return $this->reorderQty;
     }
 
     public function setId($id)
@@ -54,4 +86,30 @@ class Consumable
         $this->description = $description;
         return $this;
     }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function setSupplier($supplier)
+    {
+        $this->supplier = $supplier;
+        return $this;
+    }
+
+    public function setQtyInStock($qtyInStock)
+    {
+        $this->qtyInStock = $qtyInStock;
+        return $this;
+    }
+
+    public function setReorderQty($reorderQty)
+    {
+        $this->reorderQty = $reorderQty;
+        return $this;
+    }
+
+
 }

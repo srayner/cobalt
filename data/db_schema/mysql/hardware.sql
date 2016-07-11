@@ -85,6 +85,7 @@ CREATE TABLE printer (
 CREATE TABLE consumable (
   id           Integer(11)  NOT NULL,
   name         Varchar(128) NOT NULL,
+  description  Text,
   type         Varchar(32)      NULL,
   supplier     Varchar(64)      NULL,
   qty_in_stock Integer(11)      NULL,
