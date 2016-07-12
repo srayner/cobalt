@@ -133,16 +133,18 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-9">
             <table class="table table-condensed table-bordered table-cobalt">
                 <tbody>
                     <tr>
+                        <th>Hardware Type</th>
                         <th>Hardware Name</th>
                         <th>Adapter Name</th>
                         <th>IPv4 Address</th>
                     </tr>
                     <?php foreach($this->adapters as $adapter): ?>
                     <tr>    
+                        <td><?php echo $adapter->getHardware()->getType()->getName() ?></td>
                         <td>
                             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware', 'action' => 'detail', 'id' => $adapter->getHardware()->getId()));?>">
                             <?php echo $adapter->getHardware()->getName(); ?></a>
