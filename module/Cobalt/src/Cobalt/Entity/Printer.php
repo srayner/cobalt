@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -24,6 +25,39 @@ class Printer extends Hardware
     
     /** @ORM\Column(type="string", name="duty_cycle") */
     protected $dutyCycle;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Consumable", mappedBy="printers")
+     * @ORM\JoinTable(name="printer_consumable",
+     *     joinColumns={@ORM\JoinColumn(name="printer_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="consumable_id", referencedColumnName="id")}
+     * )
+     */
+    protected $consumables;
+    
+    public function __construct()
+    {
+        $this->consumables = new ArrayCollection();
+    }
+    
+    public function addConsumable($consumable)
+    {
+        $this->consumables[] = $consumable;
+        $consumable->addPrinter($this);
+        return $this;
+    }
+    
+    public function removeConsumable($consumable)
+    {
+        $this->consumables->removeElement($consumable);
+        $consumable->removePrinter($this);
+        return $this;
+    }
+    
+    public function getConsumables()
+    {
+        return $this->consumables->toArray();
+    }
     
     public function getTechnology()
     {

@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="consumable")
@@ -33,6 +34,33 @@ class Consumable
     
     /** @ORM\Column(type="integer", name="reorder_qty") */
     protected $reorderQty;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Printer", mappedBy="consubables")
+     */
+    protected $printers;
+    
+    public function __construct()
+    {
+        $this->printers = new ArrayCollection();
+    }
+    
+    public function addPrinter($printer)
+    {
+        $this->printers[] = $printer;
+        return $this;
+    }
+    
+    public function removePrinter($printer)
+    {
+        $this->printers->removeElement($printer);
+        return $this;
+    }
+    
+    public function getPrinters()
+    {
+        return $this->printers->toArray();
+    }
     
     public function getId()
     {
