@@ -21,9 +21,10 @@
         
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="tabs">
-            <li role="presentation" class="active"><a href="#details" aria-controls="home"    role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation" class="active"><a href="#details" aria-controls="home"             role="tab" data-toggle="tab">Details</a></li>
+            <li role="presentation"><a href="#consumables"            aria-controls="consumables"      role="tab" data-toggle="tab">Consumables</a></li>
             <li role="presentation"><a href="#network-adapters"       aria-controls="network-adapters" role="tab" data-toggle="tab">Network Adapters</a></li>
-            <li role="presentation"><a href="#history"                aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+            <li role="presentation"><a href="#history"                aria-controls="history"          role="tab" data-toggle="tab">History</a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -94,6 +95,28 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Consumables tab -->
+            <div role="tabpanel" class="tab-pane" id="consumables">
+                <table class="table table-condensed table-bordered">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Supplier</th>
+                        <th>Qty In Stock</th>
+                        <th>Reorder Qty</th>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+                <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'printer',
+                    'action'     => 'addconsumable',
+                    'id'         => $this->printer->getId()
+                ));?>">Add Consumable</a>
             </div>
             
             <!-- Network Adapters tab -->
