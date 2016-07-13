@@ -67,6 +67,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-lg-6">
+                        <form id="upload" action="/hardware/uploadimage" method="POST" enctype="multipart/form-data">
+                        <img id="filedrag" src="<?php echo 'image/cobalt/computer/' . $hardware->getImage();?> ">
+                        </form>
+                    </div>
                 </div>
             </div>
             
@@ -128,4 +133,6 @@
         </div>
         
     </div>
+    
 </div>
+

@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 use Zend\Session\Container;
 
 class HardwareController extends AbstractController
@@ -153,4 +154,25 @@ class HardwareController extends AbstractController
         return $referer;
     }
     
+    public function uploadimageAction()
+    {
+        
+        $filename = $this->request->getHeader('HTTP_X_FILENAME');
+        die(var_dump($filename));
+        
+	// AJAX call
+	file_put_contents(
+		'public/cobalt/computer/gravatar.jpg',
+		file_get_contents('php://input')
+	);
+	
+	
+
+
+        $variables = array(
+            'result' => 'ok',
+        );
+        $view = new JsonModel($variables);
+        return $view;
+    }
 }

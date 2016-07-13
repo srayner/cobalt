@@ -16,9 +16,6 @@ class Computer extends Hardware
     /** @ORM\Column(type="string") */
     protected $domain;
     
-    /** @ORM\Column(type="string") */
-    protected $image;
-    
     /** @ORM\Column(type="string", name="bios_version") */
     protected $biosVersion;
     
@@ -83,11 +80,6 @@ class Computer extends Hardware
     public function getModel()
     {
         return $this->model;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
     }
 
     public function getSerialNumber()
@@ -162,12 +154,6 @@ class Computer extends Hardware
     public function setModel($model)
     {
         $this->model = $model;
-        return $this;
-    }
-
-    public function setImage($image)
-    {
-        $this->image = $image;
         return $this;
     }
 

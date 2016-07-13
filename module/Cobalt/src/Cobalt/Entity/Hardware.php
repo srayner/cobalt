@@ -26,6 +26,9 @@ class Hardware
     /** @ORM\Column(type="string", name="hardware_name") */
     protected $name;
     
+    /** @ORM\Column(type="string", name="image") */
+    protected $image;
+    
     /**
      * @ORM\ManyToOne(targetEntity="HardwareType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
@@ -144,6 +147,11 @@ class Hardware
         return $this->name;
     }
     
+    public function getImage()
+    {
+        return $this->image;
+    }
+    
     public function getType()
     {
         return $this->type;
@@ -203,6 +211,12 @@ class Hardware
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+    
+    public function setImage($image)
+    {
+        $this->image = $image;
         return $this;
     }
     
