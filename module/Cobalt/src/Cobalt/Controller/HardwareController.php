@@ -157,20 +157,24 @@ class HardwareController extends AbstractController
     public function uploadimageAction()
     {
         
-        $filename = $this->request->getHeader('HTTP_X_FILENAME');
-        die(var_dump($filename));
-        
+        $filename="mytestfile.jpg";
+     
 	// AJAX call
 	file_put_contents(
-		'public/cobalt/computer/gravatar.jpg',
-		file_get_contents('php://input')
+            'public/cobalt/computer/' . $filename,
+            file_get_contents('php://input')
 	);
 	
+        $id = (int)$this->params()->fromRoute('id');
+        $hardware = $this->service->findById($id);
+        $hardware->setImage($filename);
+        $this->service->persist($hardware);
 	
 
 
         $variables = array(
             'result' => 'ok',
+            'src' => '/cobalt/computer/' . $filename
         );
         $view = new JsonModel($variables);
         return $view;

@@ -25,12 +25,14 @@ function FileSelectHandler(e) {
 // upload JPEG files
 function UploadFile(file) {
 
+    var hardwareId = '5';
+    
     console.log('upload');
     var xhr = new XMLHttpRequest();
     if (xhr.upload && file.type == "image/jpeg" && file.size <= 300000) {
             
         // start upload
-        xhr.open("POST", document.getElementById("upload").action, true);
+        xhr.open("POST", '/hardware/uploadimage/' + hardwareId, true);
 	xhr.setRequestHeader("X_FILENAME", file.name);
 	xhr.send(file);
     }
@@ -61,7 +63,7 @@ $(document).ready(function() {
     });
 
 
-    filedrag = document.getElementById('filedrag');
+    filedrag = document.getElementById('imgdrop');
     filedrag.addEventListener("dragover", FileDragHover, false);
     filedrag.addEventListener("dragleave", FileDragHover, false);
     filedrag.addEventListener("drop", FileSelectHandler, false);
