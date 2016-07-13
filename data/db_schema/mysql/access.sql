@@ -88,6 +88,8 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'edit');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'detail');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'addconsumable');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Printer', 'removeconsumable');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Consumable', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Consumable', 'add');
