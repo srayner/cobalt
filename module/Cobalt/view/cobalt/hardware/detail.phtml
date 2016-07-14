@@ -67,11 +67,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-lg-6">
+                    <div id="imgdrop" class="col-lg-6">
+                        
                         <?php if ( $hardware->getImage()) :?>
-                        <img width="320" src="<?php echo '/cobalt/computer/' . $hardware->getImage();?> ">
+                        <img id="img" width="320" src="<?php echo '/cobalt/computer/' . $hardware->getImage();?> ">
                         <?php else : ?>
-                        <div id="imgdrop">
+                        <div id="img">
                             <div class="text-center"><i class="fa fa-5x fa-download"></i></div>
                             <div class="text-center">Drop image here</div>
                         </div>
