@@ -222,6 +222,28 @@ class ComputerController extends AbstractController
         )); 
     }
     
+    public function readeventsAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'computer'));
+        }
+        
+        $computer = $this->service->findById($id);
+        $hostname = $computer->getHostname();
+        $domain = $computer->getDomain();
+        $wmiService = $this->getServiceLocator()->get('Cobalt\WMIService');
+        $wmiService->readEventLogs($hostname, $domain, $this->service);
+        
+        // Redirect to computer detail
+        return $this->redirect()->toRoute('cobalt/default', array(
+            'controller' => 'computer',
+            'action' => 'detail',
+            'id' => $id
+        )); 
+        
+    }
+    
     public function pingAction()
     {
         $status = 'unknown';

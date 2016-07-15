@@ -92,5 +92,46 @@ class WMI
         
         $service->persist($computer);
     }
+    
+    public function readEventLogs($host, $domain, $service)
+    {
+        // Get credentials.
+        $account = $this->options['account'];
+        $password = $this->options['password'];
+        
+        $WbemLocator = new \COM("WbemScripting.SWbemLocator");
+        $WbemServices = $WbemLocator->ConnectServer($host, 'root\\cimv2', $account, $password);
+        $WbemServices->Security_->ImpersonationLevel = 3;
+        $events = $WbemServices->ExecQuery("Select * from Win32_NTLogEvent Where Logfile = 'System' and type = 'Error' and TimeWritten > '2016'");
+        
+        foreach($events as $event) {
+            echo $event->category . '<br>';
+            echo $event->computerName . '<br>';
+            echo $event->eventCode . '<br>';
+            echo $event->message . '<br>';
+            echo $event->recordNumber . '<br>';
+            echo $event->sourceName . '<br>';
+            echo $event->timeWritten . '<br>';
+            echo $event->type . '<br>';
+            echo $event->user . '<br>';
+            echo '<hr>';
+        }
+        die();
+            
+        
+ /**   Wscript.Echo "Category: " & objEvent.Category & VBNewLine _
+    & "Computer Name: " & objEvent.ComputerName & VBNewLine _
+    & "Event Code: " & objEvent.EventCode & VBNewLine _
+    & "Message: " & objEvent.Message & VBNewLine _
+    & "Record Number: " & objEvent.RecordNumber & VBNewLine _
+    & "Source Name: " & objEvent.SourceName & VBNewLine _
+    & "Time Written: " & objEvent.TimeWritten & VBNewLine _
+    & "Event Type: " & objEvent.Type & VBNewLine _
+    & "User: " & objEvent.User
+Next
+  * 
+  */
+        die('ok');
+    }
 }
 
