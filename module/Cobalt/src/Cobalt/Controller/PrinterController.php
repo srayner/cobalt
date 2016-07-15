@@ -132,6 +132,16 @@ class PrinterController extends AbstractController
         
     }
     
+    public function addconsumableAction()
+    {
+        return array();
+    }
+    
+    public function removeconsumableAction()
+    {
+        return array();
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
