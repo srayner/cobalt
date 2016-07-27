@@ -126,6 +126,10 @@ class DomainController extends AbstractController
                 $domain->setRegistrantAddress($this->getMultiValue($domainResult['owner']['address']));
             }
             
+            if (array_key_exists('type', $domainResult['owner'])) {
+                $domain->setRegistrantType($this->getMultiValue($domainResult['owner']['type']));
+            }
+            
         }
         
         if (array_key_exists('domain', $domainResult)) {
