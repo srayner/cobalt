@@ -82,6 +82,11 @@ class Domain
         $this->statuses = new ArrayCollection();
     }
     
+    public function clearStatuses()
+    {
+        $this->statuses->clear();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -104,7 +109,7 @@ class Domain
     
     public function getStatuses()
     {
-        return $this->statuses;
+        return $this->statuses->toArray();
     }
 
     public function getCreated()

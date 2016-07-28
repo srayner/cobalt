@@ -135,7 +135,7 @@ class DomainController extends AbstractController
         if (array_key_exists('domain', $domainResult)) {
             
             if (array_key_exists('status', $domainResult['domain'])) {
-                $domain->getStatuses()->clear();
+                $domain->clearStatuses();
                 foreach($domainResult['domain']['status'] as $s)
                 {
                     $status = $this->getServiceLocator()->get('Cobalt\DomainStatus');
@@ -144,7 +144,6 @@ class DomainController extends AbstractController
                     $domain->addStatus($status);
                     $this->service->persist($status);
                 }
-                
             }
             
             if (array_key_exists('nserver', $domainResult['domain'])) {
@@ -207,7 +206,7 @@ class DomainController extends AbstractController
             if (strpos($line, 'Data validation:') !== false) {
                 break;
             } else {
-                $result .= $line . '<br>';
+                $result .= $line . '\n';
             }
         }
         return $result;
