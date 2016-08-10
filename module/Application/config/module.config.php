@@ -241,6 +241,11 @@ return array(
                         'controller' => 'company',
                         'action' => 'delete',
                     ),
+                    array(
+                        'label' => 'Detail',
+                        'controller' => 'company',
+                        'action' => 'detail',
+                    ),
                 ),
             ),
             

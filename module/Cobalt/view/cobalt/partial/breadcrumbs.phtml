@@ -1,6 +1,8 @@
-<?php
-
-echo implode(' > ', array_map(
-        function ($a) { return $a->getLabel(); },
-        $this->pages));
+<?php foreach ($this->pages as $key => $page): ?>
+<?php if ($key < count($this->pages) - 1): ?>
+<a href="<?php echo $page->getHref(); ?>"><?php echo $page->getLabel(); ?></a><i class="fa fa-angle-right"></i>
+<?php else: ?>
+<span><?php echo $page->getLabel(); ?></span>
+<?php endif;?>
+<?php endforeach; ?>
 

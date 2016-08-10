@@ -152,10 +152,11 @@ a i.fa {
     margin-bottom: 10px;
     padding: 12px 10px;
     color: #aaa;
+    border-radius: 0;
 }
 
 .breadcrumb a {
-    padding: 12px 0;
+    padding: 0;
     color: #aaa;
     background-color: #eee;
     display: inline-block;
