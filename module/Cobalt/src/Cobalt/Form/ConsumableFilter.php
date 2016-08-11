@@ -33,5 +33,41 @@ class ConsumableFilter extends InputFilter
                 array('name' => 'StringTrim'),
             ),
         ));
+        
+        // qty in stock
+        $this->add(array(
+            'name'       => 'qtyInStock',
+            'required'   => true,
+            'validators' => array ( 
+                array(
+                    'name' => 'Digits', 'breakChainOnFailure' => true),    
+                    array (
+                        'name' => 'Between',
+                        'options' => array (
+                        'min' => 0,
+                        'max' => 999999,
+                        'messages' => array('notBetween' => 'Value must be between %min% and %max%')
+                    )
+                )
+            )
+        ));
+        
+        // reorder qty
+        $this->add(array(
+            'name'       => 'reorderQty',
+            'required'   => true,
+            'validators' => array ( 
+                array(
+                    'name' => 'Digits', 'breakChainOnFailure' => true),    
+                    array (
+                        'name' => 'Between',
+                        'options' => array (
+                        'min' => 0,
+                        'max' => 999999,
+                        'messages' => array('notBetween' => 'Value must be between %min% and %max%')
+                    )
+                )
+            )
+        ));
     }
 }
