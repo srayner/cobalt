@@ -605,6 +605,35 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Ticket statuses.
+                    array(
+                        'label' => 'Ticket Statuses',
+                        'controller' => 'ticketstatus',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketstatus',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketstatus',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketstatus',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketstatus',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 
                 ),
             ),
