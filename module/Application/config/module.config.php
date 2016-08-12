@@ -400,6 +400,33 @@ return array(
                             ),
                         ),
                     ),
+                    array(
+                        'label' => 'Hardware Types',
+                        'controller' => 'hardwaretype',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'hardwaretype',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'hardwaretype',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'hardwaretype',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'hardwaretype',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),
