@@ -547,6 +547,35 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Software manufacturers.
+                    array(
+                        'label' => 'Software Manufacturers',
+                        'controller' => 'softwaremanufacturer',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'softwaremanufacturer',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'softwaremanufacturer',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'softwaremanufacturer',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'softwaremanufacturer',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 
                 ),
             ),
