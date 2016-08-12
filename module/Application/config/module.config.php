@@ -373,6 +373,8 @@ return array(
                 'label' => '<i class="fa fa-cogs"></i> Admin',
                 'route' => 'admin',
                 'pages' => array(
+                    
+                    // Consumables.
                     array(
                         'label' => 'Consumables',
                         'controller' => 'consumable',
@@ -400,6 +402,8 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Hardware types.
                     array(
                         'label' => 'Hardware Types',
                         'controller' => 'hardwaretype',
@@ -427,7 +431,37 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Hardware statuses.
+                    array(
+                        'label' => 'Hardware Statuses',
+                        'controller' => 'hardwarestatus',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'hardwarestatus',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'hardwarestatus',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'hardwarestatus',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'hardwarestatus',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 ),
+                
             ),
         ),
     ),
