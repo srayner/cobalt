@@ -489,6 +489,35 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Saoftware types.
+                    array(
+                        'label' => 'Software Types',
+                        'controller' => 'softwaretype',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'softwaretype',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'softwaretype',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'softwaretype',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'softwaretype',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 
                 ),
             ),
