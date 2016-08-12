@@ -372,6 +372,35 @@ return array(
             array(
                 'label' => '<i class="fa fa-cogs"></i> Admin',
                 'route' => 'admin',
+                'pages' => array(
+                    array(
+                        'label' => 'Consumables',
+                        'controller' => 'consumable',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'consumable',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'consumable',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'consumable',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'consumable',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
