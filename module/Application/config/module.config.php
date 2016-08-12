@@ -362,6 +362,28 @@ return array(
                 'label' => '<i class="fa fa-floppy-o"></i> Software',
                 'route' => 'cobalt/default',
                 'controller' => 'software',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'controller' => 'software',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'software',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'software',
+                        'action' => 'delete',
+                    ),
+                    array(
+                        'label' => 'Detail',
+                        'controller' => 'software',
+                        'action' => 'detail',
+                    ),
+                ),
             ),
             array(
                 'label' => '<i class="fa fa-cubes"></i> Projects',
