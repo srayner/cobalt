@@ -607,7 +607,65 @@ return array(
                         ),
                     ),
                     
-                    // Support Technicians.
+                    // Ticket statuses.
+                    array(
+                        'label' => 'Ticket Statuses',
+                        'controller' => 'ticketstatus',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketstatus',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketstatus',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketstatus',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketstatus',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                    
+                    // Ticket categories.
+                    array(
+                        'label' => 'Ticket Categories',
+                        'controller' => 'ticketcategory',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketcategory',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketcategory',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketcategory',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketcategory',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                    
+                    // Support Technicions.
                     array(
                         'label' => 'Support Technicians',
                         'controller' => 'user',
