@@ -576,6 +576,35 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Ticket types.
+                    array(
+                        'label' => 'Ticket Types',
+                        'controller' => 'tickettype',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'tickettype',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'tickettype',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'tickettype',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'tickettype',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 
                 ),
             ),
