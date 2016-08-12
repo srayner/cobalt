@@ -31,7 +31,7 @@ function UploadFile(file) {
 
     console.log('upload');
     var xhr = new XMLHttpRequest();
-    if (xhr.upload && file.type == "image/jpeg" && file.size <= 300000) {
+    if (xhr.upload && file.type == "image/jpeg" && file.size <= 400000) {
 
         // callback
         xhr.onreadystatechange = function() {
