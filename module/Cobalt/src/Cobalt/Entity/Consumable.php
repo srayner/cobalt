@@ -36,7 +36,7 @@ class Consumable
     protected $reorderQty;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Printer", mappedBy="consubables")
+     * @ORM\ManyToMany(targetEntity="Printer", mappedBy="consumables")
      */
     protected $printers;
     
