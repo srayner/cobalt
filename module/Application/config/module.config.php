@@ -253,6 +253,7 @@ return array(
                 'label' => '<i class="fa fa-user"></i> Users',
                 'route' => 'cobalt/default',
                 'controller' => 'user',
+                'action' => 'index',
                 'pages' => array(
                     array(
                         'label' => 'New User',
@@ -604,6 +605,13 @@ return array(
                                 'action' => 'detail',
                             ),
                         ),
+                    ),
+                    
+                    // Support Technicians.
+                    array(
+                        'label' => 'Support Technicians',
+                        'controller' => 'user',
+                        'action' => 'technicians',
                     ),
                 
                 ),
