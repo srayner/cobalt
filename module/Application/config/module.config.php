@@ -460,8 +460,37 @@ return array(
                             ),
                         ),
                     ),
-                ),
                 
+                    // Hardware manufacturers.
+                    array(
+                        'label' => 'Hardware Manufacturers',
+                        'controller' => 'hardwaremanufacturer',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'hardwaremanufacturer',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'hardwaremanufacturer',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'hardwaremanufacturer',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'hardwaremanufacturer',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                
+                ),
             ),
         ),
     ),
