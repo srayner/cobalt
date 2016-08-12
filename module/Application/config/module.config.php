@@ -663,6 +663,13 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Support Technicions.
+                    array(
+                        'label' => 'Support Technicians',
+                        'controller' => 'user',
+                        'action' => 'technicians',
+                    ),
                 
                 ),
             ),
