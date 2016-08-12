@@ -634,6 +634,35 @@ return array(
                             ),
                         ),
                     ),
+                    
+                    // Ticket categories.
+                    array(
+                        'label' => 'Ticket Categories',
+                        'controller' => 'ticketcategory',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketcategory',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketcategory',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketcategory',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketcategory',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
                 
                 ),
             ),
