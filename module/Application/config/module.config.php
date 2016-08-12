@@ -490,7 +490,7 @@ return array(
                         ),
                     ),
                     
-                    // Saoftware types.
+                    // Software types.
                     array(
                         'label' => 'Software Types',
                         'controller' => 'softwaretype',
@@ -514,6 +514,35 @@ return array(
                             array(
                                 'label' => 'Detail',
                                 'controller' => 'softwaretype',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                    
+                    // Software categories.
+                    array(
+                        'label' => 'Software Categories',
+                        'controller' => 'softwarecategory',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'softwarecategory',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'softwarecategory',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'softwarecategory',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'softwarecategory',
                                 'action' => 'detail',
                             ),
                         ),
