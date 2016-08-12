@@ -337,8 +337,23 @@ return array(
                 'controller' => 'hardware',
                 'pages' => array(
                     array(
+                        'label' => 'Add',
+                        'controller' => 'hardware',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'hardware',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'hardware',
+                        'action' => 'delete',
+                    ),
+                    array(
                         'label' => 'Hardware Detail',
-                        'controller' => 'hadware',
+                        'controller' => 'hardware',
                         'action' => 'detail',
                     ),
                 ),
