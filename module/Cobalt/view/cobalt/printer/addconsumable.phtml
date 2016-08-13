@@ -1,7 +1,21 @@
 <div class="row">
+    
     <div class="col-md-12 title">
         <h1>Add consumable</h1>
         <hr>
-        
+    </div>
+
+    <div class="col-md-10">
+        <?php
+            $form = $this->form;
+            $form->setAttribute('action', $this->url('cobalt/default', array(
+                'controller' => 'printer',
+                    'action' => 'addconsumable'
+                )));
+            $form->prepare();
+            echo $this->form()->openTag($form);
+            echo $this->form($form);
+            echo $this->form()->closeTag();
+        ?>
     </div>
 </div>

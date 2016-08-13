@@ -134,7 +134,11 @@ class PrinterController extends AbstractController
     
     public function addconsumableAction()
     {
-        return array();
+        $form = $this->getServiceLocator()->get('Cobalt\ConsumableSelectForm');
+        
+        return array(
+            'form' => $form
+        );
     }
     
     public function removeconsumableAction()
