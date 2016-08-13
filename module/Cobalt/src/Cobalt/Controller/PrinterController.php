@@ -134,10 +134,29 @@ class PrinterController extends AbstractController
     
     public function addconsumableAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        
         $form = $this->getServiceLocator()->get('Cobalt\ConsumableSelectForm');
         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+            $form->setData($data);
+            if ($form->isValid())
+            {
+                // Grab the status with the specified id.
+                $printer = $this->service->findById($id);
+            }
+            
+            
+        }
+        
         return array(
-            'form' => $form
+            'form' => $form,
+            'printerId' => $id
         );
     }
     

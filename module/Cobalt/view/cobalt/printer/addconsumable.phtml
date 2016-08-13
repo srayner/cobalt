@@ -10,7 +10,8 @@
             $form = $this->form;
             $form->setAttribute('action', $this->url('cobalt/default', array(
                 'controller' => 'printer',
-                    'action' => 'addconsumable'
+                    'action' => 'addconsumable',
+                    'id' => $this->printerId
                 )));
             $form->prepare();
             echo $this->form()->openTag($form);
