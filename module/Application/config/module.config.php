@@ -702,6 +702,35 @@ return array(
                         ),
                     ),
                     
+                    // Ticket priorities.
+                    array(
+                        'label' => 'Ticket Priorities',
+                        'controller' => 'ticketpriority',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketpriority',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketpriority',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketpriority',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketpriority',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                    
                     // Support Technicions.
                     array(
                         'label' => 'Support Technicians',
