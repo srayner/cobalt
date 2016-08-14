@@ -109,7 +109,16 @@
                         <th>Qty In Stock</th>
                         <th>Reorder Qty</th>
                     </tr>
-                    
+                    <?php foreach($this->printer->getConsumables() as $consumable): ?>
+                    <tr>
+                        <th></th>
+                        <th><?php echo $consumable->getName(); ?></th>
+                        <th><?php echo $consumable->getType(); ?></th>
+                        <th><?php echo $consumable->getSupplier(); ?></th>
+                        <th><?php echo $consumable->getQtyInStock(); ?></th>
+                        <th><?php echo $consumable->getReorderQty(); ?></th>
+                    </tr>                    
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
                 <a class="btn btn-default btn-sm" href="<?php echo $this->url('cobalt/default', array(

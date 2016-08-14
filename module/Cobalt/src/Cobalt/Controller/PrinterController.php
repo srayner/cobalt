@@ -149,9 +149,17 @@ class PrinterController extends AbstractController
             {
                 // Grab the status with the specified id.
                 $printer = $this->service->findById($id);
+                $consumable = $this->service->getReference('Cobalt\Entity\Consumable', $data['consumable']);
+                $printer->addConsumable($consumable);
+                $this->service->persist($printer);
+                
+                // Redirect back to printer
+                return $this->redirect()->toRoute('cobalt/default', array(
+                    'controller' => 'printer',
+                    'action' => 'detail',
+                    'id' => $id
+                ));
             }
-            
-            
         }
         
         return array(
