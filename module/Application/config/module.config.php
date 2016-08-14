@@ -774,6 +774,13 @@ return array(
                         'action' => 'dbconfig',
                     ),
                     
+                    // Active directory connection settings.
+                    array(
+                        'label' => 'Active Directory connection settings',
+                        'controller' => 'Index',
+                        'action' => 'adconfig',
+                    ),
+                    
                     // Users update from ad.
                     array(
                         'label' => 'Update users from Active Directory.',
