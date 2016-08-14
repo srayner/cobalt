@@ -8,28 +8,29 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Support Ticket States</h1>
-            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'add'));?>">New Ticket Status</a>
+            <a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'add'));?>">New Ticket Status</a>
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="states" class="table" cellspacing="0" width="100%">
+            <table id="states" class="table table-bordered table-condensed table-cobalt">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Actions</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->states as $state): ?> 
                     <tr>
+                        <th style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'edit', 'id' => $state->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'delete', 'id' => $state->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </th>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'detail', 'id' => $state->getId()));?>">
                             <?php echo $state->getName();?></a></td>
                         <td><?php echo nl2br($state->getDescription()); ?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'edit', 'id' => $state->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus', 'action' => 'delete', 'id' => $state->getId()));?>">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
