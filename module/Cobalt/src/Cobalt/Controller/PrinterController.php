@@ -170,7 +170,38 @@ class PrinterController extends AbstractController
     
     public function removeconsumableAction()
     {
-        return array();
+        // Extract identifiers from route param.
+        $params = explode('_', $this->params()->fromRoute('id'));
+        $printerId = $params[0];
+        $consumableId = $params[1];
+        
+        $consumableService = $this->getServiceLocator()->get('Cobalt\EntityService\ConsumableService');
+        $consumable = $consumableService->findById($consumableId);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+              // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $printer = $this->service->findById($printerId);
+                $printer->removeConsumable($consumable);
+                $this->service->persist($printer);
+            }
+            
+             // Redirect to list of consumables
+            return $this->redirect()->toRoute('cobalt/default', array(
+                'controller' => 'printer',
+                'action' => 'detail',
+                'id' => $printerId
+            ), array('fragment'=>'consumables'));
+                
+        }
+        
+        return new ViewModel(array(
+            'printerId' => $printerId,
+            'consumable' => $consumable 
+        ));
     }
     
     private function storeReferer($except)

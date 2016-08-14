@@ -1,7 +1,18 @@
 <div class="row">
     <div class="col-md-12 title">
-        <h1>Remove consumable</h1>
+        <h1>Remove Consumable</h1>
         <hr>
+        <p>Are you sure you want to remove the consumable <?php echo $this->consumable->getName(); ?>?</p>
         
+        <form action="<?php echo $this->url('cobalt/default', array(
+            'controller' => 'printer',
+            'action' => 'removeconsumable',
+            'id' => $this->printerId . '_' . $this->consumable->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
     </div>
 </div>
