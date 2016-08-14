@@ -158,7 +158,7 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                 </tr>
                                 <?php foreach($user->getHardware() as $hardware): ?>
                                 <tr>
-                                    <td style="width: 1%;" nowrap>
+                                    <td style="width: 1%; padding-right: 10px;" nowrap>
                                         <a href="<?php echo $this->url('cobalt/default', array(
                                             'controller' => 'user',
                                             'action' => 'removehardware',
