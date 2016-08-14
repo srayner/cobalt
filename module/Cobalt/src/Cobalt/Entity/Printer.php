@@ -27,7 +27,7 @@ class Printer extends Hardware
     protected $dutyCycle;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Consumable", mappedBy="printers")
+     * @ORM\ManyToMany(targetEntity="Consumable", inversedBy="printers")
      * @ORM\JoinTable(name="printer_consumable",
      *     joinColumns={@ORM\JoinColumn(name="printer_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="consumable_id", referencedColumnName="id")}
