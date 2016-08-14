@@ -91,10 +91,17 @@ class DomainController extends AbstractController
     
     public function detailAction()
     {
+        // Get the domain object.
         $id = (int) $this->params()->fromRoute('id', 0);
         $domain = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(200, $domain->getId());
+        
         return new ViewModel(array(
             'domain' => $domain,
+            'history' => $history
         ));
     }
     
