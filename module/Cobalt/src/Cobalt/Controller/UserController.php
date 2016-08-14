@@ -278,7 +278,7 @@ class UserController extends AbstractController
     
     public function removehardwareAction()
     {
-        // Extrad identifiers from route param.
+        // Extract identifiers from route param.
         $params = explode('_', $this->params()->fromRoute('id'));
         $userId = $params[0];
         $hardwareId = $params[1];
