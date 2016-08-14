@@ -10,6 +10,7 @@ Dashboard
 ---------
 The dashboard gives an overview of the system. It shows the total number of important system entities as
 well as the current state of monitored network interfaces.
+
 ![Image of Dashboard](/docs/Screenshot2.jpg)
 
 Users
@@ -28,8 +29,9 @@ disk information can be extracted from computers using WMI. You can get remote a
 to computers via remote desktop or VNC. There is also easy access to the computer's
 C$ share for browsing the hard drive of the remote computer.
 
-Printers have additional properties such as print speed, print quality, etc. It is
-envisaged that printers will have associated consumables.
+Printers have additional properties such as print speed, print quality, etc. Printers can
+also have associated consumables. Consumables have peroperties such as; type, supplier and quantity
+in stock.
 
 Software
 --------
@@ -53,12 +55,12 @@ There is a simple FAQ section.
 
 Development Roadmap
 -------------------
-The help desk module is currently work in progress.
+The help desk module, hardware monitoring and notifications are all currently work in progress.
 
 Further possibilities include;
 * Change management module
 * Detailed problems & solutions.
-*  Hardware and service monitoring 
+* Service monitoring 
 
 
 Installation
