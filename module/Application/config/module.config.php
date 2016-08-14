@@ -766,6 +766,13 @@ return array(
                         'controller' => 'user',
                         'action' => 'technicians',
                     ),
+                    
+                    // Database connection settings.
+                    array(
+                        'label' => 'Database connection settings',
+                        'controller' => 'Index',
+                        'action' => 'dbconfig',
+                    ),
                 
                 ),
             ),
