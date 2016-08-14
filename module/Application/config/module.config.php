@@ -773,6 +773,13 @@ return array(
                         'controller' => 'Index',
                         'action' => 'dbconfig',
                     ),
+                    
+                    // Users update from ad.
+                    array(
+                        'label' => 'Update users from Active Directory.',
+                        'controller' => 'User',
+                        'action' => 'adupdate',
+                    ),
                 
                 ),
             ),
