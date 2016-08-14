@@ -40,6 +40,12 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketcategory', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketcategory', 'detail');
 
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketpriority', 'index');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketpriority', 'add');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketpriority', 'edit');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketpriority', 'delete');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Ticketpriority', 'detail');
+
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'edit');
