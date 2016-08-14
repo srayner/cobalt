@@ -6,6 +6,28 @@ It can connect to Active Directory via an LDAP connector to extract user and com
 
 Currently it can manage; users, hardware, software, projects, domains and support tickets.
 
+Installation
+------------
+
+Note this application requires that you have the ldap php extension installed.
+
+```
+mkdir cobalt
+cd cobalt
+git clone https://github.com/srayner/cobalt.git .
+php composer.phar install
+```
+
+Post install tasks
+------------------
+
+1. Create a database called cobalt, and execute the SQL script located in the \data\db_schema
+folder to create the database table structure.
+
+2. Rename the \config\autoload\local.php.dist to remove the .dist extension. Then
+modify the configuration at the top of this file to suit your local installation.
+
+
 Dashboard
 ---------
 The dashboard gives an overview of the system. It shows the total number of important system entities as
@@ -42,6 +64,7 @@ Projects
 --------
 Projects can have associated milestones and milestones can have associated tasks.
 [See the Cobalt website](http://srayner.github.io/cobalt)
+
 ![Image of Project](/docs/Screenshot.jpg)
 
 Domains
