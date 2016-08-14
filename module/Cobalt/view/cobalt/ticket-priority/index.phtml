@@ -8,28 +8,28 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Support Ticket Priorities</h1>
-            <a class="btn btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'add'));?>">New Ticket Priority</a>
+            <a class="btn btn-success btn-sm pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'add'));?>">New Ticket Priority</a>
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="states" class="table" cellspacing="0" width="100%">
+            <table id="states" class="table table-bordered table-condensed table-cobalt">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->priorities as $priority): ?> 
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'edit', 'id' => $priority->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'delete', 'id' => $priority->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'detail', 'id' => $priority->getId()));?>">
                             <?php echo $priority->getName();?></a></td>
                         <td><?php echo nl2br($priority->getDescription()); ?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'edit', 'id' => $priority->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority', 'action' => 'delete', 'id' => $priority->getId()));?>">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
