@@ -111,7 +111,9 @@
                     </tr>
                     <?php foreach($this->printer->getConsumables() as $consumable): ?>
                     <tr>
-                        <td></td>
+                        <td class="text-center" style="width: 1%; padding-right:10px;" nowrap>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'printer', 'action' => 'removeconsumable', 'id' => $this->printer->getId() . '_' . $consumable->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><?php echo $consumable->getName(); ?></td>
                         <td><?php echo $consumable->getType(); ?></td>
                         <td><?php echo $consumable->getSupplier(); ?></td>
