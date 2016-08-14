@@ -111,12 +111,12 @@
                     </tr>
                     <?php foreach($this->printer->getConsumables() as $consumable): ?>
                     <tr>
-                        <th></th>
-                        <th><?php echo $consumable->getName(); ?></th>
-                        <th><?php echo $consumable->getType(); ?></th>
-                        <th><?php echo $consumable->getSupplier(); ?></th>
-                        <th><?php echo $consumable->getQtyInStock(); ?></th>
-                        <th><?php echo $consumable->getReorderQty(); ?></th>
+                        <td></td>
+                        <td><?php echo $consumable->getName(); ?></td>
+                        <td><?php echo $consumable->getType(); ?></td>
+                        <td><?php echo $consumable->getSupplier(); ?></td>
+                        <td><?php echo $consumable->getQtyInStock(); ?></td>
+                        <td><?php echo $consumable->getReorderQty(); ?></td>
                     </tr>                    
                     <?php endforeach; ?>
                     </tbody>
