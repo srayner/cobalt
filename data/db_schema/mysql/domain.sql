@@ -51,3 +51,11 @@ CREATE TABLE domain_status (
     id
   )
 ) ENGINE = InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Triggers
+create trigger domain_history_insert after insert on domain
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (1, new.id, now(), 'Domain created.');
+end//
