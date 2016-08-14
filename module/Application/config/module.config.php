@@ -427,11 +427,31 @@ return array(
                 ),
             ),
             
+            // FAQ
             array(
                 'label' => '<i class="fa fa-comment"></i> FAQ',
                 'route' => 'faq/default',
                 'controller' => 'index',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'New Question',
+                        'controller' => 'index',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit Question',
+                        'controller' => 'index',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete Question',
+                        'controller' => 'index',
+                        'action' => 'delete',
+                    ),
+                ),
             ),
+            
             array(
                 'label' => '<i class="fa fa-cogs"></i> Admin',
                 'route' => 'admin',
