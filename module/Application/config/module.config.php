@@ -731,6 +731,35 @@ return array(
                         ),
                     ),
                     
+                    // Ticket impacts.
+                    array(
+                        'label' => 'Ticket Impacts',
+                        'controller' => 'ticketimpact',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add',
+                                'controller' => 'ticketimpact',
+                                'action' => 'add',
+                            ),
+                            array(
+                                'label' => 'Edit',
+                                'controller' => 'ticketimpact',
+                                'action' => 'edit',
+                            ),
+                            array(
+                                'label' => 'Delete',
+                                'controller' => 'ticketimpact',
+                                'action' => 'delete',
+                            ),
+                            array(
+                                'label' => 'Detail',
+                                'controller' => 'ticketimpact',
+                                'action' => 'detail',
+                            ),
+                        ),
+                    ),
+                    
                     // Support Technicions.
                     array(
                         'label' => 'Support Technicians',
