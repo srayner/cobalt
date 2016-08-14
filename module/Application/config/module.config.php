@@ -397,11 +397,36 @@ return array(
                     ),
                 ),
             ),
+            
+            // Domains
             array(
                 'label' => '<i class="fa fa-cloud"></i> Domains',
                 'route' => 'cobalt/default',
                 'controller' => 'domain',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'controller' => 'domain',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'controller' => 'domain',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'controller' => 'domain',
+                        'action' => 'delete',
+                    ),
+                    array(
+                        'label' => 'Detail',
+                        'controller' => 'domain',
+                        'action' => 'detail',
+                    ),
+                ),
             ),
+            
             array(
                 'label' => '<i class="fa fa-comment"></i> FAQ',
                 'route' => 'faq/default',
