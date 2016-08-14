@@ -6,6 +6,12 @@ It can connect to Active Directory via an LDAP connector to extract user and com
 
 Currently it can manage; users, hardware, software, projects, domains and support tickets.
 
+Dashboard
+---------
+The dashboard gives an overview of the system. It shows the total number of important system entities as
+well as the current state of monitored network interfaces.
+![Image of Dashboard](/docs/Screenshot2.jpg)
+
 Users
 -----
 You can add, edit, search for, view and delete users. You can also update user information
@@ -34,6 +40,7 @@ Projects
 --------
 Projects can have associated milestones and milestones can have associated tasks.
 [See the Cobalt website](http://srayner.github.io/cobalt)
+![Image of Project](/docs/Screenshot.jpg)
 
 Domains
 -------
@@ -43,9 +50,6 @@ for DNS records.
 FAQs
 ----
 There is a simple FAQ section.
-
-![Image of Dashboard](/docs/Screenshot2.jpg)
-![Image of Project](/docs/Screenshot.jpg)
 
 Development Roadmap
 -------------------
