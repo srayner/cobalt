@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class CompanyController extends AbstractController
 {
@@ -103,13 +104,18 @@ class CompanyController extends AbstractController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 $this->service->remove($company);
+                
+                // Redirect to domain index
+                return $this->redirect()->toRoute('cobalt/default',
+                    array('controller' => 'company'));
             }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
 
-            // Redirect to domain index
-            return $this->redirect()->toRoute('cobalt/default',
-                array('controller' => 'company'));
-         }
-         
+        $this->storeReferer('hardware/delete');
+        
         return new ViewModel(array(
             'company' => $company
         ));
@@ -122,5 +128,21 @@ class CompanyController extends AbstractController
         return new ViewModel(array(
             'company' => $company
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('company');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('company');
+        $referer = $session->referer;
+        return $referer;
     }
 }
