@@ -213,6 +213,11 @@ return array(
                         'action' => 'edit',
                     ),
                     array(
+                        'label' => 'Delete Ticket',
+                        'controller' => 'ticket',
+                        'action' => 'delete',
+                    ),
+                    array(
                         'label' => 'Cancel Ticket',
                         'controller' => 'ticket',
                         'action' => 'cancel',
