@@ -22,6 +22,9 @@ class TicketImpact
     /** @ORM\Column(type="text") */
     protected $description;
 
+    /** @ORM\Column(type="text") */
+    protected $color;
+    
     public function getId()
     {
         return $this->id;
@@ -35,6 +38,11 @@ class TicketImpact
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
     }
 
     public function setId($id)
@@ -54,6 +62,11 @@ class TicketImpact
         $this->description = $description;
         return $this;
     }
-
+    
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
 
 }
