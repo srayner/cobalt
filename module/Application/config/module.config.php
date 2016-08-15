@@ -251,6 +251,26 @@ return array(
                         'controller' => 'company',
                         'action' => 'detail',
                     ),
+                    array(
+                        'label' => 'New Office',
+                        'controller' => 'office',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit Office',
+                        'controller' => 'office',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete Office',
+                        'controller' => 'office',
+                        'action' => 'delete',
+                    ),
+                    array(
+                        'label' => 'Office Detail',
+                        'controller' => 'office',
+                        'action' => 'detail',
+                    ),
                 ),
             ),
             
