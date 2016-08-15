@@ -56,7 +56,11 @@
                             <tbody>
                                 <tr>
                                     <th style="width: 35%;">Status</th>
-                                    <td><?php echo $this->ticket->getStatus()->getName(); ?></td>
+                                    <td>
+                                        <div class="status" style="border-left-color: <?php echo $ticket->getStatus()->getColor();?>">
+                                            <?php echo $this->ticket->getStatus()->getName(); ?>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Technician</th>
@@ -64,11 +68,19 @@
                                 </tr>
                                 <tr>
                                     <th>Priority</th>
-                                    <td><?php echo $this->ticket->getPriority()->getName(); ?></td>
+                                    <td>
+                                        <div class="status" style="border-left-color: <?php echo $ticket->getPriority()->getColor();?>">
+                                            <?php echo $this->ticket->getPriority()->getName(); ?>
+                                        </div>
+                                    </td>
                                 </tr>
                                  <tr>
                                     <th>Impact</th>
-                                    <td><?php echo $this->ticket->getImpact()->getName(); ?></td>
+                                    <td>
+                                        <div class="status" style="border-left-color: <?php echo $ticket->getImpact()->getColor();?>">
+                                            <?php echo $this->ticket->getImpact()->getName(); ?>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Category</th>
