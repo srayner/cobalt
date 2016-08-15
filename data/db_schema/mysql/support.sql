@@ -3,6 +3,7 @@ CREATE TABLE ticket_status (
   id          integer     not null AUTO_INCREMENT,
   name        varchar(64) not null,
   description text            null,
+  color       varchar(16) not null,
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
@@ -30,6 +31,7 @@ CREATE TABLE ticket_priority (
   id          integer     not null AUTO_INCREMENT,
   name        varchar(64) not null,
   description text            null,
+  color       varchar(16) not null,
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
@@ -38,6 +40,7 @@ CREATE TABLE ticket_impact (
   id          integer     not null AUTO_INCREMENT,
   name        varchar(64) not null,
   description text            null,
+  color       varchar(16) not null,
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
