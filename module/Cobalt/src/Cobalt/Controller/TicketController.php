@@ -87,12 +87,13 @@ class TicketController extends AbstractController
                 // Persist ticket.
             	$this->service->persist($ticket);
                 
-                // Redirect to list of tickets
-                return $this->redirect()->toRoute('cobalt/default', array(
-                    'controller' => 'ticket'
-                ));
+                // Redirect back to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            
             }     
         }
+        
+        $this->storeReferer('ticket/edit');
         
         return new ViewModel(array(
              'id' => $id,
