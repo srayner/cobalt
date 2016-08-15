@@ -237,17 +237,17 @@ return array(
                         'action' => 'add',
                     ),
                     array(
-                        'label' => 'Edit',
+                        'label' => 'Edit Company',
                         'controller' => 'company',
                         'action' => 'edit',
                     ),
                     array(
-                        'label' => 'Delete',
+                        'label' => 'Delete Company',
                         'controller' => 'company',
                         'action' => 'delete',
                     ),
                     array(
-                        'label' => 'Detail',
+                        'label' => 'Company Detail',
                         'controller' => 'company',
                         'action' => 'detail',
                     ),
