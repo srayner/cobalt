@@ -155,6 +155,20 @@ CREATE TABLE user_computer (
 
 delimiter //
 
+create trigger hardware_history_insert after insert on hardware
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (300, new.id, now(), 'Hardware created.');
+end//
+
+create trigger hardware_history_update after update on hardware
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (300, new.id, now(), 'Hardware modified.');
+end//
+
 create trigger computer_history_insert after insert on computer
 for each row
 begin
