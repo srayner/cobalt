@@ -96,6 +96,30 @@ class NetworkAdapterController extends AbstractController
     
     public function deleteAction()
     {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'hardware'));
+        }
+        
+        $adapter = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($adapter);
+            }
+
+            // Redirect to list of users
+            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'hardware'));
+         }
+         
+        return new ViewModel(array(
+            'adapter' => $adapter
+        ));
         
     }
     
