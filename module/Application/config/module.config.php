@@ -914,7 +914,23 @@ return array(
                         'controller' => 'User',
                         'action' => 'adupdate',
                     ),
-                
+                    
+                    // Notification index.
+                    array(
+                        'label' => 'Notifications',
+                        'route' => 'notification',
+                        'controller' => 'Index',
+                        'action' => 'index',
+                        'pages' => array(
+                            array(
+                                'label' => 'Edit Notification Template',
+                                'route' => 'template',
+                                'controller' => 'Index',
+                                'action' => 'template',
+                            ),    
+                        ),
+                    ),
+
                 ),
             ),
         ),
