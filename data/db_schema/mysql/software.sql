@@ -68,3 +68,21 @@ CREATE TABLE software_license(
     FOREIGN KEY (software_id) REFERENCES software(id) ON DELETE RESTRICT,
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+delimiter//
+
+create trigger software_history_insert after insert on software
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (400, new.id, now(), 'Software created.');
+end//
+
+create trigger software_history_update after update on software
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (400, new.id, now(), 'Software modified.');
+end//
+
+delimiter;

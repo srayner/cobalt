@@ -122,8 +122,13 @@ class SoftwareController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         $software = $this->service->findById($id);
         
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(400, $software->getID());
+        
         return new ViewModel(array(
-            'software' => $software
+            'software' => $software,
+            'history' => $history
         ));
     }
     
