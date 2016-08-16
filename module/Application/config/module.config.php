@@ -312,6 +312,16 @@ return array(
                         'action' => 'removehardware',
                     ),
                     array(
+                        'label' => 'Add Role',
+                        'controller' => 'user',
+                        'action' => 'addrole',
+                    ),
+                    array(
+                        'label' => 'Remove Role',
+                        'controller' => 'user',
+                        'action' => 'removerole',
+                    ),
+                    array(
                         'label' => 'My Profile',
                         'controller' => 'CivUser\Controller\User',
                         'action' => 'profile',
