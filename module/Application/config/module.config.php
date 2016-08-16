@@ -332,6 +332,11 @@ return array(
                         'controller' => 'computer',
                         'action' => 'delete',
                     ),
+                    array(
+                        'label' => 'Detail',
+                        'controller' => 'computer',
+                        'action' => 'detail',
+                    ),
                 ),
             ),
             array(
