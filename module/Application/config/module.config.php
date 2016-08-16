@@ -274,6 +274,7 @@ return array(
                 ),
             ),
             
+            // Users
             array(
                 'label' => '<i class="fa fa-user"></i> Users',
                 'route' => 'cobalt/default',
@@ -301,6 +302,16 @@ return array(
                         'action' => 'detail',
                     ),
                     array(
+                        'label' => 'Add Hardware',
+                        'controller' => 'user',
+                        'action' => 'addhardware',
+                    ),
+                    array(
+                        'label' => 'Remove Hardware',
+                        'controller' => 'user',
+                        'action' => 'removehardware',
+                    ),
+                    array(
                         'label' => 'My Profile',
                         'controller' => 'CivUser\Controller\User',
                         'action' => 'profile',
@@ -312,6 +323,8 @@ return array(
                     ),
                 ),
             ),
+            
+            // Computers
             array(
                 'label' => '<i class="fa fa-desktop"></i> Computers',
                 'route' => 'cobalt/default',
@@ -339,6 +352,8 @@ return array(
                     ),
                 ),
             ),
+            
+            // Printers
             array(
                 'label' => '<i class="fa fa-print"></i> Printers',
                 'route' => 'cobalt/default',
@@ -361,6 +376,8 @@ return array(
                     ),
                 ),
             ),
+            
+            // Hardware
             array(
                 'label' => '<i class="fa fa-cubes"></i> Hardware',
                 'route' => 'cobalt/default',
@@ -388,6 +405,8 @@ return array(
                     ),
                 ),
             ),
+            
+            // Software
             array(
                 'label' => '<i class="fa fa-floppy-o"></i> Software',
                 'route' => 'cobalt/default',
@@ -415,6 +434,8 @@ return array(
                     ),
                 ),
             ),
+            
+            // Projects
             array(
                 'label' => '<i class="fa fa-cubes"></i> Projects',
                 'route' => 'project/default',
@@ -482,6 +503,7 @@ return array(
                 ),
             ),
             
+            // Admin
             array(
                 'label' => '<i class="fa fa-cogs"></i> Admin',
                 'route' => 'admin',
