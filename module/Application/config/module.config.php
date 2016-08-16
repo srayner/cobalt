@@ -271,6 +271,26 @@ return array(
                         'controller' => 'office',
                         'action' => 'detail',
                     ),
+                    array(
+                        'label' => 'New Department',
+                        'controller' => 'department',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit Department',
+                        'controller' => 'department',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete Department',
+                        'controller' => 'department',
+                        'action' => 'delete',
+                    ),
+                    array(
+                        'label' => 'Department Detail',
+                        'controller' => 'department',
+                        'action' => 'detail',
+                    ),
                 ),
             ),
             
