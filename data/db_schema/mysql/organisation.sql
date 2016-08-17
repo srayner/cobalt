@@ -97,6 +97,50 @@ CREATE TABLE history (
 ) ENGINE = InnoDB;
 
 -- Triggers
+
+delimiter//
+create trigger company_history_insert after insert on company
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (500, new.id, now(), 'Company created.');
+end//
+
+create trigger company_history_update after update on company
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (500, new.id, now(), 'Company modified.');
+end//
+
+create trigger office_history_insert after insert on office
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (501, new.id, now(), 'Office created.');
+end//
+
+create trigger office_history_update after update on office
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (501, new.id, now(), 'Office modified.');
+end//
+
+create trigger department_history_insert after insert on department
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (502, new.id, now(), 'Department created.');
+end//
+
+create trigger department_history_update after update on department
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (502, new.id, now(), 'Department modified.');
+end//
+
 create trigger user_history_insert after insert on user
 for each row
 begin
