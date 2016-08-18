@@ -1,10 +1,11 @@
 Cobalt Application
 ==================
 
-Work in progress. Cobalt is a complete ICT solution for asset management, project management and support help desk.
+Cobalt is a complete ICT solution for asset management, project management and support help desk.
 It can connect to Active Directory via an LDAP connector to extract user and computer information.
 
 Currently it can manage; users, hardware, software, projects, domains and support tickets.
+There is also an FAQ section.
 
 Installation
 ------------
@@ -37,7 +38,7 @@ well as the current state of monitored network interfaces.
 
 Users
 -----
-You can add, edit, search for, view and delete users. You can also update user information
+You can add, edit, search for, view and delete users. You can also import/update user information
 from Microsoft Active Directory.
 
 Hardware
@@ -86,26 +87,3 @@ Further possibilities include;
 * Change management module
 * Detailed problems & solutions.
 * Service monitoring 
-
-
-Installation
-------------
-
-Note this application requires that you have the ldap php extension installed.
-
-```
-mkdir cobalt
-cd cobalt
-git clone https://github.com/srayner/platinum.git .
-php composer.phar install
-```
-
-Post install tasks
-------------------
-
-1. Create a database called cobalt, and execute the SQL script located in the \data\db_schema
-folder to create the database table structure.
-
-2. Rename the \config\autoload\local.php.dist to remove the .dist extension. Then
-modify the configuration at the top of this file to suit your local installation.
-
