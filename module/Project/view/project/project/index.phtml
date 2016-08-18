@@ -13,19 +13,23 @@
             <hr>
         </div>
         <div class="col-md-12">
-            <table id="projects" class="table" cellspacing="0" width="100%">
+            <table id="projects" class="table table-bordered table-condensed table-cobalt">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Status</th>
                         <th>Priority</th>
                         <th>Scheduled Start</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($this->projects as $project): ?>
                     <tr>
+                        <td style="width: 1%;" nowrap>
+                            <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $project->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $project->getId()));?>"><i class="fa fa-remove"></i></a>
+                        </td>
                         <td><a href="<?php echo $this->url('project/default', array(
                             'controller' => 'project',
                             'action' => 'detail',
@@ -36,10 +40,6 @@
                         <td><?php echo $project->getStatus()->getName(); ?></td>
                         <td><?php echo $project->getPriority()->getName(); ?></td>
                         <td><?php echo $project->getScheduledStart(); ?></td>
-                        <td style="width: 1%;" nowrap>
-                            <a class="btn btn-warning btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'edit', 'id' => $project->getId()));?>">Edit</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo $this->url('project/default', array('controller' => 'project', 'action' => 'delete', 'id' => $project->getId()));?>">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
