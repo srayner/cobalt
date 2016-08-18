@@ -138,8 +138,14 @@ class OfficeController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $office = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(501, $office->getID());
+        
         return new ViewModel(array(
-            'office' => $office
+            'office' => $office,
+            'history' => $history
         ));
     }
     

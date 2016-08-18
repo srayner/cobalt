@@ -138,8 +138,14 @@ class DepartmentController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $department = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(502, $department->getID());
+        
         return new ViewModel(array(
-            'department' => $department
+            'department' => $department,
+            'history' => $history
         ));
     }
     

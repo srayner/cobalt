@@ -125,8 +125,14 @@ class CompanyController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $company = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(500, $company->getID());
+        
         return new ViewModel(array(
-            'company' => $company
+            'company' => $company,
+            'history' => $history
         ));
     }
     
