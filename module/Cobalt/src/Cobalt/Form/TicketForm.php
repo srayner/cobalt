@@ -14,7 +14,7 @@ class TicketForm extends HorizontalForm
         
         $this->setAttribute('class', 'form-horizontal');
         
-        $this->addText('subject', 'Subject', true, true)
+        $this->addText('subject', 'Subject', true)
              ->addDoctrineSelect('type', 'Type', $em, 'Cobalt\Entity\TicketType', 'name')
              ->addDoctrineSelect('status', 'Status', $em, 'Cobalt\Entity\TicketStatus', 'name')
              ->addDoctrineSelect('priority', 'Priority', $em, 'Cobalt\Entity\TicketPriority', 'name')

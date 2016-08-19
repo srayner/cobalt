@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('input[name="subject"]').focus();
     $('form').areYouSure();
     tinymce.init({
         selector:'textarea',
