@@ -5,4 +5,6 @@ $(document).ready(function() {
     input[0].focus();
     input[0].setSelectionRange(len, len);
 
+    $('form').areYouSure();
+    
 });
