@@ -134,9 +134,15 @@ class TicketController extends AbstractController
     public function detailAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
+        $ticket = $this->service->findById($id); 
+        
+         // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(600, $ticket->getID());
         
         return new ViewModel(array(
-           'ticket' => $this->service->findById($id) 
+           'ticket' => $ticket,
+            'history' => $history
         ));
     }
     

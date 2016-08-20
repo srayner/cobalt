@@ -107,8 +107,24 @@
             
             <!-- History tab -->
             <div role="tabpanel" class="tab-pane" id="history">
-                No history to show yet.
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->history as $history): ?>
+                        <tr>
+                            <td><?php echo $history->getTime()->format('d/m/Y h:i:s');?></td>
+                            <td><?php echo $history->getEvent(); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
+            
         </div>
     </div>
 
