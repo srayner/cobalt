@@ -82,3 +82,21 @@ CREATE TABLE ticket (
   FOREIGN KEY (technician_id) REFERENCES user(id)            ON DELETE RESTRICT,
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+delimiter//
+
+create trigger ticket_insert after insert on ticket
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (600, new.id, now(), 'Support ticket created.');
+end//
+
+create trigger ticket_update after update on ticket
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (600, new.id, now(), 'Support ticket modified.');
+end//
+
+delimiter;
