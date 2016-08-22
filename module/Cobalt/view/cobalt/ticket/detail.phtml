@@ -43,7 +43,13 @@
                                 </tr>
                                 <tr>
                                     <th>Requestor</th>
-                                    <td><?php echo $this->ticket->getRequestor()->getDisplayName(); ?></td>
+                                    <td>
+                                        <a href ="<?php echo $this->url('cobalt/default', array(
+                                            'controller' => 'user',
+                                            'action' => 'detail',
+                                            'id' => $this->ticket->getRequestor()->getId()
+                                        ))?>"><?php echo $this->ticket->getRequestor()->getDisplayName(); ?></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Problem</th>
@@ -66,7 +72,13 @@
                                 </tr>
                                 <tr>
                                     <th>Technician</th>
-                                    <td><?php echo $this->ticket->getTechnician()->getDisplayName(); ?></td>
+                                    <td>
+                                        <a href ="<?php echo $this->url('cobalt/default', array(
+                                            'controller' => 'user',
+                                            'action' => 'detail',
+                                            'id' => $this->ticket->getTechnician()->getId()
+                                        ))?>"><?php echo $this->ticket->getTechnician()->getDisplayName(); ?></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Priority</th>
