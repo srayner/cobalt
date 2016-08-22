@@ -23,6 +23,7 @@ class TicketForm extends HorizontalForm
              ->addDoctrineSelect('requestor', 'Requestor', $em, 'Cobalt\Entity\User', 'displayName')
              ->addTextArea('problem', 'Problem', 5)
              ->addFilteredDoctrineSelect('technician', 'Technician', $em, 'Cobalt\Entity\User', 'displayName', 'findTechnicians')
+             ->addTextArea('solution', 'Solution', 5)
              ->addButton('submit', 'Add', 'btn-primary'); 
     }
 }
