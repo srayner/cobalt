@@ -14,7 +14,7 @@ class ComputerForm extends HardwareForm
         $this->labelWidth = 4;
         $this->controlWidth = 8;
         
-        $this->addText('hostname', 'Hostname', false, true)
+        $this->addText('hostname', 'Hostname', false)
              ->addText('domain', 'Domain')
              ->addText('image', 'Image')
              ->addButton('submit', 'Add', 'btn-primary');
