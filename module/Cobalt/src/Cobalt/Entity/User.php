@@ -62,7 +62,10 @@ class User
      */
     protected $company;
     
-    /** @ORM\Column(type="string") */
+    /**
+     * @ORM\ManyToOne(targetEntity="Department", cascade={"persist"})
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
     protected $department;
     
     /** @ORM\Column(type="string") */
