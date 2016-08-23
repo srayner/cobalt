@@ -169,6 +169,48 @@ begin
   values (300, new.id, now(), 'Hardware modified.');
 end//
 
+create trigger hardware_type_history_insert after insert on hardware_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (301, new.id, now(), 'Hardware type created.');
+end//
+
+create trigger hardware_type_history_update after update on hardware_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (301, new.id, now(), 'Hardware type modified.');
+end//
+
+create trigger hardware_status_history_insert after insert on hardware_status
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (302, new.id, now(), 'Hardware status created.');
+end//
+
+create trigger hardware_status_history_update after update on hardware_status
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (302, new.id, now(), 'Hardware status modified.');
+end//
+
+create trigger hardware_manufacturer_history_insert after insert on hardware_manufacturer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (303, new.id, now(), 'Hardware manufacturer created.');
+end//
+
+create trigger hardware_manufacturer_history_update after update on hardware_manufacturer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (303, new.id, now(), 'Hardware manufacturer modified.');
+end//
+
 create trigger computer_history_insert after insert on computer
 for each row
 begin
