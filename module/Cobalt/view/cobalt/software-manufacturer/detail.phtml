@@ -67,7 +67,7 @@
             
             <!-- History tab -->
             <div role="tabpanel" class="tab-pane" id="history">
-                No history to show yet.
+                <?php echo $this->partial('application/partial/history_table.phtml', array('history' => $this->history));?>
             </div>
         </div>
     </div>

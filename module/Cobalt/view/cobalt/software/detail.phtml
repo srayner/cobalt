@@ -96,22 +96,7 @@
             
             <!-- History tab -->
             <div role="tabpanel" class="tab-pane" id="history">
-                <table class="table table-condensed table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Date & Time</th>
-                            <th>Event</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($this->history as $history): ?>
-                        <tr>
-                            <td><?php echo $history->getTime()->format('d/m/Y h:i:s');?></td>
-                            <td><?php echo $history->getEvent(); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <?php echo $this->partial('application/partial/history_table.phtml', array('history' => $this->history));?>
             </div>
             
         </div>

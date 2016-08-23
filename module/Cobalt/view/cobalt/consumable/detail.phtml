@@ -79,17 +79,7 @@
             
             <!-- History tab -->
             <div role="tabpanel" class="tab-pane" id="history">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Date & Time</th>
-                            <th>Event</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+                <?php echo $this->partial('application/partial/history_table.phtml', array('history' => $this->history));?>
             </div>
     
         </div>
