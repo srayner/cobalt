@@ -85,7 +85,7 @@ $this->inlineScript()->appendFile('/js/bootstrap/tab.js')
                                     </tr>
                                     <tr>
                                         <th>Department</th>
-                                        <td><?php echo $this->user->getDepartment(); ?></td>
+                                        <td><?php echo ($user->getDepartment()? $user->getDepartment()->getName() : ''); ?></td>
                                     </tr>
                                     <tr>
                                         <th>Job Title</th>
