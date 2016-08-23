@@ -125,8 +125,14 @@ class HardwareStatusController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $status = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(302, $status->getID());
+        
         return new ViewModel(array(
-            'status' => $status
+            'status' => $status,
+            'history' => $history
         ));
     }
     
