@@ -28,6 +28,14 @@ class DepartmentService
         return $this->entityManager->find($this->repository, $id);
     }
 
+    public function findByCompanyAndName($company, $name)
+    {
+        return $this->entityManager->getRepository($this->repository)->findOneBy(array(
+            'company' => $company,
+            'name' => $name
+        ));
+    }
+    
     public function persist($department)
     {
         $this->entityManager->persist($department);
