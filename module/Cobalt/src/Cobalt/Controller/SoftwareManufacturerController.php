@@ -126,8 +126,14 @@ class SoftwareManufacturerController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $manufacturer = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(403, $manufacturer->getId());
+        
         return new ViewModel(array(
-            'manufacturer' => $manufacturer
+            'manufacturer' => $manufacturer,
+            'history' => $history
         ));
     }
     
