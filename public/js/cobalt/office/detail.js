@@ -11,8 +11,10 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map"), {zoom: 15});
     var geocoder = new google.maps.Geocoder();
     var address = $('#address').text();
+    console.log(address);
     
     geocoder.geocode( { 'address': address}, function(results, status) {
+        console.log('geocoder returned');
         if (status === google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
             console.log('Google Lat: ' + results[0].geometry.location);
