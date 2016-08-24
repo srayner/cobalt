@@ -140,7 +140,17 @@ class ActiveDirectory {
                 
                 // Department
                 if (array_key_exists('department', $item)){
-                    $user->setDepartment($item['department'][0]);
+                    if (!$company) {
+                        $company = new Company();
+                        $company->setName('Unknown');
+                    }
+                    $department = $this->departmentService->findByCompanyAndName($company, $item['department'][0]);
+                    if (!$department) {
+                        $department = new Department();
+                        $department->setCompany($company);
+                        $department->setName($item['department'][0]);
+                    }
+                    $user->setDepartment($department);
                 }
                 
                 if (array_key_exists('title', $item)){
