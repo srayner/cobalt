@@ -211,6 +211,20 @@ begin
   values (303, new.id, now(), 'Hardware manufacturer modified.');
 end//
 
+create trigger consumable_history_insert after insert on consumable
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (304, new.id, now(), 'Consumable created.');
+end//
+
+create trigger consumable_history_update after update on consumable
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (304, new.id, now(), 'Consumable modified.');
+end//
+
 create trigger computer_history_insert after insert on computer
 for each row
 begin

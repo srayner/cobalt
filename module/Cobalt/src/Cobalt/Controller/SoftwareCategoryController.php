@@ -126,8 +126,14 @@ class SoftwareCategoryController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $category = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(402, $category->getID());
+        
         return new ViewModel(array(
-            'category' => $category
+            'category' => $category,
+            'history' => $history
         ));
     }
     

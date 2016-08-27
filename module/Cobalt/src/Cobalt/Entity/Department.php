@@ -3,6 +3,7 @@
 namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="department")
@@ -34,6 +35,16 @@ class Department
      */
     protected $company;
     
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="department")
+     */
+    protected $users;
+    
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -64,6 +75,11 @@ class Department
         return $this->company;
     }
 
+    public function getUsers()
+    {
+        return $this->users->toArray();
+    }
+    
     public function setId($id)
     {
         $this->id = $id;

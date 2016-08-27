@@ -119,8 +119,14 @@ class ConsumableController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $consumable = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(304, $consumable->getID());
+        
         return new ViewModel(array(
-            'consumable' => $consumable
+            'consumable' => $consumable,
+            'history' => $history
         ));
     }
 }

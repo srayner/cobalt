@@ -85,4 +85,46 @@ begin
   values (400, new.id, now(), 'Software modified.');
 end//
 
+create trigger software_type_history_insert after insert on software_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (401, new.id, now(), 'Software type created.');
+end//
+
+create trigger software_type_history_update after update on software_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (401, new.id, now(), 'Software type modified.');
+end//
+
+create trigger software_category_history_insert after insert on software_category
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (402, new.id, now(), 'Software category created.');
+end//
+
+create trigger software_category_history_update after update on software_category
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (402, new.id, now(), 'Software category modified.');
+end//
+
+create trigger software_manufacturer_history_insert after insert on software_manufacturer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (403, new.id, now(), 'Software manufacturer created.');
+end//
+
+create trigger software_manufacturer_history_update after update on software_manufacturer
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (403, new.id, now(), 'Software manufacturer modified.');
+end//
+
 delimiter;
