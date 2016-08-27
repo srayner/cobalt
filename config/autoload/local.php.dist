@@ -30,6 +30,15 @@ $activeDirectory = array(
     'baseDn'            => '', // eg 'DC=domain,DC=local' 
 );
 
+$mail = array(
+    'name'              => '',
+    'host'              => '',
+    'port'              => 465,
+    'ssl'               => 'ssl',
+    'username'          => '',
+    'password'          => ''
+);
+                
 $localSettings = array(
     'activity_log_path' => 'path',
     'test_log'          => 'filename',
@@ -68,6 +77,21 @@ return array(
             'baseDn'                 => $activeDirectory['baseDn'],
         ),
     ),   
+    
+    // Civ mail settings
+    'CivMail' => array(
+        'transport_options' => array(
+            'name'              => $mail['name'],
+            'host'              => $mail['host'],
+            'port'              => $mail['port'],
+            'connection_class'  => 'login',
+            'connection_config' => array(
+                'ssl'               => $mail['ssl'],
+                'username'          => $mail['username'],
+                'password'          => $mail['password'],
+            ),
+        ),
+    ),
     
     // Doctrine database connection.
     'doctrine' => array(
