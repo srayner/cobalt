@@ -65,7 +65,7 @@ Regards,
 
 The I.C.T. Department.');
 
-nsert into notification_template(id, active, name, description, mime_type, subject, content)
+insert into notification_template(id, active, name, description, mime_type, subject, content)
 values(1, false, 'requestor_new_ticket', 'Notify requestor that a new support ticket has been raised.', 'text/html',
 'Support ticket raised.',
 'Dear {{ RequesterDisplayName }},
