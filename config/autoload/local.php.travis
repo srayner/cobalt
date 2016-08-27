@@ -1,0 +1,98 @@
+<?php
+/**
+ * Local Configuration Override
+ *
+ * This configuration override file is for the travis environment-
+ */
+
+// ******************* Change these to suit your local setup *******************
+$dbParams = array(
+    'database'  => 'cobalt',
+    'username'  => 'root',
+    'password'  => '',
+    'hostname'  => 'localhost',
+);
+
+$activeDirectory = array(
+    'domain_name'       => '',
+    'domain_name_short' => '',
+    'domain_controller' => '',
+    'ldap_port'         => '389',
+    'user'              => '',
+    'password'          => '',
+    'use_start_tls'     => false,   
+    'baseDn'            => '', // eg 'DC=domain,DC=local' 
+);
+
+$localSettings = array(
+    'activity_log_path' => 'path',
+    'test_log'          => 'filename',
+    'test_hostname'     => 'hostname',
+    'web_proxy_address' => '',
+    'web_proxy_port'    => '',
+    'dell_api_key'      => '',
+    'email_address'     => '',
+    'email_name'        => '',
+);
+
+// ****************** DO NOT MAKE CHANGES BELOW THIS LINE **********************
+
+return array(
+ 
+    // Cobalt local settings.
+    'cobalt' => array (
+        'account'           => $activeDirectory['domain_name'] . '\\' . $activeDirectory['user'],
+        'password'          =>  $activeDirectory['password'],
+        'activity_log_path' => $localSettings['activity_log_path'],
+        'test_hostname'     => $localSettings['activity_log_path'],
+        'web_proxy'         => $localSettings['web_proxy_address'] . ':' . $localSettings['web_proxy_port'],
+        'dell_api_key'      => $localSettings['dell_api_key'],
+        'email' => array(
+            'email_address'     => $localSettings['email_address'],
+            'email_name'        => $localSettings['email_name'],
+        ),
+        'ldap' => array(
+            'host'                   => $activeDirectory['domain_controller'] . '.' . $activeDirectory['domain_name'],
+            'port'                   => $activeDirectory['ldap_port'],
+            'useStartTls'            => $activeDirectory['use_start_tls'],
+            'username'               => $activeDirectory['user'] . '@' . $activeDirectory['domain_name'],
+            'password'               => $activeDirectory['password'],
+            'accountDomainName'      => $activeDirectory['domain_name'],
+            'accountDomainNameShort' => $activeDirectory['domain_name_short'],
+            'baseDn'                 => $activeDirectory['baseDn'],
+        ),
+    ),   
+    
+    // Doctrine database connection.
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => $dbParams['hostname'],
+                    'port'     => '3306',
+                    'user'     => $dbParams['username'],
+                    'password' => $dbParams['password'],
+                    'dbname'   => $dbParams['database'],
+                )
+            )
+        )
+    ),
+    
+    // ZendDb database connection.
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+                return new Zend\Db\Adapter\Adapter(array(
+                    'driver'    => 'pdo',
+                    'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
+                    'database'  => $dbParams['database'],
+                    'username'  => $dbParams['username'],
+                    'password'  => $dbParams['password'],
+                    'hostname'  => $dbParams['hostname'],
+                ));
+            },
+        ),
+    ),
+                    
+);
