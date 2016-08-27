@@ -69,7 +69,7 @@ CREATE TABLE software_license(
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-delimiter//
+delimiter //
 
 create trigger software_history_insert after insert on software
 for each row
@@ -127,4 +127,4 @@ begin
   values (403, new.id, now(), 'Software manufacturer modified.');
 end//
 
-delimiter;
+delimiter ;
