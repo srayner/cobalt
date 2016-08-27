@@ -10,5 +10,15 @@ install:
   - composer install
   - mv config/autoload/local.php.travis config/autoload/local.php
   - mysql -e 'create database cobalt;'
+  - mysql cobalt < data/db_schema/mysql/domain.sql
+  - mysql cobalt < data/db_schema/mysql/software.sql
+  - mysql cobalt < data/db_schema/mysql/hardware.sql
+  - mysql cobalt < data/db_schema/mysql/organisation.sql
+  - mysql cobalt < data/db_schema/mysql/planning.sql
+  - mysql cobalt < data/db_schema/mysql/support.sql
+  - mysql cobalt < data/db_schema/mysql/email.sql
+  - mysql cobalt < data/db_schema/mysql/notification.sql
+  - mysql cobalt < data/db_schema/mysql/access.sql
+  
 script: phpunit --configuration tests/phpunit.xml
     
