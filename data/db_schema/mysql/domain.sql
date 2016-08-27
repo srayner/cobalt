@@ -52,7 +52,7 @@ CREATE TABLE domain_status (
   )
 ) ENGINE = InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-delimiter//
+delimiter //
 
 -- Triggers
 create trigger domain_history_insert after insert on domain
@@ -62,4 +62,4 @@ begin
   values (200, new.id, now(), 'Domain created.');
 end//
 
-delimiter;
+delimiter ;
