@@ -233,7 +233,7 @@ begin
   where
     id = proj_id; 
   
-end
+end//
 
 CREATE PROCEDURE project_recalc_tasks(proj_id Integer(11))
   NO SQL
