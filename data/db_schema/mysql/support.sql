@@ -83,7 +83,7 @@ CREATE TABLE ticket (
   primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-delimiter//
+delimiter //
 
 create trigger ticket_insert after insert on ticket
 for each row
@@ -99,4 +99,4 @@ begin
   values (600, new.id, now(), 'Support ticket modified.');
 end//
 
-delimiter;
+delimiter ;
