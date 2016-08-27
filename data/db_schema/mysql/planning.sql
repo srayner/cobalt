@@ -377,4 +377,18 @@ begin
    
 end//
 
+create trigger project_insert after insert on project
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (100, new.id, now(), 'Project created.');
+end//
+
+create trigger project_update after update on project
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (100, new.id, now(), 'Project modified.');
+end//
+
 delimiter ;
