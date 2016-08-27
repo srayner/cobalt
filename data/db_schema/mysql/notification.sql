@@ -66,7 +66,7 @@ Regards,
 The I.C.T. Department.');
 
 insert into notification_template(id, active, name, description, mime_type, subject, content)
-values(1, false, 'requestor_new_ticket', 'Notify requestor that a new support ticket has been raised.', 'text/html',
+values(3, false, 'requestor_new_ticket', 'Notify requestor that a new support ticket has been raised.', 'text/html',
 'Support ticket raised.',
 'Dear {{ RequesterDisplayName }},
 
@@ -90,7 +90,7 @@ Regards,
 The I.C.T. Department.');
 
 insert into notification_template(id, active, name, description, mime_type, subject, content)
-values(3, false, 'hardware_status_change', 'Notify admin that monitored hardware status has changed.', 'text/html',
+values(4, false, 'hardware_status_change', 'Notify admin that monitored hardware status has changed.', 'text/html',
 'Monitored hardware status changed',
 'Dear {{ AdminDisplayName }},
 
