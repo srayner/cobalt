@@ -6,6 +6,7 @@ use Zend\Form\Form;
 
 class AdConfigForm extends Form
 {
+    protected $compact;
     protected $labelWidth;
     protected $controlWidth;
     
@@ -13,6 +14,7 @@ class AdConfigForm extends Form
     {
         parent::__construct();
         
+        $this->compact = true;
         $this->labelWidth = 4;
         $this->controlWidth = 8;
                 

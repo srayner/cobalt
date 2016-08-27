@@ -14,27 +14,6 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
     
-    public function consoleAction()
-    {
-        $path = "\\\\srv006\\public\\logins\\";
-        $file = 'am2@URN2307.log';
-        
-        $handle = fopen($path . $file, "r");
-        if ($handle) {
-            while (($line = fgets($handle)) !== false) {
-                // process the line read.
-                $data = explode(':', $line);
-                echo $data[0] . PHP_EOL;
-                if ($data[0] == 'User Name') {
-                    echo "got user name";
-                }
-            }
-            fclose($handle);
-        } else {
-            // error opening the file.
-        }  
-    }
-    
     public function dbconfigAction()
     {
         // Create a new form.

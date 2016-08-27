@@ -40,4 +40,48 @@ class IndexControllerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
     }
+    
+    public function testHelpActionCanBeAccessed()
+    {
+        $this->routeMatch->setParam('action', 'help');
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+    }
+    
+    public function testAdConfigActionCanBeAccessed()
+    {
+        $this->routeMatch->setParam('action', 'adconfig');
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+    }
+    
+    public function testDbConfigActionCanBeAccessed()
+    {
+        $this->routeMatch->setParam('action', 'dbconfig');
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+    }
+    
+    public function testSettingsActionCanBeAccessed()
+    {
+        $this->routeMatch->setParam('action', 'settings');
+
+        $result   = $this->controller->dispatch($this->request);
+        $response = $this->controller->getResponse();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+    }
 }
