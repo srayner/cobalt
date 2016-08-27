@@ -98,7 +98,8 @@ CREATE TABLE history (
 
 -- Triggers
 
-delimiter//
+delimiter //
+
 create trigger company_history_insert after insert on company
 for each row
 begin

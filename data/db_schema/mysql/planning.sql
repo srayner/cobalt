@@ -214,6 +214,7 @@ CREATE TABLE milestone_task (
 
 --  STORED PROCEDURES 
 delimiter //
+
 CREATE PROCEDURE project_recalc(proj_id Integer(11))
   NO SQL
 begin
