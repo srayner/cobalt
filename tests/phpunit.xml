@@ -2,7 +2,7 @@
 
 <phpunit bootstrap="bootstrap.php">
     <testsuites>
-        <testsuite name="zf2tutorial">
+        <testsuite name="cobalt">
             <directory>./</directory>
         </testsuite>
     </testsuites>
