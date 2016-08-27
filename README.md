@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/srayner/cobalt.svg?branch=master)](https://travis-ci.org/srayner/cobalt)
+
 Cobalt Application
 ==================
 
