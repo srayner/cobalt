@@ -46,7 +46,11 @@
                                 </tr>
                                 <tr>
                                     <th>Status</th>
-                                    <td><?php echo $this->hardware->getStatus()->getName(); ?></td>
+                                    <td>
+                                        <div class="status" style="border-left-color: <?php echo $this->hardware->getStatus()->getColor();?>">
+                                            <?php echo $this->hardware->getStatus()->getName(); ?>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Model</th>
