@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="printer"
+ * @ORM\Table(name="printer")
  */
 class Printer extends Hardware
 {
