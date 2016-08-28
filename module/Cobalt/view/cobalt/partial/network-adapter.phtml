@@ -9,7 +9,7 @@
     <td><?php echo $adapter->getPhysicalAddress();?></td>
     <td><?php echo $adapter->getDhcpEnabled();?></td>
     <td>
-        <?php echo $adapter->getIpv4Address();?>
+        <span style="display: inline-block; width: 110px;"><?php echo $adapter->getIpv4Address();?></span>
         <?php if($adapter->getStatus() == 'alive'): ?>
         <span class="label label-success">Online</span>
         <?php else: ?>
