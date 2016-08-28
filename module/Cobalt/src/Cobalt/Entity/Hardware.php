@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table="hardware"
+ * @ORM\Table(name="hardware")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="classname", type="string")
  */
