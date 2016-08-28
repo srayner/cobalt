@@ -22,6 +22,9 @@ class HardwareStatus
     /** @ORM\Column(type="text") */
     protected $description;
     
+    /** @ORM\Column(type="string") */
+    protected $color;
+    
     public function getId()
     {
         return $this->id;
@@ -37,6 +40,11 @@ class HardwareStatus
         return $this->description;
     }
 
+    public function getColor()
+    {
+        return $this->color;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -55,5 +63,9 @@ class HardwareStatus
         return $this;
     }
 
-
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
 }

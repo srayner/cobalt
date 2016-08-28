@@ -11,6 +11,7 @@ CREATE TABLE hardware_status(
     id Integer                 NOT NULL AUTO_INCREMENT,
     name Varchar(64)           NOT NULL,
     description Text               NULL,
+    color Varchar(16)          NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
