@@ -170,8 +170,12 @@ class HorizontalForm extends Form
         return $this;
     }
     
-    protected function addFilteredDoctrineSelect($name, $label, $em, $entity, $property, $findMethod)
+    protected function addFilteredDoctrineSelect($name, $label, $em, $entity, $property, $findMethod, $criteria = null)
     {
+        $fmArray = array('name' => $findMethod);
+        if (!is_null($criteria)) {
+            $fmArray['params'] = array('criteria' => $criteria);
+        }
         $select = $this->getFormFactory()->create(array(
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'name' => $name,
@@ -180,9 +184,7 @@ class HorizontalForm extends Form
                 'target_class'   => $entity,
                 'property'       => $property,
                 'is_method'      => true,
-                'find_method' => array(
-                    'name' => $findMethod
-                ),
+                'find_method' => $fmArray
             ),
         ));
         $select->setLabel($label);
