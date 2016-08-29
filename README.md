@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/srayner/cobalt.svg?branch=master)](https://travis-ci.org/srayner/cobalt)
+[![Coverage Status](https://coveralls.io/repos/github/srayner/cobalt/badge.svg?branch=master)](https://coveralls.io/github/srayner/cobalt?branch=master)
 
 Cobalt Application
 ==================
