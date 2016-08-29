@@ -2,8 +2,9 @@
     <div class="col-md-12 title">
         <h1>Delete Hardware</h1>
         <hr>
-        <p>Are you sure you want to delete the hardware <i>'<?php echo $this->hardware->getReference(); ?>'</i> ?</p>
-        
+    </div>
+    <div class="col-md-12">
+        <p>Are you sure you want to delete the hardware <i>'<?php echo $this->hardware->getReference(); ?>'</i> ?</p>    
         <form action="<?php echo $this->url('cobalt/default', array(
             'controller' => 'hardware',
             'action' => 'delete',

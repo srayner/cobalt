@@ -2,8 +2,9 @@
     <div class="col-md-12 title">
         <h1>Delete Printer</h1>
         <hr>
-        <p>Are you sure you want to delete the printer <i>'<?php echo $this->printer->getReference(); ?>'</i> ?</p>
-        
+    </div>
+    <div class="col-md-12">
+        <p>Are you sure you want to delete the printer <i>'<?php echo $this->printer->getReference(); ?>'</i> ?</p>    
         <form action="<?php echo $this->url('cobalt/default', array(
             'controller' => 'printer',
             'action' => 'delete',

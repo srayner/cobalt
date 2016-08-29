@@ -2,8 +2,9 @@
     <div class="col-md-12 title">
         <h1>Delete Computer</h1>
         <hr>
+    </div>
+    <div class="col-md-12">
         <p>Are you sure you want to delete the computer <?php echo $this->computer->getHostname(); ?>?</p>
-        
         <form action="<?php echo $this->url('cobalt/default', array(
             'controller' => 'computer',
             'action' => 'delete',
