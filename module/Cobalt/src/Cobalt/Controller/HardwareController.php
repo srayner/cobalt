@@ -137,9 +137,13 @@ class HardwareController extends AbstractController
     
     public function summaryAction()
     {
-        $summary = $this->service->summaryByStatus();
+        $summaryByStatus       = $this->service->summaryByStatus();
+        $summaryByType         = $this->service->summaryByType();
+        $summaryByManufacturer = $this->service->summaryByManufacturer();
         return new ViewModel(array(
-            'summary' => $summary
+            'summaryByStatus'       => $summaryByStatus,
+            'summaryByType'         => $summaryByType,
+            'summaryByManufacturer' => $summaryByManufacturer
         ));
     }
     

@@ -14,7 +14,7 @@
                     <th>Count</th>
                 </tr>
             </thead>
-            <?php foreach ($this->summary as $status): ?>
+            <?php foreach ($this->summaryByStatus as $status): ?>
             <tr>
                 <td><?php echo $status['name']; ?></td>
                 <td><?php echo $status[1]; ?></td>
@@ -31,4 +31,54 @@
          
 </div>
 
+<div class="row">
+    <div class="col-md-3">
+        <table class="table table-bordered table-condensed table-cobalt">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <?php foreach ($this->summaryByType as $type): ?>
+            <tr>
+                <td><?php echo $type['name']; ?></td>
+                <td><?php echo $type[1]; ?></td>
+            </tr>
+            <?php endforeach; ?>
+            <tbody>
 
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-9">
+        <div class ='ct-chart'></div>
+    </div>
+         
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <table class="table table-bordered table-condensed table-cobalt">
+            <thead>
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <?php foreach ($this->summaryByManufacturer as $manufacturer): ?>
+            <tr>
+                <td><?php echo $manufacturer['name']; ?></td>
+                <td><?php echo $manufacturer[1]; ?></td>
+            </tr>
+            <?php endforeach; ?>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-9">
+        <div class ='ct-chart'></div>
+    </div>
+         
+</div>
