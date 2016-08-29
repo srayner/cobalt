@@ -21,4 +21,7 @@ install:
   - mysql cobalt < data/db_schema/mysql/access.sql
   
 script: phpunit --configuration tests/phpunit.xml
+
+after_success:
+  - coveralls
     
