@@ -24,6 +24,7 @@ class UserForm extends HorizontalForm
              ->addText('mobileNumber', 'Mobile Number')
              ->addDoctrineSelect('company', 'Company', $em, 'Cobalt\Entity\Company', 'name')
              ->addDoctrineSelect('office', 'Office', $em, 'Cobalt\Entity\Office', 'name')
+             ->addDoctrineSelect('department', 'Department', $em, 'Cobalt\Entity\Department', 'name')
              ->addDoctrineSelect('reportsTo', 'Reports To', $em, 'Cobalt\Entity\User', 'displayName')
              ->addButton('submit', 'Add', 'btn-primary');   
     }
