@@ -1,8 +1,16 @@
-function updateSelects(data)
+function updateOfficeSelect(data)
 {
     $("select[name='office']").find('option').remove();
     data['offices'].forEach(function(item, index){
        $("select[name='office']").append('<option value="' + item.id + '">' + item.name + '</option>');
+    });
+}
+
+function updateDepartmentSelect(data)
+{
+    $("select[name='department']").find('option').remove();
+    data['departments'].forEach(function(item, index){
+       $("select[name='department']").append('<option value="' + item.id + '">' + item.name + '</option>');
     });
 }
 
@@ -17,7 +25,12 @@ $(document).ready(function() {
         var companyId = this.options[e.target.selectedIndex].value;
         $.ajax({
             url: '/company/offices/' + companyId,
-            success: updateSelects,
+            success: updateOfficeSelect,
+            dataType: 'json'
+        });
+        $.ajax({
+            url: '/company/departments/' + companyId,
+            success: updateDepartmentSelect,
             dataType: 'json'
         });
     });
