@@ -151,6 +151,7 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'delete');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'offices');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Company', 'departments');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Office', 'add');

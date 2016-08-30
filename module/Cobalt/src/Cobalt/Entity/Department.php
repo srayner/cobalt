@@ -4,11 +4,12 @@ namespace Cobalt\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JsonSerializable;
 
 /** @ORM\Entity
   * @ORM\Table(name="department")
   */
-class Department
+class Department implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -114,5 +115,16 @@ class Department
     {
         $this->company = $company;
         return $this;
+    }
+    
+    public function jsonSerialize()
+    {
+        return array(
+            'id'         => $this->id,
+            'name'        => $this->name,
+            'description' => nl2br($this->description),
+            'phone'       => $this->phone,
+            'fax'         => $this->fax
+        );
     }
 }

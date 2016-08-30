@@ -146,6 +146,15 @@ class CompanyController extends AbstractController
         ));
     }
     
+    public function departmentsAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $company = $this->service->findById($id);
+        return new JsonModel(array(
+            'departments' => $company->getDepartments() 
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
