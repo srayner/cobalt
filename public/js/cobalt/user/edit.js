@@ -18,16 +18,24 @@ function updateDepartmentSelect(data)
 
 function updateSelects(companyId)
 {
-    $.ajax({
-        url: '/company/offices/' + companyId,
-        success: updateOfficeSelect,
-        dataType: 'json'
-    });
-    $.ajax({
-        url: '/company/departments/' + companyId,
-        success: updateDepartmentSelect,
-        dataType: 'json'
-    });
+    if (companyId === '') {
+        $("select[name='office']").find('option').remove();
+        $("select[name='office']").append('<option value>None</option>');
+        $("select[name='department']").find('option').remove();
+        $("select[name='department']").append('<option value>None</option>');
+    } else {
+    
+        $.ajax({
+            url: '/company/offices/' + companyId,
+            success: updateOfficeSelect,
+            dataType: 'json'
+        });
+        $.ajax({
+            url: '/company/departments/' + companyId,
+            success: updateDepartmentSelect,
+            dataType: 'json'
+        });
+    }
 }
 
 $(document).ready(function() {
