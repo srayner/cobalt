@@ -13,7 +13,7 @@
                     'controller' => 'department',
                     'action'     => 'edit',
                     'id'         => $this->id)));
-                $form->get('submit')->setOption('label', 'Edit');
+                $form->get('submit')->setLabel('Edit');
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);
