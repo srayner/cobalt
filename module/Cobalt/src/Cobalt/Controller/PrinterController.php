@@ -126,8 +126,14 @@ class PrinterController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $printer = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(300, $printer->getID());
+        
         return new ViewModel(array(
-            'printer' => $printer
+            'printer' => $printer,
+            'history' => $history
         ));
         
     }

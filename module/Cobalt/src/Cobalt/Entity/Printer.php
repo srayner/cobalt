@@ -37,6 +37,7 @@ class Printer extends Hardware
     
     public function __construct()
     {
+        parent::__construct();
         $this->consumables = new ArrayCollection();
     }
     
