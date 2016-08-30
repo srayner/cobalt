@@ -130,21 +130,16 @@ class UserFilter extends InputFilter
             ),
         ));
         
+        // Office
+        $this->add(array(
+            'name'       => 'office',
+            'required'   => false
+        ));
+        
         // Department
         $this->add(array(
             'name'       => 'department',
-            'required'   => false,
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'max' => 64,
-                    ),
-                ),
-            ),
-            'filters'   => array(
-                array('name' => 'StringTrim'),
-            ),
+            'required'   => false
         ));
         
         // Title

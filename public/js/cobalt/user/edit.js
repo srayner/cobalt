@@ -1,6 +1,7 @@
 function updateOfficeSelect(data)
 {
     $("select[name='office']").find('option').remove();
+    $("select[name='office']").append('<option value>None</option>');
     data['offices'].forEach(function(item, index){
        $("select[name='office']").append('<option value="' + item.id + '">' + item.name + '</option>');
     });
@@ -9,6 +10,7 @@ function updateOfficeSelect(data)
 function updateDepartmentSelect(data)
 {
     $("select[name='department']").find('option').remove();
+    $("select[name='department']").append('<option value>None</option>');
     data['departments'].forEach(function(item, index){
        $("select[name='department']").append('<option value="' + item.id + '">' + item.name + '</option>');
     });

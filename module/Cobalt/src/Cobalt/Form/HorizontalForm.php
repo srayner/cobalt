@@ -154,9 +154,11 @@ class HorizontalForm extends Form
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'name' => $name,
             'options' => array(
-                'object_manager' => $em,
-                'target_class'   => $entity,
-                'property'       => $property,
+                'object_manager'     => $em,
+                'target_class'       => $entity,
+                'property'           => $property,
+                'display_empty_item' => true,
+                'empty_item_label'   => '---',
             ),
         ));
         $select->setLabel($label);
