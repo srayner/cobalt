@@ -14,26 +14,30 @@ function updateDepartmentSelect(data)
     });
 }
 
+function updateSelects(companyId)
+{
+    $.ajax({
+        url: '/company/offices/' + companyId,
+        success: updateOfficeSelect,
+        dataType: 'json'
+    });
+    $.ajax({
+        url: '/company/departments/' + companyId,
+        success: updateDepartmentSelect,
+        dataType: 'json'
+    });
+}
+
 $(document).ready(function() {
   
-    var input = $("input[name='username']");
-    var len = input.val().length;
-    input[0].focus();
-    input[0].setSelectionRange(len, len);
+    var companyId = $("select[name='company'] option:selected").val();
+    updateSelects(companyId);
 
     $("select[name='company'").change(function(e) {
         var companyId = this.options[e.target.selectedIndex].value;
-        $.ajax({
-            url: '/company/offices/' + companyId,
-            success: updateOfficeSelect,
-            dataType: 'json'
-        });
-        $.ajax({
-            url: '/company/departments/' + companyId,
-            success: updateDepartmentSelect,
-            dataType: 'json'
-        });
+        updateSelects(companyId);
     });
+    
 
     $('form').areYouSure();
     
