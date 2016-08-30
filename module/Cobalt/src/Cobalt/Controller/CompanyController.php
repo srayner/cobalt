@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 use Zend\Session\Container;
 
 class CompanyController extends AbstractController
@@ -133,6 +134,15 @@ class CompanyController extends AbstractController
         return new ViewModel(array(
             'company' => $company,
             'history' => $history
+        ));
+    }
+    
+    public function officesAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $company = $this->service->findById($id);
+        return new JsonModel(array(
+            'offices' => $company->getOffices() 
         ));
     }
     
