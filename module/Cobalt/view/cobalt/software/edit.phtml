@@ -11,7 +11,7 @@
     <div class="col-md-6">
         <?php
             $form = $this->form;
-            $form->get('submit')->setOption('label', 'Edit');
+            $form->get('submit')->setLabel('Edit');
             $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'software', 'action' => 'edit', 'id' => $this->id)));
             $form->prepare();
 
