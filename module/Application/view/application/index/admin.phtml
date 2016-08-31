@@ -8,6 +8,37 @@
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-life-ring"></i> Support Helpdesk</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype')); ?>">Ticket Types</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus')); ?>">Ticket States</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketcategory')); ?>">Ticket Categories</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority')); ?>">Ticket Priorities</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketimpact')); ?>">Ticket Impacts</a><br>
+                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action'=>'technicians')); ?>">Support Technicians</a>
+            </div>
+        </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-users"></i> Users</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'User',
+                    'action' => 'adupdate',
+                ))?>">Update From Active Directory</a>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-book"></i> Active Directory</div>
+            <div class="panel-body">
+                <a href="<?php echo $this->url('adconfig'); ?>">Administration Settings</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-desktop"></i> Hardware</div>
             <div class="panel-body">
                 <a href="<?php echo $this->url('cobalt/default', array(
@@ -29,8 +60,7 @@
                 ))?>">Consumables</a><br>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
+    
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-floppy-o"></i> Software</div>
             <div class="panel-body">
@@ -47,52 +77,16 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-users"></i> Users</div>
-            <div class="panel-body">
-                <a href="<?php echo $this->url('cobalt/default', array(
-                    'controller' => 'User',
-                    'action' => 'adupdate',
-                ))?>">Update From Active Directory</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-book"></i> Active Directory</div>
-            <div class="panel-body">
-                <a href="<?php echo $this->url('adconfig'); ?>">Administration Settings</a>
-            </div>
-        </div>
-    </div>
     
     <div class="col-md-4">
+    
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-book"></i> Database</div>
             <div class="panel-body">
                 <a href="<?php echo $this->url('dbconfig'); ?>">Connection Settings</a>
             </div>
         </div>
-    </div>
     
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-life-ring"></i> Support Helpdesk</div>
-            <div class="panel-body">
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype')); ?>">Ticket Types</a><br>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketstatus')); ?>">Ticket States</a><br>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketcategory')); ?>">Ticket Categories</a><br>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketpriority')); ?>">Ticket Priorities</a><br>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticketimpact')); ?>">Ticket Impacts</a><br>
-                <a href="<?php echo $this->url('cobalt/default', array('controller' => 'user', 'action'=>'technicians')); ?>">Support Technicians</a>
-            </div>
-        </div>
-    </div>    
-    
-    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-bell-o"></i> Notifications</div>
             <div class="panel-body">
