@@ -74,7 +74,13 @@
             </thead>
             <?php foreach ($this->summaryByManufacturer as $manufacturer): ?>
             <tr>
-                <td><?php echo $manufacturer['name']; ?></td>
+                <td><a href="<?php echo $this->url('cobalt/default', array(
+                    'controller' => 'hardwaremanufacturer',
+                    'action' => 'detail',
+                    'id' => $manufacturer['id']
+                ));?>">
+                    <?php echo $manufacturer['name']; ?>
+                </a></td>
                 <td><?php echo $manufacturer[1]; ?></td>
             </tr>
             <?php endforeach; ?>

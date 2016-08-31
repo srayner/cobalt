@@ -33,7 +33,7 @@ class HardwareService extends AbstractEntityService
     
     public function summaryByManufacturer()
     {
-        $dql = 'SELECT m.name, COUNT(h.id) FROM Cobalt\Entity\Hardware h JOIN h.manufacturer m GROUP BY m.id';
+        $dql = 'SELECT m.id, m.name, COUNT(h.id) FROM Cobalt\Entity\Hardware h JOIN h.manufacturer m GROUP BY m.id';
         $query = $this->entityManager->createQuery($dql);
         return $query->getArrayResult();
     }
