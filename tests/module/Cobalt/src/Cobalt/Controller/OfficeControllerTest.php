@@ -23,7 +23,7 @@ class OfficeControllerTest extends PHPUnit_Framework_TestCase
         $serviceManager = $bootstrap->getServiceManager();
         $service = $serviceManager->get('Cobalt\EntityService\OfficeService');
      
-        $this->controller = new CompanyController($service);
+        $this->controller = new OfficeController($service);
         $this->request    = new Request();
         $this->routeMatch = new RouteMatch(array('controller' => 'office'));
         $this->event      = $bootstrap->getMvcEvent();
@@ -42,17 +42,7 @@ class OfficeControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
-    }
-    
-    public function testAddActionCanBeAccessed()
-    {
-        $this->routeMatch->setParam('action', 'add');
-
-        $result   = $this->controller->dispatch($this->request);
-        $response = $this->controller->getResponse();
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        $this->assertArrayHasKey('offices', $result->getVariables());
     }
 }
     

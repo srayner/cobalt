@@ -9,10 +9,10 @@ class DepartmentController extends AbstractController
 {
     public function indexAction()
     {
-        $offices = $this->service->findAll();
+        $departments = $this->service->findAll();
         
         return new ViewModel(array(
-            'offices' => $offices
+            'departments' => $departments
         ));
     }
     
