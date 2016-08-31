@@ -909,6 +909,20 @@ return array(
                         'action' => 'adconfig',
                     ),
                     
+                    // Incoming mail server settings.
+                    array(
+                        'label' => 'Incoming mail server',
+                        'controller' => 'Index',
+                        'action' => 'mailinconfig',
+                    ),
+                    
+                    // Outgoing mail server settings.
+                    array(
+                        'label' => 'Outgoing mail server',
+                        'controller' => 'Index',
+                        'action' => 'mailoutconfig',
+                    ),
+                    
                     // Users update from ad.
                     array(
                         'label' => 'Update users from Active Directory.',
