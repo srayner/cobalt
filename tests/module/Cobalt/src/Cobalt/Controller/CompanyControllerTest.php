@@ -42,6 +42,7 @@ class CompanyControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        $this->assertArrayHasKey('companies', $result->getVariables());
     }
     
     public function testAddActionCanBeAccessed()
@@ -53,6 +54,7 @@ class CompanyControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        $this->assertArrayHasKey('form', $result->getVariables());
     }
 }
     
