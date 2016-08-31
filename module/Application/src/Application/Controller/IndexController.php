@@ -100,6 +100,16 @@ class IndexController extends AbstractActionController
         ));
     }
     
+    public function mailinconfigAction()
+    {
+        
+    }
+    
+    public function mailoutconfigAction()
+    {
+        
+    }
+            
     public function helpAction()
     {
         return array();
