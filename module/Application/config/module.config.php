@@ -117,9 +117,10 @@ return array(
             'translator' => 'MvcTranslator',
         ),
         'factories' => array(
-            'navigation'               => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'Application\DbConfigForm' => 'Application\Form\DbConfigFormFactory',
-            'Application\AdConfigForm' => 'Application\Form\AdConfigFormFactory',
+            'navigation'                 => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'Application\DbConfigForm'   => 'Application\Form\DbConfigFormFactory',
+            'Application\AdConfigForm'   => 'Application\Form\AdConfigFormFactory',
+            'Application\MailServerForm' => 'Application\Form\MailServerFormFactory',
         ),
     ),
     'translator' => array(

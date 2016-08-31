@@ -102,12 +102,22 @@ class IndexController extends AbstractActionController
     
     public function mailinconfigAction()
     {
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Application\MailServerForm');
         
+        return array(
+            'form' => $form
+        );
     }
     
     public function mailoutconfigAction()
     {
+        // Create a new form.
+        $form = $this->getServiceLocator()->get('Application\MailServerForm');
         
+        return array(
+            'form' => $form
+        );
     }
             
     public function helpAction()

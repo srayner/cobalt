@@ -4,7 +4,7 @@ namespace Application\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class DbConfigFilter extends InputFilter
+class MailServerFilter extends InputFilter
 {
     public function __construct()
     {
