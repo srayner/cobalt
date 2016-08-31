@@ -94,6 +94,7 @@ class IndexControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        $this->assertArrayHasKey('form', $result->getVariables());
     }
     
     public function testMailoutconfigActionCanBeAccessed()
@@ -105,5 +106,6 @@ class IndexControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertInstanceOf('Zend\View\Model\ViewModel', $result);
+        $this->assertArrayHasKey('form', $result->getVariables());
     }
 }
