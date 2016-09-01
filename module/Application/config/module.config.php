@@ -191,6 +191,13 @@ return array(
     'navigation' => array(
         'default' => array(
             
+            // login
+            array(
+                'label' => 'Login',
+                'route' => 'login',
+                'visible' => 'false'
+            ),
+            
             // Dashboard.
             array(
                 'label' => '<i class="fa fa-area-chart"></i> Dashboard',
