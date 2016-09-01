@@ -51,6 +51,9 @@ class MilestoneController extends AbstractController
             
         }
         
+        // Adjust breadcrumb
+        $this->adjustBreadcrumb($id);
+        
         return new ViewModel(array(
             'form' => $form,
             'projectId' => $id
@@ -65,6 +68,7 @@ class MilestoneController extends AbstractController
             return $this->redirect()->toRoute('project/default', array('controller' => 'milestone', 'action'=>'add'));
 	}
         $milestone = $this->service->findById($id);
+        $project = $milestone->getProject();
         
         // Create a new form instance and bind the entity to it.
         $form = $this->getServiceLocator()->get('Project\MilestoneForm');
@@ -88,6 +92,9 @@ class MilestoneController extends AbstractController
         
         $this->storeReferer('milestone/edit');
         
+        // Adjust breadcrumb
+        $this->adjustBreadCrumb($project->getId());
+        
         return new ViewModel(array(
             'id' => $id,
             'form' => $form
@@ -98,6 +105,7 @@ class MilestoneController extends AbstractController
     {
         $id = (int)$this->params()->fromRoute('id');
         $milestone = $this->service->findById($id);
+        $project = $milestone->getProject();
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -120,6 +128,9 @@ class MilestoneController extends AbstractController
             );
          }
          
+        // Adjust breadcrumb
+        $this->adjustBreadcrumb($project->getId());
+        
         return new ViewModel(array(
             'milestone' => $milestone
         ));
@@ -191,5 +202,12 @@ class MilestoneController extends AbstractController
             $referer .= '#milestones';
         }
         return $referer;
+    }
+    
+    private function adjustBreadcrumb($projectId)
+    {
+        $navigation = $this->getServiceLocator()->get('Navigation');
+        $page = $navigation->findBy('label', 'Project Detail');
+        $page->set('params', array('id' => $projectId));
     }
 }

@@ -483,6 +483,23 @@ return array(
                         'label' => 'Project Detail',
                         'controller' => 'project',
                         'action' => 'detail',
+                        'pages' => array(
+                            array(
+                                'label' => 'Add milestone',
+                                'controller' => 'milestone',
+                                'action' => 'add'
+                            ),
+                            array(
+                                'label' => 'Edit milestone',
+                                'controller' => 'milestone',
+                                'action' => 'edit'
+                            ),
+                            array(
+                                'label' => 'Delete milestone',
+                                'controller' => 'milestone',
+                                'action' => 'delete'
+                            ),
+                        ),
                     ),
                 ),
             ),
