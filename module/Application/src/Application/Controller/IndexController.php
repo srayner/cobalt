@@ -18,14 +18,8 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\DbConfigForm');
-        $config = null;
-        if (file_exists('./config/database.config.php')) {
-            $config = include './config/database.config.php';
-        }
-        if (is_array($config)) {
-            unset($config['password']);
-            $form->setData($config);
-        }
+        $filename = 'config/database.config.php';
+        $this->loadConfig($filename, $form);
         
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -45,8 +39,7 @@ class IndexController extends AbstractActionController
                 $config->password = str_rot13($data['password']);
                 
                 // Persist to file system.
-                $writer = new Writer();
-                $writer->toFile('config/database.config.php', $config);
+                $this->saveConfig($filename, $config);
                 
             	// Redirect to admin index page
 		return $this->redirect()->toRoute('admin');
@@ -63,15 +56,8 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\AdConfigForm');
-         
-        $config = null;
-        if (file_exists('./config/activedirectory.config.php')) {
-            $config = include './config/activedirectory.config.php';
-        }
-        if (is_array($config)) {
-            unset($config['password']);
-            $form->setData($config);
-        }
+        $filename = 'config/activedirectory.config.php';
+        $this->loadConfig($filename, $form);
         
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -95,8 +81,7 @@ class IndexController extends AbstractActionController
                 $config->baseDn            = $data['baseDn'];
    
                 // Persist to file system.
-                $writer = new Writer();
-                $writer->toFile('config/activedirectory.config.php', $config);
+                $this->saveConfig($filename, $config);
                 
             	// Redirect to admin index page
 		return $this->redirect()->toRoute('admin');
@@ -113,14 +98,8 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\MailServerForm');
-        $config = null;
-        if (file_exists('./config/mailin.config.php')) {
-            $config = include './config/mailin.config.php';
-        }
-        if (is_array($config)) {
-            unset($config['password']);
-            $form->setData($config);
-        }
+        $filename = 'config/mailin.config.php';
+        $this->loadConfig($filename, $form);
         
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -142,8 +121,7 @@ class IndexController extends AbstractActionController
                 $config->password = str_rot13($data['password']);
                 
                 // Persist to file system.
-                $writer = new Writer();
-                $writer->toFile('config/mailin.config.php', $config);
+                $this->saveConfig($filename, $config);
                 
             	// Redirect to admin index page
 		return $this->redirect()->toRoute('admin');
@@ -159,14 +137,8 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\MailServerForm');
-        $config = null;
-        if (file_exists('./config/mailout.config.php')) {
-            $config = include './config/mailout.config.php';
-        }
-        if (is_array($config)) {
-            unset($config['password']);
-            $form->setData($config);
-        }
+        $filename = 'config/mailout.config.php';
+        $this->loadConfig($filename, $form);
         
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -188,8 +160,7 @@ class IndexController extends AbstractActionController
                 $config->password = str_rot13($data['password']);
                 
                 // Persist to file system.
-                $writer = new Writer();
-                $writer->toFile('config/mailout.config.php', $config);
+                $this->saveConfig($filename, $config);
                 
             	// Redirect to admin index page
 		return $this->redirect()->toRoute('admin');
@@ -211,4 +182,22 @@ class IndexController extends AbstractActionController
         return array();
     }
     
+    private function loadConfig($filename, $form)
+    {
+        $config = null;
+        if (file_exists($filename)) {
+            $config = include $filename;
+        }
+        if (is_array($config)) {
+            unset($config['password']);
+            $form->setData($config);
+        }
+    }
+    
+    private function saveConfig($filename, $config)
+    {
+        $writer = new Writer();
+        $writer->toFile($filename, $config);
+        opcache_invalidate($filename);
+    }
 }
