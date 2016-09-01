@@ -64,6 +64,15 @@ class IndexController extends AbstractActionController
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\AdConfigForm');
          
+        $config = null;
+        if (file_exists('./config/activedirectory.config.php')) {
+            $config = include './config/activedirectory.config.php';
+        }
+        if (is_array($config)) {
+            unset($config['password']);
+            $form->setData($config);
+        }
+        
         // Check if the request is a POST.
         $request = $this->getRequest();
         if ($request->isPost())
