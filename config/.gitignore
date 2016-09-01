@@ -1,2 +1,4 @@
 database.config.php
 activedirectory.config.php
+mailin.config.php
+mailout.config.php

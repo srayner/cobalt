@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('adconfig'));
+                $form->setAttribute('action', $this->url('mailoutconfig'));
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);

@@ -104,7 +104,43 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\MailServerForm');
+        $config = null;
+        if (file_exists('./config/mailin.config.php')) {
+            $config = include './config/mailin.config.php';
+        }
+        if (is_array($config)) {
+            unset($config['password']);
+            $form->setData($config);
+        }
         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+            
+            $form->setData($data);
+            if ($form->isValid())
+            {
+          	// Convert to  config object.
+            	$config = new Config(array(), true);
+                $config->name = $data['name'];
+                $config->host = $data['host'];
+                $config->port = $data['port'];
+                $config->ssl = $data['ssl'];
+                $config->username = $data['username'];
+                $config->password = str_rot13($data['password']);
+                
+                // Persist to file system.
+                $writer = new Writer();
+                $writer->toFile('config/mailin.config.php', $config);
+                
+            	// Redirect to admin index page
+		return $this->redirect()->toRoute('admin');
+            }
+        }
+            
         return array(
             'form' => $form
         );
@@ -114,7 +150,43 @@ class IndexController extends AbstractActionController
     {
         // Create a new form.
         $form = $this->getServiceLocator()->get('Application\MailServerForm');
+        $config = null;
+        if (file_exists('./config/mailout.config.php')) {
+            $config = include './config/mailout.config.php';
+        }
+        if (is_array($config)) {
+            unset($config['password']);
+            $form->setData($config);
+        }
         
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // POST, so check if valid.
+            $data = (array) $request->getPost();
+            
+            $form->setData($data);
+            if ($form->isValid())
+            {
+          	// Convert to  config object.
+            	$config = new Config(array(), true);
+                $config->name = $data['name'];
+                $config->host = $data['host'];
+                $config->port = $data['port'];
+                $config->ssl = $data['ssl'];
+                $config->username = $data['username'];
+                $config->password = str_rot13($data['password']);
+                
+                // Persist to file system.
+                $writer = new Writer();
+                $writer->toFile('config/mailout.config.php', $config);
+                
+            	// Redirect to admin index page
+		return $this->redirect()->toRoute('admin');
+            }
+        }
+            
         return array(
             'form' => $form
         );
