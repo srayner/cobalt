@@ -504,6 +504,11 @@ return array(
                                 'controller' => 'project',
                                 'action' => 'task'
                             ),
+                            array(
+                                'label' => 'Milestone Detail',
+                                'controller' => 'milestone',
+                                'action' => 'detail'
+                            ),
                         ),
                     ),
                 ),

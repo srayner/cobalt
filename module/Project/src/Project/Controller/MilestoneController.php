@@ -145,6 +145,9 @@ class MilestoneController extends AbstractController
 	}
         $milestone = $this->service->findById($id);
         
+        // Adjust breadcrumb
+        $this->adjustBreadcrumb($milestone->getProject()->getId());
+        
         return new ViewModel(array(
             'milestone' => $milestone
         ));
