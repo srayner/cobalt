@@ -505,6 +505,16 @@ return array(
                                 'action' => 'task'
                             ),
                             array(
+                                'label' => 'Edit task',
+                                'controller' => 'task',
+                                'action' => 'edit'
+                            ),
+                            array(
+                                'label' => 'Delete task',
+                                'controller' => 'task',
+                                'action' => 'delete'
+                            ),
+                            array(
                                 'label' => 'Milestone Detail',
                                 'controller' => 'milestone',
                                 'action' => 'detail',
