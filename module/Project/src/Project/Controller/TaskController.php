@@ -53,6 +53,9 @@ class TaskController extends AbstractController
             
         }
         
+        // Adjust breadcrumb
+        $this->adjustBreadcrumb($id);
+        
         return new ViewModel(array(
             'form' => $form,
             'milestoneId' => $id
@@ -183,5 +186,18 @@ class TaskController extends AbstractController
             $referer .= '#tasks';
         }
         return $referer;
+    }
+    
+    private function adjustBreadcrumb($milestoneId)
+    {
+        $em = $this->service->getEntityManager();
+        $milestone = $em->find('Project\Entity\Milestone', $milestoneId);
+        $project = $milestone->getProject();
+        
+        $navigation = $this->getServiceLocator()->get('Navigation');
+        $page = $navigation->findBy('label', 'Project Detail');
+        $page->set('params', array('id' => $project->getId()));
+        $page = $navigation->findBy('label', 'Milestone Detail');
+        $page->set('params', array('id' => $milestone->getId()));
     }
 }

@@ -507,7 +507,14 @@ return array(
                             array(
                                 'label' => 'Milestone Detail',
                                 'controller' => 'milestone',
-                                'action' => 'detail'
+                                'action' => 'detail',
+                                'pages' => array(
+                                    array(
+                                        'label' => 'Add Task',
+                                        'controller' => 'task',
+                                        'action' => 'add'
+                                    ),
+                                ),
                             ),
                         ),
                     ),
