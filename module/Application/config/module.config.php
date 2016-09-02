@@ -499,6 +499,11 @@ return array(
                                 'controller' => 'milestone',
                                 'action' => 'delete'
                             ),
+                            array(
+                                'label' => 'Add task',
+                                'controller' => 'project',
+                                'action' => 'task'
+                            ),
                         ),
                     ),
                 ),

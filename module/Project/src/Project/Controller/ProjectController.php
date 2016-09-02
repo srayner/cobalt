@@ -206,6 +206,9 @@ class ProjectController extends AbstractController
         
         $this->storeReferer('project/task');
         
+        // Adjust breadcrumb
+        $this->adjustBreadCrumb($id);
+        
         return new ViewModel(array(
             'form' => $form,
             'projectId' => $id
@@ -226,5 +229,12 @@ class ProjectController extends AbstractController
         $session = new Container('project');
         $referer = $session->referer;
         return $referer;
+    }
+    
+    private function adjustBreadcrumb($projectId)
+    {
+        $navigation = $this->getServiceLocator()->get('Navigation');
+        $page = $navigation->findBy('label', 'Project Detail');
+        $page->set('params', array('id' => $projectId));
     }
 }
