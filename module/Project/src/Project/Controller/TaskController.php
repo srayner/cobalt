@@ -91,6 +91,12 @@ class TaskController extends AbstractController
         }
         
         $this->storeReferer('task/edit');
+        if (!$task->getMilestone()) {
+            $navigation = $this->getServiceLocator()->get('Navigation');
+            $editPage = $navigation->findOneBy('label', 'Edit Task');
+            $projectPage = $navigation->findOneBy('label', 'Project Detail');
+            $editPage->setParent($projectPage);
+        }
         
         return new ViewModel(array(
             'id' => $id,

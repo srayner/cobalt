@@ -505,11 +505,6 @@ return array(
                                 'action' => 'task'
                             ),
                             array(
-                                'label' => 'Edit task',
-                                'controller' => 'task',
-                                'action' => 'edit'
-                            ),
-                            array(
                                 'label' => 'Delete task',
                                 'controller' => 'task',
                                 'action' => 'delete'
@@ -524,6 +519,12 @@ return array(
                                         'controller' => 'task',
                                         'action' => 'add'
                                     ),
+                                    array(
+                                        'label' => 'Edit Task',
+                                        'controller' => 'task',
+                                        'action' => 'edit'
+                                    ),
+                                    
                                 ),
                             ),
                         ),
