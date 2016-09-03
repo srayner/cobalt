@@ -167,6 +167,9 @@ class ProjectController extends AbstractController
         
         $this->storeReferer('project\comment');
         
+        // Adjust breadcrumb
+        $this->adjustBreadCrumb($id);
+        
         return new ViewModel(array(
             'form' => $form,
             'projectId' => $id

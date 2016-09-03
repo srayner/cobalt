@@ -526,7 +526,22 @@ return array(
                                     ),
                                 ),
                             ),
-                        ),
+                            array(
+                                'label' => 'Add comment',
+                                'controller' => 'project',
+                                'action' => 'comment'
+                            ),
+                        ),   
+                    ),
+                    array(
+                        'label' => 'Edit comment',
+                        'controller' => 'comment',
+                        'action' => 'edit'
+                    ),
+                    array(
+                        'label' => 'Delete comment',
+                        'controller' => 'comment',
+                        'action' => 'delete'
                     ),
                 ),
             ),
