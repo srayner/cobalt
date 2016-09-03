@@ -182,6 +182,9 @@ class MilestoneController extends AbstractController
         
         $this->storeReferer('milestone\comment');
         
+        $milestone = $this->service->findById($id);
+        $this->adjustBreadcrumb($milestone->getProject()->getId(), $milestone->getId());
+                
         return new ViewModel(array(
             'form' => $form,
             'milestoneId' => $id
@@ -207,10 +210,14 @@ class MilestoneController extends AbstractController
         return $referer;
     }
     
-    private function adjustBreadcrumb($projectId)
+    private function adjustBreadcrumb($projectId, $milestoneId = null)
     {
         $navigation = $this->getServiceLocator()->get('Navigation');
-        $page = $navigation->findBy('label', 'Project Detail');
-        $page->set('params', array('id' => $projectId));
+        $projectPage = $navigation->findBy('label', 'Project Detail');
+        $projectPage->set('params', array('id' => $projectId));
+        if (!is_null($milestoneId)) {
+            $milestonePage = $navigation->findBy('label', 'Milestone Detail');
+            $milestonePage->set('params', array('id' => $milestoneId));
+        }
     }
 }

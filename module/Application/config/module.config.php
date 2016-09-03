@@ -524,6 +524,11 @@ return array(
                                         'controller' => 'task',
                                         'action' => 'delete'
                                     ),
+                                    array(
+                                        'label' => 'Add comment',
+                                        'controller' => 'milestone',
+                                        'action' => 'comment'
+                                    ),
                                 ),
                             ),
                             array(
