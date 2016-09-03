@@ -101,6 +101,11 @@ class task
         return $this->actualHours;
     }
 
+    public function getProject()
+    {
+        return $this->project->first();
+    }
+    
     public function getMilestone()
     {
         return $this->milestone->first();
