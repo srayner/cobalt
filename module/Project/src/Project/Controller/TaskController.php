@@ -92,18 +92,7 @@ class TaskController extends AbstractController
         
         $this->storeReferer('task/edit');
         
-        $milestone = $task->getMilestone();
-        $navigation = $this->getServiceLocator()->get('Navigation');
-        $projectPage = $navigation->findOneBy('label', 'Project Detail');
-        if (!$milestone) {
-            $editPage = $navigation->findOneBy('label', 'Edit Task');
-            $projectPage->set('params', array('id' => $task->getProject()->getId()));
-            $editPage->setParent($projectPage);
-        } else {
-            $milestonePage = $navigation->findOneBy('label', 'Milestone Detail');
-            $milestonePage->set('params', array('id' => $milestone->getId()));
-            $projectPage->set('params', array('id' => $milestone->getProject()->getId()));
-        }
+        $this->fixBreadcrumb($task);
         
         return new ViewModel(array(
             'id' => $id,
@@ -130,6 +119,8 @@ class TaskController extends AbstractController
         }
         
         $this->storeReferer('task/delete');
+        
+        $this->fixBreadcrumb($task);
         
         return new ViewModel(array(
             'task' => $task
@@ -212,5 +203,22 @@ class TaskController extends AbstractController
         $page->set('params', array('id' => $project->getId()));
         $page = $navigation->findBy('label', 'Milestone Detail');
         $page->set('params', array('id' => $milestone->getId()));
+    }
+    
+    private function fixBreadcrumb($task)
+    {
+        $milestone = $task->getMilestone();
+        $navigation = $this->getServiceLocator()->get('Navigation');
+        $projectPage = $navigation->findOneBy('label', 'Project Detail');
+        if (!$milestone) {
+            $editPage = $navigation->findOneBy('label', 'Edit Task');
+            $projectPage->set('params', array('id' => $task->getProject()->getId()));
+            $editPage->setParent($projectPage);
+        } else {
+            $milestonePage = $navigation->findOneBy('label', 'Milestone Detail');
+            $milestonePage->set('params', array('id' => $milestone->getId()));
+            $projectPage->set('params', array('id' => $milestone->getProject()->getId()));
+        }
+        
     }
 }
