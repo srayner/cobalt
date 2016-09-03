@@ -92,7 +92,7 @@ class TaskController extends AbstractController
         
         $this->storeReferer('task/edit');
         
-        $this->fixBreadcrumb($task);
+        $this->fixBreadcrumb($task, 'Edit Task');
         
         return new ViewModel(array(
             'id' => $id,
@@ -120,7 +120,7 @@ class TaskController extends AbstractController
         
         $this->storeReferer('task/delete');
         
-        $this->fixBreadcrumb($task);
+        $this->fixBreadcrumb($task, 'Delete Task');
         
         return new ViewModel(array(
             'task' => $task
@@ -205,13 +205,13 @@ class TaskController extends AbstractController
         $page->set('params', array('id' => $milestone->getId()));
     }
     
-    private function fixBreadcrumb($task)
+    private function fixBreadcrumb($task, $editPageLabel)
     {
         $milestone = $task->getMilestone();
         $navigation = $this->getServiceLocator()->get('Navigation');
         $projectPage = $navigation->findOneBy('label', 'Project Detail');
         if (!$milestone) {
-            $editPage = $navigation->findOneBy('label', 'Edit Task');
+            $editPage = $navigation->findOneBy('label', $editPageLabel);
             $projectPage->set('params', array('id' => $task->getProject()->getId()));
             $editPage->setParent($projectPage);
         } else {

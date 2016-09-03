@@ -62,6 +62,7 @@ class task
     
     public function __construct()
     {
+        $this->project = new ArrayCollection();
         $this->milestone = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
