@@ -123,8 +123,14 @@ class TicketPriorityController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $priority = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(604, $priority->getID());
+        
         return new ViewModel(array(
-            'priority' => $priority
+            'priority' => $priority,
+            'history' => $history
         ));    
     }
     
