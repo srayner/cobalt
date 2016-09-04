@@ -123,8 +123,14 @@ class TicketImpactController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $impact = $this->service->findById($id);
+        
+        // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(605, $impact->getID());
+        
         return new ViewModel(array(
-            'impact' => $impact
+            'impact' => $impact,
+            'history' => $history
         ));    
     }
     
