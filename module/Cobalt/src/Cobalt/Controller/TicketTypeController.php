@@ -124,8 +124,14 @@ class TicketTypeController extends AbstractController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $type = $this->service->findById($id);
+        
+         // Get this history for this object.
+        $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
+        $history = $historyService->find(601, $type->getID());
+        
         return new ViewModel(array(
-            'type' => $type
+            'type' => $type,
+            'history' => $history
         ));    
     }
     

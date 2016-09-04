@@ -136,7 +136,7 @@ class TicketController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         $ticket = $this->service->findById($id); 
         
-         // Get this history for this object.
+        // Get this history for this object.
         $historyService = $this->getServiceLocator()->get('Cobalt\HistoryService');
         $history = $historyService->find(600, $ticket->getID());
         
