@@ -99,4 +99,74 @@ begin
   values (600, new.id, now(), 'Support ticket modified.');
 end//
 
+create trigger ticket_type_insert after insert on ticket_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (601, new.id, now(), 'Support ticket type created.');
+end//
+
+create trigger ticket_type_update after update on ticket_type
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (601, new.id, now(), 'Support ticket type modified.');
+end//
+
+create trigger ticket_status_insert after insert on ticket_status
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (602, new.id, now(), 'Support ticket status created.');
+end//
+
+create trigger ticket_status_update after update on ticket_status
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (602, new.id, now(), 'Support ticket status modified.');
+end//
+
+create trigger ticket_category_insert after insert on ticket_category
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (603, new.id, now(), 'Support ticket category created.');
+end//
+
+create trigger ticket_category_update after update on ticket_category
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (603, new.id, now(), 'Support ticket category modified.');
+end//
+
+create trigger ticket_priority_insert after insert on ticket_priority
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (604, new.id, now(), 'Support ticket priority created.');
+end//
+
+create trigger ticket_priority_update after update on ticket_priority
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (604, new.id, now(), 'Support ticket priority modified.');
+end//
+
+create trigger ticket_impact_insert after insert on ticket_impact
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (605, new.id, now(), 'Support ticket impact created.');
+end//
+
+create trigger ticket_impact_update after update on ticket_impact
+for each row
+begin
+  insert into history (table_id, row_id, date_time, what)
+  values (605, new.id, now(), 'Support ticket impact modified.');
+end//
+
 delimiter ;
