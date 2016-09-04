@@ -176,6 +176,7 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'addrole');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'adupdate');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'find');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'addhardware');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\User', 'removehardware');

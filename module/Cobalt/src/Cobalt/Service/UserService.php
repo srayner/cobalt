@@ -35,6 +35,11 @@ class UserService implements EventManagerAwareInterface
         return $this->entityManager->find($this->repository, $id);
     }
     
+    public function search($search)
+    {
+        return $this->entityManager->getRepository($this->repository)->searchName($search);
+    }
+    
     public function findBySamAccountName($samAccountName)
     {
         return $this->entityManager->getRepository($this->repository)

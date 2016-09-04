@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /** @ORM\Entity(repositoryClass="Cobalt\Repository\User")
   * @ORM\Table(name="user")
   */
-class User
+class User implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -354,5 +354,17 @@ class User
     {
         $this->reportsTo = $user;
         return $this;
+    }
+    
+    public function jsonSerialize()
+    {
+        return array(
+            'id'              => $this->id,
+            'displayName'     => $this->displayName,
+            'title'           => $this->title,
+            'telephoneNumber' => $this->telephoneNumber,
+            'emailAddress'    => $this->emailAddress,
+            'department'      => $this->getDepartment() ? $this->getDepartment()->getName() : null
+        );
     }
 }

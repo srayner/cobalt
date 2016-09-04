@@ -3,6 +3,7 @@
 namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 use Cobalt\Entity\Role;
 
 class UserController extends AbstractController
@@ -317,5 +318,14 @@ class UserController extends AbstractController
         return array(
             'users' => $this->service->findTechnicians()
         );   
+    }
+    
+    public function findAction()
+    {
+        $search = '%' . $this->params()->fromRoute('id', '') . '%';
+        $users = $this->service->search($search);
+        return new JsonModel(array(
+            'users' => $users 
+        ));
     }
 }
