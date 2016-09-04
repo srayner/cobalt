@@ -130,8 +130,12 @@ class TaskController extends AbstractController
     public function detailAction()
     {
         $id = (int)$this->params()->fromRoute('id');
+        $task = $this->service->findById($id);
+        
+        $this->fixBreadcrumb($task, 'Task Detail');
+         
         return new ViewModel(array(
-            'task' => $this->service->findById($id)
+            'task' => $task
         ));
     }
     
