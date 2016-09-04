@@ -28,7 +28,7 @@
                             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'edit', 'id' => $type->getId()));?>"><i class="fa fa-edit"></i></a>
                             <a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'delete', 'id' => $type->getId()));?>"><i class="fa fa-remove"></i></a>
                         </th>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'ticket-type', 'action' => 'detail', 'id' => $type->getId()));?>">
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'tickettype', 'action' => 'detail', 'id' => $type->getId()));?>">
                             <?php echo $type->getName();?></a></td>
                         <td><?php echo nl2br($type->getDescription()); ?></td>
                     </tr>
