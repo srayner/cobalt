@@ -1024,6 +1024,13 @@ return array(
 
                 ),
             ),
+            // Help
+            array(
+                'label' => '<i class="fa fa-info-circle"></i> Help',
+                'route' => 'help',
+                'action' => 'help',
+                'visible' => 'false'
+            ),
         ),
     ),
     
