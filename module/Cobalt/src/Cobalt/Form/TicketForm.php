@@ -20,7 +20,7 @@ class TicketForm extends HorizontalForm
              ->addDoctrineSelect('priority', 'Priority', $em, 'Cobalt\Entity\TicketPriority', 'name')
              ->addDoctrineSelect('impact', 'Impact', $em, 'Cobalt\Entity\TicketImpact', 'name')
              ->addDoctrineSelect('category', 'Category', $em, 'Cobalt\Entity\TicketCategory', 'name')
-             ->addDoctrineSelect('requestor', 'Requestor', $em, 'Cobalt\Entity\User', 'displayName')
+             ->addText('requestor', 'Requestor')
              ->addTextArea('problem', 'Problem', 5)
              ->addFilteredDoctrineSelect('technician', 'Technician', $em, 'Cobalt\Entity\User', 'displayName', 'findTechnicians')
              ->addTextArea('solution', 'Solution', 5)
