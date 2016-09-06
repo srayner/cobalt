@@ -441,6 +441,11 @@ return array(
                         'controller' => 'hardware',
                         'action' => 'detail',
                     ),
+                    array(
+                        'label' => 'Hardware Summary',
+                        'controller' => 'hardware',
+                        'action' => 'summary',
+                    ),
                 ),
             ),
             
@@ -469,6 +474,11 @@ return array(
                         'label' => 'Detail',
                         'controller' => 'software',
                         'action' => 'detail',
+                    ),
+                    array(
+                        'label' => 'Software Summary',
+                        'controller' => 'software',
+                        'action' => 'summary',
                     ),
                 ),
             ),
