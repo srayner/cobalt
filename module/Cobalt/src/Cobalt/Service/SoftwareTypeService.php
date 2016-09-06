@@ -34,5 +34,4 @@ class SoftwareTypeService
         $this->entityManager->remove($type);
         $this->entityManager->flush(); 
     }
-
 }

@@ -132,6 +132,18 @@ class SoftwareController extends AbstractController
         ));
     }
     
+    public function summaryAction()
+    {
+        $summaryByType         = $this->service->summaryByType();
+        $summaryByCategory     = $this->service->summaryByCategory();
+        $summaryByManufacturer = $this->service->summaryByManufacturer();
+        return new ViewModel(array(
+            'summaryByType'         => $summaryByType,
+            'summaryByCategory'     => $summaryByCategory,
+            'summaryByManufacturer' => $summaryByManufacturer
+        ));
+    }
+    
     private function storeReferer($except)
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
