@@ -55,7 +55,9 @@
                                 </tr>
                                 <tr>
                                     <th>Website</th>
-                                    <td><?php echo nl2br($this->manufacturer->getWebsiteUrl()); ?></td>
+                                    <td><a href="<?php echo $this->manufacturer->getWebsiteUrl();?>">
+                                        <?php echo nl2br($this->manufacturer->getWebsiteUrl()); ?>
+                                    </a></td>
                                 </tr>
                             </tbody>
                         </table>
