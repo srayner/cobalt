@@ -4,6 +4,7 @@ namespace Cobalt\Controller;
 
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\Session\Container;
 use Cobalt\Entity\Role;
 
 class UserController extends AbstractController
@@ -136,13 +137,21 @@ class UserController extends AbstractController
             // Only perform delete if value posted was 'Yes'.
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
+                
+                // Remove user.
                 $this->service->remove($user);
+                
+                // Redirect to list of users.
+                return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
             }
 
-            // Redirect to list of users
-            return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
-         }
-         
+            // Redirect back to original referer.
+            return $this->redirect()->toUrl($this->retrieveReferer());
+            
+        }
+        
+        $this->storeReferer('user/delete');
+        
         return new ViewModel(array(
             'user' => $user
         ));
@@ -327,5 +336,21 @@ class UserController extends AbstractController
         return new JsonModel(array(
             'users' => $users 
         ));
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('user');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('user');
+        $referer = $session->referer;
+        return $referer;
     }
 }
