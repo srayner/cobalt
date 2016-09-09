@@ -14,8 +14,8 @@
                     <a href="<?php echo $this->url('faq/default', array('controller' => 'index', 'action' => 'edit', 'id' => $question->getId())); ?>"><i class="fa fa-edit"></i></a>
                     <a href="<?php echo $this->url('faq/default', array('controller' => 'index', 'action' => 'delete', 'id' => $question->getId())); ?>"><i class="fa fa-remove"></i></a>
                 </td>
-                <td width="25"><h4>Q.</h4></td>
-                <td><h4><?php echo $question->getQuestion(); ?></h4></td>
+                <td width="25"><h4 class="text-primary">Q.</h4></td>
+                <td><h4 class="text-primary"><?php echo $question->getQuestion(); ?></h4></td>
             </tr>
             <tr>
                 <td></td>
