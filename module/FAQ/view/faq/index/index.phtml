@@ -7,13 +7,19 @@
     </div>
     <div class="col-md-12">
         <?php foreach ($this->questions as $question): ?>
-        <h4><?php echo $question->getQuestion(); ?></h4>
+        
         <table>
             <tr>
-                <td valign="top">
+                <td width="40">
                     <a href="<?php echo $this->url('faq/default', array('controller' => 'index', 'action' => 'edit', 'id' => $question->getId())); ?>"><i class="fa fa-edit"></i></a>
                     <a href="<?php echo $this->url('faq/default', array('controller' => 'index', 'action' => 'delete', 'id' => $question->getId())); ?>"><i class="fa fa-remove"></i></a>
                 </td>
+                <td width="25"><h4>Q.</h4></td>
+                <td><h4><?php echo $question->getQuestion(); ?></h4></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td valign="top">A.</td>
                 <td>
                     <p><?php echo nl2br($question->getAnswer()); ?></p>
                 </td>
