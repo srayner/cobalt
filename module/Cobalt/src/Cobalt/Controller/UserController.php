@@ -109,11 +109,13 @@ class UserController extends AbstractController
                 // Persist to database.
                 $this->service->persist($user);
 
-                // Redirect to list of users
-                return $this->redirect()->toRoute('cobalt/default', array('controller' => 'user'));
+                // Redirect back to original referer.
+                return $this->redirect()->toUrl($this->retrieveReferer());
             }
         }
 		
+        $this->storeReferer('user/delete');
+        
 	// Render (or re-render) the form.
 	return new ViewModel(array(
             'id' => $id,
