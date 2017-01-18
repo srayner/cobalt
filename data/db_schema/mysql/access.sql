@@ -230,7 +230,9 @@ insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Con
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Software', 'detail');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Software', 'summary');
 
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Softwarelicense', 'add');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Softwarelicense', 'edit');
+insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Softwarelicense', 'delete');
 
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Domain', 'index');
 insert into access_rule(role, resource, privilege) values ('admin', 'Cobalt\\Controller\\Domain', 'add');
