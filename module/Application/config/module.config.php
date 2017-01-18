@@ -480,6 +480,11 @@ return array(
                         'controller' => 'software',
                         'action' => 'summary',
                     ),
+                    array(
+                        'label' => 'Edit Software License',
+                        'controller' => 'softwarelicense',
+                        'action' => 'edit',
+                    ),
                 ),
             ),
             
