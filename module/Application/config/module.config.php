@@ -481,9 +481,19 @@ return array(
                         'action' => 'summary',
                     ),
                     array(
+                        'label' => 'Add Software License',
+                        'controller' => 'softwarelicense',
+                        'action' => 'add',
+                    ),
+                    array(
                         'label' => 'Edit Software License',
                         'controller' => 'softwarelicense',
                         'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete Software License',
+                        'controller' => 'softwarelicense',
+                        'action' => 'delete',
                     ),
                 ),
             ),
