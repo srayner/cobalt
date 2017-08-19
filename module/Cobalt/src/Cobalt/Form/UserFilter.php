@@ -159,5 +159,10 @@ class UserFilter extends InputFilter
             ),
         ));
         
+        // Reports to
+        $this->add(array(
+            'name'       => 'reportsTo',
+            'required'   => false
+        ));
     }
 }
