@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  webserver:
+    build: ./docker/webserver
+    image: cobalt_web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+    links:
+      - db
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/db:/var/lib/mysql
+      - ./data/db_schema/mysql:/db_schema
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=cobalt
+      - MYSQL_USER=cobalt
+      - MYSQL_PASSWORD=cobalt_pwd
+
+
