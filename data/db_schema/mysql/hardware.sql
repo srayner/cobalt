@@ -111,7 +111,7 @@ CREATE TABLE computer (
   domain          NVarChar(128),
   bios_version    NVarChar(32),
   system_type     NVarChar(32),
-  modified        Timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  modified        Timestamp NULL,
   os_name         NVarChar(128),
   os_version      NVarChar(32),
   os_build        NVarChar(16),
