@@ -17,6 +17,16 @@ return array(
         'profile_link' => array(
             'class' => 'btn btn-default'
         ),
+        'persistance' => array(
+            'type' => 'dbtable',
+            'table' => 'user'
+        ),
+        'adapter' => array(
+            'type'             => 'dbtable',
+            'table'            => 'user',
+            'identifier_field' => 'username',
+            'credential_field' => 'password'
+        ),
     ),
     
     'CivAccess' => array(
