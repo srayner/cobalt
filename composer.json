@@ -18,6 +18,7 @@
         "srayner/civuser":"dev-master",
         "srayner/civmail":"dev-master",
         "neilime/zf2-twb-bundle": "^2.6",
+        "mso/idna-convert": "~0.9",
         "phpwhois/phpwhois": "dev-master",
         "twig/twig": "~1.0",
         "srayner/civaccess": "dev-master"
