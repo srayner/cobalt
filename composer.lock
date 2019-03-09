@@ -691,12 +691,12 @@
             "version": "v2.5.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "c78afd51721804f4f76ff30d9b6f6159eb046161"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c78afd51721804f4f76ff30d9b6f6159eb046161",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/c78afd51721804f4f76ff30d9b6f6159eb046161",
                 "reference": "c78afd51721804f4f76ff30d9b6f6159eb046161",
                 "shasum": ""
             },
@@ -767,12 +767,12 @@
             "version": "v0.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phlylabs/idna-convert.git",
+                "url": "https://github.com/algo26-matthias/idna-convert.git",
                 "reference": "0a0a09e460e63739d82c3f0c3f0e5555567a6be3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phlylabs/idna-convert/zipball/0a0a09e460e63739d82c3f0c3f0e5555567a6be3",
+                "url": "https://api.github.com/repos/algo26-matthias/idna-convert/zipball/0a0a09e460e63739d82c3f0c3f0e5555567a6be3",
                 "reference": "0a0a09e460e63739d82c3f0c3f0e5555567a6be3",
                 "shasum": ""
             },
@@ -810,6 +810,7 @@
                 "idna",
                 "php"
             ],
+            "abandoned": "algo26-matthias/idna-convert",
             "time": "2016-01-06T21:05:46+00:00"
         },
         {
@@ -1522,6 +1523,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
@@ -2251,12 +2253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/srayner/CivUser.git",
-                "reference": "1f5be064836d0991e15a23fa6da6a98e31415d9f"
+                "reference": "6bf866a586a7f51f4ce1a6f5deac299397d48e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/srayner/CivUser/zipball/1f5be064836d0991e15a23fa6da6a98e31415d9f",
-                "reference": "1f5be064836d0991e15a23fa6da6a98e31415d9f",
+                "url": "https://api.github.com/repos/srayner/CivUser/zipball/6bf866a586a7f51f4ce1a6f5deac299397d48e9a",
+                "reference": "6bf866a586a7f51f4ce1a6f5deac299397d48e9a",
                 "shasum": ""
             },
             "require": {
@@ -2293,7 +2295,7 @@
                 "user",
                 "zf2"
             ],
-            "time": "2016-08-27T15:44:15+00:00"
+            "time": "2019-03-09T11:47:04+00:00"
         },
         {
             "name": "symfony/console",
@@ -5251,6 +5253,7 @@
                 "version",
                 "zf2"
             ],
+            "abandoned": "ocramius/package-versions",
             "time": "2015-06-04T15:41:05+00:00"
         },
         {
