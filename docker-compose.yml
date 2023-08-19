@@ -1,28 +1,37 @@
-version: '2'
+version: "2"
 
 services:
   webserver:
     build: ./docker/webserver
     image: cobalt_web
-    ports:
-      - "80:80"
-      - "443:443"
+    container_name: cobalt
     volumes:
       - .:/var/www/html
+    networks:
+      - traefik_default
+    labels:
+      - "traefix.enable=true"
+      - "traefik.http.routers.cobalt.entrypoints=web"
+      - "traefik.http.routers.cobalt.rule=Host(`cobalt.docker.localhost`)"
     links:
       - db
 
   db:
     image: mysql:5.7
+    container_name: cobalt-db
     ports:
-      - "3306:3306"
+      - "33061:3306"
     volumes:
       - ./data/db:/var/lib/mysql
       - ./data/db_schema/mysql:/db_schema
+    networks:
+      - traefik_default
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=cobalt
       - MYSQL_USER=cobalt
       - MYSQL_PASSWORD=cobalt_pwd
 
-
+networks:
+  traefik_default:
+    external: true
