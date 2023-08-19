@@ -5,7 +5,7 @@
         <p>Are you sure you want to delete the hardware manufacturer <?php echo $this->manufacturer->getName(); ?>?</p>
         
         <form action="<?php echo $this->url('cobalt/default', array(
-            'controller' => 'hardwaremanufacturer',
+            'controller' => 'hardware-manufacturer',
             'action' => 'delete',
             'id' => $this->manufacturer->getId()
         )); ?>" method="post">

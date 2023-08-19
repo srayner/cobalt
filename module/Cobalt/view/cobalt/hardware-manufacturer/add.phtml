@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <?php
                 $form = $this->form;
-                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'add')));
+                $form->setAttribute('action', $this->url('cobalt/default', array('controller' => 'hardware-manufacturer', 'action' => 'add')));
                 $form->prepare();
                 echo $this->form()->openTag($form);
                 echo $this->form($form);

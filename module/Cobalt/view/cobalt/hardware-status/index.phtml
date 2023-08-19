@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Hardware Statuses</h1>
-            <a class="btn btn-sm btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'add'));?>">New Status</a>
+            <a class="btn btn-sm btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-status', 'action' => 'add'));?>">New Status</a>
             <hr>
         </div>
         <div class="col-md-12">
@@ -24,10 +24,10 @@
                     <?php foreach($this->statuses as $status): ?> 
                     <tr>
                         <td style="width: 1%;" nowrap>
-                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'edit', 'id' => $status->getId()));?>"><i class="fa fa-edit"></i></a>
-                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'delete', 'id' => $status->getId()));?>"><i class="fa fa-remove"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-status', 'action' => 'edit', 'id' => $status->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-status', 'action' => 'delete', 'id' => $status->getId()));?>"><i class="fa fa-remove"></i></a>
                         </td>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwarestatus', 'action' => 'detail', 'id' => $status->getId()));?>">
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-status', 'action' => 'detail', 'id' => $status->getId()));?>">
                             <?php echo $status->getName();?></a></td>
                         <td><?php echo nl2br($status->getDescription());?></td>
                     </tr>

@@ -40,7 +40,7 @@ class HardwareTypeController extends AbstractController
                 
             	// Redirect to list of types
 		return $this->redirect()->toRoute('cobalt/default', array(
-		    'controller' => 'hardwaretype',
+		    'controller' => 'hardware-type',
                     'action'     => 'index'
 		));
             }
@@ -58,7 +58,7 @@ class HardwareTypeController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('cobalt/default', array(
-                 'controller' => 'hardwaretype',
+                 'controller' => 'hardware-type',
                  'action' => 'add'
              ));
         }
@@ -107,7 +107,7 @@ class HardwareTypeController extends AbstractController
             
                 // Redirect to domain index
                 return $this->redirect()->toRoute('cobalt/default',
-                    array('controller' => 'hardwaretype'));
+                    array('controller' => 'hardware-type'));
             }
             
             // Redirect back to original referer
@@ -140,14 +140,14 @@ class HardwareTypeController extends AbstractController
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
         if (strpos($referer, $except) === false) {
-            $session = new Container('hardwaretype');
+            $session = new Container('hardware-type');
             $session->referer = $referer;
         }
     }
     
     private function retrieveReferer()
     {
-        $session = new Container('hardwaretype');
+        $session = new Container('hardware-type');
         $referer = $session->referer;
         return $referer;
     }

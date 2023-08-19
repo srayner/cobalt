@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col col-md-12 title">
             <h1>Hardware Manufacturers</h1>
-            <a class="btn btn-sm btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'add'));?>">New Manufacturer</a>
+            <a class="btn btn-sm btn-success pull-right" href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-manufacturer', 'action' => 'add'));?>">New Manufacturer</a>
             <hr>
         </div>
         <div class="col-md-12">
@@ -26,10 +26,10 @@
                     <?php foreach($this->manufacturers as $manufacturer): ?> 
                     <tr>
                         <td style="width: 1%;" nowrap>
-                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>"><i class="fa fa-edit"></i></a>
-                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'delete', 'id' => $manufacturer->getId()));?>"><i class="fa fa-remove"</a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-manufacturer', 'action' => 'edit', 'id' => $manufacturer->getId()));?>"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-manufacturer', 'action' => 'delete', 'id' => $manufacturer->getId()));?>"><i class="fa fa-remove"</a>
                         </td>
-                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardwaremanufacturer', 'action' => 'detail', 'id' => $manufacturer->getId()));?>">
+                        <td><a href="<?php echo $this->url('cobalt/default', array('controller' => 'hardware-manufacturer', 'action' => 'detail', 'id' => $manufacturer->getId()));?>">
                             <?php echo $manufacturer->getName();?></a></td>
                         <td><?php echo nl2br($manufacturer->getAddress());?></td>
                         <td><?php echo $manufacturer->getEmail();?></td>

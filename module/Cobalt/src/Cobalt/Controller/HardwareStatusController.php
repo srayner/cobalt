@@ -40,7 +40,7 @@ class HardwareStatusController extends AbstractController
                 
             	// Redirect to list of statuses
 		return $this->redirect()->toRoute('cobalt/default', array(
-		    'controller' => 'hardwarestatus',
+		    'controller' => 'hardware-status',
                     'action'     => 'index'
 		));
             }
@@ -58,7 +58,7 @@ class HardwareStatusController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('cobalt/default', array(
-                 'controller' => 'hardwarestatus',
+                 'controller' => 'hardware-status',
                  'action' => 'add'
              ));
         }
@@ -107,7 +107,7 @@ class HardwareStatusController extends AbstractController
             
                 // Redirect to status index
                 return $this->redirect()->toRoute('cobalt/default',
-                    array('controller' => 'hardwarestatus'));
+                    array('controller' => 'hardware-status'));
             }
             
             // Redirect back to original referer
@@ -140,14 +140,14 @@ class HardwareStatusController extends AbstractController
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
         if (strpos($referer, $except) === false) {
-            $session = new Container('hardwarestatus');
+            $session = new Container('hardware-status');
             $session->referer = $referer;
         }
     }
     
     private function retrieveReferer()
     {
-        $session = new Container('hardwarestatus');
+        $session = new Container('hardware-status');
         $referer = $session->referer;
         return $referer;
     }

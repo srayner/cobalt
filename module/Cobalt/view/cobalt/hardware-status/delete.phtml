@@ -5,7 +5,7 @@
         <p>Are you sure you want to delete the hardware status <?php echo $this->status->getName(); ?>?</p>
         
         <form action="<?php echo $this->url('cobalt/default', array(
-            'controller' => 'hardwarestatus',
+            'controller' => 'hardware-status',
             'action' => 'delete',
             'id' => $this->status->getId()
         )); ?>" method="post">

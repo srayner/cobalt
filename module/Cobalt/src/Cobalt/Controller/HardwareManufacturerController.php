@@ -40,7 +40,7 @@ class HardwareManufacturerController extends AbstractController
                 
             	// Redirect to list of manufacturers
 		return $this->redirect()->toRoute('cobalt/default', array(
-		    'controller' => 'hardwaremanufacturer',
+		    'controller' => 'hardware-manufacturer',
                     'action'     => 'index'
 		));
             }
@@ -58,7 +58,7 @@ class HardwareManufacturerController extends AbstractController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('cobalt/default', array(
-                 'controller' => 'hardwaremanufacturer',
+                 'controller' => 'hardware-manufacturer',
                  'action' => 'add'
              ));
         }
@@ -107,7 +107,7 @@ class HardwareManufacturerController extends AbstractController
             
                 // Redirect to manufacturer index
                 return $this->redirect()->toRoute('cobalt/default',
-                    array('controller' => 'hardwaremanufacturer'));
+                    array('controller' => 'hardware-manufacturer'));
             }
             
             // Redirect back to original referer
@@ -140,14 +140,14 @@ class HardwareManufacturerController extends AbstractController
     {
         $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
         if (strpos($referer, $except) === false) {
-            $session = new Container('hardwaremanufacturer');
+            $session = new Container('hardware-manufacturer');
             $session->referer = $referer;
         }
     }
     
     private function retrieveReferer()
     {
-        $session = new Container('hardwaremanufacturer');
+        $session = new Container('hardware-manufacturer');
         $referer = $session->referer;
         return $referer;
     }

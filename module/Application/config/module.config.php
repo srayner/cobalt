@@ -673,27 +673,27 @@ return array(
                     // Hardware types.
                     array(
                         'label' => 'Hardware Types',
-                        'controller' => 'hardwaretype',
+                        'controller' => 'hardware-type',
                         'action' => 'index',
                         'pages' => array(
                             array(
                                 'label' => 'Add',
-                                'controller' => 'hardwaretype',
+                                'controller' => 'hardware-type',
                                 'action' => 'add',
                             ),
                             array(
                                 'label' => 'Edit',
-                                'controller' => 'hardwaretype',
+                                'controller' => 'hardware-type',
                                 'action' => 'edit',
                             ),
                             array(
                                 'label' => 'Delete',
-                                'controller' => 'hardwaretype',
+                                'controller' => 'hardware-type',
                                 'action' => 'delete',
                             ),
                             array(
                                 'label' => 'Detail',
-                                'controller' => 'hardwaretype',
+                                'controller' => 'hardware-type',
                                 'action' => 'detail',
                             ),
                         ),
@@ -702,27 +702,27 @@ return array(
                     // Hardware statuses.
                     array(
                         'label' => 'Hardware Statuses',
-                        'controller' => 'hardwarestatus',
+                        'controller' => 'hardware-status',
                         'action' => 'index',
                         'pages' => array(
                             array(
                                 'label' => 'Add',
-                                'controller' => 'hardwarestatus',
+                                'controller' => 'hardware-status',
                                 'action' => 'add',
                             ),
                             array(
                                 'label' => 'Edit',
-                                'controller' => 'hardwarestatus',
+                                'controller' => 'hardware-status',
                                 'action' => 'edit',
                             ),
                             array(
                                 'label' => 'Delete',
-                                'controller' => 'hardwarestatus',
+                                'controller' => 'hardware-status',
                                 'action' => 'delete',
                             ),
                             array(
                                 'label' => 'Detail',
-                                'controller' => 'hardwarestatus',
+                                'controller' => 'hardware-status',
                                 'action' => 'detail',
                             ),
                         ),
@@ -731,27 +731,27 @@ return array(
                     // Hardware manufacturers.
                     array(
                         'label' => 'Hardware Manufacturers',
-                        'controller' => 'hardwaremanufacturer',
+                        'controller' => 'hardware-manufacturer',
                         'action' => 'index',
                         'pages' => array(
                             array(
                                 'label' => 'Add',
-                                'controller' => 'hardwaremanufacturer',
+                                'controller' => 'hardware-manufacturer',
                                 'action' => 'add',
                             ),
                             array(
                                 'label' => 'Edit',
-                                'controller' => 'hardwaremanufacturer',
+                                'controller' => 'hardware-manufacturer',
                                 'action' => 'edit',
                             ),
                             array(
                                 'label' => 'Delete',
-                                'controller' => 'hardwaremanufacturer',
+                                'controller' => 'hardware-manufacturer',
                                 'action' => 'delete',
                             ),
                             array(
                                 'label' => 'Detail',
-                                'controller' => 'hardwaremanufacturer',
+                                'controller' => 'hardware-manufacturer',
                                 'action' => 'detail',
                             ),
                         ),

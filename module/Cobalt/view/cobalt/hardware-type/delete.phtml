@@ -5,7 +5,7 @@
         <p>Are you sure you want to delete the hardware type <?php echo $this->type->getName(); ?>?</p>
         
         <form action="<?php echo $this->url('cobalt/default', array(
-            'controller' => 'hardwaretype',
+            'controller' => 'hardware-type',
             'action' => 'delete',
             'id' => $this->type->getId()
         )); ?>" method="post">
